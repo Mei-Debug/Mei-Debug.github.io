@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1738646731972),
+    lastupdate: new Date(1738647203544),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2587,15 +2587,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="post-body" itemprop="articleBody">
     <h1 id="buuctf笔记"><a href="#buuctf笔记" class="headerlink" title="buuctf笔记"></a>buuctf笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此笔记用于记录在buuctf web上做题的笔记与题解</p>
 <h2 id="1-极客大挑战-2019-EasySQL"><a href="#1-极客大挑战-2019-EasySQL" class="headerlink" title="1.[极客大挑战 2019]EasySQL"></a>1.[极客大挑战 2019]EasySQL</h2><p>第一题当然是最简单的，一个普通的万能密码即可</p>
-
+<img src="/2025/01/15/Buuctf/image-20250119225819047.png" class="lazyload" data-srcset="/2025/01/15/Buuctf/image-20250119225819047.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250119225819047">
 
 <p>此关必须输入用户名和密码，应该是提前判定不得为空</p>
 <h2 id="2-极客大挑战-2019-Havefun"><a href="#2-极客大挑战-2019-Havefun" class="headerlink" title="2.[极客大挑战 2019]Havefun"></a>2.[极客大挑战 2019]Havefun</h2><p>本题界面无任何可操作的东西，于是我们可以通过查看界面源代码看下是否有提示</p>
-
+<img src="/2025/01/15/Buuctf/image-20250119230351285.png" class="lazyload" data-srcset="/2025/01/15/Buuctf/image-20250119230351285.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250119230351285">
 
 <p>我们可以看到注释当$cat&#x3D;’dog’时有输出，我们可以试下传入get请求**?cat&#x3D;dog** 即可</p>
 <h2 id="3-HCTF-2018-WarmUp"><a href="#3-HCTF-2018-WarmUp" class="headerlink" title="3.[HCTF 2018]WarmUp"></a>3.[HCTF 2018]WarmUp</h2><p> 本题界面无任何操作，仍然查看界面源代码</p>
-
+<img src="/2025/01/15/Buuctf/image-20250119230934757.png" class="lazyload" data-srcset="/2025/01/15/Buuctf/image-20250119230934757.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250119230934757">
 
 <p>发现被注释掉的文件<strong>source.php</strong>，我们可以访问一下</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//1a596ae8-813c-47fd-a2b9-ac4509d73e89.node5.buuoj.cn:81/source.php</span></span><br></pre></td></tr></table></figure>
@@ -2619,7 +2619,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>这样可以用js绕过，但我js没深入学</p>
 <p>上传之后用蚁剑连接即可</p>
-
+<img src="/2025/01/15/Buuctf/image-20250202132326678.png" class="lazyload" data-srcset="/2025/01/15/Buuctf/image-20250202132326678.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250202132326678">
 
 <h2 id="5-MRCTF2020-你传你🐎呢"><a href="#5-MRCTF2020-你传你🐎呢" class="headerlink" title="5.[MRCTF2020]你传你🐎呢"></a>5.[MRCTF2020]你传你🐎呢</h2><p>这个题目也是无前端验证，也没有任何提示，只有一句**我扌your problem?**只能抓包看看</p>
 <p>发现只有简单的content-type验证和.php和.phtml的黑名单</p>
