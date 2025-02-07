@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-01-15T14:02:33.000Z">
-<meta property="article:modified_time" content="2025-02-02T11:25:12.891Z">
+<meta property="article:modified_time" content="2025-02-05T04:43:31.492Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1738661095010),
+    lastupdate: new Date(1738911717570),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2625,7 +2625,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>发现只有简单的content-type验证和.php和.phtml的黑名单</p>
 <p>于是首先想到.user.ini，但又担心没有.php文件，于是改用.htaccess。后面蚁剑连接上了，证实的确没有.php文件</p>
 <p>于是上传.txt一句话后门，然后再上传.htaccess开门，最后用蚁剑连接即可</p>
-<h2 id="6-ACTF2020-新生赛-Upload"><a href="#6-ACTF2020-新生赛-Upload" class="headerlink" title="6.[ACTF2020 新生赛]Upload"></a>6.[ACTF2020 新生赛]Upload</h2>
+<h2 id="6-ACTF2020-新生赛-Upload"><a href="#6-ACTF2020-新生赛-Upload" class="headerlink" title="6.[ACTF2020 新生赛]Upload"></a>6.[ACTF2020 新生赛]Upload</h2><p>这是一个文件上传的题目</p>
+<p>我们首先尝试一句话后门，发现前端验证只允许图片上传，想找网页源码，但有点复杂找不到，于是直接关闭js即可，然后抓包测试</p>
+<p>经过测试发现.php进入黑名单，content-type也有限制，这样我们改为.phtml就可以绕过，绕过之后还直接给出相对路径，直接访问然后蚁剑连接即可</p>
+<h2 id="7-ACTF2020-新生赛-Include"><a href="#7-ACTF2020-新生赛-Include" class="headerlink" title="7.[ACTF2020 新生赛]Include"></a>7.[ACTF2020 新生赛]Include</h2><p>学了文件包含来一道题</p>
+<p>首先我们看到主界面，只有一个<u>tips</u>链接，我们点开以后：</p>
+<img src="/2025/01/15/Buuctf/image-20250205122248602.png" class="lazyload" data-srcset="/2025/01/15/Buuctf/image-20250205122248602.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250205122248602">
+
+<p>然后尝试抓包，发现</p>
+<img src="/2025/01/15/Buuctf/image-20250205122403262.png" class="lazyload" data-srcset="/2025/01/15/Buuctf/image-20250205122403262.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250205122403262">
+
+<p>没有任何内容，仅仅只有一个flag.php文件，结合以上我们有理由猜测这是include(flag.php)，我们知道路径在同一根目录下，直接上伪协议</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php:<span class="comment">//filter/convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p>把拿到的内容进行解码即可：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;Can you find out the flag?&quot;</span>;</span><br><span class="line"><span class="comment">//flag&#123;110eaaa4-5b39-455b-a3c7-6aa0f3a679cc&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>果然和想的一样</p>
+
   </div>
   
   
@@ -2649,10 +2666,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-02T19:25:12+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-05T12:43:31+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 2, 2025</p>
+    <p>更新于：Feb 5, 2025</p>
   </a>
 </div>
 
@@ -2795,7 +2812,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL"><span class="toc-text">1.[极客大挑战 2019]EasySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun"><span class="toc-text">2.[极客大挑战 2019]Havefun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HCTF-2018-WarmUp"><span class="toc-text">3.[HCTF 2018]WarmUp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload"><span class="toc-text">4.[极客大挑战 2019]Upload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-MRCTF2020-%E4%BD%A0%E4%BC%A0%E4%BD%A0%F0%9F%90%8E%E5%91%A2"><span class="toc-text">5.[MRCTF2020]你传你🐎呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload"><span class="toc-text">6.[ACTF2020 新生赛]Upload</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL"><span class="toc-text">1.[极客大挑战 2019]EasySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun"><span class="toc-text">2.[极客大挑战 2019]Havefun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HCTF-2018-WarmUp"><span class="toc-text">3.[HCTF 2018]WarmUp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload"><span class="toc-text">4.[极客大挑战 2019]Upload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-MRCTF2020-%E4%BD%A0%E4%BC%A0%E4%BD%A0%F0%9F%90%8E%E5%91%A2"><span class="toc-text">5.[MRCTF2020]你传你🐎呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload"><span class="toc-text">6.[ACTF2020 新生赛]Upload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include"><span class="toc-text">7.[ACTF2020 新生赛]Include</span></a></li></ol>
     </div>
   </section>
 
@@ -3365,7 +3382,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/01/15/Buuctf/","name":"Buuctf"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Buuctf","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/01/15/Buuctf/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/01/15/Buuctf/","wordCount":0,"datePublished":"2025-01-15T14:02:33.000Z","dateModified":"2025-02-02T11:25:12.891Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/01/15/Buuctf/","name":"Buuctf"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Buuctf","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/01/15/Buuctf/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/01/15/Buuctf/","wordCount":0,"datePublished":"2025-01-15T14:02:33.000Z","dateModified":"2025-02-05T04:43:31.492Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
