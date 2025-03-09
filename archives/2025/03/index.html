@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2025/01/"/>
+  <link rel="canonical" href="http://example.com/archives/2025/03/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,12 +33,12 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive: 2025/1 - Hexo</title>
+  <title>Archive: 2025/3 - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2025/01/index.html">
+<meta property="og:url" content="http://example.com/archives/2025/03/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2522,12 +2522,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
-          
-        
-          
-        
-          
-        
       
     
     
@@ -2535,7 +2529,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/21/留言板/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/06/requests库/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2553,24 +2547,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/"  itemprop="url">
-        留言板
+      <a href="/2025/03/06/requests%E5%BA%93/"  itemprop="url">
+        requests库
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
+    
+      
+        requests库笔记前言唉，ctfshow上面sql注入和sqli-lab难度跨越有点大，反正我感觉有点难了，但php特性和反序列化也在继续。突然想起python和requests库还没学，还被要求写盲注脚本，试一试也没有问题
+1.基本用法1234567891011121314#导入requests库import requests#发送一个get请求并得到响应r = requests.ge...
+      
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-01-21T17:17:52+08:00">2025-01-21</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-03-06T19:55:29+08:00">2025-03-06</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/' itemprop="url">
+          <a class='readmore' href='/2025/03/06/requests%E5%BA%93/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2586,7 +2585,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/15/Buuctf/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/04/ctfshowSQL注入/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2604,23 +2603,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/15/Buuctf/"  itemprop="url">
-        Buuctf
+      <a href="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        ctfshowSQL注入
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        buuctf笔记前言此笔记用于记录在buuctf web上做题的笔记与题解
-1.[极客大挑战 2019]EasySQL第一题当然是最简单的，一个普通的万能密码即可
-
-
-此关必须输入用户名和密码，应该是提前判定不得为空
-2.[极客大挑战 2019]Havefun本题界面无任何可操作的东西，于是我们可以通过查看界面源代码看下是否有提示
-
-
-我们可以看到注释当$cat&#x3D;’dog’时有输出...
+        ctfshow_SQL注入笔记前言最近要再去学一下MySQL，就顺便把ctfshow上面的题目做了，再去学一下sqlmap的用法。
+主要是因为以前SQL注入全是在靶场上进行的，学的基本上就是一些简单的绕过方法，和实际做题感觉有很大区别
+172关1.用户名过滤12345$sql = &quot;select username,password from ctfshow_user2 where ...
       
     
   </div>
@@ -2628,189 +2621,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-01-15T22:02:33+08:00">2025-01-15</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-03-04T19:58:06+08:00">2025-03-04</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/01/15/Buuctf/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/12/sql注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/12/sql%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        sql注入
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        sql注入笔记前言本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。
-1.注入点判断SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。
-参数类型分类
-
-数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。
-
-如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 sel...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-12T13:28:35+08:00">2025-01-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/12/sql%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/MySQL/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/03/MySQL/"  itemprop="url">
-        MySQL
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
-每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。
-我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。
-所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-03T17:06:10+08:00">2025-01-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/03/MySQL/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Python/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/02/Python/"  itemprop="url">
-        Python
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Python学习笔记前言感觉漏洞有点难，突然想到python还没学，也不好写脚本，仿佛看到救世主一般的来了，由于以前学过C语言，所以只挑重点学
-1.数据类型Python 支持三种不同的数值类型：
-
-整型(int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 Long ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-01-02T18:38:49+08:00">2025-01-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/01/02/Python/' itemprop="url">
+          <a class='readmore' href='/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3477,7 +3293,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2025/","name":"2025"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2025/1/","name":"1"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2025/","name":"2025"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2025/3/","name":"3"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
