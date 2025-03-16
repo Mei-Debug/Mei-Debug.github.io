@@ -36,14 +36,16 @@
   <title>Flask - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="article">
+  
+<meta property="og:type" content="article">
 <meta property="og:title" content="Flask">
 <meta property="og:url" content="http://example.com/2025/03/16/Flask/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Flask学习笔记前言本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到 1.Flask简介Flask是一个轻量级的基于Python的web框架。 简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似 2.Hello World在计算机领域，正可谓Hel">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-16T06:41:43.000Z">
-<meta property="article:modified_time" content="2025-03-16T06:41:43.687Z">
+<meta property="article:modified_time" content="2025-03-16T09:24:07.779Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1742,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742107411327),
+    lastupdate: new Date(1742129408785),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2583,7 +2585,193 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h1 id="Flask学习笔记"><a href="#Flask学习笔记" class="headerlink" title="Flask学习笔记"></a>Flask学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到</p>
+<h2 id="1-Flask简介"><a href="#1-Flask简介" class="headerlink" title="1.Flask简介"></a>1.Flask简介</h2><p>Flask是一个轻量级的基于Python的web框架。</p>
+<p>简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似</p>
+<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2.Hello World"></a>2.Hello World</h2><p>在计算机领域，正可谓Hello World生万物，一切都起源于神秘的Hello World</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello, World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果不重要反正都是Hello World。程序运行后会给我们一个网址<code>127.0.0.1:5000</code>访问即可看到结果</p>
+<p>代码解析：</p>
+<ul>
+<li><strong>from flask import Flask</strong>： 这行代码从 <code>flask</code> 模块中导入了 <code>Flask</code> 类。<code>Flask</code> 类是 Flask 框架的核心，用于创建 Flask 应用程序实例。</li>
+<li>**app &#x3D; Flask(<strong>name</strong>)**： 这行代码创建了一个 Flask 应用实例。<code>__name__</code> 是一个特殊的 Python 变量，它在模块被直接运行时是 <code>&#39;__main__&#39;</code>，在被其他模块导入时是模块的名字。传递 <code>__name__</code> 给 <code>Flask</code> 构造函数允许 Flask 应用找到和加载配置文件。</li>
+<li>**@app.route(‘&#x2F;‘)**： 这是一个装饰器，用于告诉 Flask 哪个 URL 应该触发下面的函数。在这个例子中，它指定了根 URL（即网站的主页）。</li>
+<li>**def hello_world():**： 这是定义了一个名为 <code>hello_world</code> 的函数，它将被调用当用户访问根URL时。</li>
+<li>**return ‘Hello, World!’**： 这行代码是 <code>hello_world</code> 函数的返回值。当用户访问根 URL 时，这个字符串将被发送回用户的浏览器。</li>
+<li>**if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:**：这行代码是一个条件判断，用于检查这个模块是否被直接运行，而不是被其他模块导入。如果是直接运行，下面的代码块将被执行。</li>
+<li>**app.run(debug&#x3D;True)**：这行代码调用 Flask 应用实例的 <code>run</code> 方法，启动 Flask 内置的开发服务器。<code>debug=True</code> 参数会启动调试模式，这意味着应用会在代码改变时自动重新加载，并且在发生错误时提供一个调试器。</li>
+</ul>
+<h2 id="3-Flask基本概念"><a href="#3-Flask基本概念" class="headerlink" title="3.Flask基本概念"></a>3.Flask基本概念</h2><p>这里主要是了解一些概念，后面会详细的将用法，现在先了解下整体</p>
+<p>以下是 Flask 的主要基本概念的详细解析：</p>
+<ul>
+<li><strong>路由</strong>：路由是 URL 到 Python 函数的映射。Flask 允许你定义路由，这样当特定的 URL 被访问时，就会调用相应的函数。</li>
+<li><strong>视图函数</strong>：视图函数是处理请求并返回响应的 Python 函数。它们通常接收请求对象作为参数，并返回响应对象。</li>
+<li><strong>请求对象</strong>：请求对象包含了客户端发送的请求信息，如请求方法、URL、请求头、表单数据等。</li>
+<li><strong>响应对象</strong>：响应对象包含了发送给客户端的响应信息，如状态码、响应头、响应体等。</li>
+<li><strong>模板</strong>：Flask 使用 Jinja2 模板引擎来渲染 HTML 模板。模板允许你将 Python 代码嵌入到 HTML 中，从而动态生成网页。</li>
+<li><strong>应用工厂</strong>：应用工厂是一个 Python 函数，它创建并返回一个 Flask 应用实例。这允许你配置和初始化你的应用，并且可以创建多个应用实例。</li>
+<li><strong>配置对象</strong>：Flask 应用有一个配置对象，你可以使用它来设置各种配置选项，如数据库连接字符串、调试模式等。</li>
+<li><strong>蓝图</strong>：蓝图是 Flask 中的一个组织代码的方式，它允许你将相关的视图函数、模板和静态文件组织在一起，并且可以在多个应用中重用。</li>
+<li><strong>静态文件</strong>：静态文件是不会被服务器端执行的文件，如 CSS、JavaScript 和图片文件。Flask 提供了一个简单的方法来服务这些文件。</li>
+<li><strong>扩展</strong>：Flask 有许多扩展，可以添加额外的功能，如数据库集成、表单验证、用户认证等。</li>
+<li><strong>会话</strong>：Flask 使用客户端会话来存储用户信息，这允许你在用户浏览你的应用时记住他们的状态。</li>
+<li><strong>错误处理</strong>：Flask 允许你定义错误处理函数，当特定的错误发生时，这些函数会被调用。</li>
+</ul>
+<h2 id="4-Flask路由"><a href="#4-Flask路由" class="headerlink" title="4.Flask路由"></a>4.Flask路由</h2><p>Flask 路由是 Web 应用程序中将 URL 映射到 Python 函数的机制。</p>
+<p>Flask 路由是 Flask 应用的核心部分，用于处理不同 URL 的请求，并将请求的处理委托给相应的视图函数。</p>
+<p>我们通过Flask访问到的各个网页是有路由设定的</p>
+<p>以下是关于 Flask 路由的详细说明，包括路由的定义、参数、方法和规则等。</p>
+<ol>
+<li><strong>定义路由</strong>：使用 <code>@app.route(&#39;/path&#39;)</code> 装饰器定义 URL 和视图函数的映射。</li>
+<li><strong>路由参数</strong>：通过动态部分在 URL 中传递参数。</li>
+<li><strong>路由规则</strong>：使用类型转换器指定 URL 参数的类型。</li>
+<li><strong>请求方法</strong>：指定允许的 HTTP 请求方法。</li>
+<li><strong>路由函数返回</strong>：视图函数可以返回不同类型的响应。</li>
+<li><strong>静态文件和模板</strong>：管理静态文件和动态渲染 HTML 模板。</li>
+<li><strong>路由优先级</strong>：确保路由顺序正确，以避免意外的匹配结果。</li>
+</ol>
+<p><strong>1.定义路由</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="comment">#这个app规定模块为自身这个文件</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="comment">#感觉和index.php差不多</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Welcome to the Home Page!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>@app.route(&#39;/&#39;)</code>：装饰器，用于定义路由。<code>/</code> 表示根 URL。</li>
+<li><code>def home()</code>：视图函数，当访问根 URL 时，返回 <code>&#39;Welcome to the Home Page!&#39;</code>。</li>
+</ul>
+<p><strong>2.路由参数</strong></p>
+<p>路由可以包含动态部分，通过在路由中指定参数，可以将 URL 中的部分数据传递给视图函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/greet/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Hello, <span class="subst">&#123;name&#125;</span>!&#x27;</span></span><br><span class="line"><span class="comment">#f 是用来标识这是一个 f-string（格式化字符串字面值）的</span></span><br></pre></td></tr></table></figure>
+
+<p>这个代码将&lt;name&gt;作为参数，会输出Hello，&lt;name&gt;</p>
+<p>效果如下</p>
+<img src="/2025/03/16/Flask/image-20250316160814118.png" class="lazyload" data-srcset="/2025/03/16/Flask/image-20250316160814118.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250316160814118">
+
+<p>需要注意的是，这虽然和GET请求一样通过url传递参数，但是区别在于这个根据视图函数规定只能传递一个，而且没问号。而GET请求则没有限制随便传，也有问号</p>
+<p><strong>3.路由规划</strong></p>
+<p>路由规则支持不同类型的参数和匹配规则。</p>
+<p>类型规则：</p>
+<ul>
+<li><strong>字符串（默认）：</strong> 匹配任意字符串。</li>
+<li><strong>整数（<code>&lt;int:name&gt;</code>）：</strong> 匹配整数值。</li>
+<li><strong>浮点数（<code>&lt;float:value&gt;</code>）：</strong> 匹配浮点数值。</li>
+<li><strong>路径（<code>&lt;path:name&gt;</code>）：</strong> 匹配任意字符，包括斜杠 <code>/</code>。</li>
+</ul>
+<p>实例;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_profile</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;User ID: <span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/files/&lt;path:filename&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">serve_file</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Serving file: <span class="subst">&#123;filename&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个就是对传入参数有一定限制，规定一下类型</p>
+<p><strong>4.请求方法</strong></p>
+<p>Flask 路由支持不同的 HTTP 请求方法，如 GET、POST、PUT、DELETE 等。可以通过 methods 参数指定允许的请求方法。</p>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/get_params&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_params</span>():</span><br><span class="line">    <span class="comment"># 获取单个参数</span></span><br><span class="line">    name = request.args.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    age = request.args.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    <span class="comment"># 如果参数不存在，get 方法会返回 None，也可以指定默认值</span></span><br><span class="line">    city = request.args.get(<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;Unknown&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>, City: <span class="subst">&#123;city&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 代码解释</p>
+<ul>
+<li><code>request.args</code> 是一个类似字典的对象，用于存储 URL 查询字符串中的参数。</li>
+<li><code>request.args.get(&#39;name&#39;)</code> 用于获取名为 <code>name</code> 的参数值，如果该参数不存在，返回 <code>None</code>。</li>
+<li><code>request.args.get(&#39;city&#39;, &#39;Unknown&#39;)</code> 表示如果 <code>city</code> 参数不存在，将返回默认值 <code>&#39;Unknown&#39;</code>。</li>
+</ul>
+<p>这是通过GET请求获得参数。至于POST请求</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/post_form&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">post_form</span>():</span><br><span class="line">    <span class="comment"># 获取单个参数</span></span><br><span class="line">    name = request.form.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    age = request.form.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    city = request.form.get(<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;Unknown&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>, City: <span class="subst">&#123;city&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>无法通过url获得参数。直接访问会出现下面这样，其他方法还难一点</p>
+<img src="/2025/03/16/Flask/image-20250316162224430.png" class="lazyload" data-srcset="/2025/03/16/Flask/image-20250316162224430.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250316162224430">
+
+<p>这是GET请求</p>
+<img src="/2025/03/16/Flask/image-20250316162554789.png" class="lazyload" data-srcset="/2025/03/16/Flask/image-20250316162554789.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250316162554789">
+
+
+
+<p><strong>5.路由转换器</strong></p>
+<p>Flask 提供了一些内置的转换器，可以对 URL 中的参数进行特定类型的转换。</p>
+<p>常用转换器：</p>
+<ul>
+<li><strong><code>int</code>：</strong> 匹配整数。</li>
+<li><strong><code>float</code>：</strong> 匹配浮点数。</li>
+<li><strong><code>path</code>：</strong> 匹配任意路径，包括斜杠。</li>
+</ul>
+<p>话说这个也是相当于对参数的强制类型转换，为什么不放在路由规划前面讲</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/items/&lt;int:item_id&gt;/details&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">item_details</span>(<span class="params">item_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Item details for item ID: <span class="subst">&#123;item_id&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;int:item_id&gt;</code>：将 URL 中的 <code>item_id</code> 转换为整数。</li>
+</ul>
+<p><strong>6.路由函数返回</strong></p>
+<p>视图函数可以返回多种类型的响应：</p>
+<ul>
+<li><strong>字符串</strong>：返回纯文本响应。</li>
+<li><strong>HTML</strong>：返回 HTML 页面。</li>
+<li><strong>JSON</strong>：返回 JSON 数据。</li>
+<li><strong>Response 对象</strong>：自定义响应</li>
+</ul>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify, Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/json&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">json_response</span>():</span><br><span class="line">    data = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(data)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/custom&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_response</span>():</span><br><span class="line">    response = Response(<span class="string">&#x27;Custom response with headers&#x27;</span>, status=<span class="number">200</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>jsonify(data)</code>：将字典转换为 JSON 响应。</li>
+<li><code>Response(&#39;Custom response with headers&#39;, status=200)</code>：创建自定义响应对象。</li>
+</ul>
+<p><strong>静态文件和模板</strong></p>
+<p>我们之前有这么一串代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
+
+<p>这是将此文件作为Flask的模板，我们也可以引入其他文件作为模板</p>
+<p>静态文件（如 CSS、JavaScript、图片）可以通过 static 路由访问。模板文件则通过 templates 文件夹组织，用于渲染 HTML 页面。</p>
+<p>静态文件访问:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;&#123;&#123; url_for(&#x27;static&#x27;, filename=&#x27;style.css&#x27;) &#125;&#125;&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这和文件包含类似，相当于包含了style.css文件</p>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hello/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;hello.html&#x27;</span>, name=name)</span><br></pre></td></tr></table></figure>
+
+<p>渲染html页面</p>
+<p><strong>8.路由优先级</strong></p>
+<p>Flask 按照定义的顺序匹配路由，第一个匹配成功的路由将被处理。确保更具体的路由放在更一般的路由之前。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_profile</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;User ID: <span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;User List&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果带参数则匹配第一个路由，不带参数则匹配第二个路由</p>
+<h2 id="5-Flask-视图函数"><a href="#5-Flask-视图函数" class="headerlink" title="5.Flask 视图函数"></a>5.Flask 视图函数</h2><p>不知道为什么这个要叫视图函数，我认为和普通的python函数差不多，以前也了解了一些基础知识，所以只学其他的</p>
+<p>视图函数是 Flask 应用中的核心部分，它负责处理请求并生成响应。</p>
+<p>视图函数与路由紧密结合，通过路由将 URL 映射到具体的视图函数。</p>
+<p>以下是对 Flask 视图函数的详细说明，包括如何定义、使用请求数据、返回响应、以及如何处理错误等。</p>
+<ol>
+<li><strong>定义视图函数</strong>：视图函数是处理请求并返回响应的核心功能。</li>
+<li><strong>接收请求数据</strong>：使用 <code>request</code> 对象获取 URL 参数、表单数据、查询参数等。</li>
+<li><strong>返回响应</strong>：可以返回字符串、HTML、JSON 或自定义响应对象。</li>
+<li><strong>处理请求和响应</strong>：使用 <code>request</code> 对象和 <code>make_response</code> 来处理请求和生成自定义响应。</li>
+<li><strong>处理错误</strong>：视图函数内处理异常或使用 Flask 的错误处理机制。</li>
+<li><strong>视图函数的装饰器</strong>：使用 <code>@app.before_request</code>、<code>@app.after_request</code> 等装饰器处理请求前后逻辑。</li>
+<li><strong>视图函数返回的状态码</strong>：可以指定 HTTP 状态码来表示请求的处理结果。</li>
+</ol>
+<p><strong>1.处理请求和响应</strong></p>
+<p>视图函数可以访问请求对象，并根据请求数据生成响应。可以使用 request 对象来获取请求的信息，使用 make_response 来创建自定义响应。</p>
+<p>使用 request 对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/info&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info</span>():</span><br><span class="line">    user_agent = request.headers.get(<span class="string">&#x27;User-Agent&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Your user agent is <span class="subst">&#123;user_agent&#125;</span>&#x27;</span></span><br><span class="line"><span class="comment">#获取请求头的各种信息</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> make_response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/header&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_header</span>():</span><br><span class="line">    response = make_response(<span class="string">&#x27;Response with custom header&#x27;</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"><span class="comment">#我们通过make_response创建自定义响应</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2.处理错误</strong></p>
+<p>可以在视图函数中处理异常或错误，或者通过 Flask 提供的错误处理机制来处理应用中的错误。</p>
+<p>在视图函数中处理错误:</p>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/divide/&lt;int:x&gt;/&lt;int:y&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">divide</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = x / y</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;Result: <span class="subst">&#123;result&#125;</span>&#x27;</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Error: Division by zero&#x27;</span>, <span class="number">400</span></span><br><span class="line"><span class="comment">#使用 try-except 语句处理除零错误，并返回自定义错误消息和状态码。</span></span><br><span class="line"><span class="comment">#全局错误处理:</span></span><br><span class="line"><span class="meta">@app.errorhandler(<span class="params"><span class="number">404</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">not_found</span>(<span class="params">error</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Page not found&#x27;</span>, <span class="number">404</span></span><br><span class="line"><span class="comment">#@app.errorhandler(404)：定义处理 404 错误的函数。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.视图函数的装饰器</strong></p>
+<p>除了 @app.route，Flask 还支持其他装饰器，用于实现更复杂的功能。</p>
+<p>示例：</p>
+<ul>
+<li>**<code>@app.before_request</code>**：在每个请求处理之前运行的函数。</li>
+<li>**<code>@app.after_request</code>**：在每个请求处理之后运行的函数。</li>
+<li>**<code>@app.teardown_request</code>**：在请求结束后运行的函数，用于清理工作。</li>
+</ul>
+<p>示例装饰器使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.before_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">before_request</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Before request&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">after_request</span>(<span class="params">response</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;After request&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.teardown_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">teardown_request</span>(<span class="params">exception</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Teardown request&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.视图函数返回的状态码</strong></p>
+<p>视图函数不仅可以返回内容，还可以指定 HTTP 状态码。</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/status&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">status</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Everything is OK&#x27;</span>, <span class="number">200</span></span><br><span class="line"><span class="comment">#返回状态码 200 表示请求成功。</span></span><br><span class="line"><span class="comment">#返回带有状态码的响应对象：</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/error&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error</span>():</span><br><span class="line">    <span class="keyword">return</span> Response(<span class="string">&#x27;An error occurred&#x27;</span>, status=<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+
+
   </div>
   
   
@@ -2607,7 +2795,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-16T14:41:43+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-16T17:24:07+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 16, 2025</p>
@@ -2737,9 +2925,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Flask%E7%AE%80%E4%BB%8B"><span class="toc-text">1.Flask简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Hello-World"><span class="toc-text">2.Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Flask%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">3.Flask基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Flask%E8%B7%AF%E7%94%B1"><span class="toc-text">4.Flask路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Flask-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0"><span class="toc-text">5.Flask 视图函数</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -3307,7 +3505,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/16/Flask/","name":"Flask"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Flask","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/16/Flask/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/16/Flask/","wordCount":0,"datePublished":"2025-03-16T06:41:43.000Z","dateModified":"2025-03-16T06:41:43.687Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/16/Flask/","name":"Flask"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Flask","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/16/Flask/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/16/Flask/","wordCount":0,"datePublished":"2025-03-16T06:41:43.000Z","dateModified":"2025-03-16T09:24:07.779Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
