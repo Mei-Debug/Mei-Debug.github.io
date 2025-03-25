@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742716915715),
+    lastupdate: new Date(1742886474842),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2530,6 +2530,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
@@ -2563,8 +2565,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='md article-desc' itemprop="articleBody">
     
       
-        SSTI学习笔记前言到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下
-
+        SSTI学习笔记前言到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下。刚才去试了一下，果然是flask的原因，把这个文件移除博客即可
+1.漏洞原理有了以上关于Flask的基础知识，我们就可以来看看漏洞是如何产生的了。由于对用户输入过滤不严，攻击者可以通过构造恶意数据，使服务器模板引擎渲染这...
       
     
   </div>
@@ -2692,6 +2694,64 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div>
           <a class='readmore' href='/2025/03/17/SSRF/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/Flask/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/16/Flask/"  itemprop="url">
+        Flask
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        Flask学习笔记前言本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到
+1.Flask简介Flask是一个轻量级的基于Python的web框架。
+简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似
+2.Hello World在计算机领域，正可谓...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-16T14:41:43+08:00">2025-03-16</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/16/Flask/' itemprop="url">
             Read More
           </a>
         </div>

