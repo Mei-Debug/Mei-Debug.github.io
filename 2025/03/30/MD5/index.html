@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/03/14/爆破/"/>
+  <link rel="canonical" href="http://example.com/2025/03/30/md5/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,17 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>爆破 - Hexo</title>
+  <title>MD5 - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="爆破">
-<meta property="og:url" content="http://example.com/2025/03/14/%E7%88%86%E7%A0%B4/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="MD5">
+<meta property="og:url" content="http://example.com/2025/03/30/MD5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MD5笔记前言写了一些CTF的题目后发现md5()这个函数考得太多了，绕过的方法又有点难和，现在我必须要去总结一些MD5的绕过方法 1.数组绕过法最简单的应该就是数组绕过法，md5()的一个特性，当参数为数组时自动返回1 123$a&#x3D;$_POST[&#x27;a&#x27;];$b&#x3D;$_POST[&#x27;b&#x27;];if($a!&#x3D;&#x3D;$b&amp;&amp;md5($a)&#x3D;&#x3D;&#x3D;md5($b">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-03-14T02:07:58.000Z">
-<meta property="article:modified_time" content="2025-03-14T02:07:58.524Z">
+<meta property="article:published_time" content="2025-03-30T04:49:57.000Z">
+<meta property="article:modified_time" content="2025-03-30T08:31:04.425Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2515,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/14/爆破/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/30/MD5/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2536,7 +2538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        爆破
+        MD5
       </h1>
       <div class='new-meta-box'>
         
@@ -2557,10 +2559,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-14T10:07:58+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-30T12:49:57+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 14, 2025</p>
+    <p>发布于：Mar 30, 2025</p>
   </a>
 </div>
 
@@ -2583,7 +2585,93 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h1 id="MD5笔记"><a href="#MD5笔记" class="headerlink" title="MD5笔记"></a>MD5笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>写了一些CTF的题目后发现md5()这个函数考得太多了，绕过的方法又有点难和，现在我必须要去总结一些MD5的绕过方法</p>
+<h2 id="1-数组绕过法"><a href="#1-数组绕过法" class="headerlink" title="1.数组绕过法"></a>1.数组绕过法</h2><p>最简单的应该就是数组绕过法，md5()的一个特性，当参数为数组时自动返回1</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$a</span>!==<span class="variable">$b</span>&amp;&amp;<span class="title function_ invoke__">md5</span>(<span class="variable">$a</span>)===<span class="title function_ invoke__">md5</span>(<span class="variable">$b</span>))</span><br></pre></td></tr></table></figure>
+
+<p>我们只需要传入两个不同的数组即可<br>a[]&#x3D;1&amp;b[]&#x3D;2</p>
+<h2 id="2-0e科学计数绕过法"><a href="#2-0e科学计数绕过法" class="headerlink" title="2.0e科学计数绕过法"></a>2.0e科学计数绕过法</h2><p>如果对输入内容进行强制类型转化，我们就无法使用数组绕过法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$apple</span> = (<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;appple&#x27;</span>];</span><br><span class="line"><span class="variable">$banana</span> = (<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;bananana&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span> (!((<span class="keyword">string</span>)<span class="variable">$apple</span> != (<span class="keyword">string</span>)<span class="variable">$banana</span> &amp;&amp; <span class="title function_ invoke__">md5</span>((<span class="keyword">string</span>)<span class="variable">$apple</span>) == <span class="title function_ invoke__">md5</span>((<span class="keyword">string</span>)<span class="variable">$banana</span>))) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;难吗?不难!&#x27;</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>我们这个时候可以通过php比较时的类型转化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="string">&#x27;0e123&#x27;</span>==<span class="string">&#x27;0e456&#x27;</span>);</span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>这个和php版本有关，应该是要大于8才能对字符串进行科学计数法检查</p>
+<p>这个时候就要利用<code>0e</code>的形式来解题，找到两个不同字符，md5加密后却都是0e324234的形式。如何寻找这样的字符串？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">CHARS = string.ascii_letters + string.digits</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cmp_md5</span>(<span class="params">substr, stop_event, str_len, start=<span class="number">0</span>, size=<span class="number">20</span></span>):</span><br><span class="line">    <span class="keyword">global</span> CHARS</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> stop_event.is_set():</span><br><span class="line">        rnds = <span class="string">&#x27;&#x27;</span>.join(random.choice(CHARS) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(size))</span><br><span class="line">        md5 = hashlib.md5(rnds)</span><br><span class="line">        value = md5.hexdigest()</span><br><span class="line">        <span class="keyword">if</span> value[start: start + str_len] == substr:</span><br><span class="line">            <span class="comment"># print rnds</span></span><br><span class="line">            <span class="comment"># stop_event.set()</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 碰撞双md5</span></span><br><span class="line">            md5 = hashlib.md5(value)</span><br><span class="line">            <span class="keyword">if</span> md5.hexdigest()[start: start + str_len] == substr:</span><br><span class="line">                <span class="built_in">print</span> rnds + <span class="string">&quot;=&gt;&quot;</span> + value + <span class="string">&quot;=&gt;&quot;</span> + md5.hexdigest() + <span class="string">&quot;\n&quot;</span></span><br><span class="line">                stop_event.<span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    substr = sys.argv[<span class="number">1</span>].strip()</span><br><span class="line">    start_pos = <span class="built_in">int</span>(sys.argv[<span class="number">2</span>]) <span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    str_len = <span class="built_in">len</span>(substr)</span><br><span class="line">    cpus = multiprocessing.cpu_count()</span><br><span class="line">    stop_event = multiprocessing.Event()</span><br><span class="line">    processes = [multiprocessing.Process(target=cmp_md5, args=(substr,</span><br><span class="line">                                                               stop_event, str_len, start_pos))</span><br><span class="line">                 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(cpus)]</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> processes:</span><br><span class="line">        p.start()</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> processes:</span><br><span class="line">        p.join()</span><br></pre></td></tr></table></figure>
+
+<p>脚本寻找要浪费大概十分钟左右的时间才能找出一个，可以用网上现成的，如果题目要求比较特殊的话，再利用自己的脚本跑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MAUXXQC 0e478478466848439040434801845361</span><br><span class="line">IHKFRNS 0e256160682445802696926137988570</span><br><span class="line">GZECLQZ 0e537612333747236407713628225676</span><br><span class="line">GGHMVOE 0e362766013028313274586933780773</span><br><span class="line">GEGHBXL 0e248776895502908863709684713578</span><br><span class="line">EEIZDOI 0e782601363539291779881938479162</span><br><span class="line">DYAXWCA 0e424759758842488633464374063001</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-md5碰撞"><a href="#3-md5碰撞" class="headerlink" title="3.md5碰撞"></a>3.md5碰撞</h2><p>假如我们把之前的代码改一下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$apple</span> = (<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;appple&#x27;</span>];</span><br><span class="line"><span class="variable">$banana</span> = (<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;bananana&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span> (!((<span class="keyword">string</span>)<span class="variable">$apple</span> !== (<span class="keyword">string</span>)<span class="variable">$banana</span> &amp;&amp; <span class="title function_ invoke__">md5</span>((<span class="keyword">string</span>)<span class="variable">$apple</span>) == <span class="title function_ invoke__">md5</span>((<span class="keyword">string</span>)<span class="variable">$banana</span>))) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;难吗?不难!&#x27;</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>由于使用了!&#x3D;&#x3D;导致不会进行类型转换，我们也无法利用科学计数法绕过，这个时候就需要MD5碰撞</p>
+<p>MD5碰撞就是两串不一样的字符串，经过MD5加密后结果却相同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$a=M%C9h%FF%0E%E3%5C%20%95r%D4w%7Br%15%87%D3o%A7%B2%1B%DCV%B7J%3D%C0x%3E%7B%95%18%AF%BF%A2%02%A8%28K%F3n%8EKU%B3_Bu%93%D8Igm%A0%D1%D5%5D%83%60%FB_%07%FE%A2</span><br><span class="line">$b=M%C9h%FF%0E%E3%5C%20%95r%D4w%7Br%15%87%D3o%A7%B2%1B%DCV%B7J%3D%C0x%3E%7B%95%18%AF%BF%A2%00%A8%28K%F3n%8EKU%B3_Bu%93%D8Igm%A0%D1U%5D%83%60%FB_%07%FE%A2</span><br></pre></td></tr></table></figure>
+
+<p>原谅我看不懂大佬的payload，我自己用md5加密出来不一样，等下去题目里面试试</p>
+<p>经过验证，这个payload是对的</p>
+<h2 id="4-HASH长度拓展攻击"><a href="#4-HASH长度拓展攻击" class="headerlink" title="4.HASH长度拓展攻击"></a>4.HASH长度拓展攻击</h2><p>我在写Base_CTF新生赛算是长见识了，一个MD5这么这么难，还需要去学MD5的HASH长度拓展攻击，我也是看了一下</p>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p>简单的说，由于HASH的生成机制原因，使得我们可以人为的在原先明文数据的基础上添加新的拓展字符，使得原本的加密链变长，进而控制加密链的最后一节，使得我们得以控制最终结果。</p>
+<p>也就是我们人为的去控制加密链，控制最后一次加密的加密链和原始数据，我们就可以控制加密结果</p>
+<h3 id="2-MD5长度拓展攻击"><a href="#2-MD5长度拓展攻击" class="headerlink" title="2.MD5长度拓展攻击"></a>2.MD5长度拓展攻击</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line"><span class="variable">$secretKey</span> = <span class="string">&#x27;xxxxxx&#x27;</span>; <span class="comment">#xxx为未知内容，但长度已知为6。</span></span><br><span class="line"><span class="variable">$v1</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>];</span><br><span class="line"><span class="variable">$sign</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;sign&#x27;</span>];</span><br><span class="line"><span class="variable">$token</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$secretKey</span>.<span class="variable">$v1</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$v1</span> === <span class="string">&#x27;test&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="variable">$token</span>); <span class="comment">#token=2df51a84abc64a28740d6d2ae8cd7b16</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$token</span> === <span class="variable">$sign</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="variable">$flag</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 这个我们需要在不知道secretKey的情况下知道它和str拼接后的MD5值，这正常来看是不可能的</p>
+<p>而由于我们无法知道变量<code>$secretKey</code>的内容，所以无法得到<code>$token</code>的值，故而看似是没有办法获取到flag的死局，而这时便轮到我们的拓展攻击来大显身手了。</p>
+<p> <strong>MD5算法流程</strong></p>
+<p>若想搞清楚原理，其算法的流程是必须了解的。不过我们无需去关心那些复杂的运算，只需要知道的大概的一个流程就OK了。</p>
+<p>这里借一张神图：</p>
+<p>看不懂也没关系，相信你看完我这篇文章后再返回来看这张图就很清晰明了了。</p>
+<p><strong>MD5对原始数据的分块处理</strong></p>
+<p>我们还是举个例子，对于字符串<code>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb</code>（64个a、3个b）。长度为19个字符，且根据ASCII表，字符a、b的十六进制分别为0x61、0x62。</p>
+
+
+<p>这是转化为16进制的结果</p>
+<p>而我们知道，<code>1</code>位十六进制相当于<code>4</code>位二进制表示(<code>16=2^4</code>)。所以对于64个字符a的长度来说，其二进制长度为：<code>字符长度*二进制位数2*十六进制转二进制位数拓展4=64*2*4=512</code>。</p>
+<p>也就是说在MD5的运算中原始数据会先转化为16进制，在变为2进制，64个字母变为512个二进制数据</p>
+<p>对于MD5算法来说，我们需要将原数据进行分块处理，以512位个二进制数据为一块。”最后“一块的处理分为以下几种情况：</p>
+<ul>
+<li>明文数据的二进制数据长度&lt;&#x3D;448，填充padding(无意义占位)数据使其长度为448，再添加原始明文数据的二进制长度信息（64位）使其长度为512位即可。</li>
+<li>448&lt;明文数据的二进制数据长度&lt;&#x3D;512，填充padding数据至下一块的448位，而后再添加原始明文数据的二进制长度信息（64位）使其长度为512位即可。</li>
+</ul>
+<p>两种情况如下图：</p>
+
+
+
+
+<p>最后的16进制转10进制后对应的是字符数的二级制位数</p>
+<p>注意：每块数据的长度均为<strong>512</strong>位二进制，图中的数据我没有全都用二进制来表示，将明文数据分块之后就可以与向量进行运算了。</p>
+<p>对于padding数据（长度不定）来说：首位二进制位1，其余位为0.</p>
+<p>对于长度信息位（长度8Byte&#x3D;64bit）来说，从低位向高位数，如上图的长度信息：<code>f0 03 00 00 00 00 00 00</code>即代表0x03f0，其对应的十进制为1008，即为64+62&#x3D;126个字符的二进制位数(一个字符1Byte即8bit)。</p>
+<p><strong>加密流程</strong></p>
+<p>对于MD5算法来说，有一串初始向量如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A=0x67452301</span><br><span class="line">B=0xefcdab89</span><br><span class="line">C=0x98badcfe</span><br><span class="line">D=0x10325476</span><br></pre></td></tr></table></figure>
+
+<p>这串初始向量的值是固定的，作为与第一块数据运算的原始向量。</p>
+<p>当这串向量与第一块数据块运算之后，得到了一串<strong>新的向量值</strong>，这串新的向量值接着与第二块数据块参加运算，直到最后一块数据块。</p>
+<p>具体怎么运算的我们不需要知道</p>
+<p>如下图所示：</p>
+<p>而最后的MD5值就是这最后的向量串经过如下转换的结果。</p>
+<p>那我们如何把向量串转化为字符串呢</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如向量串：</span></span><br><span class="line">A=<span class="number">0xab45bc01</span></span><br><span class="line">B=<span class="number">0x6a64bb53</span></span><br><span class="line">C=<span class="number">0x23ba8afe</span></span><br><span class="line">D=<span class="number">0x46847a62</span></span><br><span class="line"><span class="comment">//先两两为一组进行组合，得到如下数据：</span></span><br><span class="line">ab <span class="number">45</span> bc <span class="number">01</span></span><br><span class="line"><span class="number">6</span>a <span class="number">64</span> bb <span class="number">53</span></span><br><span class="line"><span class="number">23</span> ba <span class="number">8</span>a fe</span><br><span class="line"><span class="number">46</span> <span class="number">84</span> <span class="number">7</span>a <span class="number">62</span></span><br><span class="line"><span class="comment">//再进行高低位互换，得到如下数据：</span></span><br><span class="line"><span class="number">01</span> bc <span class="number">45</span> ab</span><br><span class="line"><span class="number">53</span> bb <span class="number">64</span> <span class="number">6</span>a</span><br><span class="line">fe <span class="number">8</span>a ba <span class="number">23</span></span><br><span class="line"><span class="number">62</span> <span class="number">7</span>a <span class="number">84</span> <span class="number">46</span></span><br></pre></td></tr></table></figure>
+
+<p>最终拼接得到MD5值：<code>01bc45ab53bb646afe8aba23627a8446</code>。</p>
+<p>因此通过我们的MD5值可以推出最后的向量串</p>
+<p>对于MD5值：2df51a84abc64a28740d6d2ae8cd7b16。我们可以根据MD5与向量互转规则，将MD5转成<code>md5($secretKey + &quot;test&quot;)</code>的最终向量值（A’、B’、C’、D’）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A&#x27;=0x841af52d</span><br><span class="line">B&#x27;=0x284ac6ab</span><br><span class="line">C&#x27;=0x2a6d0d74</span><br><span class="line">D&#x27;=0x167bcde8</span><br></pre></td></tr></table></figure>
+
+<p>过程如图：</p>
+<p>这时候我们修改<code>$v1</code>变量的内容为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;test&quot;</span> + [<span class="number">0x80</span> + (<span class="number">0x0</span>)*<span class="number">45</span>] + [<span class="number">0x50</span> + <span class="number">0x0</span>*<span class="number">7</span>] + <span class="string">&quot;abc&quot;</span></span><br><span class="line">相当于:</span><br><span class="line"><span class="string">&quot;test&quot;</span> + padding数据 + 长度数据 + <span class="string">&quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>则上述过程则被延续成下图所示：</p>
+
+
+<p>而对于上述运算过程来说，我们知道了倒数第二个向量串的内容和最后一个数据块，这样一来，最终的MD5值我们也可以自己通过MD5算法计算出来了。</p>
+<p>原理就是，我们自己添加本来应该要MD5()添加的padding，和长度数据，使得第一次加密相当于最后一次加密，我们可以通过返回的md5值推出经过运算的向量串</p>
+<p>第二次我们又在后面加上’abc’等特殊字符串，由于前面已经添加了padding和长度数据，’abc’单独作为一个数据块进行运算，需要注意的是长度数据需要加上前一个数据块。在我们知道最后一次数据块和</p>
+
   </div>
   
   
@@ -2607,10 +2695,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-14T10:07:58+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-30T16:31:04+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 14, 2025</p>
+    <p>更新于：Mar 30, 2025</p>
   </a>
 </div>
 
@@ -2629,7 +2717,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/14/%E7%88%86%E7%A0%B4/&title=爆破 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/30/MD5/&title=MD5 - Hexo&summary="
           
           >
           
@@ -2641,7 +2729,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/14/%E7%88%86%E7%A0%B4/&title=爆破 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/30/MD5/&title=MD5 - Hexo&summary="
           
           >
           
@@ -2653,7 +2741,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/14/%E7%88%86%E7%A0%B4/&title=爆破 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/30/MD5/&title=MD5 - Hexo&summary="
           
           >
           
@@ -2686,16 +2774,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/03/16/Flask/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Flask</p>
-          <p class='content'>Flask学习笔记前言本来在学习计划里面flask应该是要放在和python和requests库一起去学的，但是我优先去学其他漏洞去了，现在回来补以下，后面的漏洞会用到
-1.Flask简介Fla...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/03/06/requests%E5%BA%93/'>
-          <p class='title'>requests库<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>requests库笔记前言唉，ctfshow上面sql注入和sqli-lab难度跨越有点大，反正我感觉有点难了，但php特性和反序列化也在继续。突然想起python和requests库还没学，还...</p>
+        <a class='next' href='/2025/03/29/Buuctf2-0/'>
+          <p class='title'>Buuctf2.0<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Buuctf2.0笔记前言上一篇buuctf的笔记也是写了25个题目了，感觉差不多了，再多下去就不好了。于是开启2.0版本
+26.[BJDCTF2020]Mark loves cat这题一开始也...</p>
         </a>
       
     </div>
@@ -2711,7 +2794,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/03/14/%E7%88%86%E7%A0%B4/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/03/30/MD5/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2743,9 +2826,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87%E6%B3%95"><span class="toc-text">1.数组绕过法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-0e%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E7%BB%95%E8%BF%87%E6%B3%95"><span class="toc-text">2.0e科学计数绕过法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-md5%E7%A2%B0%E6%92%9E"><span class="toc-text">3.md5碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HASH%E9%95%BF%E5%BA%A6%E6%8B%93%E5%B1%95%E6%94%BB%E5%87%BB"><span class="toc-text">4.HASH长度拓展攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E7%90%86"><span class="toc-text">1.原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MD5%E9%95%BF%E5%BA%A6%E6%8B%93%E5%B1%95%E6%94%BB%E5%87%BB"><span class="toc-text">2.MD5长度拓展攻击</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
   
 
@@ -3313,7 +3406,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/14/爆破/","name":"爆破"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"爆破","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/14/%E7%88%86%E7%A0%B4/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/14/%E7%88%86%E7%A0%B4/","wordCount":0,"datePublished":"2025-03-14T02:07:58.000Z","dateModified":"2025-03-14T02:07:58.524Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/30/MD5/","name":"MD5"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"MD5","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/30/MD5/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/30/MD5/","wordCount":0,"datePublished":"2025-03-30T04:49:57.000Z","dateModified":"2025-03-30T08:31:04.425Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
