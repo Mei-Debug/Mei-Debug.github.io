@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744889566741),
+    lastupdate: new Date(1744889735095),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2621,11 +2621,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>而由于我们无法知道变量<code>$secretKey</code>的内容，所以无法得到<code>$token</code>的值，故而看似是没有办法获取到flag的死局，而这时便轮到我们的拓展攻击来大显身手了。</p>
 <p> <strong>MD5算法流程</strong></p>
 <p>若想搞清楚原理，其算法的流程是必须了解的。不过我们无需去关心那些复杂的运算，只需要知道的大概的一个流程就OK了。</p>
-<p>这里借一张神图：</p>
+<p>这里借一张神图：<img src="/2025/03/30/MD5/1095571-20200907021934829-2120181102.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907021934829-2120181102.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="MD5加密流程"></p>
 <p>看不懂也没关系，相信你看完我这篇文章后再返回来看这张图就很清晰明了了。</p>
 <p><strong>MD5对原始数据的分块处理</strong></p>
 <p>我们还是举个例子，对于字符串<code>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb</code>（64个a、3个b）。长度为19个字符，且根据ASCII表，字符a、b的十六进制分别为0x61、0x62。</p>
-
+<img src="/2025/03/30/MD5/1095571-20200907022008311-1683967402.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907022008311-1683967402.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="img">
 
 <p>这是转化为16进制的结果</p>
 <p>而我们知道，<code>1</code>位十六进制相当于<code>4</code>位二进制表示(<code>16=2^4</code>)。所以对于64个字符a的长度来说，其二进制长度为：<code>字符长度*二进制位数2*十六进制转二进制位数拓展4=64*2*4=512</code>。</p>
@@ -2635,8 +2635,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>明文数据的二进制数据长度&lt;&#x3D;448，填充padding(无意义占位)数据使其长度为448，再添加原始明文数据的二进制长度信息（64位）使其长度为512位即可。</li>
 <li>448&lt;明文数据的二进制数据长度&lt;&#x3D;512，填充padding数据至下一块的448位，而后再添加原始明文数据的二进制长度信息（64位）使其长度为512位即可。</li>
 </ul>
-<p>两种情况如下图：</p>
-
+<p>两种情况如下图：<img src="/2025/03/30/MD5/1095571-20200907022025084-1991913322.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907022025084-1991913322.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="第一种情况"></p>
+<img src="/2025/03/30/MD5/1095571-20200907022036709-1146554163.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907022036709-1146554163.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="第二种情况">
 
 
 
@@ -2651,7 +2651,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>这串初始向量的值是固定的，作为与第一块数据运算的原始向量。</p>
 <p>当这串向量与第一块数据块运算之后，得到了一串<strong>新的向量值</strong>，这串新的向量值接着与第二块数据块参加运算，直到最后一块数据块。</p>
 <p>具体怎么运算的我们不需要知道</p>
-<p>如下图所示：</p>
+<p>如下图所示：<img src="/2025/03/30/MD5/1095571-20200907022115124-747740824.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907022115124-747740824.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="向量运算"></p>
 <p>而最后的MD5值就是这最后的向量串经过如下转换的结果。</p>
 <p>那我们如何把向量串转化为字符串呢</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如向量串：</span></span><br><span class="line">A=<span class="number">0xab45bc01</span></span><br><span class="line">B=<span class="number">0x6a64bb53</span></span><br><span class="line">C=<span class="number">0x23ba8afe</span></span><br><span class="line">D=<span class="number">0x46847a62</span></span><br><span class="line"><span class="comment">//先两两为一组进行组合，得到如下数据：</span></span><br><span class="line">ab <span class="number">45</span> bc <span class="number">01</span></span><br><span class="line"><span class="number">6</span>a <span class="number">64</span> bb <span class="number">53</span></span><br><span class="line"><span class="number">23</span> ba <span class="number">8</span>a fe</span><br><span class="line"><span class="number">46</span> <span class="number">84</span> <span class="number">7</span>a <span class="number">62</span></span><br><span class="line"><span class="comment">//再进行高低位互换，得到如下数据：</span></span><br><span class="line"><span class="number">01</span> bc <span class="number">45</span> ab</span><br><span class="line"><span class="number">53</span> bb <span class="number">64</span> <span class="number">6</span>a</span><br><span class="line">fe <span class="number">8</span>a ba <span class="number">23</span></span><br><span class="line"><span class="number">62</span> <span class="number">7</span>a <span class="number">84</span> <span class="number">46</span></span><br></pre></td></tr></table></figure>
@@ -2661,12 +2661,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>对于MD5值：2df51a84abc64a28740d6d2ae8cd7b16。我们可以根据MD5与向量互转规则，将MD5转成<code>md5($secretKey + &quot;test&quot;)</code>的最终向量值（A’、B’、C’、D’）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A&#x27;=0x841af52d</span><br><span class="line">B&#x27;=0x284ac6ab</span><br><span class="line">C&#x27;=0x2a6d0d74</span><br><span class="line">D&#x27;=0x167bcde8</span><br></pre></td></tr></table></figure>
 
-<p>过程如图：</p>
+<p>过程如图：<img src="/2025/03/30/MD5/1095571-20200907022130634-1069811156.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907022130634-1069811156.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="例子向量运算过程"></p>
 <p>这时候我们修改<code>$v1</code>变量的内容为：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;test&quot;</span> + [<span class="number">0x80</span> + (<span class="number">0x0</span>)*<span class="number">45</span>] + [<span class="number">0x50</span> + <span class="number">0x0</span>*<span class="number">7</span>] + <span class="string">&quot;abc&quot;</span></span><br><span class="line">相当于:</span><br><span class="line"><span class="string">&quot;test&quot;</span> + padding数据 + 长度数据 + <span class="string">&quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>则上述过程则被延续成下图所示：</p>
-
+<img src="/2025/03/30/MD5/1095571-20200907022146849-733951368.png" class="lazyload" data-srcset="/2025/03/30/MD5/1095571-20200907022146849-733951368.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="延续运算过程">
 
 <p>而对于上述运算过程来说，我们知道了倒数第二个向量串的内容和最后一个数据块，这样一来，最终的MD5值我们也可以自己通过MD5算法计算出来了。</p>
 <p>原理就是，我们自己添加本来应该要MD5()添加的padding，和长度数据，使得第一次加密相当于最后一次加密，我们可以通过返回的md5值推出经过运算的向量串</p>

