@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744889735095),
+    lastupdate: new Date(1747655058976),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2520,6 +2520,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
@@ -2527,7 +2545,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/13/TGCTF/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/30/SUCTF-2018-MultiSQL/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2545,16 +2563,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/13/TGCTF/"  itemprop="url">
-        TGCTF
+      <a href="/2025/04/30/SUCTF-2018-MultiSQL/"  itemprop="url">
+        [SUCTF_2018]MultiSQL
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        TGCTF题解1.AAA偷渡阴平源代码
-1234567891011121314&lt;?php    $tgctf2025=$_GET[&#x27;tgctf2025&#x27;];if(!preg_match(&quot;/0|1|[3-9]|\~|\`|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\=|\+|\&#123;|\[|\]|\&#125;|\:|\&...
+        [SUCTF_2018]MultiSQL这个题目可以说是最近遇到的相对容易的题目了，果然比起折磨自己，我还是更喜欢摆烂
+首先什么都没有，但是我们在页面源代码中发现了user/login.php和user/reg.php访问一下分别是登录和注册界面，我们直接注册并登录。
+
+
+当我们点击编辑头像可以上传文件，但是我们上传的文件全部都会变成.jpg图片，原来这就是文件上传的最终防御吗
+我们点击用户...
       
     
   </div>
@@ -2562,12 +2584,525 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-04-13T15:58:52+08:00">2025-04-13</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-30T21:09:26+08:00">2025-04-30</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/04/13/TGCTF/' itemprop="url">
+          <a class='readmore' href='/2025/04/30/SUCTF-2018-MultiSQL/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/29/GYCTF2020-Easyphp/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/29/GYCTF2020-Easyphp/"  itemprop="url">
+        [GYCTF2020]Easyphp
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [GYCTF2020]Easyphp被这些题目搞得Easy都要从我的世界中消失了，这道题目只能说难得要死，我目前为止遇到过最难的反序列化题
+界面很简单，就一个登录框，我们尝试访问www.zip拿到源码，这才是噩梦的开始
+1234567891011121314151617//index.php&lt;?phprequire_once &quot;lib.php&quot;;if(isset($...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-29T19:40:31+08:00">2025-04-29</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/29/GYCTF2020-Easyphp/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/29/HarekazeCTF2019-Avatar-Uploader-1/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/29/HarekazeCTF2019-Avatar-Uploader-1/"  itemprop="url">
+        [HarekazeCTF2019]Avatar_Uploader_1
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [HarekazeCTF2019]Avatar_Uploader_1这个是个文件上传题目，当我们上传符合规定大小和分辨率的图片后头像就会更换，题目本来就是有源码的，我们把源码下载下来
+123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;?phperror_reporting(...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-29T13:13:45+08:00">2025-04-29</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/29/HarekazeCTF2019-Avatar-Uploader-1/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/羊城杯2020-easyphp/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/27/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-easyphp/"  itemprop="url">
+        [羊城杯2020]easyphp
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [羊城杯2020]easyphp123456789101112131415161718192021222324252627282930313233 &lt;?php    $files = scandir(&#x27;./&#x27;);     foreach($files as $file) &#123;        if(is_file($file))&#123;          ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T20:29:42+08:00">2025-04-27</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/27/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-easyphp/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/ISITDTU-2019-EasyPHP/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/27/ISITDTU-2019-EasyPHP/"  itemprop="url">
+        [ISITDTU_2019]EasyPHP
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [ISITDTU_2019]EasyPHP123456789101112&lt;?phphighlight_file(__FILE__);$_ = @$_GET[&#x27;_&#x27;];if ( preg_match(&#x27;/[\x00- 0-9\&#x27;&quot;`$&amp;.,|[&#123;_defgops\x7F]+/i&#x27;, $_) )    die(&...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T19:10:15+08:00">2025-04-27</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/27/ISITDTU-2019-EasyPHP/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/MRCTF2020-Ezaudit/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/27/MRCTF2020-Ezaudit/"  itemprop="url">
+        [MRCTF2020]Ezaudit
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [MRCTF2020]Ezaudit界面是一个很完善的前端界面，全是英文，我也看不懂。但是越是完善的前端界面越不会有东西，我抓包发现什么都没有后，尝试www.zip成功下载源码
+index.php
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T16:19:21+08:00">2025-04-27</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/27/MRCTF2020-Ezaudit/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/SCTF2019-Flag-Shop/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/27/SCTF2019-Flag-Shop/"  itemprop="url">
+        [SCTF2019]Flag_Shop
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [SCTF2019]Flag_Shop也是做上难题了，难道要到一天一个题目的时代吗
+界面是一个交易界面
+
+
+我们点击，work可以增加金钱，但是光靠手点绝对不行，我们使用重发估计也不行
+看了大佬的wp，我们发现&#x2F;robots.txt，成功拿到源码
+12345678910111213141516171819202122232425262728293031323334353637383...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T14:53:30+08:00">2025-04-27</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/27/SCTF2019-Flag-Shop/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/极客大挑战-2020-Greatphp/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/27/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2020-Greatphp/"  itemprop="url">
+        [极客大挑战_2020]Greatphp
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [极客大挑战_2020]Greatphp题目直接给源码
+12345678910111213141516171819202122232425&lt;?phperror_reporting(0);class SYCLOVER &#123;    public $syc;    public $lover;    public function __wakeup()&#123;        if...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T13:25:05+08:00">2025-04-27</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/27/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2020-Greatphp/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/24/b01lers2020-Life-on-Mars/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/24/b01lers2020-Life-on-Mars/"  itemprop="url">
+        [b01lers2020]Life_on_Mars
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [b01lers2020]Life_on_Mars这个题目只是一个简单的前端界面和一堆数据，找不到什么能用的地方，而且buu还不能直接用dirsearch，我们只能尝试抓个包
+我们发现当我们随便点击一个标签的时候，有search传递标签名，另一个不知道传递什么
+
+
+响应则是前端显示的数据，但这个传参我们不抓包是看不到的
+有传参传名字，我们可以怀疑一下sql注入，看了wp事实上也是如此
+但是这...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-24T19:31:25+08:00">2025-04-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/24/b01lers2020-Life-on-Mars/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/24/EasyBypass/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/24/EasyBypass/"  itemprop="url">
+        EasyBypass
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        EasyBypass123456789101112131415161718192021&lt;?phphighlight_file(__FILE__);$comm1 = $_GET[&#x27;comm1&#x27;];$comm2 = $_GET[&#x27;comm2&#x27;];if(preg_match(&quot;/\&#x27;|\`|\\|\*|\n|\t|\xA0|\r|\...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-24T18:57:36+08:00">2025-04-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/24/EasyBypass/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2583,6 +3118,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
   </section>
   
+    
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 2
+        </p>
+        
+          <a class="next" rel="next" href="/archives/2025/04/page/2/">
+            <section class="post next white-box shadow floatable blur">
+              &nbsp;Next&nbsp;<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
     
   
 

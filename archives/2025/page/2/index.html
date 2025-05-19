@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744889735095),
+    lastupdate: new Date(1747655058976),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2521,7 +2521,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/04/ctfshowSQL注入/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/03/安洵杯-2019-不是文件上传/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2539,17 +2539,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        ctfshowSQL注入
+      <a href="/2025/05/03/%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-%E4%B8%8D%E6%98%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"  itemprop="url">
+        [安洵杯_2019]不是文件上传
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        ctfshow_SQL注入笔记前言最近要再去学一下MySQL，就顺便把ctfshow上面的题目做了，再去学一下sqlmap的用法。
-主要是因为以前SQL注入全是在靶场上进行的，学的基本上就是一些简单的绕过方法，和实际做题感觉有很大区别
-172关1.用户名过滤12345$sql = &quot;select username,password from ctfshow_user2 where ...
+        [安洵杯_2019]不是文件上传又是一道难题
+我们访问题目发现这是一个文件上传的题目，但是题目说不是文件上传，而且我试了一下好像白名单只允许图片后缀的文件上传，于是只能先放弃文件上传
+而且我们文件上传也没有告诉我们文件路径，而是返回文件id
+看了wp发现这个题目原来是有源码的，我们把相关的重要源码拿到
+123456789101112131415161718192021222324252627...
       
     
   </div>
@@ -2557,12 +2559,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-03-04T19:58:06+08:00">2025-03-04</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-03T16:09:18+08:00">2025-05-03</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/03/04/ctfshowSQL%E6%B3%A8%E5%85%A5/' itemprop="url">
+          <a class='readmore' href='/2025/05/03/%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-%E4%B8%8D%E6%98%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2578,7 +2580,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/26/php反序列化/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/03/RootersCTF2019-babyWeb/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2596,16 +2598,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/26/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"  itemprop="url">
-        php反序列化
+      <a href="/2025/05/03/RootersCTF2019-babyWeb/"  itemprop="url">
+        [RootersCTF2019]babyWeb
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        PHP反序列化笔记前言最近有点摆烂啊，心情也不是很好，今天选课羽毛球这么重要的运动竟然没得选，只好去打网球，但网球和羽毛球可是在某种意义上相违背的。还有就是，电子电路和离散数学是真的不想听，数据结构也是的，我都以及好久没写C语言了，学会了又没什么用。总之开始学PHP反序列化了，还有就是某纯我*****
-1.什么是序列化和反序列化序列化是将对象转换为字符串以便存储传输的一种方式。而反序列化恰好...
+        [RootersCTF2019]babyWeb这个题目好无语，不知道为什么一开始报错，得等一下刷新才能看到题目
+题目是一个输入框，我们输入的东西会被拼接到sql语句当中
+
+
+我们直接就看到了列名和表名，这个记住可以直接解题
+提示说过滤掉了 
+1union sleep or &#x27; &quot; or - BENCHMARK
+
+我们无法使用联合注入，本以为or也是被过滤掉了informa...
       
     
   </div>
@@ -2613,12 +2622,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-26T21:21:49+08:00">2025-02-26</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-03T14:56:10+08:00">2025-05-03</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/26/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/' itemprop="url">
+          <a class='readmore' href='/2025/05/03/RootersCTF2019-babyWeb/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2634,7 +2643,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/23/信息收集/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/02/SUCTF-2018-annonymous/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2652,17 +2661,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/23/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"  itemprop="url">
-        信息收集
+      <a href="/2025/05/02/SUCTF-2018-annonymous/"  itemprop="url">
+        [SUCTF_2018]annonymous
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        信息收集笔记前言实验室已经断电从去年断到今年了，学长说明天有电工来修，我之前一度怀疑我们学校更本不存在电工。今天也是差不多把留言板写完了，之前也不知道开学需要检查这东西，但现在只差把它挂到公网上去和做防护即可。
-信息收集感觉很基础，也没有什么固定的解题手法，所以跟着ctfshow把题目做了感觉就差不多了
-JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js拦...
+        [SUCTF_2018]annonymous12345678910111213 &lt;?php$MY = create_function(&quot;&quot;,&quot;die(`cat flag.php`);&quot;);$hash = bin2hex(openssl_random_pseudo_bytes(32));eval(&quot;function SUCTF_$hash...
       
     
   </div>
@@ -2670,12 +2677,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-23T19:31:59+08:00">2025-02-23</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-02T15:50:37+08:00">2025-05-02</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/23/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/' itemprop="url">
+          <a class='readmore' href='/2025/05/02/SUCTF-2018-annonymous/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2691,7 +2698,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/13/xss/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/30/SUCTF-2018-MultiSQL/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2709,16 +2716,20 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/13/xss/"  itemprop="url">
-        xss
+      <a href="/2025/04/30/SUCTF-2018-MultiSQL/"  itemprop="url">
+        [SUCTF_2018]MultiSQL
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        XSS笔记前言在命令执行之后，我选择开始XSS的学习，主要是因为其他人也在学，我不能一意孤行，那样的话就不容易偏移轨道，话说他妈的我心理健康给重修了，没想到第一学期就寄了，又要花时间去刷学习通，妈的傻逼学校，学习通没刷完就不准我参加考试
-1.XSS漏洞原理1.概述XSS被称为跨站脚本攻击（Cross Site Scripting），由于和层叠样式表（Cascading Style Sheet...
+        [SUCTF_2018]MultiSQL这个题目可以说是最近遇到的相对容易的题目了，果然比起折磨自己，我还是更喜欢摆烂
+首先什么都没有，但是我们在页面源代码中发现了user/login.php和user/reg.php访问一下分别是登录和注册界面，我们直接注册并登录。
+
+
+当我们点击编辑头像可以上传文件，但是我们上传的文件全部都会变成.jpg图片，原来这就是文件上传的最终防御吗
+我们点击用户...
       
     
   </div>
@@ -2726,12 +2737,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-13T20:44:12+08:00">2025-02-13</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-30T21:09:26+08:00">2025-04-30</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/13/xss/' itemprop="url">
+          <a class='readmore' href='/2025/04/30/SUCTF-2018-MultiSQL/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2747,7 +2758,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/09/php特性/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/29/GYCTF2020-Easyphp/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2765,17 +2776,17 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/09/php%E7%89%B9%E6%80%A7/"  itemprop="url">
-        php特性
+      <a href="/2025/04/29/GYCTF2020-Easyphp/"  itemprop="url">
+        [GYCTF2020]Easyphp
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        PHP特性笔记前言受不了了，其他漏洞看题解和天书一样，要不就要写各种脚本，要不就各种看不懂的操作和各种神秘函数，看来我php根本不够格，这是为ctfshow，php特性专门开的笔记
-89关源代码：
-123456789101112include(&quot;flag.php&quot;);highlight_file(__FILE__);if(isset($_GET[&#x27;num&#x2...
+        [GYCTF2020]Easyphp被这些题目搞得Easy都要从我的世界中消失了，这道题目只能说难得要死，我目前为止遇到过最难的反序列化题
+界面很简单，就一个登录框，我们尝试访问www.zip拿到源码，这才是噩梦的开始
+1234567891011121314151617//index.php&lt;?phprequire_once &quot;lib.php&quot;;if(isset($...
       
     
   </div>
@@ -2783,12 +2794,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-09T12:59:59+08:00">2025-02-09</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-29T19:40:31+08:00">2025-04-29</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/09/php%E7%89%B9%E6%80%A7/' itemprop="url">
+          <a class='readmore' href='/2025/04/29/GYCTF2020-Easyphp/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2804,7 +2815,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/08/Http/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/29/HarekazeCTF2019-Avatar-Uploader-1/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2822,24 +2833,29 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/08/Http/"  itemprop="url">
-        Http
+      <a href="/2025/04/29/HarekazeCTF2019-Avatar-Uploader-1/"  itemprop="url">
+        [HarekazeCTF2019]Avatar_Uploader_1
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [HarekazeCTF2019]Avatar_Uploader_1这个是个文件上传题目，当我们上传符合规定大小和分辨率的图片后头像就会更换，题目本来就是有源码的，我们把源码下载下来
+123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;?phperror_reporting(...
+      
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-08T20:02:22+08:00">2025-02-08</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-29T13:13:45+08:00">2025-04-29</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/08/Http/' itemprop="url">
+          <a class='readmore' href='/2025/04/29/HarekazeCTF2019-Avatar-Uploader-1/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2855,7 +2871,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/05/php命令执行/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/羊城杯2020-easyphp/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2873,16 +2889,15 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"  itemprop="url">
-        php命令执行
+      <a href="/2025/04/27/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-easyphp/"  itemprop="url">
+        [羊城杯2020]easyphp
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        命令执行漏洞笔记前言文件包含漏洞条件有点苛刻，在学不下的感觉，正好看了下linux命令，来看下命令执行漏洞
-1.什么是命令执行漏洞命令执行漏洞是一种网络安全漏洞，它允许攻击者在受影响的系统上执行恶意命令。这种漏洞通常出现在软件应用程序或系统中，其典型示例是 [Web 应用程序](https://so.csdn.net/so/search?q=Web 应用程序&amp;spm&#x3D;100...
+        [羊城杯2020]easyphp123456789101112131415161718192021222324252627282930313233 &lt;?php    $files = scandir(&#x27;./&#x27;);     foreach($files as $file) &#123;        if(is_file($file))&#123;          ...
       
     
   </div>
@@ -2890,12 +2905,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-05T15:42:02+08:00">2025-02-05</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T20:29:42+08:00">2025-04-27</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/' itemprop="url">
+          <a class='readmore' href='/2025/04/27/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-easyphp/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2911,7 +2926,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/04/文件包含漏洞/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/ISITDTU-2019-EasyPHP/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2929,18 +2944,15 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/"  itemprop="url">
-        文件包含漏洞
+      <a href="/2025/04/27/ISITDTU-2019-EasyPHP/"  itemprop="url">
+        [ISITDTU_2019]EasyPHP
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        文件包含漏洞笔记前言又到了前言，文件上传漏洞感觉差不多了，于是开始文件包含漏洞，只要是因为感觉和文件上传类似
-什么是文件包含漏洞
-和SQL注入等攻击方式一样，文件包含漏洞也是一种注入型漏洞，其本质就是输入一段用户能够控制的脚本或者代码，并让服务端执行。
-什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程叫做包含...
+        [ISITDTU_2019]EasyPHP123456789101112&lt;?phphighlight_file(__FILE__);$_ = @$_GET[&#x27;_&#x27;];if ( preg_match(&#x27;/[\x00- 0-9\&#x27;&quot;`$&amp;.,|[&#123;_defgops\x7F]+/i&#x27;, $_) )    die(&...
       
     
   </div>
@@ -2948,12 +2960,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-04T17:25:56+08:00">2025-02-04</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T19:10:15+08:00">2025-04-27</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/' itemprop="url">
+          <a class='readmore' href='/2025/04/27/ISITDTU-2019-EasyPHP/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2969,7 +2981,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/01/linux命令/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/MRCTF2020-Ezaudit/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2987,23 +2999,17 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/01/linux%E5%91%BD%E4%BB%A4/"  itemprop="url">
-        linux命令
+      <a href="/2025/04/27/MRCTF2020-Ezaudit/"  itemprop="url">
+        [MRCTF2020]Ezaudit
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        linux命令笔记前言目前对linux命令感到抽象，因为我是windows系统，而且我没装虚拟机，感觉好难装，但是没装不影响学，可以使用在线命令
-1.linux系统目录结构1.Linux一切皆文件
-2.只有一个顶级目录，不像windows分C盘、D盘、E盘
-于是linux系统结构：
-
-
-以下是对这些目录的解释：
-
-&#x2F;bin：  bin 是 Binaries (二进制文件) 的缩写,...
+        [MRCTF2020]Ezaudit界面是一个很完善的前端界面，全是英文，我也看不懂。但是越是完善的前端界面越不会有东西，我抓包发现什么都没有后，尝试www.zip成功下载源码
+index.php
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt...
       
     
   </div>
@@ -3011,12 +3017,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-02-01T19:58:43+08:00">2025-02-01</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T16:19:21+08:00">2025-04-27</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/02/01/linux%E5%91%BD%E4%BB%A4/' itemprop="url">
+          <a class='readmore' href='/2025/04/27/MRCTF2020-Ezaudit/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3032,7 +3038,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/15/Buuctf/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/SCTF2019-Flag-Shop/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3050,23 +3056,21 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/15/Buuctf/"  itemprop="url">
-        Buuctf
+      <a href="/2025/04/27/SCTF2019-Flag-Shop/"  itemprop="url">
+        [SCTF2019]Flag_Shop
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        buuctf笔记前言此笔记用于记录在buuctf web上做题的笔记与题解
-1.[极客大挑战 2019]EasySQL第一题当然是最简单的，一个普通的万能密码即可
+        [SCTF2019]Flag_Shop也是做上难题了，难道要到一天一个题目的时代吗
+界面是一个交易界面
 
 
-此关必须输入用户名和密码，应该是提前判定不得为空
-2.[极客大挑战 2019]Havefun本题界面无任何可操作的东西，于是我们可以通过查看界面源代码看下是否有提示
-
-
-我们可以看到注释当$cat&#x3D;’dog’时有输出...
+我们点击，work可以增加金钱，但是光靠手点绝对不行，我们使用重发估计也不行
+看了大佬的wp，我们发现&#x2F;robots.txt，成功拿到源码
+12345678910111213141516171819202122232425262728293031323334353637383...
       
     
   </div>
@@ -3074,12 +3078,12 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-01-15T22:02:33+08:00">2025-01-15</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-27T14:53:30+08:00">2025-04-27</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/01/15/Buuctf/' itemprop="url">
+          <a class='readmore' href='/2025/04/27/SCTF2019-Flag-Shop/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3106,7 +3110,7 @@ JS前台拦截 &#x3D;&#x3D; 无效操作ctfshow的第二关把我们右键用js�
           </a>
         
         <p class="current">
-          2 / 3
+          2 / 6
         </p>
         
           <a class="next" rel="next" href="/archives/2025/page/3/">
