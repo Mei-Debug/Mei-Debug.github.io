@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-06-03T12:08:54.000Z">
-<meta property="article:modified_time" content="2025-06-03T13:15:15.968Z">
+<meta property="article:modified_time" content="2025-07-02T12:53:13.289Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1749470804448),
+    lastupdate: new Date(1751460941553),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2622,7 +2622,35 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h2 id="3-Express"><a href="#3-Express" class="headerlink" title="3.Express"></a>3.Express</h2><p>在简单了解了node.js怎么写了之后就要开始学重要的框架了，基本上所有涉及nodejs的代码审计都是Express框架</p>
+<h2 id="3-回调函数"><a href="#3-回调函数" class="headerlink" title="3.回调函数"></a>3.回调函数</h2><p>看了一下才发现这是我为什么看不懂nodejs代码的主要原因，我们先来看一段代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> findUser = <span class="keyword">function</span>(<span class="params">name, password</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> users.<span class="title function_">find</span>(<span class="keyword">function</span>(<span class="params">item</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> name!==<span class="string">&#x27;CTFSHOW&#x27;</span> &amp;&amp; item.<span class="property">username</span> === name.<span class="title function_">toUpperCase</span>() &amp;&amp; item.<span class="property">password</span> === password;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这是CTFSHOW中很简单的一个题目，但是这个函数乍一看搞不懂，为什么function后面可以直接接参数，函数名去哪了，这些都是问题。</p>
+<p><strong>基本概念</strong></p>
+<p>回调函数的核心思想是：”在某个操作完成之后执行这个函数”。它允许我们实现异步编程和非阻塞操作。</p>
+<p><strong>基本特点：</strong></p>
+<ol>
+<li><strong>作为参数传递</strong>：回调函数被当作参数传递给另一个函数</li>
+<li><strong>延迟执行</strong>：回调函数不会立即执行，而是在特定条件满足或事件发生时被调用</li>
+<li><strong>控制反转</strong>：由被调用函数决定何时执行回调</li>
+</ol>
+<p>在 Node.js 中，回调函数是一种异步编程模式，用于处理 I&#x2F;O 操作，如文件读写、数据库交互、网络请求等，这些操作通常需要花费较长时间，如果采用同步方式，会阻塞整个程序的执行，直到操作完成。</p>
+<p>使用回调函数，Node.js 可以在 I&#x2F;O 操作进行时继续执行其他代码，一旦 I&#x2F;O 操作完成，再执行回调函数。</p>
+<p>Node.js 是单线程的，但通过事件驱动和回调机制实现异步操作。</p>
+<p>回调函数指的是</p>
+<p>这个描述的有点抽象，意思就是为了提升代码的运行速度，可以使用回调函数对文件读取，数据库交换等花费较长的时间行为。在加载回调函数的同时继续运行代码，等到加载完毕的时候再继续运行回调函数</p>
+<p>我们来看这两段对比代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;input.txt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="title function_">toString</span>());</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;程序执行结束!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">$ node main.js</span></span><br><span class="line"><span class="comment">菜鸟教程官网地址：www.runoob.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">程序执行结束!</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//由于未使用回调函数会先执行  var data = fs.readFileSync(&#x27;input.txt&#x27;);加载文件</span></span><br></pre></td></tr></table></figure>
+
+<p>使用回调函数的情况</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;input.txt&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="title function_">toString</span>());</span><br><span class="line"><span class="comment">//使用匿名函数function作为回调函数，当文件读取结束时执行回调函数</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;程序执行结束!&quot;</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">$ node main.js</span></span><br><span class="line"><span class="comment">程序执行结束!</span></span><br><span class="line"><span class="comment">菜鸟教程官网地址：www.runoob.com</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>回调函数的触发条件不一，我没必要了解，只需要以后看得懂代码就行了</p>
+<p>说完回调函数的执行后我们就需要看看另外一个特点，函数会将回调函数作为参数去作为另外一个函数的参数，我们来看下面代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> findUser = <span class="keyword">function</span>(<span class="params">name, password</span>)&#123;<span class="comment">//定义了一个函数</span></span><br><span class="line">  <span class="keyword">return</span> users.<span class="title function_">find</span>(<span class="keyword">function</span>(<span class="params">item</span>)&#123;</span><br><span class="line"><span class="comment">//users 是一个数组，find() 是 JavaScript 数组的原生方法，用于查找符合条件的第一个元素</span></span><br><span class="line">    <span class="keyword">return</span> name!==<span class="string">&#x27;CTFSHOW&#x27;</span> &amp;&amp; item.<span class="property">username</span> === name.<span class="title function_">toUpperCase</span>() &amp;&amp; item.<span class="property">password</span> === password;</span><br><span class="line">  &#125;);<span class="comment">//这个函数返回了一个find方法 find必须配合回调函数进行一个数组查找</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
 
   </div>
   
@@ -2647,10 +2675,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-03T21:15:15+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-07-02T20:53:13+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 3, 2025</p>
+    <p>更新于：Jul 2, 2025</p>
   </a>
 </div>
 
@@ -2792,7 +2820,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-nodejs%E7%AE%80%E4%BB%8B"><span class="toc-text">1.nodejs简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-nodejs%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-text">2.nodejs的语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Express"><span class="toc-text">3.Express</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-nodejs%E7%AE%80%E4%BB%8B"><span class="toc-text">1.nodejs简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-nodejs%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-text">2.nodejs的语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-text">3.回调函数</span></a></li></ol>
     </div>
   </section>
 
@@ -3362,7 +3390,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/03/nodejs/","name":"nodejs"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"nodejs","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/03/nodejs/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/03/nodejs/","wordCount":0,"datePublished":"2025-06-03T12:08:54.000Z","dateModified":"2025-06-03T13:15:15.968Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/03/nodejs/","name":"nodejs"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"nodejs","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/03/nodejs/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/03/nodejs/","wordCount":0,"datePublished":"2025-06-03T12:08:54.000Z","dateModified":"2025-07-02T12:53:13.289Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

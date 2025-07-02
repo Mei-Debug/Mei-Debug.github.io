@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1749470804448),
+    lastupdate: new Date(1751460941553),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2545,7 +2545,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/08/JMCTF-2021-UploadHub/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/22/RCTF-2019-Nextphp/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2563,18 +2563,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/08/JMCTF-2021-UploadHub/"  itemprop="url">
-        [JMCTF_2021]UploadHub
+      <a href="/2025/06/22/RCTF-2019-Nextphp/"  itemprop="url">
+        [RCTF_2019]Nextphp
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [JMCTF_2021]UploadHub这个题目看似是一个文件上传的题目，但是我发现可以直接上传php文件，以为有了，但是点开后发现似乎未被解析，代码都直接在网页上了，使用蚁剑连接也不行。于是这肯定不是简单的文件上传，只能看wp了
-这题还给了源码，我们看下
-发现源码中有apache2.conf
-1234&lt;Directory ~ &quot;/var/www/html/upload/[...
+        [RCTF_2019]Nextphp看题目的代码我还以为这把白给来了
+123456&lt;?phpif (isset($_GET[&#x27;a&#x27;])) &#123;    eval($_GET[&#x27;a&#x27;]);&#125; else &#123;    show_source(__FILE__);&#125;
+
+但是发现除了看一下phpinfo，好像其他都不能搞
+...
       
     
   </div>
@@ -2582,12 +2583,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-08T19:49:28+08:00">2025-06-08</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-22T19:12:05+08:00">2025-06-22</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/08/JMCTF-2021-UploadHub/' itemprop="url">
+          <a class='readmore' href='/2025/06/22/RCTF-2019-Nextphp/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2603,7 +2604,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/08/htaccess/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/21/蓝帽杯-2021-One-Pointer-PHP/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2621,16 +2622,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/08/htaccess/"  itemprop="url">
-        htaccess
+      <a href="/2025/06/21/%E8%93%9D%E5%B8%BD%E6%9D%AF-2021-One-Pointer-PHP/"  itemprop="url">
+        [蓝帽杯_2021]One_Pointer_PHP
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        htaccess文件payload前言这个文件专门来放.htaccess文件的payload，不然根本记不住。
-[JMCTF 2021]UploadHub123456789&lt;FilesMatch .htaccess&gt;SetHandler application/x-httpd-php Require all granted  php_flag engine on	&lt;/Fil...
+        [蓝帽杯_2021]One_Pointer_PHP这个题目直接给源码了，我们来看
+user.php
+12345&lt;?phpclass User&#123;	public $count;&#125;?&gt;
+
+add_api.php
+12345678910111213141516&lt;?phpinclude &quot;user.php&quot;;if($user=unseriali...
       
     
   </div>
@@ -2638,12 +2643,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-08T19:26:43+08:00">2025-06-08</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-21T14:56:22+08:00">2025-06-21</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/08/htaccess/' itemprop="url">
+          <a class='readmore' href='/2025/06/21/%E8%93%9D%E5%B8%BD%E6%9D%AF-2021-One-Pointer-PHP/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2659,7 +2664,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/06/极客大挑战-2020-Roamphp2-Myblog/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/19/BUUCTF-2018-Online-Tool/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2677,20 +2682,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/06/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2020-Roamphp2-Myblog/"  itemprop="url">
-        [极客大挑战_2020]Roamphp2-Myblog
+      <a href="/2025/06/19/BUUCTF-2018-Online-Tool/"  itemprop="url">
+        [BUUCTF_2018]Online_Tool
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [极客大挑战_2020]Roamphp2-Myblog靶场进去发现是一个博客界面，我们尝试登录和注册都无果
-然后发现每个界面都有一个page传参，我们怀疑是文件包含，于是直接读取源码
-
-
-虽然我们无法直接读取index.php，但是不影响做题，应该只是一个简单的include代码，由于page参数中未带后缀于是猜测会自动加上.php，直接读取
-1?page=php://filter/conv...
+        [BUUCTF_2018]Online_Toolbuu都写到第6版了，发现题目已经不是我这个水平能写的了，太多代码审计了，还是要多练啊。
+还不如把以前没写的题目再写完
+123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x2...
       
     
   </div>
@@ -2698,12 +2700,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-06T18:58:30+08:00">2025-06-06</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-19T10:51:43+08:00">2025-06-19</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/06/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2020-Roamphp2-Myblog/' itemprop="url">
+          <a class='readmore' href='/2025/06/19/BUUCTF-2018-Online-Tool/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2719,7 +2721,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/04/XDCTF-2015-filemanager/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/14/BSidesCF-2019-Sequel/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2737,19 +2739,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/04/XDCTF-2015-filemanager/"  itemprop="url">
-        [XDCTF_2015]filemanager
+      <a href="/2025/06/14/BSidesCF-2019-Sequel/"  itemprop="url">
+        [BSidesCF_2019]Sequel
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [XDCTF_2015]filemanager好好的文件上传怎么就这么难啊，文件上传结合sql结合代码审计，这辈子无了
-题目进入是一个文件上传界面，我们可以上传文件，并进行删除、改名操作，但是改名不能改后缀，尝试了一下发现被白名单过滤了，目测只能上传图片
-这个题目自带源码于是我们肯定得自己去看看
-我们先来看负责文件上传的upload.php去
-123456789101112131415161...
+        [BSidesCF_2019]Sequel进入界面发现是一个登录界面，网站标题为Sequel Movie Database，看见database就提示我们这题为sql，便以为这个登录框存在sql注入。尝试登录发现用户名和密码只能由数字和字母组成。
+看了wp发现这个考的是爆破，使用字典爆破出来用户名和密码都为guest，登录进去显示如下界面
+
+
+翻译了一下发现和flag没什么关系，查看cook...
       
     
   </div>
@@ -2757,12 +2759,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-04T20:29:49+08:00">2025-06-04</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-14T15:37:12+08:00">2025-06-14</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/04/XDCTF-2015-filemanager/' itemprop="url">
+          <a class='readmore' href='/2025/06/14/BSidesCF-2019-Sequel/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2778,7 +2780,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/04/HFCTF2021-Quals-Unsetme/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/12/NewStarCTF-2023-公开赛道-Include-🍐/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2796,15 +2798,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/04/HFCTF2021-Quals-Unsetme/"  itemprop="url">
-        [HFCTF2021_Quals]Unsetme
+      <a href="/2025/06/12/NewStarCTF-2023-%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-Include-%F0%9F%8D%90/"  itemprop="url">
+        [NewStarCTF_2023_公开赛道]Include_🍐
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [HFCTF2021_Quals]Unsetme1234567891011121314&lt;?php// Kickstart the framework$f3=require(&#x27;lib/base.php&#x27;);$f3-&gt;set(&#x27;DEBUG&#x27;,1);if ((float)PCRE_VERSION&lt;8.0)    trigger_error(...
+        [NewStarCTF_2023_公开赛道]Include_🍐新生赛也是上难度了，又不会。
+12345678910111213141516 &lt;?php    error_reporting(0);    if(isset($_GET[&#x27;file&#x27;])) &#123;        $file = $_GET[&#x27;file&#x27;];          ...
       
     
   </div>
@@ -2812,12 +2815,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-04T16:08:31+08:00">2025-06-04</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-12T20:03:36+08:00">2025-06-12</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/04/HFCTF2021-Quals-Unsetme/' itemprop="url">
+          <a class='readmore' href='/2025/06/12/NewStarCTF-2023-%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-Include-%F0%9F%8D%90/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2833,7 +2836,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/04/Wallbreaker-Easy/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/12/BSidesCF-2020-Cards/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2851,26 +2854,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/04/Wallbreaker-Easy/"  itemprop="url">
-        Wallbreaker_Easy
+      <a href="/2025/06/12/BSidesCF-2020-Cards/"  itemprop="url">
+        [BSidesCF_2020]Cards
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        Wallbreaker_Easy这个题目有意思了，刚上来就提示我们有一句话木马
+        [BSidesCF_2020]Cards终于写到一个不用代码审计的题目了。
 
 
-但是我们尝试进行命令执行发现没有任何反应于是加载phpinfo();
-
-
-发现disable禁掉了我所有的命令执行函数，于是直接上蚁剑
-另外说一下，这个题目如果我不用蚁剑的插件是绝对做不出来的，那些其他方法全都是大佬才会的
-我们在目录下发现了三个疑似flag的文件
-
-
-先打开flag，发现是空的，以为是权限不...
+进入，界面是一个较21点的纸牌游戏，但是我没玩过这个游戏不说，看说明半天也没明白。
+感觉这个游戏其实挺无聊的，不知道哪些人在玩。
+根据情况来看，我是闲家，我的操作就是当我受伤的点数没到21点时我可以继续要牌，直到大于或等于21点则比较，如果大于21点则爆牌算我输，反之则赢
+如果两边都是21点则比谁的牌大
+当我们赢...
       
     
   </div>
@@ -2878,12 +2877,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-04T14:22:23+08:00">2025-06-04</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-12T16:39:58+08:00">2025-06-12</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/04/Wallbreaker-Easy/' itemprop="url">
+          <a class='readmore' href='/2025/06/12/BSidesCF-2020-Cards/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2899,7 +2898,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/03/羊城杯-2020-EasySer/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/11/HCTF-2018-Hideandseek/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2917,17 +2916,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/03/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-EasySer/"  itemprop="url">
-        [羊城杯_2020]EasySer
+      <a href="/2025/06/11/HCTF-2018-Hideandseek/"  itemprop="url">
+        [HCTF_2018]Hideandseek
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [羊城杯_2020]EasySer进入靶场，发现只有一个类似phpinfo的界面，没有有用信息。使用dirsearch扫出来star1.php(后面蚁剑连上发现在robots.txt中有提示)，访问发现是一个SSRF漏洞，需要我们输入url
-点开源码提示我们访问ser.php，猜测通过url访问，于是输入
-123http://127.0.0.1/ser.php//或者http://127.0...
+        [HCTF_2018]Hideandseek进入靶场是一个登录界面，尝试了一下除了admin，随便输什么都可以登录。那就和sql注入不沾边了。
+登录进去是一个文件上传界面，叫我们上传zip文件可以获得更多秘密
+
+
+随便上传一个带shell的zip
+
+
+我们发现这个似乎被解析了shell都不见了，但是这个路径又有点不对，之前是zip是通过文件包含写shell，但是这个路径不明白，只能看题解了。...
       
     
   </div>
@@ -2935,12 +2939,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-03T21:55:14+08:00">2025-06-03</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-11T22:30:53+08:00">2025-06-11</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/03/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-EasySer/' itemprop="url">
+          <a class='readmore' href='/2025/06/11/HCTF-2018-Hideandseek/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2956,7 +2960,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/03/nodejs/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/11/FBCTF2019-Products-Manager/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2974,17 +2978,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/03/nodejs/"  itemprop="url">
-        nodejs
+      <a href="/2025/06/11/FBCTF2019-Products-Manager/"  itemprop="url">
+        [FBCTF2019]Products_Manager
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        nodejs学习笔记前言之前是有过学习javascript的，但是实际上根本没深入的去学，javascript在我认为代码审计难度不虚python中那几个后端语言，也在buu上面写了几个js的题目了，我简直一句话都看不懂。
-我们审计的代码中虽然使用js写的，但实际上用到的是express框架，看来不得不去学一下了。
-由于这在CTF中占比其实不是很大，实际上也用不到，这里主要是做题中的代码审计...
+        [FBCTF2019]Products Manager终于看见一个题解不长的题目了，我们进入靶场发现是有三个选项
+
+
+分别是查看前五的产品，添加产品，查询产品。题目给了源码，我们直接来看源码。
+根目录下这几个php文件都没什么用，主要是进行sql操作的db.php
+1234567891011121314151617181920212223242526272829303132333435363...
       
     
   </div>
@@ -2992,12 +2999,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-03T20:08:54+08:00">2025-06-03</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-11T15:24:19+08:00">2025-06-11</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/03/nodejs/' itemprop="url">
+          <a class='readmore' href='/2025/06/11/FBCTF2019-Products-Manager/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3013,7 +3020,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/02/SQL注入进阶/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/10/Dest0g3-520迎新赛-EasySSTI/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3031,17 +3038,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/02/SQL%E6%B3%A8%E5%85%A5%E8%BF%9B%E9%98%B6/"  itemprop="url">
-        SQL注入进阶
+      <a href="/2025/06/10/Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-EasySSTI/"  itemprop="url">
+        [Dest0g3_520迎新赛]EasySSTI
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        SQL注入进阶笔记前言SQL注入从去年到现在，尽头实在没想到是sqlmap，现在做新生赛的题目，sqlmap用不了就寄了。实在草率，之前虽然把各种方法都了解了一遍但是都不深入，遇到一些比较难的绕过和时间盲注就没办法了，由于是进阶版，一般会收录我自己用sqlmap失败的题目
-主要会结合SQL注入常用的一些注入方法和绕过方法去写，以及多收录一些注入的模板
-1.时间盲注为什么要从时间盲注开始写，这...
+        [Dest0g3_520迎新赛]EasySSTI题目是一个登录框，注入点就是username，感觉很像新生赛的题目。一切的开始在于无法直接使用fenjing，但是写完后发现不知道这是哪里的新生赛这么难。
+打算直接用payload过的时候发现不仅过滤了request等用于绕过的关键字，还过滤掉了引号，中括号，下划线等，导致无法使用编码绕过，结果我学过的绕过方法一个都用不上
+由于引号和中括号和点...
       
     
   </div>
@@ -3049,12 +3056,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-02T15:34:27+08:00">2025-06-02</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-10T19:19:43+08:00">2025-06-10</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/02/SQL%E6%B3%A8%E5%85%A5%E8%BF%9B%E9%98%B6/' itemprop="url">
+          <a class='readmore' href='/2025/06/10/Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-EasySSTI/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3070,7 +3077,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/01/BJDCTF2020-ZJCTF，不过如此/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/10/SSTI进阶/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3088,15 +3095,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/01/BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"  itemprop="url">
-        [BJDCTF2020]ZJCTF，不过如此
+      <a href="/2025/06/10/SSTI%E8%BF%9B%E9%98%B6/"  itemprop="url">
+        SSTI进阶
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [BJDCTF2020]ZJCTF，不过如此123456789101112131415161718&lt;?phperror_reporting(0);$text = $_GET[&quot;text&quot;];$file = $_GET[&quot;file&quot;];if(isset($text)&amp;&amp;(file_get_contents($text,&#x27;r...
+        SSTI注入进阶版前言我以为SSTI到此为止了，直到我被新生赛的题目打爆后，直接冷静好多了。之前我以为只要掌握常规的绕过方法比如编码绕过这种可以无视关键词的过滤方法就差不了，但是直到题目把引号和中括号都过率了，我就知道要无了。
+这里主要收集在题目中遇到的各种绕过姿势作为payload
+
       
     
   </div>
@@ -3104,12 +3113,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-01T15:18:34+08:00">2025-06-01</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-06-10T18:57:39+08:00">2025-06-10</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/01/BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/' itemprop="url">
+          <a class='readmore' href='/2025/06/10/SSTI%E8%BF%9B%E9%98%B6/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3130,7 +3139,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div class="prev-next">
         
         <p class="current">
-          1 / 2
+          1 / 3
         </p>
         
           <a class="next" rel="next" href="/archives/2025/06/page/2/">
