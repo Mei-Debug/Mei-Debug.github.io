@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1751460941553),
+    lastupdate: new Date(1753770799824),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2545,7 +2545,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/22/RCTF-2019-Nextphp/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/24/HNCTF-2022-WEEK2-Canyource/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2563,19 +2563,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/22/RCTF-2019-Nextphp/"  itemprop="url">
-        [RCTF_2019]Nextphp
+      <a href="/2025/07/24/HNCTF-2022-WEEK2-Canyource/"  itemprop="url">
+        [HNCTF_2022_WEEK2]Canyource
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [RCTF_2019]Nextphp看题目的代码我还以为这把白给来了
-123456&lt;?phpif (isset($_GET[&#x27;a&#x27;])) &#123;    eval($_GET[&#x27;a&#x27;]);&#125; else &#123;    show_source(__FILE__);&#125;
-
-但是发现除了看一下phpinfo，好像其他都不能搞
-...
+        [HNCTF_2022_WEEK2]Canyource12345678910&lt;?phphighlight_file(__FILE__);if(isset($_GET[&#x27;code&#x27;])&amp;&amp;!preg_match(&#x27;/url|show|high|na|info|dec|oct|pi|log|data:\/\/|filter:\/\/|php:\...
       
     
   </div>
@@ -2583,12 +2579,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-22T19:12:05+08:00">2025-06-22</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-24T22:17:09+08:00">2025-07-24</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/22/RCTF-2019-Nextphp/' itemprop="url">
+          <a class='readmore' href='/2025/07/24/HNCTF-2022-WEEK2-Canyource/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2604,7 +2600,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/21/蓝帽杯-2021-One-Pointer-PHP/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/22/java-sec-code/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2622,20 +2618,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/21/%E8%93%9D%E5%B8%BD%E6%9D%AF-2021-One-Pointer-PHP/"  itemprop="url">
-        [蓝帽杯_2021]One_Pointer_PHP
+      <a href="/2025/07/22/java-sec-code/"  itemprop="url">
+        java_sec_code
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [蓝帽杯_2021]One_Pointer_PHP这个题目直接给源码了，我们来看
-user.php
-12345&lt;?phpclass User&#123;	public $count;&#125;?&gt;
+        java_sec_code前言网安还是有点冷门了，这个靶场在网上没有那种特别齐全的文章，不知道有没有flag这个东西，但是看了下别人的博客好像都是看漏洞的代码然后进行审计。
+还有那个一开始的登录框好抽象，我以为是第一道题目，没想到是直接输入密码进行登录
+12adminadmin123
 
-add_api.php
-12345678910111213141516&lt;?phpinclude &quot;user.php&quot;;if($user=unseriali...
+登录进行后是一个简单的前端界面
+
+
+这里面有各种漏洞主要集中在这个路径下
+1java-sec-code-m...
       
     
   </div>
@@ -2643,12 +2642,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-21T14:56:22+08:00">2025-06-21</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-22T19:28:08+08:00">2025-07-22</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/21/%E8%93%9D%E5%B8%BD%E6%9D%AF-2021-One-Pointer-PHP/' itemprop="url">
+          <a class='readmore' href='/2025/07/22/java-sec-code/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2664,7 +2663,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/19/BUUCTF-2018-Online-Tool/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/20/JAVA命令执行/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2682,17 +2681,22 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/19/BUUCTF-2018-Online-Tool/"  itemprop="url">
-        [BUUCTF_2018]Online_Tool
+      <a href="/2025/07/20/JAVA%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"  itemprop="url">
+        JAVA命令执行
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [BUUCTF_2018]Online_Toolbuu都写到第6版了，发现题目已经不是我这个水平能写的了，太多代码审计了，还是要多练啊。
-还不如把以前没写的题目再写完
-123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x2...
+        JAVA命令执行前言java代码也基本可以看懂了，但是还是和以前遇到的问题一样，太多函数和包都不知道，只能先把代码看看
+java中命令执行有三种方式
+1.java.lang.Runtime特点：
+
+最传统的方法，直接调用系统命令。
+需要手动处理输入&#x2F;输出流。
+
+123456789101112131415161718192021222324252627282930313233impo...
       
     
   </div>
@@ -2700,12 +2704,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-19T10:51:43+08:00">2025-06-19</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-20T19:06:32+08:00">2025-07-20</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/19/BUUCTF-2018-Online-Tool/' itemprop="url">
+          <a class='readmore' href='/2025/07/20/JAVA%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2721,7 +2725,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/14/BSidesCF-2019-Sequel/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/16/NewStarCTF-2023-公开赛道-R-C-E/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2739,19 +2743,16 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/14/BSidesCF-2019-Sequel/"  itemprop="url">
-        [BSidesCF_2019]Sequel
+      <a href="/2025/07/16/NewStarCTF-2023-%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-R-C-E/"  itemprop="url">
+        [NewStarCTF_2023_公开赛道]R!!!C!!!E!!!
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [BSidesCF_2019]Sequel进入界面发现是一个登录界面，网站标题为Sequel Movie Database，看见database就提示我们这题为sql，便以为这个登录框存在sql注入。尝试登录发现用户名和密码只能由数字和字母组成。
-看了wp发现这个考的是爆破，使用字典爆破出来用户名和密码都为guest，登录进去显示如下界面
-
-
-翻译了一下发现和flag没什么关系，查看cook...
+        [NewStarCTF_2023_公开赛道]R!!!C!!!E!!!在bash中感叹号也是一个命令符，也就是说我在生成这个标题的时候还必须把所有的感叹号给转义了才行
+123456789101112131415161718192021&lt;?phphighlight_file(__FILE__);class minipop&#123;    public $code;    public $...
       
     
   </div>
@@ -2759,12 +2760,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-14T15:37:12+08:00">2025-06-14</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-16T20:31:14+08:00">2025-07-16</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/14/BSidesCF-2019-Sequel/' itemprop="url">
+          <a class='readmore' href='/2025/07/16/NewStarCTF-2023-%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-R-C-E/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2780,7 +2781,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/12/NewStarCTF-2023-公开赛道-Include-🍐/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/10/GWCTF-2019-我有一个数据库/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2798,16 +2799,20 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/12/NewStarCTF-2023-%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-Include-%F0%9F%8D%90/"  itemprop="url">
-        [NewStarCTF_2023_公开赛道]Include_🍐
+      <a href="/2025/07/10/GWCTF-2019-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/"  itemprop="url">
+        [GWCTF_2019]我有一个数据库
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [NewStarCTF_2023_公开赛道]Include_🍐新生赛也是上难度了，又不会。
-12345678910111213141516 &lt;?php    error_reporting(0);    if(isset($_GET[&#x27;file&#x27;])) &#123;        $file = $_GET[&#x27;file&#x27;];          ...
+        [GWCTF_2019]我有一个数据库题目进去什么都没有，使用dirsearch扫一下发现存在phpinfo.php和&#x2F;phpmyadmin
+一个是phpinfo，另外则是phpmyadmin的数据库图形化界面。
+看了题解发现我们可以在界面中看到phpMyadmin的版本然后去CVE上查找漏洞
+
+
+我看了一下我现在使用的是phpMyadmin4.8.5版本的发现存在一个通过用户名实...
       
     
   </div>
@@ -2815,12 +2820,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-12T20:03:36+08:00">2025-06-12</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-10T18:53:37+08:00">2025-07-10</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/12/NewStarCTF-2023-%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-Include-%F0%9F%8D%90/' itemprop="url">
+          <a class='readmore' href='/2025/07/10/GWCTF-2019-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2836,7 +2841,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/12/BSidesCF-2020-Cards/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/09/Dest0g3-520迎新赛-SimpleRCE/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2854,22 +2859,15 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/12/BSidesCF-2020-Cards/"  itemprop="url">
-        [BSidesCF_2020]Cards
+      <a href="/2025/07/09/Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-SimpleRCE/"  itemprop="url">
+        [Dest0g3_520迎新赛]SimpleRCE
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [BSidesCF_2020]Cards终于写到一个不用代码审计的题目了。
-
-
-进入，界面是一个较21点的纸牌游戏，但是我没玩过这个游戏不说，看说明半天也没明白。
-感觉这个游戏其实挺无聊的，不知道哪些人在玩。
-根据情况来看，我是闲家，我的操作就是当我受伤的点数没到21点时我可以继续要牌，直到大于或等于21点则比较，如果大于21点则爆牌算我输，反之则赢
-如果两边都是21点则比谁的牌大
-当我们赢...
+        [Dest0g3_520迎新赛]SimpleRCE1234567 &lt;?phphighlight_file(__FILE__);$aaa=$_POST[&#x27;aaa&#x27;];$black_list=array(&#x27;^&#x27;,&#x27;.&#x27;,&#x27;`&#x27;,&#x27;&gt;&#x27;,&#x27;&lt;&#x27;,&#x27;=&...
       
     
   </div>
@@ -2877,12 +2875,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-12T16:39:58+08:00">2025-06-12</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-09T14:06:03+08:00">2025-07-09</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/12/BSidesCF-2020-Cards/' itemprop="url">
+          <a class='readmore' href='/2025/07/09/Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-SimpleRCE/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2898,7 +2896,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/11/HCTF-2018-Hideandseek/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/LineCTF2022-BB/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2916,22 +2914,15 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/11/HCTF-2018-Hideandseek/"  itemprop="url">
-        [HCTF_2018]Hideandseek
+      <a href="/2025/07/08/LineCTF2022-BB/"  itemprop="url">
+        [LineCTF2022]BB
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [HCTF_2018]Hideandseek进入靶场是一个登录界面，尝试了一下除了admin，随便输什么都可以登录。那就和sql注入不沾边了。
-登录进去是一个文件上传界面，叫我们上传zip文件可以获得更多秘密
-
-
-随便上传一个带shell的zip
-
-
-我们发现这个似乎被解析了shell都不见了，但是这个路径又有点不对，之前是zip是通过文件包含写shell，但是这个路径不明白，只能看题解了。...
+        [LineCTF2022]BB123456789101112131415161718192021222324 &lt;?php    error_reporting(0);    function bye($s, $ptn)&#123;        if(preg_match($ptn, $s))&#123;            return false;        &#125;  ...
       
     
   </div>
@@ -2939,12 +2930,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-11T22:30:53+08:00">2025-06-11</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-08T15:22:45+08:00">2025-07-08</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/11/HCTF-2018-Hideandseek/' itemprop="url">
+          <a class='readmore' href='/2025/07/08/LineCTF2022-BB/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2960,7 +2951,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/11/FBCTF2019-Products-Manager/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/JAVA/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2978,20 +2969,18 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/11/FBCTF2019-Products-Manager/"  itemprop="url">
-        [FBCTF2019]Products_Manager
+      <a href="/2025/07/08/JAVA/"  itemprop="url">
+        JAVA
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [FBCTF2019]Products Manager终于看见一个题解不长的题目了，我们进入靶场发现是有三个选项
-
-
-分别是查看前五的产品，添加产品，查询产品。题目给了源码，我们直接来看源码。
-根目录下这几个php文件都没什么用，主要是进行sql操作的db.php
-1234567891011121314151617181920212223242526272829303132333435363...
+        JAVA前言又到了学习语言的时候了，上次在这学习语言还是Python和PHP。本来想在小破站上面看黑马的教程的，但是我实在低估了七十多个小时，光讲一些C语言中学过的东西就讲了几个小时，实在不敢听下去，等下睡着了。
+作为一条webU•ェ•*U，当然是直接菜鸟教程速成来得快
+Hello World正所谓Hello World生万物，我们先来看下简单的代码，了解一下JAVA的程序格式
+123456...
       
     
   </div>
@@ -2999,12 +2988,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-11T15:24:19+08:00">2025-06-11</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-08T13:36:04+08:00">2025-07-08</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/11/FBCTF2019-Products-Manager/' itemprop="url">
+          <a class='readmore' href='/2025/07/08/JAVA/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3020,7 +3009,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/10/Dest0g3-520迎新赛-EasySSTI/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/07/红明谷CTF-2021-EasyTP/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3038,17 +3027,21 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/10/Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-EasySSTI/"  itemprop="url">
-        [Dest0g3_520迎新赛]EasySSTI
+      <a href="/2025/07/07/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021-EasyTP/"  itemprop="url">
+        [红明谷CTF_2021]EasyTP
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [Dest0g3_520迎新赛]EasySSTI题目是一个登录框，注入点就是username，感觉很像新生赛的题目。一切的开始在于无法直接使用fenjing，但是写完后发现不知道这是哪里的新生赛这么难。
-打算直接用payload过的时候发现不仅过滤了request等用于绕过的关键字，还过滤掉了引号，中括号，下划线等，导致无法使用编码绕过，结果我学过的绕过方法一个都用不上
-由于引号和中括号和点...
+        [红明谷CTF_2021]EasyTP看见这个熟悉的Easy和后面的TP，这很容易让我想到这是一道很难的ThinkPHP的代码审计题目
+我们直接www.zip将源码下载下来，在ThinkPHP/ThinkPHP.php中发现了ThinkPHP的版本为3.2.3
+
+
+于是直接百度这个版本的漏洞
+在CVE上面只看到了是sql注入漏洞，后面又在网上找到了大佬的文章
+实在没想到这是一个反序列化结合s...
       
     
   </div>
@@ -3056,12 +3049,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-10T19:19:43+08:00">2025-06-10</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-07T12:47:27+08:00">2025-07-07</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/10/Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-EasySSTI/' itemprop="url">
+          <a class='readmore' href='/2025/07/07/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021-EasyTP/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3077,7 +3070,7 @@ add_api.php
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/10/SSTI进阶/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/06/HMGCTF2022-Smarty-Calculator/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3095,17 +3088,17 @@ add_api.php
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/10/SSTI%E8%BF%9B%E9%98%B6/"  itemprop="url">
-        SSTI进阶
+      <a href="/2025/07/06/HMGCTF2022-Smarty-Calculator/"  itemprop="url">
+        [HMGCTF2022]Smarty_Calculator
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        SSTI注入进阶版前言我以为SSTI到此为止了，直到我被新生赛的题目打爆后，直接冷静好多了。之前我以为只要掌握常规的绕过方法比如编码绕过这种可以无视关键词的过滤方法就差不了，但是直到题目把引号和中括号都过率了，我就知道要无了。
-这里主要收集在题目中遇到的各种绕过姿势作为payload
-
+        [HMGCTF2022]Smarty_Calculator界面是一个计算输入框，典型的SSTI，但是无论输入什么都是我还没有登录。好在www.zip下有源码，我们下载下来
+在index.php中有
+123456789101112131415161718192021function waf($data)&#123;  $pattern = &quot;php|\&lt;|flag|\?&quo...
       
     
   </div>
@@ -3113,12 +3106,12 @@ add_api.php
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-06-10T18:57:39+08:00">2025-06-10</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-07-06T22:46:34+08:00">2025-07-06</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/06/10/SSTI%E8%BF%9B%E9%98%B6/' itemprop="url">
+          <a class='readmore' href='/2025/07/06/HMGCTF2022-Smarty-Calculator/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3139,7 +3132,7 @@ add_api.php
       <div class="prev-next">
         
         <p class="current">
-          1 / 9
+          1 / 10
         </p>
         
           <a class="next" rel="next" href="/archives/2025/page/2/">
