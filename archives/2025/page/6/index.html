@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1753770799824),
+    lastupdate: new Date(1755161378643),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2521,6 +2521,128 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/14/GoogleCTF2019-Quals-Bnv/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/14/GoogleCTF2019-Quals-Bnv/"  itemprop="url">
+        [GoogleCTF2019_Quals]Bnv
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [GoogleCTF2019_Quals]Bnv这是一个比较难的XXE的题目，XXE之前在ctfshow的时候就没怎么写过，现在更是毫无思路，还得从xml开始学
+现在我看得懂xml和dtd了，也该来写这个题目了
+
+
+界面就是一个提交按钮和一个下拉框，上面的被确定是盲文，但是解密出来也没有什么有用的信息
+我们尝试抓包，发现传递了json数据，大佬说传递json数据时会有XXE漏洞，但是我不知道...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-14T15:18:00+08:00">2025-05-14</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/14/GoogleCTF2019-Quals-Bnv/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/13/Black-Watch-入群题-Web/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/13/Black-Watch-%E5%85%A5%E7%BE%A4%E9%A2%98-Web/"  itemprop="url">
+        [Black_Watch_入群题]Web
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [Black_Watch_入群题]Web这个题目和前面几个比起来，竟然是出奇的容易了一点，就是一个简单的sql布尔忙抓题目，只是注入点比较难找
+打开界面有三个界面和一个登录界面，登录试了一下没sql注入，应该也不是弱口令，突破口应该在那三个界面
+
+
+当我们点进去后发现url中出现了一个疑似参数的地方，我们改变数字还会跳转到其他界面，于是怀疑这里有传参，直接抓参数包看看
+
+
+发现通过GET请求...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-13T20:34:05+08:00">2025-05-13</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/13/Black-Watch-%E5%85%A5%E7%BE%A4%E9%A2%98-Web/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/12/PASECA2019-honey-shop/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -2982,121 +3104,6 @@ local_file:///app/app.py拿到源码
       
         <div>
           <a class='readmore' href='/2025/05/03/RootersCTF2019-babyWeb/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/02/SUCTF-2018-annonymous/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/02/SUCTF-2018-annonymous/"  itemprop="url">
-        [SUCTF_2018]annonymous
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        [SUCTF_2018]annonymous12345678910111213 &lt;?php$MY = create_function(&quot;&quot;,&quot;die(`cat flag.php`);&quot;);$hash = bin2hex(openssl_random_pseudo_bytes(32));eval(&quot;function SUCTF_$hash...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-02T15:50:37+08:00">2025-05-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/02/SUCTF-2018-annonymous/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/30/SUCTF-2018-MultiSQL/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/30/SUCTF-2018-MultiSQL/"  itemprop="url">
-        [SUCTF_2018]MultiSQL
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        [SUCTF_2018]MultiSQL这个题目可以说是最近遇到的相对容易的题目了，果然比起折磨自己，我还是更喜欢摆烂
-首先什么都没有，但是我们在页面源代码中发现了user/login.php和user/reg.php访问一下分别是登录和注册界面，我们直接注册并登录。
-
-
-当我们点击编辑头像可以上传文件，但是我们上传的文件全部都会变成.jpg图片，原来这就是文件上传的最终防御吗
-我们点击用户...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-30T21:09:26+08:00">2025-04-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/30/SUCTF-2018-MultiSQL/' itemprop="url">
             Read More
           </a>
         </div>
