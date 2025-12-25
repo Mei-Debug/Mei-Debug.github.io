@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1766667328040),
+    lastupdate: new Date(1766667957530),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2521,6 +2521,69 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/03/RootersCTF2019-babyWeb/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/03/RootersCTF2019-babyWeb/"  itemprop="url">
+        [RootersCTF2019]babyWeb
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [RootersCTF2019]babyWeb这个题目好无语，不知道为什么一开始报错，得等一下刷新才能看到题目
+题目是一个输入框，我们输入的东西会被拼接到sql语句当中
+
+
+我们直接就看到了列名和表名，这个记住可以直接解题
+提示说过滤掉了 
+1union sleep or &#x27; &quot; or - BENCHMARK
+
+我们无法使用联合注入，本以为or也是被过滤掉了informa...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-03T14:56:10+08:00">2025-05-03</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/03/RootersCTF2019-babyWeb/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/02/SUCTF-2018-annonymous/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -3030,67 +3093,6 @@ index.php
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/24/b01lers2020-Life-on-Mars/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/24/b01lers2020-Life-on-Mars/"  itemprop="url">
-        [b01lers2020]Life_on_Mars
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        [b01lers2020]Life_on_Mars这个题目只是一个简单的前端界面和一堆数据，找不到什么能用的地方，而且buu还不能直接用dirsearch，我们只能尝试抓个包
-我们发现当我们随便点击一个标签的时候，有search传递标签名，另一个不知道传递什么
-
-
-响应则是前端显示的数据，但这个传参我们不抓包是看不到的
-有传参传名字，我们可以怀疑一下sql注入，看了wp事实上也是如此
-但是这...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-24T19:31:25+08:00">2025-04-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/24/b01lers2020-Life-on-Mars/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3105,7 +3107,7 @@ index.php
           </a>
         
         <p class="current">
-          13 / 16
+          13 / 17
         </p>
         
           <a class="next" rel="next" href="/archives/2025/page/14/">
@@ -3206,6 +3208,21 @@ index.php
     
     
       
+  
+  <section class="widget tagcloud desktop mobile pjax">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Misc/" style="font-size: 14px; color: #999">Misc</a> <a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 14px; color: #999">杂项</a> <a href="/tags/%E7%A3%81%E7%9B%98%E5%8F%96%E8%AF%81/" style="font-size: 14px; color: #999">磁盘取证</a>
+    </div>
+  </section>
+
 
     
   
