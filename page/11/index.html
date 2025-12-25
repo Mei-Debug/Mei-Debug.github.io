@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1755671576829),
+    lastupdate: new Date(1766667328040),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2520,7 +2520,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/MySQL/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/23/DDCTF-2019-homebrew-event-loop/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2538,18 +2538,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/03/MySQL/"  itemprop="url">
-        MySQL
+      <a href="/2025/05/23/DDCTF-2019-homebrew-event-loop/"  itemprop="url">
+        [DDCTF_2019]homebrew_event_loop
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        MySQL笔记1.MySQL简介数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。
-每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。
-我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。
-所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合...
+        [DDCTF_2019]homebrew_event_loop妈的，最近怎么全是flask的题目，python代码基本看不懂，还一下子来这么多题目。这个题目还没写出来就来写笔记，目的就是代码审计
+我们进入靶场之后直接下载源代码，其他看了也没用
+123456789101112131415161718192021222324252627282930313233343536373839404142...
       
     
   </div>
@@ -2557,12 +2556,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-01-03T17:06:10+08:00">2025-01-03</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-23T20:57:55+08:00">2025-05-23</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/01/03/MySQL/' itemprop="url">
+          <a class='readmore' href='/2025/05/23/DDCTF-2019-homebrew-event-loop/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2578,7 +2577,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Python/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/23/Python反序列化/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2596,18 +2595,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/01/02/Python/"  itemprop="url">
-        Python
+      <a href="/2025/05/23/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"  itemprop="url">
+        Python反序列化
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        Python学习笔记前言感觉漏洞有点难，突然想到python还没学，也不好写脚本，仿佛看到救世主一般的来了，由于以前学过C语言，所以只挑重点学
-1.数据类型Python 支持三种不同的数值类型：
-
-整型(int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 Long ...
+        Python反序列化前言又要开始学基础知识了，学好了python反序列化题才能写，无论是从储存还是使用好像都和php不一样。但是之前是做题后再去学习反序列化，现在不能这样了，要先学序列化
+1.序列化和反序列化序列化 (Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。
+反序列化 (Deserialization)是将有序的二进制序列转换成某种对象（字典，列表等）...
       
     
   </div>
@@ -2615,12 +2613,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-01-02T18:38:49+08:00">2025-01-02</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-23T12:51:52+08:00">2025-05-23</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/01/02/Python/' itemprop="url">
+          <a class='readmore' href='/2025/05/23/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2636,7 +2634,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/31/PHP/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/22/GYCTF2020-Node-Game/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2654,23 +2652,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/12/31/PHP/"  itemprop="url">
-        PHP
+      <a href="/2025/05/22/GYCTF2020-Node-Game/"  itemprop="url">
+        [GYCTF2020]Node_Game
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        PHP笔记1.PHP简介1.PHP是什么
-PHP 文件可包含文本、HTML、JavaScript代码和 PHP 代码
-PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
-PHP 文件的默认文件扩展名是 .php。
-
-2.PHP文件是什么
-PHP 文件可包含文本、HTML、JavaScript代码和 PHP 代码
-PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
-...
+        [GYCTF2020]Node_Game界面有两个选项，一个是源代码一个是文件上传界面，看了题解后发现解题和那个文件上传界面没什么关系，是通过脚本进行的
+我们先进行代码审计
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596...
       
     
   </div>
@@ -2678,12 +2670,12 @@ PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2024-12-31T15:22:46+08:00">2024-12-31</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-22T20:22:33+08:00">2025-05-22</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2024/12/31/PHP/' itemprop="url">
+          <a class='readmore' href='/2025/05/22/GYCTF2020-Node-Game/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2699,7 +2691,7 @@ PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/30/HTML/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/21/羊城杯-2020-Blackcat/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2717,22 +2709,16 @@ PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/12/30/HTML/"  itemprop="url">
-        HTML
+      <a href="/2025/05/21/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-Blackcat/"  itemprop="url">
+        [羊城杯_2020]Blackcat
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        HTML笔记1.HTML简介
-
-
-&lt;!DOCTYPE html&gt; 声明为 HTML5 文档
-&lt;html&gt; 元素是 HTML 页面的根元素
-&lt;head&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset&#x3D;”utf-8”&gt; 定义网页编码格式为 utf-8。
-&lt;title&gt; 元素描述了文档的标题
-&lt;bod...
+        [羊城杯_2020]Blackcat题目给了我们一个mp3文件，然后提示我们要听歌。但是点击后音乐也不会播放，于是在源代码中找到mp3文件，点开后在最后面找到源码
+123456789101112131415161718&lt;?phpif(empty($_POST[&#x27;Black-Cat-Sheriff&#x27;]) || empty($_POST[&#x27;One-ear&#x...
       
     
   </div>
@@ -2740,12 +2726,12 @@ PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2024-12-30T17:08:00+08:00">2024-12-30</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-21T21:04:59+08:00">2025-05-21</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2024/12/30/HTML/' itemprop="url">
+          <a class='readmore' href='/2025/05/21/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-Blackcat/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2761,7 +2747,7 @@ PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/06/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/21/NESTCTF-2019-Love-Math-2/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2779,16 +2765,15 @@ PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/12/06/hello-world/"  itemprop="url">
-        Hello World
+      <a href="/2025/05/21/NESTCTF-2019-Love-Math-2/"  itemprop="url">
+        [NESTCTF_2019]Love_Math_2
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+        [NESTCTF_2019]Love_Math_212345678910111213141516171819202122232425262728&lt;?phperror_reporting(0);//听说你很喜欢数学，不知道你是否爱它胜过爱flagif(!isset($_GET[&#x27;c&#x27;]))&#123;    show_source(__FILE__);&#125;el...
       
     
   </div>
@@ -2796,12 +2781,300 @@ Qu...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2024-12-06T23:37:07+08:00">2024-12-06</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-05-21T19:47:28+08:00">2025-05-21</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2024/12/06/hello-world/' itemprop="url">
+          <a class='readmore' href='/2025/05/21/NESTCTF-2019-Love-Math-2/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/20/XNUCA2019Qualifier-EasyPHP/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/20/XNUCA2019Qualifier-EasyPHP/"  itemprop="url">
+        [XNUCA2019Qualifier]EasyPHP
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [XNUCA2019Qualifier]EasyPHP123456789101112131415161718192021222324252627282930313233&lt;?php    $files = scandir(&#x27;./&#x27;);     foreach($files as $file) &#123;        if(is_file($file))&#123;...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-20T20:54:00+08:00">2025-05-20</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/20/XNUCA2019Qualifier-EasyPHP/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/19/羊城杯-2020-Easyphp2/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/19/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-Easyphp2/"  itemprop="url">
+        [羊城杯_2020]Easyphp2
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [羊城杯_2020]Easyphp2还真的是喜欢出2.0版本的题目，看到这个题目我才发现我1.0版本的题解也没写完。看来下次写完题目就写题解比较好
+首先进入题目就是一个提示
+1Sorry, only people from GWHT are allowed to access this website.23333
+
+我们需要作为一个人类从来自GWHT，我一开始以为我需要把UA改成people...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-19T20:48:17+08:00">2025-05-19</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/19/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-Easyphp2/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/19/GWCTF-2019-你的名字/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/19/GWCTF-2019-%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/"  itemprop="url">
+        [GWCTF_2019]你的名字
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [GWCTF_2019]你的名字这个题目就是一个简单的SSTI注入，只是过滤掉了一些关键字。本来应该没什么含金量的，但是，我感觉需要改变一下做题思路了
+这个题目主要是过滤掉了&#123;&#123;和下划线和关键词，可以正常绕过，但是焚靖梭哈更有性价比，虽然这题不能用就是了。但是编码绕过还是比正常绕过好用
+这题我本来是想用以前固定的lipsum直接使用os模块进行命令执行，但是报错了，后来发...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-19T19:44:50+08:00">2025-05-19</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/19/GWCTF-2019-%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/16/XML/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/16/XML/"  itemprop="url">
+        XML
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        XML学习笔记前言好久没写这种知识点的笔记了，本来以为xml文件挺简单的，但是发现还是有必要写笔记来总结一下。要学的不仅是xml文件，还有xpath注入等和xml有关的知识点
+1.XML简介简单了解XML：
+
+XML 指可扩展标记语言（EXtensible Markup Language）
+XML 是一种标记语言，很类似 HTML
+XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-16T17:25:17+08:00">2025-05-16</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/16/XML/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/14/WMCTF2020-Make-PHP-Great-Again-2-0/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/14/WMCTF2020-Make-PHP-Great-Again-2-0/"  itemprop="url">
+        [WMCTF2020]Make_PHP_Great_Again_2.0
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        [WMCTF2020]Make_PHP_Great_Again_2.0123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;
+
+看...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-14T15:32:08+08:00">2025-05-14</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/14/WMCTF2020-Make-PHP-Great-Again-2-0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2828,8 +3101,14 @@ Qu...
           </a>
         
         <p class="current">
-          11 / 11
+          11 / 17
         </p>
+        
+          <a class="next" rel="next" href="/page/12/">
+            <section class="post next white-box shadow floatable blur">
+              &nbsp;Next&nbsp;<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
         
       </div>
     

@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-23T14:04:30.000Z">
-<meta property="article:modified_time" content="2025-05-30T11:40:21.071Z">
+<meta property="article:modified_time" content="2025-12-23T08:07:38.904Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1755671576829),
+    lastupdate: new Date(1766667328040),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2658,9 +2658,150 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flag.txt</span><br><span class="line">G&amp;eOhGcq(ZG(t2*H8M3dG&amp;wXiGcq(ZG&amp;wXyG(j~tG&amp;eOdGcq+aG(t5oG(j~qG&amp;eIeGcq+aG)6Q&lt;G(j~rG&amp;eOdH9&lt;5qG&amp;eLvG(j~sG&amp;nRdH9&lt;8rG%++qG%__eG&amp;eIeGc+|cG(t5oG(j~sG&amp;eOlH9&lt;8rH8C_qH9&lt;8oG&amp;eOhGc+_bG&amp;eLvH9&lt;8sG&amp;eLgGcz?cG&amp;3|sH8M3cG&amp;eOtG%_?aG(t5oG(j~tG&amp;wXxGcq+aH8V6sH9&lt;8rG&amp;eOhH9&lt;5qG(&lt;E-H8M3eG&amp;wXiGcq(ZG)6Q&lt;G(j~tG&amp;eOtG%+&lt;aG&amp;wagG%__cG&amp;eIeGcq+aG&amp;M9uH8V6cG&amp;eOlH9&lt;8rG(&lt;HrG(j~qG&amp;eLcH9&lt;8sG&amp;wUwGek2)</span><br></pre></td></tr></table></figure>
 
-<p>虽然提示说用base解码，但是这个着实看不懂，也不知道怎么解，最后是用了大佬写的脚本</p>
+<p>虽然提示说用base解码，但是这个着实看不懂，也不知道怎么解，最后是用了大佬写的脚本，看起来就是这个编码是一个各种Base编码混合的，于是就使用正则匹配字符然后进行解码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">baseDec</span>(<span class="params">text,<span class="built_in">type</span></span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">type</span> == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> base64.b16decode(text)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">type</span> == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> base64.b32decode(text)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">type</span> == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> base64.b64decode(text)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">type</span> == <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">return</span> base64.b85decode(text)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">detect</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> re.<span class="keyword">match</span>(<span class="string">&quot;^[0-9A-F=]+$&quot;</span>,text.decode()) <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> re.<span class="keyword">match</span>(<span class="string">&quot;^[A-Z2-7=]+$&quot;</span>,text.decode()) <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> re.<span class="keyword">match</span>(<span class="string">&quot;^[A-Za-z0-9+/=]+$&quot;</span>,text.decode()) <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">autoDec</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&quot;MRCTF&#123;&quot;</span> <span class="keyword">in</span> text:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>+text.decode())</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        code = detect(text)</span><br><span class="line">        text = baseDec(text,code)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;flag.txt&quot;</span>,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    flag = f.read()</span><br><span class="line"></span><br><span class="line">autoDec(flag)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+
+
+<h2 id="6-wav文件频谱图"><a href="#6-wav文件频谱图" class="headerlink" title="6.wav文件频谱图"></a>6.wav文件频谱图</h2><p>当我们遇到一个wav文件没有什么隐藏信息的时候，可以使用audacity查看频谱图</p>
+<p>鼠标在左侧右键打开频谱图即可</p>
+
+
+
+
+
+
+<h2 id="7-时间轴隐写"><a href="#7-时间轴隐写" class="headerlink" title="7.时间轴隐写"></a>7.时间轴隐写</h2><p>我们在遇到gif图片中找不到隐藏信息的时候，可以尝试时间轴隐写</p>
+<p>GIF 文件每一帧间的时间间隔也可以作为信息隐藏的载体，隐藏具体方式需具体分析，可以通过 <strong>identify</strong> 命令清晰的打印出每一帧的时间间隔。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">identify -format <span class="string">&quot;%s %T \n&quot;</span> 100.gif     <span class="comment">#格式：帧序号 间隔  %s用于输出帧数 %T用于输出间隔时间</span></span><br></pre></td></tr></table></figure>
+
+<p>例题来源:<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#%E8%9C%98%E8%9B%9B%E4%BE%A0%E5%91%80">buuctf-蜘蛛侠呀</a></p>
+<p>这个题目比较难，先是流量分析，用脚本把数据拼到一起后还要进行一系列处理，这里来一个ICMP的脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyshark</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开PCAP文件并设置过滤器</span></span><br><span class="line">packets = pyshark.FileCapture(<span class="string">&#x27;out.pcap&#x27;</span>, tshark_path=<span class="string">&#x27;D:\softs\Misctools\wireshark\\tshark.exe&#x27;</span>)</span><br><span class="line"></span><br><span class="line">res = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理每个数据包</span></span><br><span class="line"><span class="keyword">for</span> each <span class="keyword">in</span> packets:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 解码ICMP数据负载</span></span><br><span class="line">        data = binascii.unhexlify(each.icmp.data).decode()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 去除头部的 $$START$$</span></span><br><span class="line">        <span class="keyword">if</span> data.startswith(<span class="string">&#x27;$$START$$&#x27;</span>):</span><br><span class="line">            data = data[<span class="built_in">len</span>(<span class="string">&#x27;$$START$$&#x27;</span>):]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 去除重复项</span></span><br><span class="line">        <span class="keyword">if</span> data <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">            res.append(data)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error processing packet: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将结果写入文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;out.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;&#x27;</span>.join(res))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭数据包读取器</span></span><br><span class="line">packets.close()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后将得到的Base64数据解压保存为压缩包然后解压得到gif图片</p>
+<p>使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">identify -format <span class="string">&quot;%T&quot;</span> flag.gif</span><br></pre></td></tr></table></figure>
+
+<p>拿到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2050502050502050205020202050202020205050205020502050205050505050202050502020205020505050205020206666</span><br></pre></td></tr></table></figure>
+
+<p>这个我不知道哪个鬼才想到的，把666给删除了然后再将50转为1，20转为0得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">011011010100010000110101010111110011000101110100</span><br></pre></td></tr></table></figure>
+
+<p>然后使用二进制解码得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mD5_1t</span><br></pre></td></tr></table></figure>
+
+<p>进行MD5编码拿到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;f0f1003afe4ae8ce4aa8e8487a8ab3b6&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="8-AES加密"><a href="#8-AES加密" class="headerlink" title="8.AES加密"></a>8.AES加密</h2><p>没学过密码，遇到加密的密文时密钥都送到手上了，结果不知道是哪种加密</p>
+<p>aes加密特别多，根本不会，而且很多网站加解密都不是那么好用，到最后还是厨师长方便一点</p>
+<p>AES密文需要密钥和偏移量两个数据，也就是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">key: Th1s_1s_K3y00000</span><br><span class="line">iv: 1234567890123456</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后就是在厨师长中解密的话输入只有Hex和Raw两个模式，所以我们遇到密文需要先进行解密然后再转Hex，最后进行AES解密</p>
+
+
+<p>然后经过我测试，不需要偏移量的加密方式，加和不加都不会影响解密</p>
+<h2 id="9-gcode"><a href="#9-gcode" class="headerlink" title="9.gcode"></a>9.gcode</h2><p>遇到这种代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">M73 P0 R2</span><br><span class="line">M201 X9000 Y9000 Z500 E10000</span><br><span class="line">M203 X500 Y500 Z12 E120</span><br><span class="line">M204 P2000 R1500 T2000</span><br><span class="line">M205 X10.00 Y10.00 Z0.20 E2.50</span><br><span class="line">M205 S0 T0</span><br><span class="line">M107</span><br><span class="line">M115 U3.1.0</span><br><span class="line">M83</span><br><span class="line">M204 S2000 T1500</span><br><span class="line">M104 S215</span><br><span class="line">M140 S60</span><br><span class="line">M190 S60</span><br><span class="line">M109 S215</span><br><span class="line">G28 W</span><br><span class="line">G80</span><br><span class="line">G1 Y-3.0 F1000.0</span><br><span class="line">G92 E0.0</span><br><span class="line">G1 X60.0 E9.0  F1000.0</span><br><span class="line">M73 P4 R1</span><br><span class="line">G1 X100.0 E12.5  F1000.0</span><br><span class="line">G92 E0.0</span><br><span class="line">M900 K30</span><br><span class="line">G21</span><br><span class="line">G90</span><br><span class="line">M83</span><br><span class="line">G92 E0.0</span><br><span class="line">G1 E-0.80000 F2100.00000</span><br><span class="line">G1 Z0.600 F10800.000</span><br><span class="line">G1 X89.987 Y95.416</span><br><span class="line">G1 Z0.200</span><br><span class="line">G1 E0.80000 F2100.00000</span><br><span class="line">M204 S1000</span><br><span class="line">G1 F1200</span><br><span class="line">G1 X90.219 Y94.784 E0.02112</span><br><span class="line">G1 X90.632 Y94.252 E0.02112</span><br><span class="line">G1 X91.187 Y93.871 E0.02112</span><br><span class="line">G1 X91.836 Y93.677 E0.02123</span><br><span class="line">G1 X157.871 Y93.656 E2.07047</span><br><span class="line">G1 X158.694 Y93.819 E0.02631</span><br><span class="line">G1 X159.395 Y94.279 E0.02631</span><br><span class="line">G1 X159.872 Y94.969 E0.02631</span><br><span class="line">G1 X160.055 Y95.788 E0.02631</span><br></pre></td></tr></table></figure>
+
+<p>问了一下DS，这是gecode语言，直接使用在线网站解即可<a target="_blank" rel="noopener" href="https://gcode.ws/">gcode网站</a></p>
+
+
+<p>然后把旁边这些多余的给去掉即可看见flag</p>
+<h2 id="10-Firepwd"><a href="#10-Firepwd" class="headerlink" title="10.Firepwd"></a>10.Firepwd</h2><p>题目来源<code>[GKCTF 2021]FireFox Forensics</code></p>
+<p>题目提示这是一份登录凭证文件</p>
+<p>然后下载下来是没见过的文件</p>
+
+
+<p>说是内存取证，可是以前也没见过，打开json文件，发现储存着账号和密码，虽然是Base64编码，但是解出来的却是乱码，看了题解说这个被加密了，我们不能直接解密</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;nextId&quot;</span><span class="punctuation">:</span><span class="number">5</span><span class="punctuation">,</span><span class="attr">&quot;logins&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span><span class="attr">&quot;hostname&quot;</span><span class="punctuation">:</span><span class="string">&quot;https://ctf.g1nkg0.com&quot;</span><span class="punctuation">,</span><span class="attr">&quot;httpRealm&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span><span class="attr">&quot;formSubmitURL&quot;</span><span class="punctuation">:</span><span class="string">&quot;https://ctf.g1nkg0.com&quot;</span><span class="punctuation">,</span><span class="attr">&quot;usernameField&quot;</span><span class="punctuation">:</span><span class="string">&quot;user&quot;</span><span class="punctuation">,</span><span class="attr">&quot;passwordField&quot;</span><span class="punctuation">:</span><span class="string">&quot;pw&quot;</span><span class="punctuation">,</span><span class="attr">&quot;encryptedUsername&quot;</span><span class="punctuation">:</span><span class="string">&quot;MDIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECBXzxJ6wNr0cBAhx14543pGy8g==&quot;</span><span class="punctuation">,</span><span class="attr">&quot;encryptedPassword&quot;</span><span class="punctuation">:</span><span class="string">&quot;MFoEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECMW2u+IHw6/EBDANYRi1rCmbtlQ+NcZ8LX3T5PpXCaOdhDA5WIfxNe6r5MInejMWjj2dBFnNCG2eTSA=&quot;</span><span class="punctuation">,</span><span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span><span class="string">&quot;&#123;f2f8705f-9210-42f6-b74a-de8f7d48d90a&#125;&quot;</span><span class="punctuation">,</span><span class="attr">&quot;encType&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span><span class="attr">&quot;timeCreated&quot;</span><span class="punctuation">:</span><span class="number">1620471029427</span><span class="punctuation">,</span><span class="attr">&quot;timeLastUsed&quot;</span><span class="punctuation">:</span><span class="number">1620471029427</span><span class="punctuation">,</span><span class="attr">&quot;timePasswordChanged&quot;</span><span class="punctuation">:</span><span class="number">1620471029427</span><span class="punctuation">,</span><span class="attr">&quot;timesUsed&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;disabledHosts&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">,</span><span class="attr">&quot;potentiallyVulnerablePasswords&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">&quot;dismissedBreachAlertsByLoginGUID&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就是db文件了，打开发现也是乱码</p>
+<p>然后根据题目名称FireFox Forensics可以判断这是火狐的账号密码</p>
+<p>于是使用Firepwd进行解密，我们将key4.db和logins.json复制到Firepwd目录下，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python firepwd.py</span><br></pre></td></tr></table></figure>
+
+<p>发现其破解了账号和密码，密码就是flag</p>
+
+
+<p>flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GKCTF&#123;9cf21dda-34be-4f6c-a629-9c4647981ad7&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="11-QSSTV"><a href="#11-QSSTV" class="headerlink" title="11.QSSTV"></a>11.QSSTV</h2><p>这个就是一个音频隐写，我也不知道是什么原理</p>
+<p>题目来源<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[MRCTF2020]%E6%91%87%E6%BB%9ADJ%EF%BC%88%E5%BB%BA%E8%AE%AE%E5%A4%A7%E5%A3%B0%E6%92%AD%E6%94%BE"><code>[MRCTF2020]摇滚DJ（建议大声播放</code></a></p>
+<p>我们下载得到一个wan文件，但是使用audacity打开发现什么都没有</p>
+
+
+<p>看了题解使用的是QSSTV隐写</p>
+<p>直接打开kali自带的QSSTV，然后直接加载文件就可以拿到一张带有flag的图片</p>
+
+
+<p>flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">merak&#123;r3ce1ved_4n_img&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="12-文件恢复和镜像挂载"><a href="#12-文件恢复和镜像挂载" class="headerlink" title="12.文件恢复和镜像挂载"></a>12.文件恢复和镜像挂载</h2><p>题目来源<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[XMAN2018%E6%8E%92%E4%BD%8D%E8%B5%9B]file">[XMAN2018排位赛]file</a></p>
+<p>我们下载下来是一个img后缀文件，属于光盘镜像文件，打开发现文件损坏，我们尝试使用foremost提取文件发现得到一堆图片，但是没有flag</p>
+<p>看了题解之后才知道foremost不能提取被删除的文件，这里的删除不是完全不见了，更类似于被文件系统删除了然后放入回收站了，文件数据仍然在但是文件系统中已经无法访问了</p>
+<p>我们先尝试对其进行挂载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount /home/kali/Desktop/attachment.img /mnt</span><br></pre></td></tr></table></figure>
+
+<p>然后我们打开文件夹发现和之前提取出来的图片一样</p>
+
+
+<p>不知道为什么大佬们说ls命令发现<code>lost+found</code>文件就意味着有文件被删除，但是下次遇到记得尝试一下就行了</p>
+<p>我们使用文件恢复工具extundelete先查看文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> extundelete attachment.img --inode 2</span><br></pre></td></tr></table></figure>
+
+<p>发现有一个隐藏图片被删除了</p>
+
+
+<p>然后尝试恢复Inode为18的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 恢复inode为18的文件：</span></span><br><span class="line"><span class="built_in">sudo</span> extundelete attachment.img --restore-inode 18</span><br><span class="line"><span class="comment"># 恢复文件名为.cat.jpg的文件：</span></span><br><span class="line"><span class="built_in">sudo</span> extundelete attachment.img --restore-file .cat.jpg</span><br></pre></td></tr></table></figure>
+
+<p>得到文件file.18，打开直接获得flag</p>
+
+
+<p>然后我们也可以直接将整个镜像文件进行恢复</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extundelete attachment.img --restore-all</span><br></pre></td></tr></table></figure>
+
+<p>只不过恢复的文件会有点乱</p>
+<h2 id="13-F5隐写"><a href="#13-F5隐写" class="headerlink" title="13.F5隐写"></a>13.F5隐写</h2><p>题目来源<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#%E5%88%B7%E6%96%B0%E8%BF%87%E7%9A%84%E5%9B%BE%E7%89%87">buuctf刷新过的图片</a></p>
+<p>拿到一张图片什么都没有发现，然后题目提示我们’浏览图片的时候刷新键有没有用呢’</p>
+<p>然后发现图片和刷新根本就没有关系，题解说键盘上的刷新键是F5键，所以是F5隐写，有点脑洞，而且我连F5隐写也不知道</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/matthewgao/F5-steganography">F5-steganography</a>隐写工具</p>
+<p>这个需要在Linux系统下运行，先下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/matthewgao/F5-steganography</span><br></pre></td></tr></table></figure>
+
+<p>然后这个工具需要JDK11，kali自带的版本肯定是高了的，我们需要换JDK版本</p>
+<p>然后进行隐写会得到一个output.txt文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java Extract /home/kali/Desktop/Misc.jpg</span><br></pre></td></tr></table></figure>
+
+<p>我们打开发现是一个压缩包，改后缀为zip然后伪加密即可拿到flag</p>
+<h2 id="14-文字盲水印"><a href="#14-文字盲水印" class="headerlink" title="14.文字盲水印"></a>14.文字盲水印</h2><p>这个也是考的偏的没边了，之前那个图片盲水印好歹可以判断一下（题目会给你两张看起来一样的图片去提取盲水印） ，这个就是看起来像是零宽字节隐写，但是实际上要先进行文字盲水印解密</p>
+<p>如果要说有什么特征的话就是字符数目会特别多，有一万多</p>
+<p>题目来源<a target="_blank" rel="noopener" href="https://gz.imxbt.cn/games/32/challenges#1133-%E6%98%9F%E9%AB%93%E5%AE%9D%E7%9B%92">ISCTF2025 星髓宝盒</a></p>
+<p>我们直接跳到密文那里</p>
+
+
+<p>看起来是和零宽字符隐写一样</p>
+<p><a target="_blank" rel="noopener" href="https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html">文字盲水印解密网站https://www.guofei.site/pictures_for_blog&#x2F;app&#x2F;text_watermark&#x2F;v1.html</a></p>
+<p>我们拿到的密文是零宽字符隐写</p>
+
+
+<p>然后这个工具也是开源的</p>
 
   </div>
   
@@ -2685,10 +2826,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-30T19:40:21+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-23T16:07:38+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：May 30, 2025</p>
+    <p>更新于：Dec 23, 2025</p>
   </a>
 </div>
 
@@ -2831,7 +2972,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-logo%E8%AF%AD%E8%A8%80"><span class="toc-text">1.logo语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TTL%E9%9A%90%E5%86%99"><span class="toc-text">2.TTL隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-text">3.可执行文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B1%89%E4%BF%A1%E7%A0%81"><span class="toc-text">4.汉信码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%96%87%E4%BB%B6%E6%8B%BC%E6%8E%A5%E5%92%8C%E8%84%9A%E6%9C%AC%E8%A7%A3%E7%A0%81"><span class="toc-text">5.文件拼接和脚本解码</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-logo%E8%AF%AD%E8%A8%80"><span class="toc-text">1.logo语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TTL%E9%9A%90%E5%86%99"><span class="toc-text">2.TTL隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-text">3.可执行文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B1%89%E4%BF%A1%E7%A0%81"><span class="toc-text">4.汉信码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%96%87%E4%BB%B6%E6%8B%BC%E6%8E%A5%E5%92%8C%E8%84%9A%E6%9C%AC%E8%A7%A3%E7%A0%81"><span class="toc-text">5.文件拼接和脚本解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-wav%E6%96%87%E4%BB%B6%E9%A2%91%E8%B0%B1%E5%9B%BE"><span class="toc-text">6.wav文件频谱图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%97%B6%E9%97%B4%E8%BD%B4%E9%9A%90%E5%86%99"><span class="toc-text">7.时间轴隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-AES%E5%8A%A0%E5%AF%86"><span class="toc-text">8.AES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-gcode"><span class="toc-text">9.gcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Firepwd"><span class="toc-text">10.Firepwd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-QSSTV"><span class="toc-text">11.QSSTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E5%92%8C%E9%95%9C%E5%83%8F%E6%8C%82%E8%BD%BD"><span class="toc-text">12.文件恢复和镜像挂载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-F5%E9%9A%90%E5%86%99"><span class="toc-text">13.F5隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E6%96%87%E5%AD%97%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">14.文字盲水印</span></a></li></ol>
     </div>
   </section>
 
@@ -3401,7 +3542,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/23/Misc笔记/","name":"Misc笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Misc笔记","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/23/Misc%E7%AC%94%E8%AE%B0/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/23/Misc%E7%AC%94%E8%AE%B0/","wordCount":0,"datePublished":"2025-05-23T14:04:30.000Z","dateModified":"2025-05-30T11:40:21.071Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/23/Misc笔记/","name":"Misc笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Misc笔记","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/23/Misc%E7%AC%94%E8%AE%B0/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/23/Misc%E7%AC%94%E8%AE%B0/","wordCount":0,"datePublished":"2025-05-23T14:04:30.000Z","dateModified":"2025-12-23T08:07:38.904Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

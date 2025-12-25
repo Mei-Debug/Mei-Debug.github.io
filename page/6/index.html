@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1755671576829),
+    lastupdate: new Date(1766667328040),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2520,7 +2520,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/16/XML/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/08/CTFSHOW-萌新记忆/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2538,20 +2538,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/16/XML/"  itemprop="url">
-        XML
+      <a href="/2025/09/08/CTFSHOW-%E8%90%8C%E6%96%B0%E8%AE%B0%E5%BF%86/"  itemprop="url">
+        CTFSHOW_萌新记忆
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        XML学习笔记前言好久没写这种知识点的笔记了，本来以为xml文件挺简单的，但是发现还是有必要写笔记来总结一下。要学的不仅是xml文件，还有xpath注入等和xml有关的知识点
-1.XML简介简单了解XML：
-
-XML 指可扩展标记语言（EXtensible Markup Language）
-XML 是一种标记语言，很类似 HTML
-XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
+        CTFSHOW_萌新记忆不愧是萌新记忆，突然就想起刚开始学sql注入的时候了，这个题目我感觉还是有点难度而且我思路也不是特别好
+我们扫描目录发现有/admin/目录访问发现一个登录框，尝试进行sql注入发现过滤了注释符和or和and，不得不说光过滤or已经可以让我喝一壶了，我还要去找东西替代information，这次过滤1了注释符也是一个需要注意的地方，喝盲注的思路有关
+12u=admin...
       
     
   </div>
@@ -2559,12 +2556,12 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-16T17:25:17+08:00">2025-05-16</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-09-08T21:03:15+08:00">2025-09-08</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/16/XML/' itemprop="url">
+          <a class='readmore' href='/2025/09/08/CTFSHOW-%E8%90%8C%E6%96%B0%E8%AE%B0%E5%BF%86/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2580,7 +2577,7 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/14/WMCTF2020-Make-PHP-Great-Again-2-0/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/07/bestphp-s-revenge/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2598,17 +2595,15 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/14/WMCTF2020-Make-PHP-Great-Again-2-0/"  itemprop="url">
-        [WMCTF2020]Make_PHP_Great_Again_2.0
+      <a href="/2025/09/07/bestphp-s-revenge/"  itemprop="url">
+        bestphp's_revenge
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [WMCTF2020]Make_PHP_Great_Again_2.0123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;
-
-看...
+        bestphp’s_revenge123456789101112&lt;?phphighlight_file(__FILE__);$b = &#x27;implode&#x27;;call_user_func($_GET[&#x27;f&#x27;], $_POST);session_start();if (isset($_GET[&#x27;name&#x27;])) &#123;    ...
       
     
   </div>
@@ -2616,12 +2611,12 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-14T15:32:08+08:00">2025-05-14</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-09-07T17:17:02+08:00">2025-09-07</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/14/WMCTF2020-Make-PHP-Great-Again-2-0/' itemprop="url">
+          <a class='readmore' href='/2025/09/07/bestphp-s-revenge/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2637,7 +2632,7 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/14/GoogleCTF2019-Quals-Bnv/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/06/GYCTF2020-Easyphp-1/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2655,20 +2650,17 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/14/GoogleCTF2019-Quals-Bnv/"  itemprop="url">
-        [GoogleCTF2019_Quals]Bnv
+      <a href="/2025/09/06/GYCTF2020-Easyphp-1/"  itemprop="url">
+        [GYCTF2020]Easyphp
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [GoogleCTF2019_Quals]Bnv这是一个比较难的XXE的题目，XXE之前在ctfshow的时候就没怎么写过，现在更是毫无思路，还得从xml开始学
-现在我看得懂xml和dtd了，也该来写这个题目了
-
-
-界面就是一个提交按钮和一个下拉框，上面的被确定是盲文，但是解密出来也没有什么有用的信息
-我们尝试抓包，发现传递了json数据，大佬说传递json数据时会有XXE漏洞，但是我不知道...
+        [GYCTF2020]Easyphp题目界面是一个登录框发现存在admin账号而且存在密码错误的提示，然后访问www.zip成功下载源码
+核心代码lib.php
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626...
       
     
   </div>
@@ -2676,12 +2668,12 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-14T15:18:00+08:00">2025-05-14</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-09-06T15:13:33+08:00">2025-09-06</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/14/GoogleCTF2019-Quals-Bnv/' itemprop="url">
+          <a class='readmore' href='/2025/09/06/GYCTF2020-Easyphp-1/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2697,7 +2689,7 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/13/Black-Watch-入群题-Web/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/02/NSSCTF-2nd-php签到/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2715,22 +2707,16 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/13/Black-Watch-%E5%85%A5%E7%BE%A4%E9%A2%98-Web/"  itemprop="url">
-        [Black_Watch_入群题]Web
+      <a href="/2025/09/02/NSSCTF-2nd-php%E7%AD%BE%E5%88%B0/"  itemprop="url">
+        [NSSCTF_2nd]php签到
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [Black_Watch_入群题]Web这个题目和前面几个比起来，竟然是出奇的容易了一点，就是一个简单的sql布尔忙抓题目，只是注入点比较难找
-打开界面有三个界面和一个登录界面，登录试了一下没sql注入，应该也不是弱口令，突破口应该在那三个界面
-
-
-当我们点进去后发现url中出现了一个疑似参数的地方，我们改变数字还会跳转到其他界面，于是怀疑这里有传参，直接抓参数包看看
-
-
-发现通过GET请求...
+        [NSSCTF_2nd]php签到没想到一个3.3评分的题目也不会做，见多识广
+123456789101112131415161718192021222324 &lt;?phpfunction waf($filename)&#123;    $black_list = array(&quot;ph&quot;, &quot;htaccess&quot;, &quot;ini&quot;); ...
       
     
   </div>
@@ -2738,12 +2724,12 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-13T20:34:05+08:00">2025-05-13</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-09-02T15:05:41+08:00">2025-09-02</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/13/Black-Watch-%E5%85%A5%E7%BE%A4%E9%A2%98-Web/' itemprop="url">
+          <a class='readmore' href='/2025/09/02/NSSCTF-2nd-php%E7%AD%BE%E5%88%B0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2759,7 +2745,7 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/12/PASECA2019-honey-shop/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/29/华夏-ERP-CMS-v2-3漏洞复现/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2777,25 +2763,18 @@ XML 被设计为传输和存储数据，其焦点是数据的内容 XML ...
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/12/PASECA2019-honey-shop/"  itemprop="url">
-        [PASECA2019]honey_shop
+      <a href="/2025/08/29/%E5%8D%8E%E5%A4%8F-ERP-CMS-v2-3%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"  itemprop="url">
+        华夏_ERP_CMS_v2.3漏洞复现
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [PASECA2019]honey_shop妈的，终于来了一个我可以看懂的题目了，最近全是代码审计题，快晕了
-我们进入界面是一个购买蜂蜜的的界面，我们距离买到flag还差亿元，看来还是需要改金额
-
-
-我们直接抓购买包发现POST请求传递了一个item&#x3D;1，我们可以通过改变序号去改变商品。
-
-
-cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
-
-
-这种我之前见到过，fl...
+        华夏_ERP_CMS_v2.3漏洞复现本来是想审PHP代码去漏洞挖掘的，但是部署了两个靶场都是不怎么适合我，于是就再从网上找了一个比较热门的靶场，也方便找漏洞解析，不用去CVE上面找那些漏洞了，CVE上的远古漏洞信息太少了
+项目部署
+我们从github上下载好源码后通过IDEA打开项目然后进行数据库配置
+1jshERP-2.3\src\main\resources\application.p...
       
     
   </div>
@@ -2803,12 +2782,12 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-12T14:55:53+08:00">2025-05-12</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-08-29T13:09:00+08:00">2025-08-29</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/12/PASECA2019-honey-shop/' itemprop="url">
+          <a class='readmore' href='/2025/08/29/%E5%8D%8E%E5%A4%8F-ERP-CMS-v2-3%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2824,7 +2803,7 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/11/SWPU2019-Web4/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/25/Opencart1-5-6-4漏洞复现/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2842,17 +2821,17 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/11/SWPU2019-Web4/"  itemprop="url">
-        [SWPU2019]Web4
+      <a href="/2025/08/25/Opencart1-5-6-4%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"  itemprop="url">
+        Opencart1.5.6.4漏洞复现
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [SWPU2019]Web4这个题目首先是一个登录框，点击注册功能发现未开放，我们尝试登录
-抓包发现，username和passwd以json数据的形式传输，怀疑sql注入，尝试万能密码发现无回显，且只存在语法错误和账号密码错误两种结果，并且存在过滤，发现当出现被过滤的关键词的时候，即使语法错误也会显示密码错误
-由于无回显，我们只能使用盲注，布尔盲注需要对不同的布尔值有不同的回显(很明显，这...
+        Opencart1.5.6.4漏洞复现这是一个估计是14年左右的电商平台，也是奔着这个漏洞多，代码简单拿来漏洞复现试下手，虽然是想尝试挖一下洞的，但是还是要尊重一手，网上现在没有什么直接的payload，不看源码纯挖洞的话还是做不到
+路由解析方式我觉得无论是在哪个框架中，我想要进行代码审计都必须知道这个框架的路由解析方式，不然即使漏洞触发了也没法找到对应的代码进行审计。
+我们先来看Index...
       
     
   </div>
@@ -2860,12 +2839,12 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-11T15:21:33+08:00">2025-05-11</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-08-25T10:35:48+08:00">2025-08-25</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/11/SWPU2019-Web4/' itemprop="url">
+          <a class='readmore' href='/2025/08/25/Opencart1-5-6-4%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2881,7 +2860,7 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/09/HFCTF2020-BabyUpload/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/23/LiCTF2025/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2899,16 +2878,16 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/09/HFCTF2020-BabyUpload/"  itemprop="url">
-        [HFCTF2020]BabyUpload
+      <a href="/2025/08/23/LiCTF2025/"  itemprop="url">
+        LiCTF2025
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [HFCTF2020]BabyUpload简直了，babyupload和文件上传已经远离了，题目直接给出了源码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475...
+        LiCTF2025web1.ez_bottle这个题目直接给了源码我们下载下来
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283...
       
     
   </div>
@@ -2916,12 +2895,12 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-09T20:14:43+08:00">2025-05-09</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-08-23T17:39:54+08:00">2025-08-23</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/09/HFCTF2020-BabyUpload/' itemprop="url">
+          <a class='readmore' href='/2025/08/23/LiCTF2025/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2937,7 +2916,7 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/07/EIS-2019-EzPOP/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/20/vulhub-ThinkPHP-5-0-23-rce漏洞复现/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2955,16 +2934,22 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/07/EIS-2019-EzPOP/"  itemprop="url">
-        [EIS_2019]EzPOP
+      <a href="/2025/08/20/vulhub-ThinkPHP-5-0-23-rce%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"  itemprop="url">
+        vulhub_ThinkPHP_5.0.23-rce漏洞复现
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [EIS_2019]EzPOP题目本来是直接给了源码的，但是我想自己去找，但是这个题目你不看源码实在看不到题目，我们需要用GET传参src，才能highlight_file
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596...
+        vulhub_ThinkPHP_5.0.23-rce漏洞复现我们先使用docker拉取镜像
+1docker compose up -d
+
+然后将源码下载下来
+1docker cp 5023-rce-web-1:/var/www ~/thinkphp5
+
+不知道为什么thinkphp5的目录结构为
+12345678/var/www/├── application/   # 应用逻辑├── th...
       
     
   </div>
@@ -2972,12 +2957,12 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-07T19:32:38+08:00">2025-05-07</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-08-20T14:39:15+08:00">2025-08-20</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/07/EIS-2019-EzPOP/' itemprop="url">
+          <a class='readmore' href='/2025/08/20/vulhub-ThinkPHP-5-0-23-rce%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2993,7 +2978,7 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/06/GXYCTF2019-BabysqliV3-0/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/18/vulhub-ThinkPHP-2-rce漏洞复现/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3011,22 +2996,18 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/06/GXYCTF2019-BabysqliV3-0/"  itemprop="url">
-        [GXYCTF2019]BabysqliV3.0
+      <a href="/2025/08/18/vulhub-ThinkPHP-2-rce%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"  itemprop="url">
+        vulhub_ThinkPHP漏洞复现
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [GXYCTF2019]BabysqliV3.0题目界面是一个登录框，以为sql要来了，结果tmd，这个题目和sql没半毛钱关系，什么时候题目都可以骗人了，搞得我想要报警
-登录框实际上是一个弱口令登录，密码甚至都给我们放在框里面了
-123adminpassword//直接登录成功
-
-登录成功后就跳转到一个文件上传的界面
-
-
-我们注意这两个地方，通过参数实现了包含upload.php，会在后面...
+        vulhub_ThinkPHP 2-rce漏洞复现暑假要结束了，结果漏洞都还没开始复现，这个暑假基本上都在写java，不仅题目没怎么写java也没怎么学，CTF之路异常坎坷啊
+想要使用vulhub复现漏洞当然使用docker，花了好多时间终于把docker和vulhub给装上了
+安装好了就直接进入vulhub对应的目录拉取镜像即可
+1234docker images #可以查看我们已经拉取的...
       
     
   </div>
@@ -3034,12 +3015,12 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-06T16:55:07+08:00">2025-05-06</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-08-18T17:59:28+08:00">2025-08-18</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/06/GXYCTF2019-BabysqliV3-0/' itemprop="url">
+          <a class='readmore' href='/2025/08/18/vulhub-ThinkPHP-2-rce%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3055,7 +3036,7 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/05/CISCN2019-华东南赛区-Web4/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/14/磐石行动/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -3073,18 +3054,17 @@ cookie中还有一串数据长得和jwt数据差不多，直接拿去解码
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/05/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Web4/"  itemprop="url">
-        [CISCN2019_华东南赛区]Web4
+      <a href="/2025/08/14/%E7%A3%90%E7%9F%B3%E8%A1%8C%E5%8A%A8/"  itemprop="url">
+        磐石行动
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        [CISCN2019_华东南赛区]Web4界面只有一个链接，我们点进去跳转至/read?url=https://baidu.com，这个直接可以怀疑ssrf漏洞了
-尝试了之后发现这个不是php的ssrf，这个代码猜测用的是flask写的，我们就只能使用local_file://进行文件读取
-local_file:///app/app.py拿到源码
-1234567891011121314151...
+        磐石行动2025初赛1.Misc为什么先从Misc开始，web除了签到题其他都不会写，官方现在也没有复现平台，也就只有Misc下载了一两个文件，而且这次我Misc有一个50分的题目都没写出来，一开始是以为我有什么东西没想到，结果流量分析考的却是我不会的东西。太菜了
+1.derderjia下载下附件是一个流量包，直接看流量发现是一个通过万能密码登录然后通过命令注入进行RCE的流量包
+题目描述为...
       
     
   </div>
@@ -3092,12 +3072,12 @@ local_file:///app/app.py拿到源码
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-05-05T21:29:55+08:00">2025-05-05</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-08-14T16:50:37+08:00">2025-08-14</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/05/05/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Web4/' itemprop="url">
+          <a class='readmore' href='/2025/08/14/%E7%A3%90%E7%9F%B3%E8%A1%8C%E5%8A%A8/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3124,7 +3104,7 @@ local_file:///app/app.py拿到源码
           </a>
         
         <p class="current">
-          6 / 11
+          6 / 17
         </p>
         
           <a class="next" rel="next" href="/page/7/">
