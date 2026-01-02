@@ -37,7 +37,7 @@ const initMain = () => {
     if (GLOBALCONFIG.mouse_click) initMouse();
     if (GLOBALCONFIG.search.enable) initSearch();
 
-    console.log("%c🐱 Them：Meow | Author：小橘猫chanwj | GitHub：https://github.com/chanwj/hexo-theme-meow", "color:#fff; background:#ffc76c; padding: 8px 15px; border-radius: 8px");
+    //console.log("%c🐱 Them：Meow | Author：小橘猫chanwj | GitHub：https://github.com/chanwj/hexo-theme-meow", "color:#fff; background:#ffc76c; padding: 8px 15px; border-radius: 8px");
   }
 
   main();
