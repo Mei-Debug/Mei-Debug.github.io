@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Regulus"/><meta name="copyright" content="Regulus"/><meta name="theme-color" content="#FFB347"/><meta name="format-detection" content="telephone=no"/><meta name="keywords" content="Metasploit,渗透"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-touch-fullscreen" content="yes"/><meta name="application-name" content="Metasploit使用教程 | Mei的小窝"/><meta name="apple-mobile-web-app-title" content="Metasploit使用教程 | Mei的小窝"/><meta name="apple-mobile-web-app-status-bar-style" content="#FFB347"/><link rel="canonical" href="http://example.com/2026/03/29/Metasploit使用教程/"/><meta name="description" content="Metasploit使用教程一开始以为渗透就是和做CTF的Web题一样，打了CCB渗透爆零之后我才知道渗透到底是什么鬼。 三个靶机18个flag结果我们队就拿了1个flag。我还什么忙都没帮上，web服务根摆设一样，和web完全不同，我基本上都不能和后端完成交互，即使触发了框架漏洞可以任意文件读取也没有思路。真的太年轻了，应该好好学习一下渗透的。 Metasploit简介Metasploit...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metasploit使用教程 | Mei的小窝">
+<meta property="og:url" content="http://example.com/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Mei的小窝">
+<meta property="og:description" content="Metasploit使用教程一开始以为渗透就是和做CTF的Web题一样，打了CCB渗透爆零之后我才知道渗透到底是什么鬼。 三个靶机18个flag结果我们队就拿了1个flag。我还什么忙都没帮上，web服务根摆设一样，和web完全不同，我基本上都不能和后端完成交互，即使触发了框架漏洞可以任意文件读取也没有思路。真的太年轻了，应该好好学习一下渗透的。 Metasploit简介Metasploit...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/assets/images/Hexo-Theme-MEOW.png">
+<meta property="article:published_time" content="2026-03-29T11:49:20.000Z">
+<meta property="article:modified_time" content="2026-03-30T13:51:22.105Z">
+<meta property="article:author" content="Regulus">
+<meta property="article:tag" content="Metasploit">
+<meta property="article:tag" content="渗透">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/assets/images/Hexo-Theme-MEOW.png"><meta name="robots" content="index,follow"/><meta name="googlebot" content="index,follow"/><meta name="revisit-after" content="1 days"/><title>Metasploit使用教程 | Mei的小窝</title><link rel="shortcut icon" href="/assets/images/Hexo-Theme-MEOW.ico"><link rel="preconnect" href="/assets"/><link rel="preconnect" href="assets"/>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="prefetch" href="/"/><link rel="prefetch" href="/archives"/><link rel="prefetch" href="/tags"/><meta name="generator" content="Hexo 7.3.0"></head><body bg-style="none"><header><div id="navbar"><div id="nav-info"><a id="site-icon" href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a id="site-name" href="/" title="主页"><div>Mei的小窝</div><img src="/assets/images/svg/uc/uc-home.svg" class="icon noview" alt="Icon"></a></div><div id="nav-menu"><div class="menu-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="sub-menu-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div></div><div id="nav-function"><div id="search-btn"><a href="javascript:void(0);" title="搜索" accesskey="s"><img src="/assets/images/svg/uc/uc-search.svg" class="icon noview" alt="Icon"><span>搜索</span></a></div><div id="menu-btn"><a href="javascript:void(0);" title="打开菜单"><img src="/assets/images/svg/uc/uc-menu.svg" class="icon noview" alt="Icon"></a></div></div></div></header><div id="menu-aside"><div id="menu-aside-container"><div id="menu-aside-info"><a href="/" title="主页"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></a><a href="/" title="主页">Mei的小窝</a></div><div class="menu-aside-item"><a href="javascript:void(0);"><img src="/assets/images/svg/uc/uc-article.svg" class="icon noview" alt="Icon"><span>文章</span></a><ul class="menu-aside-sub-item"><li><a href="/archives"><img src="/assets/images/svg/uc/uc-archive.svg" class="icon noview" alt="Icon"><span>归档</span></a></li><li><a href="/categories"><img src="/assets/images/svg/uc/uc-category.svg" class="icon noview" alt="Icon"><span>分类</span></a></li><li><a href="/tags"><img src="/assets/images/svg/uc/uc-tag.svg" class="icon noview" alt="Icon"><span>标签</span></a></li><li><a href="/about"><img src="/assets/images/svg/uc/uc-about.svg" class="icon noview" alt="Icon"><span>关于</span></a></li></ul></div><hr/></div></div><main><div class="banner"><div class="banner-info"><div class="banner-avatar"><img src="/assets/images/Hexo-Theme-MEOW.png" alt="Avatar"/></div><div class="banner-title">「 Mei的小窝 」</div></div></div><div class="post-container"><div class="post-main"><div class="post-content"><h1 class="post-title">Metasploit使用教程</h1><div class="post-author"><span>作者: Regulus</span></div><div class="post-meta"><div class="post-info"><div class="post-date"><div class="post-pubdate"><img src="/assets/images/svg/ta/ta-pubdate.svg" class="icon noview" alt="Icon"><span>发表于2026-03-29</span></div><div class="post-update"><img src="/assets/images/svg/ta/ta-update.svg" class="icon noview" alt="Icon"><span>更新于2026-03-30</span></div></div><div class="post-read"><div class="post-wordcount"><img src="/assets/images/svg/ta/ta-write.svg" class="icon noview" alt="Icon"><span>总字数: 2.4k字</span></div><div class="post-readtime"><img src="/assets/images/svg/ta/ta-time.svg" class="icon noview" alt="Icon"><span>阅读时长: 8分钟</span></div><div class="post-pageview"><img src="/assets/images/svg/ta/ta-fire.svg" class="icon noview" alt="Icon"><span>访问量: </span><span id="vercount_value_page_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div><div class="post-attribute"><div class="post-categories"><img src="/assets/images/svg/ta/ta-category.svg" class="icon noview" alt="Icon"><span><a class="post-categories-link" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a><a class="post-categories-link" href="/categories/%E6%B8%97%E9%80%8F/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%AD%A6%E4%B9%A0/">工具使用学习</a></span></div><div class="post-tags"><img src="/assets/images/svg/ta/ta-tag.svg" class="icon noview" alt="Icon"><span><a class="post-tags-link" href="/tags/Metasploit/" rel="tag">Metasploit</a><a class="post-tags-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a></span></div></div></div><div class="post markdown" indent="false"><h1 id="Metasploit使用教程"><a href="#Metasploit使用教程" class="headerlink" title="Metasploit使用教程"></a>Metasploit使用教程</h1><p>一开始以为渗透就是和做CTF的Web题一样，打了CCB渗透爆零之后我才知道渗透到底是什么鬼。</p>
+<p>三个靶机18个flag结果我们队就拿了1个flag。我还什么忙都没帮上，web服务根摆设一样，和web完全不同，我基本上都不能和后端完成交互，即使触发了框架漏洞可以任意文件读取也没有思路。真的太年轻了，应该好好学习一下渗透的。</p>
+<h2 id="Metasploit简介"><a href="#Metasploit简介" class="headerlink" title="Metasploit简介"></a>Metasploit简介</h2><p><strong>Metasploit</strong>全称<strong>Metasploit Framework</strong>也就是MSF，其中msfconsole是<strong>Metasploit Framework 的主控制台程序</strong>，它是用户与 Metasploit 交互最常用的方式。</p>
+<p>也就是说Metasploit其实不是一个程序，而是一个框架，其集成了：</p>
+<ul>
+<li><strong>漏洞利用模块（Exploits）</strong>：成千上万个已知漏洞的攻击代码。利用目标系统的已知漏洞进行初步入侵。</li>
+<li><strong>载荷生成器（Payloads）</strong>：攻击成功后执行的代码（如反弹Shell、添加用户、执行命令）。</li>
+<li><strong>辅助工具（Auxiliary）</strong>：扫描、枚举、模糊测试等，不会直接利用漏洞。</li>
+<li><strong>编码器（Encoders）</strong>：用于对payload进行编码，以绕过简单的防护机制，免杀、绕过防火墙。</li>
+<li><strong>后渗透工具（Post）</strong>：提权、信息收集、横向移动。</li>
+<li><strong>免杀工具（Evasion）</strong>：和编码器不同，不是通过编码去绕过waf。而是例如生成一些文件格式混淆的免杀样本去绕过一些高级的防护系统。</li>
+</ul>
+<p>这些模块下还有很多子模块，但是太多了用到的时候再学。</p>
+<p>然后我们在kali中可以通过msfconsole这个程序去和我们的Metasploit框架进行交互。</p>
+<p>我们来到kali的<code>/usr/share/metasploit-framework/modules/</code>目录下就可以看的框架的各个模块</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260329200424537.png" class title="image-20260329200424537">
+
+
+
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>只是为了先熟悉一下简单的使用。靶场使用的是vulnhub的DC-1</p>
+<p>我们直接在命令行通过msfconsole和msf框架进行交互</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260329203506064.png" class title="image-20260329203506064">
+
+
+
+<h3 id="1-Auxiliary进行漏洞探测"><a href="#1-Auxiliary进行漏洞探测" class="headerlink" title="1.Auxiliary进行漏洞探测"></a>1.Auxiliary进行漏洞探测</h3><p>我们先通过插件获取靶场是Drupal</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260329203627031.png" class title="image-20260329203627031">
+
+<p>然后直接查找Drupal关键词</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search Drupal</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后我们锁定到一个Auxiliary模块下和Drupal有关的一个探测</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260329205202844.png" class title="image-20260329205202844">
+
+<p>根据名字<code>auxiliary/scanner/http/drupal_views_user_enum</code>我们可以判断这是一个用户枚举的探测</p>
+<p>也就是通过发送不同的参数比如<code>/?q=user/1</code>、<code>/?q=user/2</code> 等，然后根据存在用户和不存在用户响应200和404等不同响应判断用户是否存在。</p>
+<p>这个探测在渗透里面几乎没有，DC-1中也应该没有用户，但是我也懒得去找刚好能探测出的靶场了。</p>
+<p>使用<code>show options</code>命令我们可以看到这个探测器需要的参数</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260329210312416.png" class title="image-20260329210312416">
+
+<p>其中我们一般只需要看必须和没有默认值的参数，这里就是RHOSTS，也就是我们的目标ip。这个是每个探测和攻击的必须参数，可以是单独ip也可以是一个范围。</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单个ip</span></span><br><span class="line"><span class="built_in">set</span> rhosts 192.168.164.130</span><br><span class="line"><span class="comment"># 范围ip</span></span><br><span class="line"><span class="built_in">set</span> rhosts 192.168.162.100-192.168.162.200</span><br><span class="line"><span class="comment"># 文本 每一行一个ip</span></span><br><span class="line"><span class="built_in">set</span> rhosts file:/tmp/drupal_hosts.txt</span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后输入run允许</p>
+<p>然后被探测到的会返回<code>[+]</code>，我的没有探测到用下别的探测结果</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/3422477-20251030162533747-1101528620.png" class title="image-20250123180354213">
+
+
+
+<h3 id="2-Exploit对漏洞进行利用"><a href="#2-Exploit对漏洞进行利用" class="headerlink" title="2.Exploit对漏洞进行利用"></a>2.Exploit对漏洞进行利用</h3><p>我们可以根据search 匹配到的exploit对靶机进行攻击，我们选择对应的exploit后可以通过info来查看漏洞和payload的具体信息</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(unix/webapp/drupal_drupalgeddon2) &gt; info</span><br><span class="line"></span><br><span class="line"><span class="comment">#攻击模块的基本信息</span></span><br><span class="line">       Name: Drupal Drupalgeddon 2 Forms API Property Injection</span><br><span class="line">     Module: exploit/unix/webapp/drupal_drupalgeddon2</span><br><span class="line">   <span class="comment">#漏洞平台 PHP指的是PHP服务 Unix和Linux则是PHP服务运行的操作系统</span></span><br><span class="line">   Platform: PHP, Unix, Linux</span><br><span class="line">   <span class="comment"># Arch则是漏洞利用成功可以执行php代码和cmd命令</span></span><br><span class="line">       Arch: php, cmd, x86, x64</span><br><span class="line"> <span class="comment">#不是提权权限而是web权限</span></span><br><span class="line"> Privileged: No</span><br><span class="line">    License: Metasploit Framework License (BSD)</span><br><span class="line">       Rank: Excellent</span><br><span class="line">  Disclosed: 2018-03-28</span><br><span class="line"></span><br><span class="line">Provided by:</span><br><span class="line">  Jasper Mattsson</span><br><span class="line">  a2u</span><br><span class="line">  Nixawk</span><br><span class="line">  FireFart</span><br><span class="line">  wvu &lt;wvu@metasploit.com&gt;</span><br><span class="line"></span><br><span class="line">Module stability:</span><br><span class="line"> crash-safe</span><br><span class="line"></span><br><span class="line"><span class="comment">#不同的攻击方式，自动选择会自动尝试不需要指定版本</span></span><br><span class="line">Available targets:</span><br><span class="line">      Id  Name</span><br><span class="line">      --  ----</span><br><span class="line">  =&gt;  0   Automatic (PHP In-Memory)#通过内存shell</span><br><span class="line">      1   Automatic (PHP Dropper)#文件上传进行攻击</span><br><span class="line">      2   Automatic (Unix In-Memory)#通过Unix内存shell不依赖php环境</span><br><span class="line">      3   Automatic (Linux Dropper)#也是文件上传但是上传一个类似sh文件不依赖php环境</span><br><span class="line">      4   Drupal 7.x (PHP In-Memory)</span><br><span class="line">      5   Drupal 7.x (PHP Dropper)</span><br><span class="line">      6   Drupal 7.x (Unix In-Memory)</span><br><span class="line">      7   Drupal 7.x (Linux Dropper)</span><br><span class="line">      8   Drupal 8.x (PHP In-Memory)</span><br><span class="line">      9   Drupal 8.x (PHP Dropper)</span><br><span class="line">      10  Drupal 8.x (Unix In-Memory)</span><br><span class="line">      11  Drupal 8.x (Linux Dropper)</span><br><span class="line"></span><br><span class="line">Check supported:</span><br><span class="line">  Yes</span><br><span class="line"></span><br><span class="line"><span class="comment">#参数</span></span><br><span class="line">Basic options:</span><br><span class="line">  Name         Current Setting  Required  Description</span><br><span class="line">  ----         ---------------  --------  -----------</span><br><span class="line">  DUMP_OUTPUT  <span class="literal">false</span>            no        Dump payload <span class="built_in">command</span> output</span><br><span class="line">  PHP_FUNC     passthru         <span class="built_in">yes</span>       PHP <span class="keyword">function</span> to execute</span><br><span class="line">  Proxies                       no        A proxy chain of format <span class="built_in">type</span>:host:port[,<span class="built_in">type</span>:host:port][...]</span><br><span class="line">  RHOSTS                        <span class="built_in">yes</span>       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploi</span><br><span class="line">                                          t.html</span><br><span class="line">  RPORT        80               <span class="built_in">yes</span>       The target port (TCP)</span><br><span class="line">  SSL          <span class="literal">false</span>            no        Negotiate SSL/TLS <span class="keyword">for</span> outgoing connections</span><br><span class="line">  TARGETURI    /                <span class="built_in">yes</span>       Path to Drupal install</span><br><span class="line">  VHOST                         no        HTTP server virtual host</span><br><span class="line"></span><br><span class="line">Payload information:</span><br><span class="line">  Avoid: 3 characters</span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line">  This module exploits a Drupal property injection <span class="keyword">in</span> the Forms API.</span><br><span class="line">  <span class="comment">#该漏洞支持的版本</span></span><br><span class="line">  Drupal 6.x, &lt; 7.58, 8.2.x, &lt; 8.3.9, &lt; 8.4.6, and &lt; 8.5.1 are vulnerable.</span><br><span class="line"></span><br><span class="line"><span class="comment">#一些CVE的链接</span></span><br><span class="line">References:</span><br><span class="line">  https://nvd.nist.gov/vuln/detail/CVE-2018-7600</span><br><span class="line">  https://www.drupal.org/sa-core-2018-002</span><br><span class="line">  https://greysec.net/showthread.php?tid=2912</span><br><span class="line">  https://research.checkpoint.com/uncovering-drupalgeddon-2/</span><br><span class="line">  https://github.com/a2u/CVE-2018-7600</span><br><span class="line">  https://github.com/nixawk/labs/issues/19</span><br><span class="line">  https://github.com/FireFart/CVE-2018-7600</span><br><span class="line"></span><br><span class="line">Also known as:</span><br><span class="line">  SA-CORE-2018-002</span><br><span class="line">  Drupalgeddon 2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View the full module info with the info -d <span class="built_in">command</span>.</span><br><span class="line"></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>我们可以凭借info的输出来判断漏洞的利用程度以及攻击方式，和我们需要完成的一些条件，比如必须登录账号等。</p>
+<p>我们也可以不用info来输出全部信息，而是通过<code>show options , show taregts</code>等来指定信息输出。</p>
+<p>我们在满足参数和攻击平台的要求后，我们就需要选择payload，当然不选的话会直接使用默认的payload，我们可以通过<code>show payloads</code>命令查看可以使用的payload</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260330150224089.png" class title="image-20260330150224089">
+
+<p>我们选择几条来分析，这些主要分为三类分别是Meterpreter类，shell类，一次性执行类类。</p>
+<div class="code-container" code-lang="Php"><div class="codebox"><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Meterpreter类 通过Meterpreter模块进行攻击包括shell sysinfo等功能最强大shell可以直接命令行</span></span><br><span class="line">   <span class="number">6</span>   payload/multi/meterpreter/reverse_http      .                normal  No     Architecture-Independent Meterpreter Stage, Reverse HTTP <span class="title function_ invoke__">Stager</span> (Multiple Architectures)</span><br><span class="line">   <span class="number">7</span>   payload/multi/meterpreter/reverse_https     .                normal  No     Architecture-Independent Meterpreter Stage, Reverse HTTPS <span class="title function_ invoke__">Stager</span> (Multiple Architectures)</span><br><span class="line">   <span class="number">8</span>   payload/php/bind_perl                       .                normal  No     PHP Command Shell, Bind <span class="title function_ invoke__">TCP</span> (via Perl)</span><br><span class="line"><span class="comment">//shell类，类似反弹shell</span></span><br><span class="line">   <span class="number">2</span>   payload/generic/shell_bind_aws_ssm          .                normal  No     Command Shell, Bind <span class="title function_ invoke__">SSM</span> (via AWS API)</span><br><span class="line">   <span class="number">3</span>   payload/generic/shell_bind_tcp              .                normal  No     Generic Command Shell, Bind TCP Inline</span><br><span class="line">   <span class="number">4</span>   payload/generic/shell_reverse_tcp           .                normal  No     Generic Command Shell, Reverse TCP Inline</span><br><span class="line"><span class="comment">//一次性执行类，无交互触发对应的功能</span></span><br><span class="line">   <span class="number">12</span>  payload/php/download_exec                   .                normal  No     PHP Executable Download <span class="keyword">and</span> Execute<span class="comment">//文件下载</span></span><br><span class="line">   <span class="number">13</span>  payload/php/exec                            .                normal  No     PHP Execute Command<span class="comment">//命令执行</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>然后那些描述我们主要是关系shell是正向连接还是反向连接，其中区别为</p>
+<ul>
+<li>正向连接：在msf中通常是指，bind_tcp，定义–攻击机主动发起连接靶机，连接到目标靶机特定的一个端口，目标机器也需要开启一个监听端口，比如tcp监听</li>
+<li>反向连接：在msf中通常是指，reverse_tcp，定义–更常用，通过设置reverse_tcp攻击载荷可以轻松实现反弹，监听只需要在本机开启监听端口。反弹shell就是反向连接，通过目标靶机去连接攻击机。</li>
+<li>主要区别就是公网和局域网的不同利用，正向连接通常攻击机用在局域网中不能访问 外网靶机，反向连接需要两个机器都需要能互相ping</li>
+</ul>
+<p>我们使用一个反向连接来测试</p>
+<p>成功连接</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260330152445351.png" class title="image-20260330152445351">
+
+
+
+<h3 id="3-Meterpreter进行攻击"><a href="#3-Meterpreter进行攻击" class="headerlink" title="3.Meterpreter进行攻击"></a>3.Meterpreter进行攻击</h3><p>我们漏洞利用成功后可以使用Meterpreter模块进行攻击，但是Meterpreter的命令实在太多了，不同的payload可以使用的命令也不同，但是核心命令基本上相同，于是我就记一下核心命令，等到要用的时候直接<code>?</code>可以查看当前可用命令</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">别名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>?</code></td>
+<td align="left">-</td>
+<td align="left">显示帮助菜单</td>
+</tr>
+<tr>
+<td align="left"><code>background</code></td>
+<td align="left"><code>bg</code></td>
+<td align="left">将当前会话挂入后台</td>
+</tr>
+<tr>
+<td align="left"><code>bgkill</code></td>
+<td align="left">-</td>
+<td align="left">终止正在运行的后台脚本</td>
+</tr>
+<tr>
+<td align="left"><code>bglist</code></td>
+<td align="left">-</td>
+<td align="left">列出所有后台运行的脚本</td>
+</tr>
+<tr>
+<td align="left"><code>bgrun</code></td>
+<td align="left">-</td>
+<td align="left">以后台线程方式运行一个 Meterpreter 脚本</td>
+</tr>
+<tr>
+<td align="left"><code>channel</code></td>
+<td align="left">-</td>
+<td align="left">查看或控制活动通信频道</td>
+</tr>
+<tr>
+<td align="left"><code>close</code></td>
+<td align="left">-</td>
+<td align="left">关闭指定 channel</td>
+</tr>
+<tr>
+<td align="left"><code>detach</code></td>
+<td align="left">-</td>
+<td align="left">分离会话（适用于 HTTP&#x2F;HTTPS 隧道）</td>
+</tr>
+<tr>
+<td align="left"><code>disable_unicode_encoding</code></td>
+<td align="left">-</td>
+<td align="left">禁用 Unicode 编码（用于兼容旧系统）</td>
+</tr>
+<tr>
+<td align="left"><code>enable_unicode_encoding</code></td>
+<td align="left">-</td>
+<td align="left">启用 Unicode 编码</td>
+</tr>
+<tr>
+<td align="left"><code>exit</code> &#x2F; <code>quit</code></td>
+<td align="left">互为别名</td>
+<td align="left">结束当前 Meterpreter 会话</td>
+</tr>
+<tr>
+<td align="left"><code>get_timeouts</code></td>
+<td align="left">-</td>
+<td align="left">获取当前会话超时设置</td>
+</tr>
+<tr>
+<td align="left"><code>guid</code></td>
+<td align="left">-</td>
+<td align="left">获取会话唯一 GUID</td>
+</tr>
+<tr>
+<td align="left"><code>help</code></td>
+<td align="left">-</td>
+<td align="left">显示帮助信息（同 <code>?</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>info</code></td>
+<td align="left">-</td>
+<td align="left">显示 Post 模块详细信息</td>
+</tr>
+<tr>
+<td align="left"><code>irb</code></td>
+<td align="left">-</td>
+<td align="left">在当前会话中启动交互式 Ruby shell</td>
+</tr>
+<tr>
+<td align="left"><code>load</code></td>
+<td align="left"><code>use</code>（不推荐）</td>
+<td align="left">加载扩展模块（如 <code>powershell</code>, <code>python</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>machine_id</code></td>
+<td align="left">-</td>
+<td align="left">获取目标机器在 MSF 中的唯一 ID</td>
+</tr>
+<tr>
+<td align="left"><code>migrate</code></td>
+<td align="left">-</td>
+<td align="left">迁移进程（提升稳定性，避免崩溃）</td>
+</tr>
+<tr>
+<td align="left"><code>pivot</code></td>
+<td align="left">-</td>
+<td align="left">管理内网流量转发监听器</td>
+</tr>
+<tr>
+<td align="left"><code>pry</code></td>
+<td align="left">-</td>
+<td align="left">启动 Pry 调试环境（高级调试）</td>
+</tr>
+<tr>
+<td align="left"><code>read</code></td>
+<td align="left">-</td>
+<td align="left">从 channel 读取数据</td>
+</tr>
+<tr>
+<td align="left"><code>resource</code></td>
+<td align="left">-</td>
+<td align="left">执行本地存储的 <code>.rc</code> 脚本文件</td>
+</tr>
+<tr>
+<td align="left"><code>run</code></td>
+<td align="left">-</td>
+<td align="left">运行 Meterpreter 脚本或后渗透模块</td>
+</tr>
+<tr>
+<td align="left"><code>secure</code></td>
+<td align="left">-</td>
+<td align="left">重新协商 TLV 数据包加密机制</td>
+</tr>
+<tr>
+<td align="left"><code>sessions</code></td>
+<td align="left">-</td>
+<td align="left">快速切换到其他会话</td>
+</tr>
+<tr>
+<td align="left"><code>set_timeouts</code></td>
+<td align="left">-</td>
+<td align="left">设置会话超时时间（秒）</td>
+</tr>
+<tr>
+<td align="left"><code>sleep</code></td>
+<td align="left">-</td>
+<td align="left">让 Meterpreter 静默一段时间后重连</td>
+</tr>
+<tr>
+<td align="left"><code>ssl_verify</code></td>
+<td align="left">-</td>
+<td align="left">修改 SSL 证书验证行为</td>
+</tr>
+<tr>
+<td align="left"><code>transport</code></td>
+<td align="left">-</td>
+<td align="left">管理传输方式（如 http → https 切换）</td>
+</tr>
+<tr>
+<td align="left"><code>uuid</code></td>
+<td align="left">-</td>
+<td align="left">获取当前会话的 UUID</td>
+</tr>
+</tbody></table></div>
+<p><code>?</code>查看当前可用命令</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260330154440119.png" class title="image-20260330154440119">
+
+<p>直接shell连接命令行，进行命令执行，发现根目录下有flag</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260330154606383.png" class title="image-20260330154606383">
+
+<p>使用的时候如果觉得这样的排版不好看还可以使用python调用系统终端，那样排版好看一点</p>
+<div class="code-container" code-lang="Bash"><div class="codebox"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure><div class="code-fold" title="Fold/Open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div><div class="code-copy" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"  stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg></div></div></div>
+
+<p>的确好看了</p>
+<img lazyload src="/assets/images/loading.gif" data-lazy-src="/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20260330154916094.png" class title="image-20260330154916094">
+</div><div class="post-reward"><div class="post-reward-btn" title="赞赏作者"><img src="/assets/images/svg/uc/uc-gift.svg" class="icon noview" alt="Icon"><span></span></div><div class="post-reward-content"><div class="post-reward-text"></div><div class="post-reward-list"><a href="/null" target="_blank">致谢名单</a></div></div></div><div class="post-copyright"><div class="post-copyright-info">本作品由 Regulus 于 2026-03-29 19:49:20 发布</div><div class="post-copyright-link"><span>作品地址：<a href="http://example.com/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">Metasploit使用教程</a></span><button class="copy-text" type="button" data-text="http://example.com/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">复制</button></div><div class="post-copyright-detail">除特别声明外，本站作品均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' title='Attribution-NonCommercial-ShareAlike' target='_blank'>CC BY-NC-SA 4.0</a> 许可协议，转载请注明来自 <a href='/'>Mei的小窝</a></div><img class="post-copyright-icon noview" src="/assets/images/Hexo-Theme-MEOW.png" alt="Logo"/></div><div class="post-tail-tags"><a class="post-tail-tags-link" href="/tags/Metasploit/" rel="tag">Metasploit</a><a class="post-tail-tags-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a></div></div><aside id="post-sidebar" status="show"><div id="toc-container"><div class="toc-title"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"><span>目录</span></div><div class="toc-content" id="toc-div"><ol class="toc-list"><li class="toc-list-item toc-list-level-1"><a class="toc-list-link" href="#Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-list-text">Metasploit使用教程</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#Metasploit%E7%AE%80%E4%BB%8B"><span class="toc-list-text">Metasploit简介</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-list-text">使用教程</span></a><ol class="toc-list-child"><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#1-Auxiliary%E8%BF%9B%E8%A1%8C%E6%BC%8F%E6%B4%9E%E6%8E%A2%E6%B5%8B"><span class="toc-list-text">1.Auxiliary进行漏洞探测</span></a></li><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#2-Exploit%E5%AF%B9%E6%BC%8F%E6%B4%9E%E8%BF%9B%E8%A1%8C%E5%88%A9%E7%94%A8"><span class="toc-list-text">2.Exploit对漏洞进行利用</span></a></li><li class="toc-list-item toc-list-level-3"><a class="toc-list-link" href="#3-Meterpreter%E8%BF%9B%E8%A1%8C%E6%94%BB%E5%87%BB"><span class="toc-list-text">3.Meterpreter进行攻击</span></a></li></ol></li></ol></li></ol></div></div></aside></div></div><div id="toolbar" hide=""><div id="toolbar-setting-container" hide=""><div class="toolbar-item"><button id="tool-color-mode" title="深色模式" type="button"><img src="/assets/images/svg/ta/ta-moon.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button class="copy-text" id="tool-share" title="分享" type="button" data-text="http://example.com/2026/03/29/Metasploit%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><img src="/assets/images/svg/ta/ta-share.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-plus" title="放大字体" type="button"><img src="/assets/images/svg/ta/ta-text-plus.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-font-size-minus" title="缩小字体" type="button"><img src="/assets/images/svg/ta/ta-text-minus.svg" class="icon noview" alt="Icon"></button></div></div><div class="toolbar-container"><div class="toolbar-item"><button id="tool-setting" title="设置" type="button"><img src="/assets/images/svg/ta/ta-setting.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-toc" title="目录" type="button"><img src="/assets/images/svg/ta/ta-toc.svg" class="icon noview" alt="Icon"></button></div><div class="toolbar-item"><button id="tool-gototop" title="返回顶部" type="button"><img src="/assets/images/svg/ta/ta-up.svg" class="icon noview" alt="Icon"></button></div></div></div><div class="search-overlay"><div class="search-container"><div class="search-header"><div class="search-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+搜索</div><div class="search-close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" /><path d="M9 8l6 8" /><path d="M15 8l-6 8" /></svg></div></div><div class="search-input-box"><input id="search-input" type="search" placeholder="请输入关键词进行站内搜索……" value="" maxlength="80"/></div><div class="search-result-container"><div class="search-result-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg></div></div></div></div></main><footer><div class="footer"><div id="footer-copyright">© 2024 - 2026 <span>💗</span> <a href="/null">Regulus</a></div><div id="footer-info"><div id="footer-framework">🚀本站由 <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/chanwj/hexo-theme-meow" title="3.2.0" target="_blank">Meow</a> 强力驱动</div><div id="footer-runtime"><span id="runtime" data-startdate="2024-04-02T22:16:20.000Z">🌻已稳定运行.年.月.天</span></div></div><div id="footer-statistic"><span>共撰写187篇文章，全站共511.6k字</span></div><div id="footer-pageview"><div id="container_site_pv"><span>🔥总访问量</span><span id="vercount_value_site_pv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div><div id="container_site_uv"><span>🐈访客人数</span><span id="vercount_value_site_uv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6l0 -3" /><path d="M16.25 7.75l2.15 -2.15" /><path d="M18 12l3 0" /><path d="M16.25 16.25l2.15 2.15" /><path d="M12 18l0 3" /><path d="M7.75 16.25l-2.15 2.15" /><path d="M6 12l-3 0" /><path d="M7.75 7.75l-2.15 -2.15" /></svg></span></div></div></div></footer><div class="scripts"><script>const GLOBALCONFIG = {
+  root: '/',
+  toolbar: true,
+  lazyload_src: '/assets/images/loading.gif',
+  friends: false,
+  codeblock: true,
+  share_text: '',
+  onblur_title: 'Please Come Back～✧(´▽`ʃ♡ƪ)',
+  mouse_click: false,
+  notify:{
+    enable: false,
+    info: '复制成功～转载请标注本文地址',
+    f12_info: '开发者模式已打开，请遵循本站版权协议'
+  },
+  search: {
+    enable: true,
+    path: 'search.json',
+    local: {
+      top_n_per_article: 1,
+      preload: false
+    }
+  },
+  encrypt: false,
+};
+</script><script>if (!localStorage.getItem('color-mode')) {
+  localStorage.setItem('color-mode', 'light' || 'light');
+}
+document.body.setAttribute('data-mode', localStorage.getItem('color-mode'));
+</script>
+<script src="/js/theme/tools/utils.js"></script>
+
+<script src="/js/plugins/dist/lazyload.min.js"></script>
+
+<script src="/js/plugins/view-image.min.js"></script>
+<script src="https://events.vercount.one/js" defer="defer"></script><script>if (localStorage.getItem('font-size')) {
+  document.querySelector('.post').style.fontSize = localStorage.getItem('font-size') + 'px';
+}
+</script>
+<script src="/js/plugins/dist/search.js"></script>
+
+<script src="/js/main.js" type="module"></script>
+</div></body></html>
