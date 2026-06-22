@@ -1999,8 +1999,8 @@ code {
   right: 1.5rem;
 }
 figure.highlight {
-  overflow: auto;
-  max-height: 22em;
+  overflow: visible;
+  overflow-x: auto;
   padding: 1rem 0.4rem;
   color: var(--highlight-foreground);
   background: var(--highlight-background);
